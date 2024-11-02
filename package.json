@@ -1,18 +1,18 @@
 {
   "name": "opcua-webapi",
   "version": "1.05.4",
-  "description": "OpenAPI client for opcua-webapi",
-  "author": "OpenAPI-Generator",
+  "description": "Provides HTTPS based access to an OPC UA server.",
+  "author": "OPC Foundation",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+    "url": "https://github.com/OPCFoundation/opcua-webapi.git"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/cjs/index.js",
   "typings": "./dist/index.d.ts",
-  "module": "./dist/esm/index.js",
+  "module": "./dist/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "tsc && tsc -p tsconfig.esm.json",
+    "build": "tsc && tsc -p tsconfig.cjs.json",
     "prepare": "npm run build"
   },
   "devDependencies": {
