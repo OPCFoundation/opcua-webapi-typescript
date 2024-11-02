@@ -27,10 +27,10 @@ export interface DataTypeDescription {
     DataTypeId?: string;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof DataTypeDescription
      */
-    Name?: object;
+    Name?: string;
 }
 
 /**

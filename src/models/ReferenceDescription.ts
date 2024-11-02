@@ -47,10 +47,10 @@ export interface ReferenceDescription {
     NodeId?: string;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof ReferenceDescription
      */
-    BrowseName?: object;
+    BrowseName?: string;
     /**
      * 
      * @type {LocalizedText}

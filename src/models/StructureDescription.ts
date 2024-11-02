@@ -41,10 +41,10 @@ export interface StructureDescription {
     DataTypeId?: string;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof StructureDescription
      */
-    Name?: object;
+    Name?: string;
 }
 
 /**

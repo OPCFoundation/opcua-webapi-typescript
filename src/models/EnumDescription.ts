@@ -47,10 +47,10 @@ export interface EnumDescription {
     DataTypeId?: string;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof EnumDescription
      */
-    Name?: object;
+    Name?: string;
 }
 
 /**

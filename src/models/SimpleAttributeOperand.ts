@@ -27,10 +27,10 @@ export interface SimpleAttributeOperand {
     TypeDefinitionId?: string;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<string>}
      * @memberof SimpleAttributeOperand
      */
-    BrowsePath?: Array<object>;
+    BrowsePath?: Array<string>;
     /**
      * 
      * @type {number}

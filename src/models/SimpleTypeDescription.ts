@@ -39,10 +39,10 @@ export interface SimpleTypeDescription {
     DataTypeId?: string;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof SimpleTypeDescription
      */
-    Name?: object;
+    Name?: string;
 }
 
 /**

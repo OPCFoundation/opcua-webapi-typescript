@@ -29,10 +29,10 @@ import {
 export interface KeyValuePair {
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof KeyValuePair
      */
-    Key?: object;
+    Key?: string;
     /**
      * 
      * @type {Variant}

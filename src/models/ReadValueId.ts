@@ -39,10 +39,10 @@ export interface ReadValueId {
     IndexRange?: string;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof ReadValueId
      */
-    DataEncoding?: object;
+    DataEncoding?: string;
 }
 
 /**

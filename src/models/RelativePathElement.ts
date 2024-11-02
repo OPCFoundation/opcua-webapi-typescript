@@ -39,10 +39,10 @@ export interface RelativePathElement {
     IncludeSubtypes?: boolean;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof RelativePathElement
      */
-    TargetName?: object;
+    TargetName?: string;
 }
 
 /**

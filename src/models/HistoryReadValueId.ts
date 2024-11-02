@@ -33,10 +33,10 @@ export interface HistoryReadValueId {
     IndexRange?: string;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof HistoryReadValueId
      */
-    DataEncoding?: object;
+    DataEncoding?: string;
     /**
      * 
      * @type {string}
