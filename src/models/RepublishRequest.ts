@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -49,10 +50,8 @@ export interface RepublishRequest {
 /**
  * Check if a given object implements the RepublishRequest interface.
  */
-export function instanceOfRepublishRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRepublishRequest(value: object): value is RepublishRequest {
+    return true;
 }
 
 export function RepublishRequestFromJSON(json: any): RepublishRequest {
@@ -60,29 +59,31 @@ export function RepublishRequestFromJSON(json: any): RepublishRequest {
 }
 
 export function RepublishRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): RepublishRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'SubscriptionId': !exists(json, 'SubscriptionId') ? undefined : json['SubscriptionId'],
-        'RetransmitSequenceNumber': !exists(json, 'RetransmitSequenceNumber') ? undefined : json['RetransmitSequenceNumber'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
+        'RetransmitSequenceNumber': json['RetransmitSequenceNumber'] == null ? undefined : json['RetransmitSequenceNumber'],
     };
 }
 
-export function RepublishRequestToJSON(value?: RepublishRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RepublishRequestToJSON(json: any): RepublishRequest {
+      return RepublishRequestToJSONTyped(json, false);
+  }
+
+  export function RepublishRequestToJSONTyped(value?: RepublishRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'SubscriptionId': value.SubscriptionId,
-        'RetransmitSequenceNumber': value.RetransmitSequenceNumber,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'SubscriptionId': value['SubscriptionId'],
+        'RetransmitSequenceNumber': value['RetransmitSequenceNumber'],
     };
 }
 

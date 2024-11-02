@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DiagnosticInfo } from './DiagnosticInfo';
-import {
-    DiagnosticInfoFromJSON,
-    DiagnosticInfoFromJSONTyped,
-    DiagnosticInfoToJSON,
-} from './DiagnosticInfo';
+import { mapValues } from '../runtime';
 import type { Variant } from './Variant';
 import {
     VariantFromJSON,
     VariantFromJSONTyped,
     VariantToJSON,
+    VariantToJSONTyped,
 } from './Variant';
+import type { DiagnosticInfo } from './DiagnosticInfo';
+import {
+    DiagnosticInfoFromJSON,
+    DiagnosticInfoFromJSONTyped,
+    DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
+} from './DiagnosticInfo';
 
 /**
  * 
@@ -61,10 +63,8 @@ export interface CallMethodResult {
 /**
  * Check if a given object implements the CallMethodResult interface.
  */
-export function instanceOfCallMethodResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCallMethodResult(value: object): value is CallMethodResult {
+    return true;
 }
 
 export function CallMethodResultFromJSON(json: any): CallMethodResult {
@@ -72,31 +72,33 @@ export function CallMethodResultFromJSON(json: any): CallMethodResult {
 }
 
 export function CallMethodResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CallMethodResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StatusCode': !exists(json, 'StatusCode') ? undefined : json['StatusCode'],
-        'InputArgumentResults': !exists(json, 'InputArgumentResults') ? undefined : json['InputArgumentResults'],
-        'InputArgumentDiagnosticInfos': !exists(json, 'InputArgumentDiagnosticInfos') ? undefined : ((json['InputArgumentDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'OutputArguments': !exists(json, 'OutputArguments') ? undefined : ((json['OutputArguments'] as Array<any>).map(VariantFromJSON)),
+        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'InputArgumentResults': json['InputArgumentResults'] == null ? undefined : json['InputArgumentResults'],
+        'InputArgumentDiagnosticInfos': json['InputArgumentDiagnosticInfos'] == null ? undefined : ((json['InputArgumentDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'OutputArguments': json['OutputArguments'] == null ? undefined : ((json['OutputArguments'] as Array<any>).map(VariantFromJSON)),
     };
 }
 
-export function CallMethodResultToJSON(value?: CallMethodResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CallMethodResultToJSON(json: any): CallMethodResult {
+      return CallMethodResultToJSONTyped(json, false);
+  }
+
+  export function CallMethodResultToJSONTyped(value?: CallMethodResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StatusCode': value.StatusCode,
-        'InputArgumentResults': value.InputArgumentResults,
-        'InputArgumentDiagnosticInfos': value.InputArgumentDiagnosticInfos === undefined ? undefined : ((value.InputArgumentDiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
-        'OutputArguments': value.OutputArguments === undefined ? undefined : ((value.OutputArguments as Array<any>).map(VariantToJSON)),
+        'StatusCode': value['StatusCode'],
+        'InputArgumentResults': value['InputArgumentResults'],
+        'InputArgumentDiagnosticInfos': value['InputArgumentDiagnosticInfos'] == null ? undefined : ((value['InputArgumentDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
+        'OutputArguments': value['OutputArguments'] == null ? undefined : ((value['OutputArguments'] as Array<any>).map(VariantToJSON)),
     };
 }
 

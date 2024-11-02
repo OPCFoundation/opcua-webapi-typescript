@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -39,19 +39,17 @@ export interface RelativePathElement {
     IncludeSubtypes?: boolean;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof RelativePathElement
      */
-    TargetName?: string;
+    TargetName?: object;
 }
 
 /**
  * Check if a given object implements the RelativePathElement interface.
  */
-export function instanceOfRelativePathElement(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRelativePathElement(value: object): value is RelativePathElement {
+    return true;
 }
 
 export function RelativePathElementFromJSON(json: any): RelativePathElement {
@@ -59,31 +57,33 @@ export function RelativePathElementFromJSON(json: any): RelativePathElement {
 }
 
 export function RelativePathElementFromJSONTyped(json: any, ignoreDiscriminator: boolean): RelativePathElement {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ReferenceTypeId': !exists(json, 'ReferenceTypeId') ? undefined : json['ReferenceTypeId'],
-        'IsInverse': !exists(json, 'IsInverse') ? undefined : json['IsInverse'],
-        'IncludeSubtypes': !exists(json, 'IncludeSubtypes') ? undefined : json['IncludeSubtypes'],
-        'TargetName': !exists(json, 'TargetName') ? undefined : json['TargetName'],
+        'ReferenceTypeId': json['ReferenceTypeId'] == null ? undefined : json['ReferenceTypeId'],
+        'IsInverse': json['IsInverse'] == null ? undefined : json['IsInverse'],
+        'IncludeSubtypes': json['IncludeSubtypes'] == null ? undefined : json['IncludeSubtypes'],
+        'TargetName': json['TargetName'] == null ? undefined : json['TargetName'],
     };
 }
 
-export function RelativePathElementToJSON(value?: RelativePathElement | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RelativePathElementToJSON(json: any): RelativePathElement {
+      return RelativePathElementToJSONTyped(json, false);
+  }
+
+  export function RelativePathElementToJSONTyped(value?: RelativePathElement | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ReferenceTypeId': value.ReferenceTypeId,
-        'IsInverse': value.IsInverse,
-        'IncludeSubtypes': value.IncludeSubtypes,
-        'TargetName': value.TargetName,
+        'ReferenceTypeId': value['ReferenceTypeId'],
+        'IsInverse': value['IsInverse'],
+        'IncludeSubtypes': value['IncludeSubtypes'],
+        'TargetName': value['TargetName'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface Range {
 /**
  * Check if a given object implements the Range interface.
  */
-export function instanceOfRange(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRange(value: object): value is Range {
+    return true;
 }
 
 export function RangeFromJSON(json: any): Range {
@@ -47,27 +45,29 @@ export function RangeFromJSON(json: any): Range {
 }
 
 export function RangeFromJSONTyped(json: any, ignoreDiscriminator: boolean): Range {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Low': !exists(json, 'Low') ? undefined : json['Low'],
-        'High': !exists(json, 'High') ? undefined : json['High'],
+        'Low': json['Low'] == null ? undefined : json['Low'],
+        'High': json['High'] == null ? undefined : json['High'],
     };
 }
 
-export function RangeToJSON(value?: Range | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RangeToJSON(json: any): Range {
+      return RangeToJSONTyped(json, false);
+  }
+
+  export function RangeToJSONTyped(value?: Range | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Low': value.Low,
-        'High': value.High,
+        'Low': value['Low'],
+        'High': value['High'],
     };
 }
 

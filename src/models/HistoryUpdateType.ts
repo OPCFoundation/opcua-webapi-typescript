@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -26,6 +26,17 @@ export const HistoryUpdateType = {
 export type HistoryUpdateType = typeof HistoryUpdateType[keyof typeof HistoryUpdateType];
 
 
+export function instanceOfHistoryUpdateType(value: any): boolean {
+    for (const key in HistoryUpdateType) {
+        if (Object.prototype.hasOwnProperty.call(HistoryUpdateType, key)) {
+            if (HistoryUpdateType[key as keyof typeof HistoryUpdateType] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function HistoryUpdateTypeFromJSON(json: any): HistoryUpdateType {
     return HistoryUpdateTypeFromJSONTyped(json, false);
 }
@@ -36,5 +47,9 @@ export function HistoryUpdateTypeFromJSONTyped(json: any, ignoreDiscriminator: b
 
 export function HistoryUpdateTypeToJSON(value?: HistoryUpdateType | null): any {
     return value as any;
+}
+
+export function HistoryUpdateTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): HistoryUpdateType {
+    return value as HistoryUpdateType;
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,31 +12,35 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { EndpointDescription } from './EndpointDescription';
-import {
-    EndpointDescriptionFromJSON,
-    EndpointDescriptionFromJSONTyped,
-    EndpointDescriptionToJSON,
-} from './EndpointDescription';
-import type { ResponseHeader } from './ResponseHeader';
-import {
-    ResponseHeaderFromJSON,
-    ResponseHeaderFromJSONTyped,
-    ResponseHeaderToJSON,
-} from './ResponseHeader';
+import { mapValues } from '../runtime';
 import type { SignatureData } from './SignatureData';
 import {
     SignatureDataFromJSON,
     SignatureDataFromJSONTyped,
     SignatureDataToJSON,
+    SignatureDataToJSONTyped,
 } from './SignatureData';
+import type { ResponseHeader } from './ResponseHeader';
+import {
+    ResponseHeaderFromJSON,
+    ResponseHeaderFromJSONTyped,
+    ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
+} from './ResponseHeader';
 import type { SignedSoftwareCertificate } from './SignedSoftwareCertificate';
 import {
     SignedSoftwareCertificateFromJSON,
     SignedSoftwareCertificateFromJSONTyped,
     SignedSoftwareCertificateToJSON,
+    SignedSoftwareCertificateToJSONTyped,
 } from './SignedSoftwareCertificate';
+import type { EndpointDescription } from './EndpointDescription';
+import {
+    EndpointDescriptionFromJSON,
+    EndpointDescriptionFromJSONTyped,
+    EndpointDescriptionToJSON,
+    EndpointDescriptionToJSONTyped,
+} from './EndpointDescription';
 
 /**
  * 
@@ -109,10 +113,8 @@ export interface CreateSessionResponse {
 /**
  * Check if a given object implements the CreateSessionResponse interface.
  */
-export function instanceOfCreateSessionResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCreateSessionResponse(value: object): value is CreateSessionResponse {
+    return true;
 }
 
 export function CreateSessionResponseFromJSON(json: any): CreateSessionResponse {
@@ -120,43 +122,45 @@ export function CreateSessionResponseFromJSON(json: any): CreateSessionResponse 
 }
 
 export function CreateSessionResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateSessionResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'SessionId': !exists(json, 'SessionId') ? undefined : json['SessionId'],
-        'AuthenticationToken': !exists(json, 'AuthenticationToken') ? undefined : json['AuthenticationToken'],
-        'RevisedSessionTimeout': !exists(json, 'RevisedSessionTimeout') ? undefined : json['RevisedSessionTimeout'],
-        'ServerNonce': !exists(json, 'ServerNonce') ? undefined : json['ServerNonce'],
-        'ServerCertificate': !exists(json, 'ServerCertificate') ? undefined : json['ServerCertificate'],
-        'ServerEndpoints': !exists(json, 'ServerEndpoints') ? undefined : ((json['ServerEndpoints'] as Array<any>).map(EndpointDescriptionFromJSON)),
-        'ServerSoftwareCertificates': !exists(json, 'ServerSoftwareCertificates') ? undefined : ((json['ServerSoftwareCertificates'] as Array<any>).map(SignedSoftwareCertificateFromJSON)),
-        'ServerSignature': !exists(json, 'ServerSignature') ? undefined : SignatureDataFromJSON(json['ServerSignature']),
-        'MaxRequestMessageSize': !exists(json, 'MaxRequestMessageSize') ? undefined : json['MaxRequestMessageSize'],
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'SessionId': json['SessionId'] == null ? undefined : json['SessionId'],
+        'AuthenticationToken': json['AuthenticationToken'] == null ? undefined : json['AuthenticationToken'],
+        'RevisedSessionTimeout': json['RevisedSessionTimeout'] == null ? undefined : json['RevisedSessionTimeout'],
+        'ServerNonce': json['ServerNonce'] == null ? undefined : json['ServerNonce'],
+        'ServerCertificate': json['ServerCertificate'] == null ? undefined : json['ServerCertificate'],
+        'ServerEndpoints': json['ServerEndpoints'] == null ? undefined : ((json['ServerEndpoints'] as Array<any>).map(EndpointDescriptionFromJSON)),
+        'ServerSoftwareCertificates': json['ServerSoftwareCertificates'] == null ? undefined : ((json['ServerSoftwareCertificates'] as Array<any>).map(SignedSoftwareCertificateFromJSON)),
+        'ServerSignature': json['ServerSignature'] == null ? undefined : SignatureDataFromJSON(json['ServerSignature']),
+        'MaxRequestMessageSize': json['MaxRequestMessageSize'] == null ? undefined : json['MaxRequestMessageSize'],
     };
 }
 
-export function CreateSessionResponseToJSON(value?: CreateSessionResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CreateSessionResponseToJSON(json: any): CreateSessionResponse {
+      return CreateSessionResponseToJSONTyped(json, false);
+  }
+
+  export function CreateSessionResponseToJSONTyped(value?: CreateSessionResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'SessionId': value.SessionId,
-        'AuthenticationToken': value.AuthenticationToken,
-        'RevisedSessionTimeout': value.RevisedSessionTimeout,
-        'ServerNonce': value.ServerNonce,
-        'ServerCertificate': value.ServerCertificate,
-        'ServerEndpoints': value.ServerEndpoints === undefined ? undefined : ((value.ServerEndpoints as Array<any>).map(EndpointDescriptionToJSON)),
-        'ServerSoftwareCertificates': value.ServerSoftwareCertificates === undefined ? undefined : ((value.ServerSoftwareCertificates as Array<any>).map(SignedSoftwareCertificateToJSON)),
-        'ServerSignature': SignatureDataToJSON(value.ServerSignature),
-        'MaxRequestMessageSize': value.MaxRequestMessageSize,
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'SessionId': value['SessionId'],
+        'AuthenticationToken': value['AuthenticationToken'],
+        'RevisedSessionTimeout': value['RevisedSessionTimeout'],
+        'ServerNonce': value['ServerNonce'],
+        'ServerCertificate': value['ServerCertificate'],
+        'ServerEndpoints': value['ServerEndpoints'] == null ? undefined : ((value['ServerEndpoints'] as Array<any>).map(EndpointDescriptionToJSON)),
+        'ServerSoftwareCertificates': value['ServerSoftwareCertificates'] == null ? undefined : ((value['ServerSoftwareCertificates'] as Array<any>).map(SignedSoftwareCertificateToJSON)),
+        'ServerSignature': SignatureDataToJSON(value['ServerSignature']),
+        'MaxRequestMessageSize': value['MaxRequestMessageSize'],
     };
 }
 

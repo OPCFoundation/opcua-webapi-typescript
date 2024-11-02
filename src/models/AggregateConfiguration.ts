@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -54,10 +54,8 @@ export interface AggregateConfiguration {
 /**
  * Check if a given object implements the AggregateConfiguration interface.
  */
-export function instanceOfAggregateConfiguration(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfAggregateConfiguration(value: object): value is AggregateConfiguration {
+    return true;
 }
 
 export function AggregateConfigurationFromJSON(json: any): AggregateConfiguration {
@@ -65,33 +63,35 @@ export function AggregateConfigurationFromJSON(json: any): AggregateConfiguratio
 }
 
 export function AggregateConfigurationFromJSONTyped(json: any, ignoreDiscriminator: boolean): AggregateConfiguration {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'UseServerCapabilitiesDefaults': !exists(json, 'UseServerCapabilitiesDefaults') ? undefined : json['UseServerCapabilitiesDefaults'],
-        'TreatUncertainAsBad': !exists(json, 'TreatUncertainAsBad') ? undefined : json['TreatUncertainAsBad'],
-        'PercentDataBad': !exists(json, 'PercentDataBad') ? undefined : json['PercentDataBad'],
-        'PercentDataGood': !exists(json, 'PercentDataGood') ? undefined : json['PercentDataGood'],
-        'UseSlopedExtrapolation': !exists(json, 'UseSlopedExtrapolation') ? undefined : json['UseSlopedExtrapolation'],
+        'UseServerCapabilitiesDefaults': json['UseServerCapabilitiesDefaults'] == null ? undefined : json['UseServerCapabilitiesDefaults'],
+        'TreatUncertainAsBad': json['TreatUncertainAsBad'] == null ? undefined : json['TreatUncertainAsBad'],
+        'PercentDataBad': json['PercentDataBad'] == null ? undefined : json['PercentDataBad'],
+        'PercentDataGood': json['PercentDataGood'] == null ? undefined : json['PercentDataGood'],
+        'UseSlopedExtrapolation': json['UseSlopedExtrapolation'] == null ? undefined : json['UseSlopedExtrapolation'],
     };
 }
 
-export function AggregateConfigurationToJSON(value?: AggregateConfiguration | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function AggregateConfigurationToJSON(json: any): AggregateConfiguration {
+      return AggregateConfigurationToJSONTyped(json, false);
+  }
+
+  export function AggregateConfigurationToJSONTyped(value?: AggregateConfiguration | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'UseServerCapabilitiesDefaults': value.UseServerCapabilitiesDefaults,
-        'TreatUncertainAsBad': value.TreatUncertainAsBad,
-        'PercentDataBad': value.PercentDataBad,
-        'PercentDataGood': value.PercentDataGood,
-        'UseSlopedExtrapolation': value.UseSlopedExtrapolation,
+        'UseServerCapabilitiesDefaults': value['UseServerCapabilitiesDefaults'],
+        'TreatUncertainAsBad': value['TreatUncertainAsBad'],
+        'PercentDataBad': value['PercentDataBad'],
+        'PercentDataGood': value['PercentDataGood'],
+        'UseSlopedExtrapolation': value['UseSlopedExtrapolation'],
     };
 }
 

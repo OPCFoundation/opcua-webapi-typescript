@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface X509IdentityToken {
 /**
  * Check if a given object implements the X509IdentityToken interface.
  */
-export function instanceOfX509IdentityToken(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfX509IdentityToken(value: object): value is X509IdentityToken {
+    return true;
 }
 
 export function X509IdentityTokenFromJSON(json: any): X509IdentityToken {
@@ -47,27 +45,29 @@ export function X509IdentityTokenFromJSON(json: any): X509IdentityToken {
 }
 
 export function X509IdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: boolean): X509IdentityToken {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'CertificateData': !exists(json, 'CertificateData') ? undefined : json['CertificateData'],
-        'PolicyId': !exists(json, 'PolicyId') ? undefined : json['PolicyId'],
+        'CertificateData': json['CertificateData'] == null ? undefined : json['CertificateData'],
+        'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
     };
 }
 
-export function X509IdentityTokenToJSON(value?: X509IdentityToken | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function X509IdentityTokenToJSON(json: any): X509IdentityToken {
+      return X509IdentityTokenToJSONTyped(json, false);
+  }
+
+  export function X509IdentityTokenToJSONTyped(value?: X509IdentityToken | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'CertificateData': value.CertificateData,
-        'PolicyId': value.PolicyId,
+        'CertificateData': value['CertificateData'],
+        'PolicyId': value['PolicyId'],
     };
 }
 

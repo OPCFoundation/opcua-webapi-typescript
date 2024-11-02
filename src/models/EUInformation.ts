@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { LocalizedText } from './LocalizedText';
 import {
     LocalizedTextFromJSON,
     LocalizedTextFromJSONTyped,
     LocalizedTextToJSON,
+    LocalizedTextToJSONTyped,
 } from './LocalizedText';
 
 /**
@@ -55,10 +56,8 @@ export interface EUInformation {
 /**
  * Check if a given object implements the EUInformation interface.
  */
-export function instanceOfEUInformation(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEUInformation(value: object): value is EUInformation {
+    return true;
 }
 
 export function EUInformationFromJSON(json: any): EUInformation {
@@ -66,31 +65,33 @@ export function EUInformationFromJSON(json: any): EUInformation {
 }
 
 export function EUInformationFromJSONTyped(json: any, ignoreDiscriminator: boolean): EUInformation {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NamespaceUri': !exists(json, 'NamespaceUri') ? undefined : json['NamespaceUri'],
-        'UnitId': !exists(json, 'UnitId') ? undefined : json['UnitId'],
-        'DisplayName': !exists(json, 'DisplayName') ? undefined : LocalizedTextFromJSON(json['DisplayName']),
-        'Description': !exists(json, 'Description') ? undefined : LocalizedTextFromJSON(json['Description']),
+        'NamespaceUri': json['NamespaceUri'] == null ? undefined : json['NamespaceUri'],
+        'UnitId': json['UnitId'] == null ? undefined : json['UnitId'],
+        'DisplayName': json['DisplayName'] == null ? undefined : LocalizedTextFromJSON(json['DisplayName']),
+        'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
     };
 }
 
-export function EUInformationToJSON(value?: EUInformation | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EUInformationToJSON(json: any): EUInformation {
+      return EUInformationToJSONTyped(json, false);
+  }
+
+  export function EUInformationToJSONTyped(value?: EUInformation | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NamespaceUri': value.NamespaceUri,
-        'UnitId': value.UnitId,
-        'DisplayName': LocalizedTextToJSON(value.DisplayName),
-        'Description': LocalizedTextToJSON(value.Description),
+        'NamespaceUri': value['NamespaceUri'],
+        'UnitId': value['UnitId'],
+        'DisplayName': LocalizedTextToJSON(value['DisplayName']),
+        'Description': LocalizedTextToJSON(value['Description']),
     };
 }
 

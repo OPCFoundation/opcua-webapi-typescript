@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { ContentFilter } from './ContentFilter';
-import {
-    ContentFilterFromJSON,
-    ContentFilterFromJSONTyped,
-    ContentFilterToJSON,
-} from './ContentFilter';
+import { mapValues } from '../runtime';
 import type { SimpleAttributeOperand } from './SimpleAttributeOperand';
 import {
     SimpleAttributeOperandFromJSON,
     SimpleAttributeOperandFromJSONTyped,
     SimpleAttributeOperandToJSON,
+    SimpleAttributeOperandToJSONTyped,
 } from './SimpleAttributeOperand';
+import type { ContentFilter } from './ContentFilter';
+import {
+    ContentFilterFromJSON,
+    ContentFilterFromJSONTyped,
+    ContentFilterToJSON,
+    ContentFilterToJSONTyped,
+} from './ContentFilter';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface EventFilter {
 /**
  * Check if a given object implements the EventFilter interface.
  */
-export function instanceOfEventFilter(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEventFilter(value: object): value is EventFilter {
+    return true;
 }
 
 export function EventFilterFromJSON(json: any): EventFilter {
@@ -60,27 +60,29 @@ export function EventFilterFromJSON(json: any): EventFilter {
 }
 
 export function EventFilterFromJSONTyped(json: any, ignoreDiscriminator: boolean): EventFilter {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'SelectClauses': !exists(json, 'SelectClauses') ? undefined : ((json['SelectClauses'] as Array<any>).map(SimpleAttributeOperandFromJSON)),
-        'WhereClause': !exists(json, 'WhereClause') ? undefined : ContentFilterFromJSON(json['WhereClause']),
+        'SelectClauses': json['SelectClauses'] == null ? undefined : ((json['SelectClauses'] as Array<any>).map(SimpleAttributeOperandFromJSON)),
+        'WhereClause': json['WhereClause'] == null ? undefined : ContentFilterFromJSON(json['WhereClause']),
     };
 }
 
-export function EventFilterToJSON(value?: EventFilter | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EventFilterToJSON(json: any): EventFilter {
+      return EventFilterToJSONTyped(json, false);
+  }
+
+  export function EventFilterToJSONTyped(value?: EventFilter | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'SelectClauses': value.SelectClauses === undefined ? undefined : ((value.SelectClauses as Array<any>).map(SimpleAttributeOperandToJSON)),
-        'WhereClause': ContentFilterToJSON(value.WhereClause),
+        'SelectClauses': value['SelectClauses'] == null ? undefined : ((value['SelectClauses'] as Array<any>).map(SimpleAttributeOperandToJSON)),
+        'WhereClause': ContentFilterToJSON(value['WhereClause']),
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,55 +12,63 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
+import type { PublishedDataSetDataType } from './PublishedDataSetDataType';
+import {
+    PublishedDataSetDataTypeFromJSON,
+    PublishedDataSetDataTypeFromJSONTyped,
+    PublishedDataSetDataTypeToJSON,
+    PublishedDataSetDataTypeToJSONTyped,
+} from './PublishedDataSetDataType';
 import type { DataSetMetaDataType } from './DataSetMetaDataType';
 import {
     DataSetMetaDataTypeFromJSON,
     DataSetMetaDataTypeFromJSONTyped,
     DataSetMetaDataTypeToJSON,
+    DataSetMetaDataTypeToJSONTyped,
 } from './DataSetMetaDataType';
-import type { EndpointDescription } from './EndpointDescription';
-import {
-    EndpointDescriptionFromJSON,
-    EndpointDescriptionFromJSONTyped,
-    EndpointDescriptionToJSON,
-} from './EndpointDescription';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
 import type { PubSubConnectionDataType } from './PubSubConnectionDataType';
 import {
     PubSubConnectionDataTypeFromJSON,
     PubSubConnectionDataTypeFromJSONTyped,
     PubSubConnectionDataTypeToJSON,
+    PubSubConnectionDataTypeToJSONTyped,
 } from './PubSubConnectionDataType';
-import type { PubSubKeyPushTargetDataType } from './PubSubKeyPushTargetDataType';
-import {
-    PubSubKeyPushTargetDataTypeFromJSON,
-    PubSubKeyPushTargetDataTypeFromJSONTyped,
-    PubSubKeyPushTargetDataTypeToJSON,
-} from './PubSubKeyPushTargetDataType';
-import type { PublishedDataSetDataType } from './PublishedDataSetDataType';
-import {
-    PublishedDataSetDataTypeFromJSON,
-    PublishedDataSetDataTypeFromJSONTyped,
-    PublishedDataSetDataTypeToJSON,
-} from './PublishedDataSetDataType';
 import type { SecurityGroupDataType } from './SecurityGroupDataType';
 import {
     SecurityGroupDataTypeFromJSON,
     SecurityGroupDataTypeFromJSONTyped,
     SecurityGroupDataTypeToJSON,
+    SecurityGroupDataTypeToJSONTyped,
 } from './SecurityGroupDataType';
+import type { PubSubKeyPushTargetDataType } from './PubSubKeyPushTargetDataType';
+import {
+    PubSubKeyPushTargetDataTypeFromJSON,
+    PubSubKeyPushTargetDataTypeFromJSONTyped,
+    PubSubKeyPushTargetDataTypeToJSON,
+    PubSubKeyPushTargetDataTypeToJSONTyped,
+} from './PubSubKeyPushTargetDataType';
 import type { StandaloneSubscribedDataSetDataType } from './StandaloneSubscribedDataSetDataType';
 import {
     StandaloneSubscribedDataSetDataTypeFromJSON,
     StandaloneSubscribedDataSetDataTypeFromJSONTyped,
     StandaloneSubscribedDataSetDataTypeToJSON,
+    StandaloneSubscribedDataSetDataTypeToJSONTyped,
 } from './StandaloneSubscribedDataSetDataType';
+import type { EndpointDescription } from './EndpointDescription';
+import {
+    EndpointDescriptionFromJSON,
+    EndpointDescriptionFromJSONTyped,
+    EndpointDescriptionToJSON,
+    EndpointDescriptionToJSONTyped,
+} from './EndpointDescription';
 
 /**
  * 
@@ -133,10 +141,8 @@ export interface PubSubConfiguration2DataType {
 /**
  * Check if a given object implements the PubSubConfiguration2DataType interface.
  */
-export function instanceOfPubSubConfiguration2DataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfPubSubConfiguration2DataType(value: object): value is PubSubConfiguration2DataType {
+    return true;
 }
 
 export function PubSubConfiguration2DataTypeFromJSON(json: any): PubSubConfiguration2DataType {
@@ -144,43 +150,45 @@ export function PubSubConfiguration2DataTypeFromJSON(json: any): PubSubConfigura
 }
 
 export function PubSubConfiguration2DataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): PubSubConfiguration2DataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'SubscribedDataSets': !exists(json, 'SubscribedDataSets') ? undefined : ((json['SubscribedDataSets'] as Array<any>).map(StandaloneSubscribedDataSetDataTypeFromJSON)),
-        'DataSetClasses': !exists(json, 'DataSetClasses') ? undefined : ((json['DataSetClasses'] as Array<any>).map(DataSetMetaDataTypeFromJSON)),
-        'DefaultSecurityKeyServices': !exists(json, 'DefaultSecurityKeyServices') ? undefined : ((json['DefaultSecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
-        'SecurityGroups': !exists(json, 'SecurityGroups') ? undefined : ((json['SecurityGroups'] as Array<any>).map(SecurityGroupDataTypeFromJSON)),
-        'PubSubKeyPushTargets': !exists(json, 'PubSubKeyPushTargets') ? undefined : ((json['PubSubKeyPushTargets'] as Array<any>).map(PubSubKeyPushTargetDataTypeFromJSON)),
-        'ConfigurationVersion': !exists(json, 'ConfigurationVersion') ? undefined : json['ConfigurationVersion'],
-        'ConfigurationProperties': !exists(json, 'ConfigurationProperties') ? undefined : ((json['ConfigurationProperties'] as Array<any>).map(KeyValuePairFromJSON)),
-        'PublishedDataSets': !exists(json, 'PublishedDataSets') ? undefined : ((json['PublishedDataSets'] as Array<any>).map(PublishedDataSetDataTypeFromJSON)),
-        'Connections': !exists(json, 'Connections') ? undefined : ((json['Connections'] as Array<any>).map(PubSubConnectionDataTypeFromJSON)),
-        'Enabled': !exists(json, 'Enabled') ? undefined : json['Enabled'],
+        'SubscribedDataSets': json['SubscribedDataSets'] == null ? undefined : ((json['SubscribedDataSets'] as Array<any>).map(StandaloneSubscribedDataSetDataTypeFromJSON)),
+        'DataSetClasses': json['DataSetClasses'] == null ? undefined : ((json['DataSetClasses'] as Array<any>).map(DataSetMetaDataTypeFromJSON)),
+        'DefaultSecurityKeyServices': json['DefaultSecurityKeyServices'] == null ? undefined : ((json['DefaultSecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
+        'SecurityGroups': json['SecurityGroups'] == null ? undefined : ((json['SecurityGroups'] as Array<any>).map(SecurityGroupDataTypeFromJSON)),
+        'PubSubKeyPushTargets': json['PubSubKeyPushTargets'] == null ? undefined : ((json['PubSubKeyPushTargets'] as Array<any>).map(PubSubKeyPushTargetDataTypeFromJSON)),
+        'ConfigurationVersion': json['ConfigurationVersion'] == null ? undefined : json['ConfigurationVersion'],
+        'ConfigurationProperties': json['ConfigurationProperties'] == null ? undefined : ((json['ConfigurationProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'PublishedDataSets': json['PublishedDataSets'] == null ? undefined : ((json['PublishedDataSets'] as Array<any>).map(PublishedDataSetDataTypeFromJSON)),
+        'Connections': json['Connections'] == null ? undefined : ((json['Connections'] as Array<any>).map(PubSubConnectionDataTypeFromJSON)),
+        'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
     };
 }
 
-export function PubSubConfiguration2DataTypeToJSON(value?: PubSubConfiguration2DataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function PubSubConfiguration2DataTypeToJSON(json: any): PubSubConfiguration2DataType {
+      return PubSubConfiguration2DataTypeToJSONTyped(json, false);
+  }
+
+  export function PubSubConfiguration2DataTypeToJSONTyped(value?: PubSubConfiguration2DataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'SubscribedDataSets': value.SubscribedDataSets === undefined ? undefined : ((value.SubscribedDataSets as Array<any>).map(StandaloneSubscribedDataSetDataTypeToJSON)),
-        'DataSetClasses': value.DataSetClasses === undefined ? undefined : ((value.DataSetClasses as Array<any>).map(DataSetMetaDataTypeToJSON)),
-        'DefaultSecurityKeyServices': value.DefaultSecurityKeyServices === undefined ? undefined : ((value.DefaultSecurityKeyServices as Array<any>).map(EndpointDescriptionToJSON)),
-        'SecurityGroups': value.SecurityGroups === undefined ? undefined : ((value.SecurityGroups as Array<any>).map(SecurityGroupDataTypeToJSON)),
-        'PubSubKeyPushTargets': value.PubSubKeyPushTargets === undefined ? undefined : ((value.PubSubKeyPushTargets as Array<any>).map(PubSubKeyPushTargetDataTypeToJSON)),
-        'ConfigurationVersion': value.ConfigurationVersion,
-        'ConfigurationProperties': value.ConfigurationProperties === undefined ? undefined : ((value.ConfigurationProperties as Array<any>).map(KeyValuePairToJSON)),
-        'PublishedDataSets': value.PublishedDataSets === undefined ? undefined : ((value.PublishedDataSets as Array<any>).map(PublishedDataSetDataTypeToJSON)),
-        'Connections': value.Connections === undefined ? undefined : ((value.Connections as Array<any>).map(PubSubConnectionDataTypeToJSON)),
-        'Enabled': value.Enabled,
+        'SubscribedDataSets': value['SubscribedDataSets'] == null ? undefined : ((value['SubscribedDataSets'] as Array<any>).map(StandaloneSubscribedDataSetDataTypeToJSON)),
+        'DataSetClasses': value['DataSetClasses'] == null ? undefined : ((value['DataSetClasses'] as Array<any>).map(DataSetMetaDataTypeToJSON)),
+        'DefaultSecurityKeyServices': value['DefaultSecurityKeyServices'] == null ? undefined : ((value['DefaultSecurityKeyServices'] as Array<any>).map(EndpointDescriptionToJSON)),
+        'SecurityGroups': value['SecurityGroups'] == null ? undefined : ((value['SecurityGroups'] as Array<any>).map(SecurityGroupDataTypeToJSON)),
+        'PubSubKeyPushTargets': value['PubSubKeyPushTargets'] == null ? undefined : ((value['PubSubKeyPushTargets'] as Array<any>).map(PubSubKeyPushTargetDataTypeToJSON)),
+        'ConfigurationVersion': value['ConfigurationVersion'],
+        'ConfigurationProperties': value['ConfigurationProperties'] == null ? undefined : ((value['ConfigurationProperties'] as Array<any>).map(KeyValuePairToJSON)),
+        'PublishedDataSets': value['PublishedDataSets'] == null ? undefined : ((value['PublishedDataSets'] as Array<any>).map(PublishedDataSetDataTypeToJSON)),
+        'Connections': value['Connections'] == null ? undefined : ((value['Connections'] as Array<any>).map(PubSubConnectionDataTypeToJSON)),
+        'Enabled': value['Enabled'],
     };
 }
 

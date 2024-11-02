@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -49,10 +50,8 @@ export interface BrowseNextRequest {
 /**
  * Check if a given object implements the BrowseNextRequest interface.
  */
-export function instanceOfBrowseNextRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrowseNextRequest(value: object): value is BrowseNextRequest {
+    return true;
 }
 
 export function BrowseNextRequestFromJSON(json: any): BrowseNextRequest {
@@ -60,29 +59,31 @@ export function BrowseNextRequestFromJSON(json: any): BrowseNextRequest {
 }
 
 export function BrowseNextRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrowseNextRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'ReleaseContinuationPoints': !exists(json, 'ReleaseContinuationPoints') ? undefined : json['ReleaseContinuationPoints'],
-        'ContinuationPoints': !exists(json, 'ContinuationPoints') ? undefined : json['ContinuationPoints'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'ReleaseContinuationPoints': json['ReleaseContinuationPoints'] == null ? undefined : json['ReleaseContinuationPoints'],
+        'ContinuationPoints': json['ContinuationPoints'] == null ? undefined : json['ContinuationPoints'],
     };
 }
 
-export function BrowseNextRequestToJSON(value?: BrowseNextRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrowseNextRequestToJSON(json: any): BrowseNextRequest {
+      return BrowseNextRequestToJSONTyped(json, false);
+  }
+
+  export function BrowseNextRequestToJSONTyped(value?: BrowseNextRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'ReleaseContinuationPoints': value.ReleaseContinuationPoints,
-        'ContinuationPoints': value.ContinuationPoints,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'ReleaseContinuationPoints': value['ReleaseContinuationPoints'],
+        'ContinuationPoints': value['ContinuationPoints'],
     };
 }
 

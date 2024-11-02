@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DiagnosticInfo } from './DiagnosticInfo';
-import {
-    DiagnosticInfoFromJSON,
-    DiagnosticInfoFromJSONTyped,
-    DiagnosticInfoToJSON,
-} from './DiagnosticInfo';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
+import type { DiagnosticInfo } from './DiagnosticInfo';
+import {
+    DiagnosticInfoFromJSON,
+    DiagnosticInfoFromJSONTyped,
+    DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
+} from './DiagnosticInfo';
 
 /**
  * 
@@ -67,10 +69,8 @@ export interface SetTriggeringResponse {
 /**
  * Check if a given object implements the SetTriggeringResponse interface.
  */
-export function instanceOfSetTriggeringResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfSetTriggeringResponse(value: object): value is SetTriggeringResponse {
+    return true;
 }
 
 export function SetTriggeringResponseFromJSON(json: any): SetTriggeringResponse {
@@ -78,33 +78,35 @@ export function SetTriggeringResponseFromJSON(json: any): SetTriggeringResponse 
 }
 
 export function SetTriggeringResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): SetTriggeringResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'AddResults': !exists(json, 'AddResults') ? undefined : json['AddResults'],
-        'AddDiagnosticInfos': !exists(json, 'AddDiagnosticInfos') ? undefined : ((json['AddDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'RemoveResults': !exists(json, 'RemoveResults') ? undefined : json['RemoveResults'],
-        'RemoveDiagnosticInfos': !exists(json, 'RemoveDiagnosticInfos') ? undefined : ((json['RemoveDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'AddResults': json['AddResults'] == null ? undefined : json['AddResults'],
+        'AddDiagnosticInfos': json['AddDiagnosticInfos'] == null ? undefined : ((json['AddDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'RemoveResults': json['RemoveResults'] == null ? undefined : json['RemoveResults'],
+        'RemoveDiagnosticInfos': json['RemoveDiagnosticInfos'] == null ? undefined : ((json['RemoveDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function SetTriggeringResponseToJSON(value?: SetTriggeringResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function SetTriggeringResponseToJSON(json: any): SetTriggeringResponse {
+      return SetTriggeringResponseToJSONTyped(json, false);
+  }
+
+  export function SetTriggeringResponseToJSONTyped(value?: SetTriggeringResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'AddResults': value.AddResults,
-        'AddDiagnosticInfos': value.AddDiagnosticInfos === undefined ? undefined : ((value.AddDiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
-        'RemoveResults': value.RemoveResults,
-        'RemoveDiagnosticInfos': value.RemoveDiagnosticInfos === undefined ? undefined : ((value.RemoveDiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'AddResults': value['AddResults'],
+        'AddDiagnosticInfos': value['AddDiagnosticInfos'] == null ? undefined : ((value['AddDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
+        'RemoveResults': value['RemoveResults'],
+        'RemoveDiagnosticInfos': value['RemoveDiagnosticInfos'] == null ? undefined : ((value['RemoveDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

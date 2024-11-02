@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { NotificationMessage } from './NotificationMessage';
-import {
-    NotificationMessageFromJSON,
-    NotificationMessageFromJSONTyped,
-    NotificationMessageToJSON,
-} from './NotificationMessage';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
+import type { NotificationMessage } from './NotificationMessage';
+import {
+    NotificationMessageFromJSON,
+    NotificationMessageFromJSONTyped,
+    NotificationMessageToJSON,
+    NotificationMessageToJSONTyped,
+} from './NotificationMessage';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface RepublishResponse {
 /**
  * Check if a given object implements the RepublishResponse interface.
  */
-export function instanceOfRepublishResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRepublishResponse(value: object): value is RepublishResponse {
+    return true;
 }
 
 export function RepublishResponseFromJSON(json: any): RepublishResponse {
@@ -60,27 +60,29 @@ export function RepublishResponseFromJSON(json: any): RepublishResponse {
 }
 
 export function RepublishResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): RepublishResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'NotificationMessage': !exists(json, 'NotificationMessage') ? undefined : NotificationMessageFromJSON(json['NotificationMessage']),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'NotificationMessage': json['NotificationMessage'] == null ? undefined : NotificationMessageFromJSON(json['NotificationMessage']),
     };
 }
 
-export function RepublishResponseToJSON(value?: RepublishResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RepublishResponseToJSON(json: any): RepublishResponse {
+      return RepublishResponseToJSONTyped(json, false);
+  }
+
+  export function RepublishResponseToJSONTyped(value?: RepublishResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'NotificationMessage': NotificationMessageToJSON(value.NotificationMessage),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'NotificationMessage': NotificationMessageToJSON(value['NotificationMessage']),
     };
 }
 

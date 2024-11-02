@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { BrowsePathTarget } from './BrowsePathTarget';
 import {
     BrowsePathTargetFromJSON,
     BrowsePathTargetFromJSONTyped,
     BrowsePathTargetToJSON,
+    BrowsePathTargetToJSONTyped,
 } from './BrowsePathTarget';
 
 /**
@@ -43,10 +44,8 @@ export interface BrowsePathResult {
 /**
  * Check if a given object implements the BrowsePathResult interface.
  */
-export function instanceOfBrowsePathResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrowsePathResult(value: object): value is BrowsePathResult {
+    return true;
 }
 
 export function BrowsePathResultFromJSON(json: any): BrowsePathResult {
@@ -54,27 +53,29 @@ export function BrowsePathResultFromJSON(json: any): BrowsePathResult {
 }
 
 export function BrowsePathResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrowsePathResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StatusCode': !exists(json, 'StatusCode') ? undefined : json['StatusCode'],
-        'Targets': !exists(json, 'Targets') ? undefined : ((json['Targets'] as Array<any>).map(BrowsePathTargetFromJSON)),
+        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'Targets': json['Targets'] == null ? undefined : ((json['Targets'] as Array<any>).map(BrowsePathTargetFromJSON)),
     };
 }
 
-export function BrowsePathResultToJSON(value?: BrowsePathResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrowsePathResultToJSON(json: any): BrowsePathResult {
+      return BrowsePathResultToJSONTyped(json, false);
+  }
+
+  export function BrowsePathResultToJSONTyped(value?: BrowsePathResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StatusCode': value.StatusCode,
-        'Targets': value.Targets === undefined ? undefined : ((value.Targets as Array<any>).map(BrowsePathTargetToJSON)),
+        'StatusCode': value['StatusCode'],
+        'Targets': value['Targets'] == null ? undefined : ((value['Targets'] as Array<any>).map(BrowsePathTargetToJSON)),
     };
 }
 

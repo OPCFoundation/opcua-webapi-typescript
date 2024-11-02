@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface JsonDataSetReaderMessageDataType {
 /**
  * Check if a given object implements the JsonDataSetReaderMessageDataType interface.
  */
-export function instanceOfJsonDataSetReaderMessageDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfJsonDataSetReaderMessageDataType(value: object): value is JsonDataSetReaderMessageDataType {
+    return true;
 }
 
 export function JsonDataSetReaderMessageDataTypeFromJSON(json: any): JsonDataSetReaderMessageDataType {
@@ -47,27 +45,29 @@ export function JsonDataSetReaderMessageDataTypeFromJSON(json: any): JsonDataSet
 }
 
 export function JsonDataSetReaderMessageDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): JsonDataSetReaderMessageDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NetworkMessageContentMask': !exists(json, 'NetworkMessageContentMask') ? undefined : json['NetworkMessageContentMask'],
-        'DataSetMessageContentMask': !exists(json, 'DataSetMessageContentMask') ? undefined : json['DataSetMessageContentMask'],
+        'NetworkMessageContentMask': json['NetworkMessageContentMask'] == null ? undefined : json['NetworkMessageContentMask'],
+        'DataSetMessageContentMask': json['DataSetMessageContentMask'] == null ? undefined : json['DataSetMessageContentMask'],
     };
 }
 
-export function JsonDataSetReaderMessageDataTypeToJSON(value?: JsonDataSetReaderMessageDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function JsonDataSetReaderMessageDataTypeToJSON(json: any): JsonDataSetReaderMessageDataType {
+      return JsonDataSetReaderMessageDataTypeToJSONTyped(json, false);
+  }
+
+  export function JsonDataSetReaderMessageDataTypeToJSONTyped(value?: JsonDataSetReaderMessageDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NetworkMessageContentMask': value.NetworkMessageContentMask,
-        'DataSetMessageContentMask': value.DataSetMessageContentMask,
+        'NetworkMessageContentMask': value['NetworkMessageContentMask'],
+        'DataSetMessageContentMask': value['DataSetMessageContentMask'],
     };
 }
 

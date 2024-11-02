@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { ContentFilterElementResult } from './ContentFilterElementResult';
-import {
-    ContentFilterElementResultFromJSON,
-    ContentFilterElementResultFromJSONTyped,
-    ContentFilterElementResultToJSON,
-} from './ContentFilterElementResult';
+import { mapValues } from '../runtime';
 import type { DiagnosticInfo } from './DiagnosticInfo';
 import {
     DiagnosticInfoFromJSON,
     DiagnosticInfoFromJSONTyped,
     DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { ContentFilterElementResult } from './ContentFilterElementResult';
+import {
+    ContentFilterElementResultFromJSON,
+    ContentFilterElementResultFromJSONTyped,
+    ContentFilterElementResultToJSON,
+    ContentFilterElementResultToJSONTyped,
+} from './ContentFilterElementResult';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface ContentFilterResult {
 /**
  * Check if a given object implements the ContentFilterResult interface.
  */
-export function instanceOfContentFilterResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfContentFilterResult(value: object): value is ContentFilterResult {
+    return true;
 }
 
 export function ContentFilterResultFromJSON(json: any): ContentFilterResult {
@@ -60,27 +60,29 @@ export function ContentFilterResultFromJSON(json: any): ContentFilterResult {
 }
 
 export function ContentFilterResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): ContentFilterResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ElementResults': !exists(json, 'ElementResults') ? undefined : ((json['ElementResults'] as Array<any>).map(ContentFilterElementResultFromJSON)),
-        'ElementDiagnosticInfos': !exists(json, 'ElementDiagnosticInfos') ? undefined : ((json['ElementDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'ElementResults': json['ElementResults'] == null ? undefined : ((json['ElementResults'] as Array<any>).map(ContentFilterElementResultFromJSON)),
+        'ElementDiagnosticInfos': json['ElementDiagnosticInfos'] == null ? undefined : ((json['ElementDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function ContentFilterResultToJSON(value?: ContentFilterResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ContentFilterResultToJSON(json: any): ContentFilterResult {
+      return ContentFilterResultToJSONTyped(json, false);
+  }
+
+  export function ContentFilterResultToJSONTyped(value?: ContentFilterResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ElementResults': value.ElementResults === undefined ? undefined : ((value.ElementResults as Array<any>).map(ContentFilterElementResultToJSON)),
-        'ElementDiagnosticInfos': value.ElementDiagnosticInfos === undefined ? undefined : ((value.ElementDiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'ElementResults': value['ElementResults'] == null ? undefined : ((value['ElementResults'] as Array<any>).map(ContentFilterElementResultToJSON)),
+        'ElementDiagnosticInfos': value['ElementDiagnosticInfos'] == null ? undefined : ((value['ElementDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface LocalizedText {
 /**
  * Check if a given object implements the LocalizedText interface.
  */
-export function instanceOfLocalizedText(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfLocalizedText(value: object): value is LocalizedText {
+    return true;
 }
 
 export function LocalizedTextFromJSON(json: any): LocalizedText {
@@ -47,27 +45,29 @@ export function LocalizedTextFromJSON(json: any): LocalizedText {
 }
 
 export function LocalizedTextFromJSONTyped(json: any, ignoreDiscriminator: boolean): LocalizedText {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Locale': !exists(json, 'Locale') ? undefined : json['Locale'],
-        'Text': !exists(json, 'Text') ? undefined : json['Text'],
+        'Locale': json['Locale'] == null ? undefined : json['Locale'],
+        'Text': json['Text'] == null ? undefined : json['Text'],
     };
 }
 
-export function LocalizedTextToJSON(value?: LocalizedText | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function LocalizedTextToJSON(json: any): LocalizedText {
+      return LocalizedTextToJSONTyped(json, false);
+  }
+
+  export function LocalizedTextToJSONTyped(value?: LocalizedText | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Locale': value.Locale,
-        'Text': value.Text,
+        'Locale': value['Locale'],
+        'Text': value['Text'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -318,7 +318,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ActivateSessionRequestToJSON(requestParameters.activateSessionRequest),
+            body: ActivateSessionRequestToJSON(requestParameters['activateSessionRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ActivateSessionResponseFromJSON(jsonValue));
@@ -345,7 +345,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: BrowseRequestToJSON(requestParameters.browseRequest),
+            body: BrowseRequestToJSON(requestParameters['browseRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BrowseResponseFromJSON(jsonValue));
@@ -372,7 +372,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: BrowseNextRequestToJSON(requestParameters.browseNextRequest),
+            body: BrowseNextRequestToJSON(requestParameters['browseNextRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BrowseNextResponseFromJSON(jsonValue));
@@ -399,7 +399,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CallRequestToJSON(requestParameters.callRequest),
+            body: CallRequestToJSON(requestParameters['callRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CallResponseFromJSON(jsonValue));
@@ -426,7 +426,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CancelRequestToJSON(requestParameters.cancelRequest),
+            body: CancelRequestToJSON(requestParameters['cancelRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CancelResponseFromJSON(jsonValue));
@@ -453,7 +453,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CloseSessionRequestToJSON(requestParameters.closeSessionRequest),
+            body: CloseSessionRequestToJSON(requestParameters['closeSessionRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CloseSessionResponseFromJSON(jsonValue));
@@ -480,7 +480,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateMonitoredItemsRequestToJSON(requestParameters.createMonitoredItemsRequest),
+            body: CreateMonitoredItemsRequestToJSON(requestParameters['createMonitoredItemsRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateMonitoredItemsResponseFromJSON(jsonValue));
@@ -507,7 +507,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateSessionRequestToJSON(requestParameters.createSessionRequest),
+            body: CreateSessionRequestToJSON(requestParameters['createSessionRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSessionResponseFromJSON(jsonValue));
@@ -534,7 +534,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateSubscriptionRequestToJSON(requestParameters.createSubscriptionRequest),
+            body: CreateSubscriptionRequestToJSON(requestParameters['createSubscriptionRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSubscriptionResponseFromJSON(jsonValue));
@@ -561,7 +561,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: DeleteMonitoredItemsRequestToJSON(requestParameters.deleteMonitoredItemsRequest),
+            body: DeleteMonitoredItemsRequestToJSON(requestParameters['deleteMonitoredItemsRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteMonitoredItemsResponseFromJSON(jsonValue));
@@ -588,7 +588,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: DeleteSubscriptionsRequestToJSON(requestParameters.deleteSubscriptionsRequest),
+            body: DeleteSubscriptionsRequestToJSON(requestParameters['deleteSubscriptionsRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteSubscriptionsResponseFromJSON(jsonValue));
@@ -615,7 +615,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: FindServersRequestToJSON(requestParameters.findServersRequest),
+            body: FindServersRequestToJSON(requestParameters['findServersRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => FindServersResponseFromJSON(jsonValue));
@@ -642,7 +642,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: GetEndpointsRequestToJSON(requestParameters.getEndpointsRequest),
+            body: GetEndpointsRequestToJSON(requestParameters['getEndpointsRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetEndpointsResponseFromJSON(jsonValue));
@@ -669,7 +669,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: HistoryReadRequestToJSON(requestParameters.historyReadRequest),
+            body: HistoryReadRequestToJSON(requestParameters['historyReadRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => HistoryReadResponseFromJSON(jsonValue));
@@ -696,7 +696,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: HistoryUpdateRequestToJSON(requestParameters.historyUpdateRequest),
+            body: HistoryUpdateRequestToJSON(requestParameters['historyUpdateRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => HistoryUpdateResponseFromJSON(jsonValue));
@@ -723,7 +723,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ModifyMonitoredItemsRequestToJSON(requestParameters.modifyMonitoredItemsRequest),
+            body: ModifyMonitoredItemsRequestToJSON(requestParameters['modifyMonitoredItemsRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ModifyMonitoredItemsResponseFromJSON(jsonValue));
@@ -750,7 +750,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ModifySubscriptionRequestToJSON(requestParameters.modifySubscriptionRequest),
+            body: ModifySubscriptionRequestToJSON(requestParameters['modifySubscriptionRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ModifySubscriptionResponseFromJSON(jsonValue));
@@ -777,7 +777,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PublishRequestToJSON(requestParameters.publishRequest),
+            body: PublishRequestToJSON(requestParameters['publishRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PublishResponseFromJSON(jsonValue));
@@ -804,7 +804,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ReadRequestToJSON(requestParameters.readRequest),
+            body: ReadRequestToJSON(requestParameters['readRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ReadResponseFromJSON(jsonValue));
@@ -831,7 +831,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: RegisterNodesRequestToJSON(requestParameters.registerNodesRequest),
+            body: RegisterNodesRequestToJSON(requestParameters['registerNodesRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => RegisterNodesResponseFromJSON(jsonValue));
@@ -858,7 +858,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: RepublishRequestToJSON(requestParameters.republishRequest),
+            body: RepublishRequestToJSON(requestParameters['republishRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => RepublishResponseFromJSON(jsonValue));
@@ -885,7 +885,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: SetMonitoringModeRequestToJSON(requestParameters.setMonitoringModeRequest),
+            body: SetMonitoringModeRequestToJSON(requestParameters['setMonitoringModeRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SetMonitoringModeResponseFromJSON(jsonValue));
@@ -912,7 +912,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: SetPublishingModeRequestToJSON(requestParameters.setPublishingModeRequest),
+            body: SetPublishingModeRequestToJSON(requestParameters['setPublishingModeRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SetPublishingModeResponseFromJSON(jsonValue));
@@ -939,7 +939,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: SetTriggeringRequestToJSON(requestParameters.setTriggeringRequest),
+            body: SetTriggeringRequestToJSON(requestParameters['setTriggeringRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SetTriggeringResponseFromJSON(jsonValue));
@@ -966,7 +966,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: TransferSubscriptionsRequestToJSON(requestParameters.transferSubscriptionsRequest),
+            body: TransferSubscriptionsRequestToJSON(requestParameters['transferSubscriptionsRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TransferSubscriptionsResponseFromJSON(jsonValue));
@@ -993,7 +993,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: TranslateBrowsePathsToNodeIdsRequestToJSON(requestParameters.translateBrowsePathsToNodeIdsRequest),
+            body: TranslateBrowsePathsToNodeIdsRequestToJSON(requestParameters['translateBrowsePathsToNodeIdsRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TranslateBrowsePathsToNodeIdsResponseFromJSON(jsonValue));
@@ -1020,7 +1020,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: UnregisterNodesRequestToJSON(requestParameters.unregisterNodesRequest),
+            body: UnregisterNodesRequestToJSON(requestParameters['unregisterNodesRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UnregisterNodesResponseFromJSON(jsonValue));
@@ -1047,7 +1047,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: WriteRequestToJSON(requestParameters.writeRequest),
+            body: WriteRequestToJSON(requestParameters['writeRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WriteResponseFromJSON(jsonValue));

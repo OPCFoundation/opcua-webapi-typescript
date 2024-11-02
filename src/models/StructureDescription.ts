@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { StructureDefinition } from './StructureDefinition';
 import {
     StructureDefinitionFromJSON,
     StructureDefinitionFromJSONTyped,
     StructureDefinitionToJSON,
+    StructureDefinitionToJSONTyped,
 } from './StructureDefinition';
 
 /**
@@ -40,19 +41,17 @@ export interface StructureDescription {
     DataTypeId?: string;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof StructureDescription
      */
-    Name?: string;
+    Name?: object;
 }
 
 /**
  * Check if a given object implements the StructureDescription interface.
  */
-export function instanceOfStructureDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfStructureDescription(value: object): value is StructureDescription {
+    return true;
 }
 
 export function StructureDescriptionFromJSON(json: any): StructureDescription {
@@ -60,29 +59,31 @@ export function StructureDescriptionFromJSON(json: any): StructureDescription {
 }
 
 export function StructureDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): StructureDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StructureDefinition': !exists(json, 'StructureDefinition') ? undefined : StructureDefinitionFromJSON(json['StructureDefinition']),
-        'DataTypeId': !exists(json, 'DataTypeId') ? undefined : json['DataTypeId'],
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
+        'StructureDefinition': json['StructureDefinition'] == null ? undefined : StructureDefinitionFromJSON(json['StructureDefinition']),
+        'DataTypeId': json['DataTypeId'] == null ? undefined : json['DataTypeId'],
+        'Name': json['Name'] == null ? undefined : json['Name'],
     };
 }
 
-export function StructureDescriptionToJSON(value?: StructureDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function StructureDescriptionToJSON(json: any): StructureDescription {
+      return StructureDescriptionToJSONTyped(json, false);
+  }
+
+  export function StructureDescriptionToJSONTyped(value?: StructureDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StructureDefinition': StructureDefinitionToJSON(value.StructureDefinition),
-        'DataTypeId': value.DataTypeId,
-        'Name': value.Name,
+        'StructureDefinition': StructureDefinitionToJSON(value['StructureDefinition']),
+        'DataTypeId': value['DataTypeId'],
+        'Name': value['Name'],
     };
 }
 

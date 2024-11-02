@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface SignatureData {
 /**
  * Check if a given object implements the SignatureData interface.
  */
-export function instanceOfSignatureData(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfSignatureData(value: object): value is SignatureData {
+    return true;
 }
 
 export function SignatureDataFromJSON(json: any): SignatureData {
@@ -47,27 +45,29 @@ export function SignatureDataFromJSON(json: any): SignatureData {
 }
 
 export function SignatureDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): SignatureData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Algorithm': !exists(json, 'Algorithm') ? undefined : json['Algorithm'],
-        'Signature': !exists(json, 'Signature') ? undefined : json['Signature'],
+        'Algorithm': json['Algorithm'] == null ? undefined : json['Algorithm'],
+        'Signature': json['Signature'] == null ? undefined : json['Signature'],
     };
 }
 
-export function SignatureDataToJSON(value?: SignatureData | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function SignatureDataToJSON(json: any): SignatureData {
+      return SignatureDataToJSONTyped(json, false);
+  }
+
+  export function SignatureDataToJSONTyped(value?: SignatureData | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Algorithm': value.Algorithm,
-        'Signature': value.Signature,
+        'Algorithm': value['Algorithm'],
+        'Signature': value['Signature'],
     };
 }
 

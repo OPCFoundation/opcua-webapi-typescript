@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { ApplicationDescription } from './ApplicationDescription';
-import {
-    ApplicationDescriptionFromJSON,
-    ApplicationDescriptionFromJSONTyped,
-    ApplicationDescriptionToJSON,
-} from './ApplicationDescription';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
+import type { ApplicationDescription } from './ApplicationDescription';
+import {
+    ApplicationDescriptionFromJSON,
+    ApplicationDescriptionFromJSONTyped,
+    ApplicationDescriptionToJSON,
+    ApplicationDescriptionToJSONTyped,
+} from './ApplicationDescription';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface FindServersResponse {
 /**
  * Check if a given object implements the FindServersResponse interface.
  */
-export function instanceOfFindServersResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfFindServersResponse(value: object): value is FindServersResponse {
+    return true;
 }
 
 export function FindServersResponseFromJSON(json: any): FindServersResponse {
@@ -60,27 +60,29 @@ export function FindServersResponseFromJSON(json: any): FindServersResponse {
 }
 
 export function FindServersResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): FindServersResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'Servers': !exists(json, 'Servers') ? undefined : ((json['Servers'] as Array<any>).map(ApplicationDescriptionFromJSON)),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'Servers': json['Servers'] == null ? undefined : ((json['Servers'] as Array<any>).map(ApplicationDescriptionFromJSON)),
     };
 }
 
-export function FindServersResponseToJSON(value?: FindServersResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function FindServersResponseToJSON(json: any): FindServersResponse {
+      return FindServersResponseToJSONTyped(json, false);
+  }
+
+  export function FindServersResponseToJSONTyped(value?: FindServersResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'Servers': value.Servers === undefined ? undefined : ((value.Servers as Array<any>).map(ApplicationDescriptionToJSON)),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'Servers': value['Servers'] == null ? undefined : ((value['Servers'] as Array<any>).map(ApplicationDescriptionToJSON)),
     };
 }
 

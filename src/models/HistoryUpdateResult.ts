@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DiagnosticInfo } from './DiagnosticInfo';
 import {
     DiagnosticInfoFromJSON,
     DiagnosticInfoFromJSONTyped,
     DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
 
 /**
@@ -49,10 +50,8 @@ export interface HistoryUpdateResult {
 /**
  * Check if a given object implements the HistoryUpdateResult interface.
  */
-export function instanceOfHistoryUpdateResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfHistoryUpdateResult(value: object): value is HistoryUpdateResult {
+    return true;
 }
 
 export function HistoryUpdateResultFromJSON(json: any): HistoryUpdateResult {
@@ -60,29 +59,31 @@ export function HistoryUpdateResultFromJSON(json: any): HistoryUpdateResult {
 }
 
 export function HistoryUpdateResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): HistoryUpdateResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StatusCode': !exists(json, 'StatusCode') ? undefined : json['StatusCode'],
-        'OperationResults': !exists(json, 'OperationResults') ? undefined : json['OperationResults'],
-        'DiagnosticInfos': !exists(json, 'DiagnosticInfos') ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'OperationResults': json['OperationResults'] == null ? undefined : json['OperationResults'],
+        'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function HistoryUpdateResultToJSON(value?: HistoryUpdateResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function HistoryUpdateResultToJSON(json: any): HistoryUpdateResult {
+      return HistoryUpdateResultToJSONTyped(json, false);
+  }
+
+  export function HistoryUpdateResultToJSONTyped(value?: HistoryUpdateResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StatusCode': value.StatusCode,
-        'OperationResults': value.OperationResults,
-        'DiagnosticInfos': value.DiagnosticInfos === undefined ? undefined : ((value.DiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'StatusCode': value['StatusCode'],
+        'OperationResults': value['OperationResults'],
+        'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

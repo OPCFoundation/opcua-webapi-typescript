@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -42,10 +42,8 @@ export interface DataChangeFilter {
 /**
  * Check if a given object implements the DataChangeFilter interface.
  */
-export function instanceOfDataChangeFilter(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDataChangeFilter(value: object): value is DataChangeFilter {
+    return true;
 }
 
 export function DataChangeFilterFromJSON(json: any): DataChangeFilter {
@@ -53,29 +51,31 @@ export function DataChangeFilterFromJSON(json: any): DataChangeFilter {
 }
 
 export function DataChangeFilterFromJSONTyped(json: any, ignoreDiscriminator: boolean): DataChangeFilter {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Trigger': !exists(json, 'Trigger') ? undefined : json['Trigger'],
-        'DeadbandType': !exists(json, 'DeadbandType') ? undefined : json['DeadbandType'],
-        'DeadbandValue': !exists(json, 'DeadbandValue') ? undefined : json['DeadbandValue'],
+        'Trigger': json['Trigger'] == null ? undefined : json['Trigger'],
+        'DeadbandType': json['DeadbandType'] == null ? undefined : json['DeadbandType'],
+        'DeadbandValue': json['DeadbandValue'] == null ? undefined : json['DeadbandValue'],
     };
 }
 
-export function DataChangeFilterToJSON(value?: DataChangeFilter | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DataChangeFilterToJSON(json: any): DataChangeFilter {
+      return DataChangeFilterToJSONTyped(json, false);
+  }
+
+  export function DataChangeFilterToJSONTyped(value?: DataChangeFilter | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Trigger': value.Trigger,
-        'DeadbandType': value.DeadbandType,
-        'DeadbandValue': value.DeadbandValue,
+        'Trigger': value['Trigger'],
+        'DeadbandType': value['DeadbandType'],
+        'DeadbandValue': value['DeadbandValue'],
     };
 }
 

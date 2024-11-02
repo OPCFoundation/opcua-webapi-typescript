@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -26,6 +26,17 @@ export const BrowseDirection = {
 export type BrowseDirection = typeof BrowseDirection[keyof typeof BrowseDirection];
 
 
+export function instanceOfBrowseDirection(value: any): boolean {
+    for (const key in BrowseDirection) {
+        if (Object.prototype.hasOwnProperty.call(BrowseDirection, key)) {
+            if (BrowseDirection[key as keyof typeof BrowseDirection] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function BrowseDirectionFromJSON(json: any): BrowseDirection {
     return BrowseDirectionFromJSONTyped(json, false);
 }
@@ -36,5 +47,9 @@ export function BrowseDirectionFromJSONTyped(json: any, ignoreDiscriminator: boo
 
 export function BrowseDirectionToJSON(value?: BrowseDirection | null): any {
     return value as any;
+}
+
+export function BrowseDirectionToJSONTyped(value: any, ignoreDiscriminator: boolean): BrowseDirection {
+    return value as BrowseDirection;
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,25 +12,28 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DiagnosticInfo } from './DiagnosticInfo';
-import {
-    DiagnosticInfoFromJSON,
-    DiagnosticInfoFromJSONTyped,
-    DiagnosticInfoToJSON,
-} from './DiagnosticInfo';
-import type { NotificationMessage } from './NotificationMessage';
-import {
-    NotificationMessageFromJSON,
-    NotificationMessageFromJSONTyped,
-    NotificationMessageToJSON,
-} from './NotificationMessage';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
+import type { NotificationMessage } from './NotificationMessage';
+import {
+    NotificationMessageFromJSON,
+    NotificationMessageFromJSONTyped,
+    NotificationMessageToJSON,
+    NotificationMessageToJSONTyped,
+} from './NotificationMessage';
+import type { DiagnosticInfo } from './DiagnosticInfo';
+import {
+    DiagnosticInfoFromJSON,
+    DiagnosticInfoFromJSONTyped,
+    DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
+} from './DiagnosticInfo';
 
 /**
  * 
@@ -85,10 +88,8 @@ export interface PublishResponse {
 /**
  * Check if a given object implements the PublishResponse interface.
  */
-export function instanceOfPublishResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfPublishResponse(value: object): value is PublishResponse {
+    return true;
 }
 
 export function PublishResponseFromJSON(json: any): PublishResponse {
@@ -96,37 +97,39 @@ export function PublishResponseFromJSON(json: any): PublishResponse {
 }
 
 export function PublishResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PublishResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'SubscriptionId': !exists(json, 'SubscriptionId') ? undefined : json['SubscriptionId'],
-        'AvailableSequenceNumbers': !exists(json, 'AvailableSequenceNumbers') ? undefined : json['AvailableSequenceNumbers'],
-        'MoreNotifications': !exists(json, 'MoreNotifications') ? undefined : json['MoreNotifications'],
-        'NotificationMessage': !exists(json, 'NotificationMessage') ? undefined : NotificationMessageFromJSON(json['NotificationMessage']),
-        'Results': !exists(json, 'Results') ? undefined : json['Results'],
-        'DiagnosticInfos': !exists(json, 'DiagnosticInfos') ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
+        'AvailableSequenceNumbers': json['AvailableSequenceNumbers'] == null ? undefined : json['AvailableSequenceNumbers'],
+        'MoreNotifications': json['MoreNotifications'] == null ? undefined : json['MoreNotifications'],
+        'NotificationMessage': json['NotificationMessage'] == null ? undefined : NotificationMessageFromJSON(json['NotificationMessage']),
+        'Results': json['Results'] == null ? undefined : json['Results'],
+        'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function PublishResponseToJSON(value?: PublishResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function PublishResponseToJSON(json: any): PublishResponse {
+      return PublishResponseToJSONTyped(json, false);
+  }
+
+  export function PublishResponseToJSONTyped(value?: PublishResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'SubscriptionId': value.SubscriptionId,
-        'AvailableSequenceNumbers': value.AvailableSequenceNumbers,
-        'MoreNotifications': value.MoreNotifications,
-        'NotificationMessage': NotificationMessageToJSON(value.NotificationMessage),
-        'Results': value.Results,
-        'DiagnosticInfos': value.DiagnosticInfos === undefined ? undefined : ((value.DiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'SubscriptionId': value['SubscriptionId'],
+        'AvailableSequenceNumbers': value['AvailableSequenceNumbers'],
+        'MoreNotifications': value['MoreNotifications'],
+        'NotificationMessage': NotificationMessageToJSON(value['NotificationMessage']),
+        'Results': value['Results'],
+        'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

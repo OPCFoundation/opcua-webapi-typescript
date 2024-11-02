@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -42,10 +42,8 @@ export interface ViewDescription {
 /**
  * Check if a given object implements the ViewDescription interface.
  */
-export function instanceOfViewDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfViewDescription(value: object): value is ViewDescription {
+    return true;
 }
 
 export function ViewDescriptionFromJSON(json: any): ViewDescription {
@@ -53,29 +51,31 @@ export function ViewDescriptionFromJSON(json: any): ViewDescription {
 }
 
 export function ViewDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): ViewDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ViewId': !exists(json, 'ViewId') ? undefined : json['ViewId'],
-        'Timestamp': !exists(json, 'Timestamp') ? undefined : (new Date(json['Timestamp'])),
-        'ViewVersion': !exists(json, 'ViewVersion') ? undefined : json['ViewVersion'],
+        'ViewId': json['ViewId'] == null ? undefined : json['ViewId'],
+        'Timestamp': json['Timestamp'] == null ? undefined : (new Date(json['Timestamp'])),
+        'ViewVersion': json['ViewVersion'] == null ? undefined : json['ViewVersion'],
     };
 }
 
-export function ViewDescriptionToJSON(value?: ViewDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ViewDescriptionToJSON(json: any): ViewDescription {
+      return ViewDescriptionToJSONTyped(json, false);
+  }
+
+  export function ViewDescriptionToJSONTyped(value?: ViewDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ViewId': value.ViewId,
-        'Timestamp': value.Timestamp === undefined ? undefined : (value.Timestamp.toISOString()),
-        'ViewVersion': value.ViewVersion,
+        'ViewId': value['ViewId'],
+        'Timestamp': value['Timestamp'] == null ? undefined : ((value['Timestamp']).toISOString()),
+        'ViewVersion': value['ViewVersion'],
     };
 }
 

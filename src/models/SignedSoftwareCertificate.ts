@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface SignedSoftwareCertificate {
 /**
  * Check if a given object implements the SignedSoftwareCertificate interface.
  */
-export function instanceOfSignedSoftwareCertificate(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfSignedSoftwareCertificate(value: object): value is SignedSoftwareCertificate {
+    return true;
 }
 
 export function SignedSoftwareCertificateFromJSON(json: any): SignedSoftwareCertificate {
@@ -47,27 +45,29 @@ export function SignedSoftwareCertificateFromJSON(json: any): SignedSoftwareCert
 }
 
 export function SignedSoftwareCertificateFromJSONTyped(json: any, ignoreDiscriminator: boolean): SignedSoftwareCertificate {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'CertificateData': !exists(json, 'CertificateData') ? undefined : json['CertificateData'],
-        'Signature': !exists(json, 'Signature') ? undefined : json['Signature'],
+        'CertificateData': json['CertificateData'] == null ? undefined : json['CertificateData'],
+        'Signature': json['Signature'] == null ? undefined : json['Signature'],
     };
 }
 
-export function SignedSoftwareCertificateToJSON(value?: SignedSoftwareCertificate | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function SignedSoftwareCertificateToJSON(json: any): SignedSoftwareCertificate {
+      return SignedSoftwareCertificateToJSONTyped(json, false);
+  }
+
+  export function SignedSoftwareCertificateToJSONTyped(value?: SignedSoftwareCertificate | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'CertificateData': value.CertificateData,
-        'Signature': value.Signature,
+        'CertificateData': value['CertificateData'],
+        'Signature': value['Signature'],
     };
 }
 

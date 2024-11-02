@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface ConfigurationVersionDataType {
 /**
  * Check if a given object implements the ConfigurationVersionDataType interface.
  */
-export function instanceOfConfigurationVersionDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfConfigurationVersionDataType(value: object): value is ConfigurationVersionDataType {
+    return true;
 }
 
 export function ConfigurationVersionDataTypeFromJSON(json: any): ConfigurationVersionDataType {
@@ -47,27 +45,29 @@ export function ConfigurationVersionDataTypeFromJSON(json: any): ConfigurationVe
 }
 
 export function ConfigurationVersionDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): ConfigurationVersionDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'MajorVersion': !exists(json, 'MajorVersion') ? undefined : json['MajorVersion'],
-        'MinorVersion': !exists(json, 'MinorVersion') ? undefined : json['MinorVersion'],
+        'MajorVersion': json['MajorVersion'] == null ? undefined : json['MajorVersion'],
+        'MinorVersion': json['MinorVersion'] == null ? undefined : json['MinorVersion'],
     };
 }
 
-export function ConfigurationVersionDataTypeToJSON(value?: ConfigurationVersionDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ConfigurationVersionDataTypeToJSON(json: any): ConfigurationVersionDataType {
+      return ConfigurationVersionDataTypeToJSONTyped(json, false);
+  }
+
+  export function ConfigurationVersionDataTypeToJSONTyped(value?: ConfigurationVersionDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'MajorVersion': value.MajorVersion,
-        'MinorVersion': value.MinorVersion,
+        'MajorVersion': value['MajorVersion'],
+        'MinorVersion': value['MinorVersion'],
     };
 }
 

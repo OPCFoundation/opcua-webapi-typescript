@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ExtensionObject } from './ExtensionObject';
 import {
     ExtensionObjectFromJSON,
     ExtensionObjectFromJSONTyped,
     ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
 
 /**
@@ -61,10 +62,8 @@ export interface MonitoringParameters {
 /**
  * Check if a given object implements the MonitoringParameters interface.
  */
-export function instanceOfMonitoringParameters(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfMonitoringParameters(value: object): value is MonitoringParameters {
+    return true;
 }
 
 export function MonitoringParametersFromJSON(json: any): MonitoringParameters {
@@ -72,33 +71,35 @@ export function MonitoringParametersFromJSON(json: any): MonitoringParameters {
 }
 
 export function MonitoringParametersFromJSONTyped(json: any, ignoreDiscriminator: boolean): MonitoringParameters {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ClientHandle': !exists(json, 'ClientHandle') ? undefined : json['ClientHandle'],
-        'SamplingInterval': !exists(json, 'SamplingInterval') ? undefined : json['SamplingInterval'],
-        'Filter': !exists(json, 'Filter') ? undefined : ExtensionObjectFromJSON(json['Filter']),
-        'QueueSize': !exists(json, 'QueueSize') ? undefined : json['QueueSize'],
-        'DiscardOldest': !exists(json, 'DiscardOldest') ? undefined : json['DiscardOldest'],
+        'ClientHandle': json['ClientHandle'] == null ? undefined : json['ClientHandle'],
+        'SamplingInterval': json['SamplingInterval'] == null ? undefined : json['SamplingInterval'],
+        'Filter': json['Filter'] == null ? undefined : ExtensionObjectFromJSON(json['Filter']),
+        'QueueSize': json['QueueSize'] == null ? undefined : json['QueueSize'],
+        'DiscardOldest': json['DiscardOldest'] == null ? undefined : json['DiscardOldest'],
     };
 }
 
-export function MonitoringParametersToJSON(value?: MonitoringParameters | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function MonitoringParametersToJSON(json: any): MonitoringParameters {
+      return MonitoringParametersToJSONTyped(json, false);
+  }
+
+  export function MonitoringParametersToJSONTyped(value?: MonitoringParameters | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ClientHandle': value.ClientHandle,
-        'SamplingInterval': value.SamplingInterval,
-        'Filter': ExtensionObjectToJSON(value.Filter),
-        'QueueSize': value.QueueSize,
-        'DiscardOldest': value.DiscardOldest,
+        'ClientHandle': value['ClientHandle'],
+        'SamplingInterval': value['SamplingInterval'],
+        'Filter': ExtensionObjectToJSON(value['Filter']),
+        'QueueSize': value['QueueSize'],
+        'DiscardOldest': value['DiscardOldest'],
     };
 }
 

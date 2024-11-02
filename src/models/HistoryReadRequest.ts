@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,24 +12,27 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-} from './ExtensionObject';
+import { mapValues } from '../runtime';
 import type { HistoryReadValueId } from './HistoryReadValueId';
 import {
     HistoryReadValueIdFromJSON,
     HistoryReadValueIdFromJSONTyped,
     HistoryReadValueIdToJSON,
+    HistoryReadValueIdToJSONTyped,
 } from './HistoryReadValueId';
+import type { ExtensionObject } from './ExtensionObject';
+import {
+    ExtensionObjectFromJSON,
+    ExtensionObjectFromJSONTyped,
+    ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
+} from './ExtensionObject';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -73,10 +76,8 @@ export interface HistoryReadRequest {
 /**
  * Check if a given object implements the HistoryReadRequest interface.
  */
-export function instanceOfHistoryReadRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfHistoryReadRequest(value: object): value is HistoryReadRequest {
+    return true;
 }
 
 export function HistoryReadRequestFromJSON(json: any): HistoryReadRequest {
@@ -84,33 +85,35 @@ export function HistoryReadRequestFromJSON(json: any): HistoryReadRequest {
 }
 
 export function HistoryReadRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): HistoryReadRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'HistoryReadDetails': !exists(json, 'HistoryReadDetails') ? undefined : ExtensionObjectFromJSON(json['HistoryReadDetails']),
-        'TimestampsToReturn': !exists(json, 'TimestampsToReturn') ? undefined : json['TimestampsToReturn'],
-        'ReleaseContinuationPoints': !exists(json, 'ReleaseContinuationPoints') ? undefined : json['ReleaseContinuationPoints'],
-        'NodesToRead': !exists(json, 'NodesToRead') ? undefined : ((json['NodesToRead'] as Array<any>).map(HistoryReadValueIdFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'HistoryReadDetails': json['HistoryReadDetails'] == null ? undefined : ExtensionObjectFromJSON(json['HistoryReadDetails']),
+        'TimestampsToReturn': json['TimestampsToReturn'] == null ? undefined : json['TimestampsToReturn'],
+        'ReleaseContinuationPoints': json['ReleaseContinuationPoints'] == null ? undefined : json['ReleaseContinuationPoints'],
+        'NodesToRead': json['NodesToRead'] == null ? undefined : ((json['NodesToRead'] as Array<any>).map(HistoryReadValueIdFromJSON)),
     };
 }
 
-export function HistoryReadRequestToJSON(value?: HistoryReadRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function HistoryReadRequestToJSON(json: any): HistoryReadRequest {
+      return HistoryReadRequestToJSONTyped(json, false);
+  }
+
+  export function HistoryReadRequestToJSONTyped(value?: HistoryReadRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'HistoryReadDetails': ExtensionObjectToJSON(value.HistoryReadDetails),
-        'TimestampsToReturn': value.TimestampsToReturn,
-        'ReleaseContinuationPoints': value.ReleaseContinuationPoints,
-        'NodesToRead': value.NodesToRead === undefined ? undefined : ((value.NodesToRead as Array<any>).map(HistoryReadValueIdToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'HistoryReadDetails': ExtensionObjectToJSON(value['HistoryReadDetails']),
+        'TimestampsToReturn': value['TimestampsToReturn'],
+        'ReleaseContinuationPoints': value['ReleaseContinuationPoints'],
+        'NodesToRead': value['NodesToRead'] == null ? undefined : ((value['NodesToRead'] as Array<any>).map(HistoryReadValueIdToJSON)),
     };
 }
 

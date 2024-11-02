@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { LocalizedText } from './LocalizedText';
 import {
     LocalizedTextFromJSON,
     LocalizedTextFromJSONTyped,
     LocalizedTextToJSON,
+    LocalizedTextToJSONTyped,
 } from './LocalizedText';
 
 /**
@@ -46,10 +47,10 @@ export interface ReferenceDescription {
     NodeId?: string;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof ReferenceDescription
      */
-    BrowseName?: string;
+    BrowseName?: object;
     /**
      * 
      * @type {LocalizedText}
@@ -73,10 +74,8 @@ export interface ReferenceDescription {
 /**
  * Check if a given object implements the ReferenceDescription interface.
  */
-export function instanceOfReferenceDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReferenceDescription(value: object): value is ReferenceDescription {
+    return true;
 }
 
 export function ReferenceDescriptionFromJSON(json: any): ReferenceDescription {
@@ -84,37 +83,39 @@ export function ReferenceDescriptionFromJSON(json: any): ReferenceDescription {
 }
 
 export function ReferenceDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReferenceDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ReferenceTypeId': !exists(json, 'ReferenceTypeId') ? undefined : json['ReferenceTypeId'],
-        'IsForward': !exists(json, 'IsForward') ? undefined : json['IsForward'],
-        'NodeId': !exists(json, 'NodeId') ? undefined : json['NodeId'],
-        'BrowseName': !exists(json, 'BrowseName') ? undefined : json['BrowseName'],
-        'DisplayName': !exists(json, 'DisplayName') ? undefined : LocalizedTextFromJSON(json['DisplayName']),
-        'NodeClass': !exists(json, 'NodeClass') ? undefined : json['NodeClass'],
-        'TypeDefinition': !exists(json, 'TypeDefinition') ? undefined : json['TypeDefinition'],
+        'ReferenceTypeId': json['ReferenceTypeId'] == null ? undefined : json['ReferenceTypeId'],
+        'IsForward': json['IsForward'] == null ? undefined : json['IsForward'],
+        'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
+        'BrowseName': json['BrowseName'] == null ? undefined : json['BrowseName'],
+        'DisplayName': json['DisplayName'] == null ? undefined : LocalizedTextFromJSON(json['DisplayName']),
+        'NodeClass': json['NodeClass'] == null ? undefined : json['NodeClass'],
+        'TypeDefinition': json['TypeDefinition'] == null ? undefined : json['TypeDefinition'],
     };
 }
 
-export function ReferenceDescriptionToJSON(value?: ReferenceDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReferenceDescriptionToJSON(json: any): ReferenceDescription {
+      return ReferenceDescriptionToJSONTyped(json, false);
+  }
+
+  export function ReferenceDescriptionToJSONTyped(value?: ReferenceDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ReferenceTypeId': value.ReferenceTypeId,
-        'IsForward': value.IsForward,
-        'NodeId': value.NodeId,
-        'BrowseName': value.BrowseName,
-        'DisplayName': LocalizedTextToJSON(value.DisplayName),
-        'NodeClass': value.NodeClass,
-        'TypeDefinition': value.TypeDefinition,
+        'ReferenceTypeId': value['ReferenceTypeId'],
+        'IsForward': value['IsForward'],
+        'NodeId': value['NodeId'],
+        'BrowseName': value['BrowseName'],
+        'DisplayName': LocalizedTextToJSON(value['DisplayName']),
+        'NodeClass': value['NodeClass'],
+        'TypeDefinition': value['TypeDefinition'],
     };
 }
 

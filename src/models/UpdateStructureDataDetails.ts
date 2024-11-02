@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DataValue } from './DataValue';
 import {
     DataValueFromJSON,
     DataValueFromJSONTyped,
     DataValueToJSON,
+    DataValueToJSONTyped,
 } from './DataValue';
 
 /**
@@ -49,10 +50,8 @@ export interface UpdateStructureDataDetails {
 /**
  * Check if a given object implements the UpdateStructureDataDetails interface.
  */
-export function instanceOfUpdateStructureDataDetails(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUpdateStructureDataDetails(value: object): value is UpdateStructureDataDetails {
+    return true;
 }
 
 export function UpdateStructureDataDetailsFromJSON(json: any): UpdateStructureDataDetails {
@@ -60,29 +59,31 @@ export function UpdateStructureDataDetailsFromJSON(json: any): UpdateStructureDa
 }
 
 export function UpdateStructureDataDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdateStructureDataDetails {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NodeId': !exists(json, 'NodeId') ? undefined : json['NodeId'],
-        'PerformInsertReplace': !exists(json, 'PerformInsertReplace') ? undefined : json['PerformInsertReplace'],
-        'UpdateValues': !exists(json, 'UpdateValues') ? undefined : ((json['UpdateValues'] as Array<any>).map(DataValueFromJSON)),
+        'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
+        'PerformInsertReplace': json['PerformInsertReplace'] == null ? undefined : json['PerformInsertReplace'],
+        'UpdateValues': json['UpdateValues'] == null ? undefined : ((json['UpdateValues'] as Array<any>).map(DataValueFromJSON)),
     };
 }
 
-export function UpdateStructureDataDetailsToJSON(value?: UpdateStructureDataDetails | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function UpdateStructureDataDetailsToJSON(json: any): UpdateStructureDataDetails {
+      return UpdateStructureDataDetailsToJSONTyped(json, false);
+  }
+
+  export function UpdateStructureDataDetailsToJSONTyped(value?: UpdateStructureDataDetails | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NodeId': value.NodeId,
-        'PerformInsertReplace': value.PerformInsertReplace,
-        'UpdateValues': value.UpdateValues === undefined ? undefined : ((value.UpdateValues as Array<any>).map(DataValueToJSON)),
+        'NodeId': value['NodeId'],
+        'PerformInsertReplace': value['PerformInsertReplace'],
+        'UpdateValues': value['UpdateValues'] == null ? undefined : ((value['UpdateValues'] as Array<any>).map(DataValueToJSON)),
     };
 }
 

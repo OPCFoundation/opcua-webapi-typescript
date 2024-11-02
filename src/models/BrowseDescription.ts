@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -60,10 +60,8 @@ export interface BrowseDescription {
 /**
  * Check if a given object implements the BrowseDescription interface.
  */
-export function instanceOfBrowseDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrowseDescription(value: object): value is BrowseDescription {
+    return true;
 }
 
 export function BrowseDescriptionFromJSON(json: any): BrowseDescription {
@@ -71,35 +69,37 @@ export function BrowseDescriptionFromJSON(json: any): BrowseDescription {
 }
 
 export function BrowseDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrowseDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NodeId': !exists(json, 'NodeId') ? undefined : json['NodeId'],
-        'BrowseDirection': !exists(json, 'BrowseDirection') ? undefined : json['BrowseDirection'],
-        'ReferenceTypeId': !exists(json, 'ReferenceTypeId') ? undefined : json['ReferenceTypeId'],
-        'IncludeSubtypes': !exists(json, 'IncludeSubtypes') ? undefined : json['IncludeSubtypes'],
-        'NodeClassMask': !exists(json, 'NodeClassMask') ? undefined : json['NodeClassMask'],
-        'ResultMask': !exists(json, 'ResultMask') ? undefined : json['ResultMask'],
+        'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
+        'BrowseDirection': json['BrowseDirection'] == null ? undefined : json['BrowseDirection'],
+        'ReferenceTypeId': json['ReferenceTypeId'] == null ? undefined : json['ReferenceTypeId'],
+        'IncludeSubtypes': json['IncludeSubtypes'] == null ? undefined : json['IncludeSubtypes'],
+        'NodeClassMask': json['NodeClassMask'] == null ? undefined : json['NodeClassMask'],
+        'ResultMask': json['ResultMask'] == null ? undefined : json['ResultMask'],
     };
 }
 
-export function BrowseDescriptionToJSON(value?: BrowseDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrowseDescriptionToJSON(json: any): BrowseDescription {
+      return BrowseDescriptionToJSONTyped(json, false);
+  }
+
+  export function BrowseDescriptionToJSONTyped(value?: BrowseDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NodeId': value.NodeId,
-        'BrowseDirection': value.BrowseDirection,
-        'ReferenceTypeId': value.ReferenceTypeId,
-        'IncludeSubtypes': value.IncludeSubtypes,
-        'NodeClassMask': value.NodeClassMask,
-        'ResultMask': value.ResultMask,
+        'NodeId': value['NodeId'],
+        'BrowseDirection': value['BrowseDirection'],
+        'ReferenceTypeId': value['ReferenceTypeId'],
+        'IncludeSubtypes': value['IncludeSubtypes'],
+        'NodeClassMask': value['NodeClassMask'],
+        'ResultMask': value['ResultMask'],
     };
 }
 

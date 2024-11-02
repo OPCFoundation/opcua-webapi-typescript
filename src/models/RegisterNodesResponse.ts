@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
 
 /**
@@ -43,10 +44,8 @@ export interface RegisterNodesResponse {
 /**
  * Check if a given object implements the RegisterNodesResponse interface.
  */
-export function instanceOfRegisterNodesResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRegisterNodesResponse(value: object): value is RegisterNodesResponse {
+    return true;
 }
 
 export function RegisterNodesResponseFromJSON(json: any): RegisterNodesResponse {
@@ -54,27 +53,29 @@ export function RegisterNodesResponseFromJSON(json: any): RegisterNodesResponse 
 }
 
 export function RegisterNodesResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): RegisterNodesResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'RegisteredNodeIds': !exists(json, 'RegisteredNodeIds') ? undefined : json['RegisteredNodeIds'],
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'RegisteredNodeIds': json['RegisteredNodeIds'] == null ? undefined : json['RegisteredNodeIds'],
     };
 }
 
-export function RegisterNodesResponseToJSON(value?: RegisterNodesResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RegisterNodesResponseToJSON(json: any): RegisterNodesResponse {
+      return RegisterNodesResponseToJSONTyped(json, false);
+  }
+
+  export function RegisterNodesResponseToJSONTyped(value?: RegisterNodesResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'RegisteredNodeIds': value.RegisteredNodeIds,
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'RegisteredNodeIds': value['RegisteredNodeIds'],
     };
 }
 

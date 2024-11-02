@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { LocalizedText } from './LocalizedText';
 import {
     LocalizedTextFromJSON,
     LocalizedTextFromJSONTyped,
     LocalizedTextToJSON,
+    LocalizedTextToJSONTyped,
 } from './LocalizedText';
 
 /**
@@ -73,10 +74,8 @@ export interface ApplicationDescription {
 /**
  * Check if a given object implements the ApplicationDescription interface.
  */
-export function instanceOfApplicationDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfApplicationDescription(value: object): value is ApplicationDescription {
+    return true;
 }
 
 export function ApplicationDescriptionFromJSON(json: any): ApplicationDescription {
@@ -84,37 +83,39 @@ export function ApplicationDescriptionFromJSON(json: any): ApplicationDescriptio
 }
 
 export function ApplicationDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): ApplicationDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ApplicationUri': !exists(json, 'ApplicationUri') ? undefined : json['ApplicationUri'],
-        'ProductUri': !exists(json, 'ProductUri') ? undefined : json['ProductUri'],
-        'ApplicationName': !exists(json, 'ApplicationName') ? undefined : LocalizedTextFromJSON(json['ApplicationName']),
-        'ApplicationType': !exists(json, 'ApplicationType') ? undefined : json['ApplicationType'],
-        'GatewayServerUri': !exists(json, 'GatewayServerUri') ? undefined : json['GatewayServerUri'],
-        'DiscoveryProfileUri': !exists(json, 'DiscoveryProfileUri') ? undefined : json['DiscoveryProfileUri'],
-        'DiscoveryUrls': !exists(json, 'DiscoveryUrls') ? undefined : json['DiscoveryUrls'],
+        'ApplicationUri': json['ApplicationUri'] == null ? undefined : json['ApplicationUri'],
+        'ProductUri': json['ProductUri'] == null ? undefined : json['ProductUri'],
+        'ApplicationName': json['ApplicationName'] == null ? undefined : LocalizedTextFromJSON(json['ApplicationName']),
+        'ApplicationType': json['ApplicationType'] == null ? undefined : json['ApplicationType'],
+        'GatewayServerUri': json['GatewayServerUri'] == null ? undefined : json['GatewayServerUri'],
+        'DiscoveryProfileUri': json['DiscoveryProfileUri'] == null ? undefined : json['DiscoveryProfileUri'],
+        'DiscoveryUrls': json['DiscoveryUrls'] == null ? undefined : json['DiscoveryUrls'],
     };
 }
 
-export function ApplicationDescriptionToJSON(value?: ApplicationDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ApplicationDescriptionToJSON(json: any): ApplicationDescription {
+      return ApplicationDescriptionToJSONTyped(json, false);
+  }
+
+  export function ApplicationDescriptionToJSONTyped(value?: ApplicationDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ApplicationUri': value.ApplicationUri,
-        'ProductUri': value.ProductUri,
-        'ApplicationName': LocalizedTextToJSON(value.ApplicationName),
-        'ApplicationType': value.ApplicationType,
-        'GatewayServerUri': value.GatewayServerUri,
-        'DiscoveryProfileUri': value.DiscoveryProfileUri,
-        'DiscoveryUrls': value.DiscoveryUrls,
+        'ApplicationUri': value['ApplicationUri'],
+        'ProductUri': value['ProductUri'],
+        'ApplicationName': LocalizedTextToJSON(value['ApplicationName']),
+        'ApplicationType': value['ApplicationType'],
+        'GatewayServerUri': value['GatewayServerUri'],
+        'DiscoveryProfileUri': value['DiscoveryProfileUri'],
+        'DiscoveryUrls': value['DiscoveryUrls'],
     };
 }
 

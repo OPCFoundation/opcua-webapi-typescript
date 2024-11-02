@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -39,19 +39,17 @@ export interface SimpleTypeDescription {
     DataTypeId?: string;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof SimpleTypeDescription
      */
-    Name?: string;
+    Name?: object;
 }
 
 /**
  * Check if a given object implements the SimpleTypeDescription interface.
  */
-export function instanceOfSimpleTypeDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfSimpleTypeDescription(value: object): value is SimpleTypeDescription {
+    return true;
 }
 
 export function SimpleTypeDescriptionFromJSON(json: any): SimpleTypeDescription {
@@ -59,31 +57,33 @@ export function SimpleTypeDescriptionFromJSON(json: any): SimpleTypeDescription 
 }
 
 export function SimpleTypeDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): SimpleTypeDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'BaseDataType': !exists(json, 'BaseDataType') ? undefined : json['BaseDataType'],
-        'BuiltInType': !exists(json, 'BuiltInType') ? undefined : json['BuiltInType'],
-        'DataTypeId': !exists(json, 'DataTypeId') ? undefined : json['DataTypeId'],
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
+        'BaseDataType': json['BaseDataType'] == null ? undefined : json['BaseDataType'],
+        'BuiltInType': json['BuiltInType'] == null ? undefined : json['BuiltInType'],
+        'DataTypeId': json['DataTypeId'] == null ? undefined : json['DataTypeId'],
+        'Name': json['Name'] == null ? undefined : json['Name'],
     };
 }
 
-export function SimpleTypeDescriptionToJSON(value?: SimpleTypeDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function SimpleTypeDescriptionToJSON(json: any): SimpleTypeDescription {
+      return SimpleTypeDescriptionToJSONTyped(json, false);
+  }
+
+  export function SimpleTypeDescriptionToJSONTyped(value?: SimpleTypeDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'BaseDataType': value.BaseDataType,
-        'BuiltInType': value.BuiltInType,
-        'DataTypeId': value.DataTypeId,
-        'Name': value.Name,
+        'BaseDataType': value['BaseDataType'],
+        'BuiltInType': value['BuiltInType'],
+        'DataTypeId': value['DataTypeId'],
+        'Name': value['Name'],
     };
 }
 

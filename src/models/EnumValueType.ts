@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { LocalizedText } from './LocalizedText';
 import {
     LocalizedTextFromJSON,
     LocalizedTextFromJSONTyped,
     LocalizedTextToJSON,
+    LocalizedTextToJSONTyped,
 } from './LocalizedText';
 
 /**
@@ -49,10 +50,8 @@ export interface EnumValueType {
 /**
  * Check if a given object implements the EnumValueType interface.
  */
-export function instanceOfEnumValueType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEnumValueType(value: object): value is EnumValueType {
+    return true;
 }
 
 export function EnumValueTypeFromJSON(json: any): EnumValueType {
@@ -60,29 +59,31 @@ export function EnumValueTypeFromJSON(json: any): EnumValueType {
 }
 
 export function EnumValueTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): EnumValueType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Value': !exists(json, 'Value') ? undefined : json['Value'],
-        'DisplayName': !exists(json, 'DisplayName') ? undefined : LocalizedTextFromJSON(json['DisplayName']),
-        'Description': !exists(json, 'Description') ? undefined : LocalizedTextFromJSON(json['Description']),
+        'Value': json['Value'] == null ? undefined : json['Value'],
+        'DisplayName': json['DisplayName'] == null ? undefined : LocalizedTextFromJSON(json['DisplayName']),
+        'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
     };
 }
 
-export function EnumValueTypeToJSON(value?: EnumValueType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EnumValueTypeToJSON(json: any): EnumValueType {
+      return EnumValueTypeToJSONTyped(json, false);
+  }
+
+  export function EnumValueTypeToJSONTyped(value?: EnumValueType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Value': value.Value,
-        'DisplayName': LocalizedTextToJSON(value.DisplayName),
-        'Description': LocalizedTextToJSON(value.Description),
+        'Value': value['Value'],
+        'DisplayName': LocalizedTextToJSON(value['DisplayName']),
+        'Description': LocalizedTextToJSON(value['Description']),
     };
 }
 

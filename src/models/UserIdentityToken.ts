@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -30,10 +30,8 @@ export interface UserIdentityToken {
 /**
  * Check if a given object implements the UserIdentityToken interface.
  */
-export function instanceOfUserIdentityToken(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUserIdentityToken(value: object): value is UserIdentityToken {
+    return true;
 }
 
 export function UserIdentityTokenFromJSON(json: any): UserIdentityToken {
@@ -41,25 +39,27 @@ export function UserIdentityTokenFromJSON(json: any): UserIdentityToken {
 }
 
 export function UserIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserIdentityToken {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'PolicyId': !exists(json, 'PolicyId') ? undefined : json['PolicyId'],
+        'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
     };
 }
 
-export function UserIdentityTokenToJSON(value?: UserIdentityToken | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function UserIdentityTokenToJSON(json: any): UserIdentityToken {
+      return UserIdentityTokenToJSONTyped(json, false);
+  }
+
+  export function UserIdentityTokenToJSONTyped(value?: UserIdentityToken | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'PolicyId': value.PolicyId,
+        'PolicyId': value['PolicyId'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -49,10 +50,8 @@ export interface DeleteMonitoredItemsRequest {
 /**
  * Check if a given object implements the DeleteMonitoredItemsRequest interface.
  */
-export function instanceOfDeleteMonitoredItemsRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDeleteMonitoredItemsRequest(value: object): value is DeleteMonitoredItemsRequest {
+    return true;
 }
 
 export function DeleteMonitoredItemsRequestFromJSON(json: any): DeleteMonitoredItemsRequest {
@@ -60,29 +59,31 @@ export function DeleteMonitoredItemsRequestFromJSON(json: any): DeleteMonitoredI
 }
 
 export function DeleteMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteMonitoredItemsRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'SubscriptionId': !exists(json, 'SubscriptionId') ? undefined : json['SubscriptionId'],
-        'MonitoredItemIds': !exists(json, 'MonitoredItemIds') ? undefined : json['MonitoredItemIds'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
+        'MonitoredItemIds': json['MonitoredItemIds'] == null ? undefined : json['MonitoredItemIds'],
     };
 }
 
-export function DeleteMonitoredItemsRequestToJSON(value?: DeleteMonitoredItemsRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DeleteMonitoredItemsRequestToJSON(json: any): DeleteMonitoredItemsRequest {
+      return DeleteMonitoredItemsRequestToJSONTyped(json, false);
+  }
+
+  export function DeleteMonitoredItemsRequestToJSONTyped(value?: DeleteMonitoredItemsRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'SubscriptionId': value.SubscriptionId,
-        'MonitoredItemIds': value.MonitoredItemIds,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'SubscriptionId': value['SubscriptionId'],
+        'MonitoredItemIds': value['MonitoredItemIds'],
     };
 }
 

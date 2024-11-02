@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DataValue } from './DataValue';
 import {
     DataValueFromJSON,
     DataValueFromJSONTyped,
     DataValueToJSON,
+    DataValueToJSONTyped,
 } from './DataValue';
 
 /**
@@ -37,10 +38,8 @@ export interface HistoryData {
 /**
  * Check if a given object implements the HistoryData interface.
  */
-export function instanceOfHistoryData(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfHistoryData(value: object): value is HistoryData {
+    return true;
 }
 
 export function HistoryDataFromJSON(json: any): HistoryData {
@@ -48,25 +47,27 @@ export function HistoryDataFromJSON(json: any): HistoryData {
 }
 
 export function HistoryDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): HistoryData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'DataValues': !exists(json, 'DataValues') ? undefined : ((json['DataValues'] as Array<any>).map(DataValueFromJSON)),
+        'DataValues': json['DataValues'] == null ? undefined : ((json['DataValues'] as Array<any>).map(DataValueFromJSON)),
     };
 }
 
-export function HistoryDataToJSON(value?: HistoryData | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function HistoryDataToJSON(json: any): HistoryData {
+      return HistoryDataToJSONTyped(json, false);
+  }
+
+  export function HistoryDataToJSONTyped(value?: HistoryData | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'DataValues': value.DataValues === undefined ? undefined : ((value.DataValues as Array<any>).map(DataValueToJSON)),
+        'DataValues': value['DataValues'] == null ? undefined : ((value['DataValues'] as Array<any>).map(DataValueToJSON)),
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -27,6 +27,17 @@ export const TimestampsToReturn = {
 export type TimestampsToReturn = typeof TimestampsToReturn[keyof typeof TimestampsToReturn];
 
 
+export function instanceOfTimestampsToReturn(value: any): boolean {
+    for (const key in TimestampsToReturn) {
+        if (Object.prototype.hasOwnProperty.call(TimestampsToReturn, key)) {
+            if (TimestampsToReturn[key as keyof typeof TimestampsToReturn] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function TimestampsToReturnFromJSON(json: any): TimestampsToReturn {
     return TimestampsToReturnFromJSONTyped(json, false);
 }
@@ -37,5 +48,9 @@ export function TimestampsToReturnFromJSONTyped(json: any, ignoreDiscriminator: 
 
 export function TimestampsToReturnToJSON(value?: TimestampsToReturn | null): any {
     return value as any;
+}
+
+export function TimestampsToReturnToJSONTyped(value: any, ignoreDiscriminator: boolean): TimestampsToReturn {
+    return value as TimestampsToReturn;
 }
 

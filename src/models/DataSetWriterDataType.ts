@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-} from './ExtensionObject';
+import { mapValues } from '../runtime';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
+import type { ExtensionObject } from './ExtensionObject';
+import {
+    ExtensionObjectFromJSON,
+    ExtensionObjectFromJSONTyped,
+    ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
+} from './ExtensionObject';
 
 /**
  * 
@@ -91,10 +93,8 @@ export interface DataSetWriterDataType {
 /**
  * Check if a given object implements the DataSetWriterDataType interface.
  */
-export function instanceOfDataSetWriterDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDataSetWriterDataType(value: object): value is DataSetWriterDataType {
+    return true;
 }
 
 export function DataSetWriterDataTypeFromJSON(json: any): DataSetWriterDataType {
@@ -102,41 +102,43 @@ export function DataSetWriterDataTypeFromJSON(json: any): DataSetWriterDataType 
 }
 
 export function DataSetWriterDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): DataSetWriterDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'Enabled': !exists(json, 'Enabled') ? undefined : json['Enabled'],
-        'DataSetWriterId': !exists(json, 'DataSetWriterId') ? undefined : json['DataSetWriterId'],
-        'DataSetFieldContentMask': !exists(json, 'DataSetFieldContentMask') ? undefined : json['DataSetFieldContentMask'],
-        'KeyFrameCount': !exists(json, 'KeyFrameCount') ? undefined : json['KeyFrameCount'],
-        'DataSetName': !exists(json, 'DataSetName') ? undefined : json['DataSetName'],
-        'DataSetWriterProperties': !exists(json, 'DataSetWriterProperties') ? undefined : ((json['DataSetWriterProperties'] as Array<any>).map(KeyValuePairFromJSON)),
-        'TransportSettings': !exists(json, 'TransportSettings') ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
-        'MessageSettings': !exists(json, 'MessageSettings') ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
+        'DataSetWriterId': json['DataSetWriterId'] == null ? undefined : json['DataSetWriterId'],
+        'DataSetFieldContentMask': json['DataSetFieldContentMask'] == null ? undefined : json['DataSetFieldContentMask'],
+        'KeyFrameCount': json['KeyFrameCount'] == null ? undefined : json['KeyFrameCount'],
+        'DataSetName': json['DataSetName'] == null ? undefined : json['DataSetName'],
+        'DataSetWriterProperties': json['DataSetWriterProperties'] == null ? undefined : ((json['DataSetWriterProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
+        'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
     };
 }
 
-export function DataSetWriterDataTypeToJSON(value?: DataSetWriterDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DataSetWriterDataTypeToJSON(json: any): DataSetWriterDataType {
+      return DataSetWriterDataTypeToJSONTyped(json, false);
+  }
+
+  export function DataSetWriterDataTypeToJSONTyped(value?: DataSetWriterDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'Enabled': value.Enabled,
-        'DataSetWriterId': value.DataSetWriterId,
-        'DataSetFieldContentMask': value.DataSetFieldContentMask,
-        'KeyFrameCount': value.KeyFrameCount,
-        'DataSetName': value.DataSetName,
-        'DataSetWriterProperties': value.DataSetWriterProperties === undefined ? undefined : ((value.DataSetWriterProperties as Array<any>).map(KeyValuePairToJSON)),
-        'TransportSettings': ExtensionObjectToJSON(value.TransportSettings),
-        'MessageSettings': ExtensionObjectToJSON(value.MessageSettings),
+        'Name': value['Name'],
+        'Enabled': value['Enabled'],
+        'DataSetWriterId': value['DataSetWriterId'],
+        'DataSetFieldContentMask': value['DataSetFieldContentMask'],
+        'KeyFrameCount': value['KeyFrameCount'],
+        'DataSetName': value['DataSetName'],
+        'DataSetWriterProperties': value['DataSetWriterProperties'] == null ? undefined : ((value['DataSetWriterProperties'] as Array<any>).map(KeyValuePairToJSON)),
+        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
+        'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
     };
 }
 

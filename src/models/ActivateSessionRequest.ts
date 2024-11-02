@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,30 +12,34 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
+import type { SignatureData } from './SignatureData';
+import {
+    SignatureDataFromJSON,
+    SignatureDataFromJSONTyped,
+    SignatureDataToJSON,
+    SignatureDataToJSONTyped,
+} from './SignatureData';
 import type { ExtensionObject } from './ExtensionObject';
 import {
     ExtensionObjectFromJSON,
     ExtensionObjectFromJSONTyped,
     ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
-import type { SignatureData } from './SignatureData';
-import {
-    SignatureDataFromJSON,
-    SignatureDataFromJSONTyped,
-    SignatureDataToJSON,
-} from './SignatureData';
 import type { SignedSoftwareCertificate } from './SignedSoftwareCertificate';
 import {
     SignedSoftwareCertificateFromJSON,
     SignedSoftwareCertificateFromJSONTyped,
     SignedSoftwareCertificateToJSON,
+    SignedSoftwareCertificateToJSONTyped,
 } from './SignedSoftwareCertificate';
 
 /**
@@ -85,10 +89,8 @@ export interface ActivateSessionRequest {
 /**
  * Check if a given object implements the ActivateSessionRequest interface.
  */
-export function instanceOfActivateSessionRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfActivateSessionRequest(value: object): value is ActivateSessionRequest {
+    return true;
 }
 
 export function ActivateSessionRequestFromJSON(json: any): ActivateSessionRequest {
@@ -96,35 +98,37 @@ export function ActivateSessionRequestFromJSON(json: any): ActivateSessionReques
 }
 
 export function ActivateSessionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): ActivateSessionRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'ClientSignature': !exists(json, 'ClientSignature') ? undefined : SignatureDataFromJSON(json['ClientSignature']),
-        'ClientSoftwareCertificates': !exists(json, 'ClientSoftwareCertificates') ? undefined : ((json['ClientSoftwareCertificates'] as Array<any>).map(SignedSoftwareCertificateFromJSON)),
-        'LocaleIds': !exists(json, 'LocaleIds') ? undefined : json['LocaleIds'],
-        'UserIdentityToken': !exists(json, 'UserIdentityToken') ? undefined : ExtensionObjectFromJSON(json['UserIdentityToken']),
-        'UserTokenSignature': !exists(json, 'UserTokenSignature') ? undefined : SignatureDataFromJSON(json['UserTokenSignature']),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'ClientSignature': json['ClientSignature'] == null ? undefined : SignatureDataFromJSON(json['ClientSignature']),
+        'ClientSoftwareCertificates': json['ClientSoftwareCertificates'] == null ? undefined : ((json['ClientSoftwareCertificates'] as Array<any>).map(SignedSoftwareCertificateFromJSON)),
+        'LocaleIds': json['LocaleIds'] == null ? undefined : json['LocaleIds'],
+        'UserIdentityToken': json['UserIdentityToken'] == null ? undefined : ExtensionObjectFromJSON(json['UserIdentityToken']),
+        'UserTokenSignature': json['UserTokenSignature'] == null ? undefined : SignatureDataFromJSON(json['UserTokenSignature']),
     };
 }
 
-export function ActivateSessionRequestToJSON(value?: ActivateSessionRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ActivateSessionRequestToJSON(json: any): ActivateSessionRequest {
+      return ActivateSessionRequestToJSONTyped(json, false);
+  }
+
+  export function ActivateSessionRequestToJSONTyped(value?: ActivateSessionRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'ClientSignature': SignatureDataToJSON(value.ClientSignature),
-        'ClientSoftwareCertificates': value.ClientSoftwareCertificates === undefined ? undefined : ((value.ClientSoftwareCertificates as Array<any>).map(SignedSoftwareCertificateToJSON)),
-        'LocaleIds': value.LocaleIds,
-        'UserIdentityToken': ExtensionObjectToJSON(value.UserIdentityToken),
-        'UserTokenSignature': SignatureDataToJSON(value.UserTokenSignature),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'ClientSignature': SignatureDataToJSON(value['ClientSignature']),
+        'ClientSoftwareCertificates': value['ClientSoftwareCertificates'] == null ? undefined : ((value['ClientSoftwareCertificates'] as Array<any>).map(SignedSoftwareCertificateToJSON)),
+        'LocaleIds': value['LocaleIds'],
+        'UserIdentityToken': ExtensionObjectToJSON(value['UserIdentityToken']),
+        'UserTokenSignature': SignatureDataToJSON(value['UserTokenSignature']),
     };
 }
 

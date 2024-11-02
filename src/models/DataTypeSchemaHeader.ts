@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,24 +12,27 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { EnumDescription } from './EnumDescription';
-import {
-    EnumDescriptionFromJSON,
-    EnumDescriptionFromJSONTyped,
-    EnumDescriptionToJSON,
-} from './EnumDescription';
+import { mapValues } from '../runtime';
 import type { SimpleTypeDescription } from './SimpleTypeDescription';
 import {
     SimpleTypeDescriptionFromJSON,
     SimpleTypeDescriptionFromJSONTyped,
     SimpleTypeDescriptionToJSON,
+    SimpleTypeDescriptionToJSONTyped,
 } from './SimpleTypeDescription';
+import type { EnumDescription } from './EnumDescription';
+import {
+    EnumDescriptionFromJSON,
+    EnumDescriptionFromJSONTyped,
+    EnumDescriptionToJSON,
+    EnumDescriptionToJSONTyped,
+} from './EnumDescription';
 import type { StructureDescription } from './StructureDescription';
 import {
     StructureDescriptionFromJSON,
     StructureDescriptionFromJSONTyped,
     StructureDescriptionToJSON,
+    StructureDescriptionToJSONTyped,
 } from './StructureDescription';
 
 /**
@@ -67,10 +70,8 @@ export interface DataTypeSchemaHeader {
 /**
  * Check if a given object implements the DataTypeSchemaHeader interface.
  */
-export function instanceOfDataTypeSchemaHeader(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDataTypeSchemaHeader(value: object): value is DataTypeSchemaHeader {
+    return true;
 }
 
 export function DataTypeSchemaHeaderFromJSON(json: any): DataTypeSchemaHeader {
@@ -78,31 +79,33 @@ export function DataTypeSchemaHeaderFromJSON(json: any): DataTypeSchemaHeader {
 }
 
 export function DataTypeSchemaHeaderFromJSONTyped(json: any, ignoreDiscriminator: boolean): DataTypeSchemaHeader {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Namespaces': !exists(json, 'Namespaces') ? undefined : json['Namespaces'],
-        'StructureDataTypes': !exists(json, 'StructureDataTypes') ? undefined : ((json['StructureDataTypes'] as Array<any>).map(StructureDescriptionFromJSON)),
-        'EnumDataTypes': !exists(json, 'EnumDataTypes') ? undefined : ((json['EnumDataTypes'] as Array<any>).map(EnumDescriptionFromJSON)),
-        'SimpleDataTypes': !exists(json, 'SimpleDataTypes') ? undefined : ((json['SimpleDataTypes'] as Array<any>).map(SimpleTypeDescriptionFromJSON)),
+        'Namespaces': json['Namespaces'] == null ? undefined : json['Namespaces'],
+        'StructureDataTypes': json['StructureDataTypes'] == null ? undefined : ((json['StructureDataTypes'] as Array<any>).map(StructureDescriptionFromJSON)),
+        'EnumDataTypes': json['EnumDataTypes'] == null ? undefined : ((json['EnumDataTypes'] as Array<any>).map(EnumDescriptionFromJSON)),
+        'SimpleDataTypes': json['SimpleDataTypes'] == null ? undefined : ((json['SimpleDataTypes'] as Array<any>).map(SimpleTypeDescriptionFromJSON)),
     };
 }
 
-export function DataTypeSchemaHeaderToJSON(value?: DataTypeSchemaHeader | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DataTypeSchemaHeaderToJSON(json: any): DataTypeSchemaHeader {
+      return DataTypeSchemaHeaderToJSONTyped(json, false);
+  }
+
+  export function DataTypeSchemaHeaderToJSONTyped(value?: DataTypeSchemaHeader | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Namespaces': value.Namespaces,
-        'StructureDataTypes': value.StructureDataTypes === undefined ? undefined : ((value.StructureDataTypes as Array<any>).map(StructureDescriptionToJSON)),
-        'EnumDataTypes': value.EnumDataTypes === undefined ? undefined : ((value.EnumDataTypes as Array<any>).map(EnumDescriptionToJSON)),
-        'SimpleDataTypes': value.SimpleDataTypes === undefined ? undefined : ((value.SimpleDataTypes as Array<any>).map(SimpleTypeDescriptionToJSON)),
+        'Namespaces': value['Namespaces'],
+        'StructureDataTypes': value['StructureDataTypes'] == null ? undefined : ((value['StructureDataTypes'] as Array<any>).map(StructureDescriptionToJSON)),
+        'EnumDataTypes': value['EnumDataTypes'] == null ? undefined : ((value['EnumDataTypes'] as Array<any>).map(EnumDescriptionToJSON)),
+        'SimpleDataTypes': value['SimpleDataTypes'] == null ? undefined : ((value['SimpleDataTypes'] as Array<any>).map(SimpleTypeDescriptionToJSON)),
     };
 }
 

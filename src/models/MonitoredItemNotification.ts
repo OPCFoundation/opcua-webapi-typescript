@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DataValue } from './DataValue';
 import {
     DataValueFromJSON,
     DataValueFromJSONTyped,
     DataValueToJSON,
+    DataValueToJSONTyped,
 } from './DataValue';
 
 /**
@@ -43,10 +44,8 @@ export interface MonitoredItemNotification {
 /**
  * Check if a given object implements the MonitoredItemNotification interface.
  */
-export function instanceOfMonitoredItemNotification(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfMonitoredItemNotification(value: object): value is MonitoredItemNotification {
+    return true;
 }
 
 export function MonitoredItemNotificationFromJSON(json: any): MonitoredItemNotification {
@@ -54,27 +53,29 @@ export function MonitoredItemNotificationFromJSON(json: any): MonitoredItemNotif
 }
 
 export function MonitoredItemNotificationFromJSONTyped(json: any, ignoreDiscriminator: boolean): MonitoredItemNotification {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ClientHandle': !exists(json, 'ClientHandle') ? undefined : json['ClientHandle'],
-        'Value': !exists(json, 'Value') ? undefined : DataValueFromJSON(json['Value']),
+        'ClientHandle': json['ClientHandle'] == null ? undefined : json['ClientHandle'],
+        'Value': json['Value'] == null ? undefined : DataValueFromJSON(json['Value']),
     };
 }
 
-export function MonitoredItemNotificationToJSON(value?: MonitoredItemNotification | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function MonitoredItemNotificationToJSON(json: any): MonitoredItemNotification {
+      return MonitoredItemNotificationToJSONTyped(json, false);
+  }
+
+  export function MonitoredItemNotificationToJSONTyped(value?: MonitoredItemNotification | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ClientHandle': value.ClientHandle,
-        'Value': DataValueToJSON(value.Value),
+        'ClientHandle': value['ClientHandle'],
+        'Value': DataValueToJSON(value['Value']),
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,18 +12,20 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ReadValueId } from './ReadValueId';
 import {
     ReadValueIdFromJSON,
     ReadValueIdFromJSONTyped,
     ReadValueIdToJSON,
+    ReadValueIdToJSONTyped,
 } from './ReadValueId';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -61,10 +63,8 @@ export interface ReadRequest {
 /**
  * Check if a given object implements the ReadRequest interface.
  */
-export function instanceOfReadRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReadRequest(value: object): value is ReadRequest {
+    return true;
 }
 
 export function ReadRequestFromJSON(json: any): ReadRequest {
@@ -72,31 +72,33 @@ export function ReadRequestFromJSON(json: any): ReadRequest {
 }
 
 export function ReadRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReadRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'MaxAge': !exists(json, 'MaxAge') ? undefined : json['MaxAge'],
-        'TimestampsToReturn': !exists(json, 'TimestampsToReturn') ? undefined : json['TimestampsToReturn'],
-        'NodesToRead': !exists(json, 'NodesToRead') ? undefined : ((json['NodesToRead'] as Array<any>).map(ReadValueIdFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'MaxAge': json['MaxAge'] == null ? undefined : json['MaxAge'],
+        'TimestampsToReturn': json['TimestampsToReturn'] == null ? undefined : json['TimestampsToReturn'],
+        'NodesToRead': json['NodesToRead'] == null ? undefined : ((json['NodesToRead'] as Array<any>).map(ReadValueIdFromJSON)),
     };
 }
 
-export function ReadRequestToJSON(value?: ReadRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReadRequestToJSON(json: any): ReadRequest {
+      return ReadRequestToJSONTyped(json, false);
+  }
+
+  export function ReadRequestToJSONTyped(value?: ReadRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'MaxAge': value.MaxAge,
-        'TimestampsToReturn': value.TimestampsToReturn,
-        'NodesToRead': value.NodesToRead === undefined ? undefined : ((value.NodesToRead as Array<any>).map(ReadValueIdToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'MaxAge': value['MaxAge'],
+        'TimestampsToReturn': value['TimestampsToReturn'],
+        'NodesToRead': value['NodesToRead'] == null ? undefined : ((value['NodesToRead'] as Array<any>).map(ReadValueIdToJSON)),
     };
 }
 

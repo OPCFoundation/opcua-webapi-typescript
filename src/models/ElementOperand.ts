@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -30,10 +30,8 @@ export interface ElementOperand {
 /**
  * Check if a given object implements the ElementOperand interface.
  */
-export function instanceOfElementOperand(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfElementOperand(value: object): value is ElementOperand {
+    return true;
 }
 
 export function ElementOperandFromJSON(json: any): ElementOperand {
@@ -41,25 +39,27 @@ export function ElementOperandFromJSON(json: any): ElementOperand {
 }
 
 export function ElementOperandFromJSONTyped(json: any, ignoreDiscriminator: boolean): ElementOperand {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        '_Index': !exists(json, 'Index') ? undefined : json['Index'],
+        '_Index': json['Index'] == null ? undefined : json['Index'],
     };
 }
 
-export function ElementOperandToJSON(value?: ElementOperand | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ElementOperandToJSON(json: any): ElementOperand {
+      return ElementOperandToJSONTyped(json, false);
+  }
+
+  export function ElementOperandToJSONTyped(value?: ElementOperand | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Index': value._Index,
+        'Index': value['_Index'],
     };
 }
 

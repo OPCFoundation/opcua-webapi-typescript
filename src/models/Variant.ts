@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -24,7 +24,7 @@ export interface Variant {
      * @type {number}
      * @memberof Variant
      */
-    Type?: number;
+    UaType?: number;
     /**
      * 
      * @type {any}
@@ -42,10 +42,8 @@ export interface Variant {
 /**
  * Check if a given object implements the Variant interface.
  */
-export function instanceOfVariant(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfVariant(value: object): value is Variant {
+    return true;
 }
 
 export function VariantFromJSON(json: any): Variant {
@@ -53,29 +51,31 @@ export function VariantFromJSON(json: any): Variant {
 }
 
 export function VariantFromJSONTyped(json: any, ignoreDiscriminator: boolean): Variant {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Type': !exists(json, 'Type') ? undefined : json['Type'],
-        'Body': !exists(json, 'Body') ? undefined : json['Body'],
-        'Dimensions': !exists(json, 'Dimensions') ? undefined : json['Dimensions'],
+        'UaType': json['UaType'] == null ? undefined : json['UaType'],
+        'Body': json['Body'] == null ? undefined : json['Body'],
+        'Dimensions': json['Dimensions'] == null ? undefined : json['Dimensions'],
     };
 }
 
-export function VariantToJSON(value?: Variant | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function VariantToJSON(json: any): Variant {
+      return VariantToJSONTyped(json, false);
+  }
+
+  export function VariantToJSONTyped(value?: Variant | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Type': value.Type,
-        'Body': value.Body,
-        'Dimensions': value.Dimensions,
+        'UaType': value['UaType'],
+        'Body': value['Body'],
+        'Dimensions': value['Dimensions'],
     };
 }
 

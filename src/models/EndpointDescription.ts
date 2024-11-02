@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { ApplicationDescription } from './ApplicationDescription';
-import {
-    ApplicationDescriptionFromJSON,
-    ApplicationDescriptionFromJSONTyped,
-    ApplicationDescriptionToJSON,
-} from './ApplicationDescription';
+import { mapValues } from '../runtime';
 import type { UserTokenPolicy } from './UserTokenPolicy';
 import {
     UserTokenPolicyFromJSON,
     UserTokenPolicyFromJSONTyped,
     UserTokenPolicyToJSON,
+    UserTokenPolicyToJSONTyped,
 } from './UserTokenPolicy';
+import type { ApplicationDescription } from './ApplicationDescription';
+import {
+    ApplicationDescriptionFromJSON,
+    ApplicationDescriptionFromJSONTyped,
+    ApplicationDescriptionToJSON,
+    ApplicationDescriptionToJSONTyped,
+} from './ApplicationDescription';
 
 /**
  * 
@@ -85,10 +87,8 @@ export interface EndpointDescription {
 /**
  * Check if a given object implements the EndpointDescription interface.
  */
-export function instanceOfEndpointDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEndpointDescription(value: object): value is EndpointDescription {
+    return true;
 }
 
 export function EndpointDescriptionFromJSON(json: any): EndpointDescription {
@@ -96,39 +96,41 @@ export function EndpointDescriptionFromJSON(json: any): EndpointDescription {
 }
 
 export function EndpointDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): EndpointDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'EndpointUrl': !exists(json, 'EndpointUrl') ? undefined : json['EndpointUrl'],
-        'Server': !exists(json, 'Server') ? undefined : ApplicationDescriptionFromJSON(json['Server']),
-        'ServerCertificate': !exists(json, 'ServerCertificate') ? undefined : json['ServerCertificate'],
-        'SecurityMode': !exists(json, 'SecurityMode') ? undefined : json['SecurityMode'],
-        'SecurityPolicyUri': !exists(json, 'SecurityPolicyUri') ? undefined : json['SecurityPolicyUri'],
-        'UserIdentityTokens': !exists(json, 'UserIdentityTokens') ? undefined : ((json['UserIdentityTokens'] as Array<any>).map(UserTokenPolicyFromJSON)),
-        'TransportProfileUri': !exists(json, 'TransportProfileUri') ? undefined : json['TransportProfileUri'],
-        'SecurityLevel': !exists(json, 'SecurityLevel') ? undefined : json['SecurityLevel'],
+        'EndpointUrl': json['EndpointUrl'] == null ? undefined : json['EndpointUrl'],
+        'Server': json['Server'] == null ? undefined : ApplicationDescriptionFromJSON(json['Server']),
+        'ServerCertificate': json['ServerCertificate'] == null ? undefined : json['ServerCertificate'],
+        'SecurityMode': json['SecurityMode'] == null ? undefined : json['SecurityMode'],
+        'SecurityPolicyUri': json['SecurityPolicyUri'] == null ? undefined : json['SecurityPolicyUri'],
+        'UserIdentityTokens': json['UserIdentityTokens'] == null ? undefined : ((json['UserIdentityTokens'] as Array<any>).map(UserTokenPolicyFromJSON)),
+        'TransportProfileUri': json['TransportProfileUri'] == null ? undefined : json['TransportProfileUri'],
+        'SecurityLevel': json['SecurityLevel'] == null ? undefined : json['SecurityLevel'],
     };
 }
 
-export function EndpointDescriptionToJSON(value?: EndpointDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EndpointDescriptionToJSON(json: any): EndpointDescription {
+      return EndpointDescriptionToJSONTyped(json, false);
+  }
+
+  export function EndpointDescriptionToJSONTyped(value?: EndpointDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'EndpointUrl': value.EndpointUrl,
-        'Server': ApplicationDescriptionToJSON(value.Server),
-        'ServerCertificate': value.ServerCertificate,
-        'SecurityMode': value.SecurityMode,
-        'SecurityPolicyUri': value.SecurityPolicyUri,
-        'UserIdentityTokens': value.UserIdentityTokens === undefined ? undefined : ((value.UserIdentityTokens as Array<any>).map(UserTokenPolicyToJSON)),
-        'TransportProfileUri': value.TransportProfileUri,
-        'SecurityLevel': value.SecurityLevel,
+        'EndpointUrl': value['EndpointUrl'],
+        'Server': ApplicationDescriptionToJSON(value['Server']),
+        'ServerCertificate': value['ServerCertificate'],
+        'SecurityMode': value['SecurityMode'],
+        'SecurityPolicyUri': value['SecurityPolicyUri'],
+        'UserIdentityTokens': value['UserIdentityTokens'] == null ? undefined : ((value['UserIdentityTokens'] as Array<any>).map(UserTokenPolicyToJSON)),
+        'TransportProfileUri': value['TransportProfileUri'],
+        'SecurityLevel': value['SecurityLevel'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { PubSubConnectionDataType } from './PubSubConnectionDataType';
-import {
-    PubSubConnectionDataTypeFromJSON,
-    PubSubConnectionDataTypeFromJSONTyped,
-    PubSubConnectionDataTypeToJSON,
-} from './PubSubConnectionDataType';
+import { mapValues } from '../runtime';
 import type { PublishedDataSetDataType } from './PublishedDataSetDataType';
 import {
     PublishedDataSetDataTypeFromJSON,
     PublishedDataSetDataTypeFromJSONTyped,
     PublishedDataSetDataTypeToJSON,
+    PublishedDataSetDataTypeToJSONTyped,
 } from './PublishedDataSetDataType';
+import type { PubSubConnectionDataType } from './PubSubConnectionDataType';
+import {
+    PubSubConnectionDataTypeFromJSON,
+    PubSubConnectionDataTypeFromJSONTyped,
+    PubSubConnectionDataTypeToJSON,
+    PubSubConnectionDataTypeToJSONTyped,
+} from './PubSubConnectionDataType';
 
 /**
  * 
@@ -55,10 +57,8 @@ export interface PubSubConfigurationDataType {
 /**
  * Check if a given object implements the PubSubConfigurationDataType interface.
  */
-export function instanceOfPubSubConfigurationDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfPubSubConfigurationDataType(value: object): value is PubSubConfigurationDataType {
+    return true;
 }
 
 export function PubSubConfigurationDataTypeFromJSON(json: any): PubSubConfigurationDataType {
@@ -66,29 +66,31 @@ export function PubSubConfigurationDataTypeFromJSON(json: any): PubSubConfigurat
 }
 
 export function PubSubConfigurationDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): PubSubConfigurationDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'PublishedDataSets': !exists(json, 'PublishedDataSets') ? undefined : ((json['PublishedDataSets'] as Array<any>).map(PublishedDataSetDataTypeFromJSON)),
-        'Connections': !exists(json, 'Connections') ? undefined : ((json['Connections'] as Array<any>).map(PubSubConnectionDataTypeFromJSON)),
-        'Enabled': !exists(json, 'Enabled') ? undefined : json['Enabled'],
+        'PublishedDataSets': json['PublishedDataSets'] == null ? undefined : ((json['PublishedDataSets'] as Array<any>).map(PublishedDataSetDataTypeFromJSON)),
+        'Connections': json['Connections'] == null ? undefined : ((json['Connections'] as Array<any>).map(PubSubConnectionDataTypeFromJSON)),
+        'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
     };
 }
 
-export function PubSubConfigurationDataTypeToJSON(value?: PubSubConfigurationDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function PubSubConfigurationDataTypeToJSON(json: any): PubSubConfigurationDataType {
+      return PubSubConfigurationDataTypeToJSONTyped(json, false);
+  }
+
+  export function PubSubConfigurationDataTypeToJSONTyped(value?: PubSubConfigurationDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'PublishedDataSets': value.PublishedDataSets === undefined ? undefined : ((value.PublishedDataSets as Array<any>).map(PublishedDataSetDataTypeToJSON)),
-        'Connections': value.Connections === undefined ? undefined : ((value.Connections as Array<any>).map(PubSubConnectionDataTypeToJSON)),
-        'Enabled': value.Enabled,
+        'PublishedDataSets': value['PublishedDataSets'] == null ? undefined : ((value['PublishedDataSets'] as Array<any>).map(PublishedDataSetDataTypeToJSON)),
+        'Connections': value['Connections'] == null ? undefined : ((value['Connections'] as Array<any>).map(PubSubConnectionDataTypeToJSON)),
+        'Enabled': value['Enabled'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -54,10 +54,8 @@ export interface UserTokenPolicy {
 /**
  * Check if a given object implements the UserTokenPolicy interface.
  */
-export function instanceOfUserTokenPolicy(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUserTokenPolicy(value: object): value is UserTokenPolicy {
+    return true;
 }
 
 export function UserTokenPolicyFromJSON(json: any): UserTokenPolicy {
@@ -65,33 +63,35 @@ export function UserTokenPolicyFromJSON(json: any): UserTokenPolicy {
 }
 
 export function UserTokenPolicyFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserTokenPolicy {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'PolicyId': !exists(json, 'PolicyId') ? undefined : json['PolicyId'],
-        'TokenType': !exists(json, 'TokenType') ? undefined : json['TokenType'],
-        'IssuedTokenType': !exists(json, 'IssuedTokenType') ? undefined : json['IssuedTokenType'],
-        'IssuerEndpointUrl': !exists(json, 'IssuerEndpointUrl') ? undefined : json['IssuerEndpointUrl'],
-        'SecurityPolicyUri': !exists(json, 'SecurityPolicyUri') ? undefined : json['SecurityPolicyUri'],
+        'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
+        'TokenType': json['TokenType'] == null ? undefined : json['TokenType'],
+        'IssuedTokenType': json['IssuedTokenType'] == null ? undefined : json['IssuedTokenType'],
+        'IssuerEndpointUrl': json['IssuerEndpointUrl'] == null ? undefined : json['IssuerEndpointUrl'],
+        'SecurityPolicyUri': json['SecurityPolicyUri'] == null ? undefined : json['SecurityPolicyUri'],
     };
 }
 
-export function UserTokenPolicyToJSON(value?: UserTokenPolicy | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function UserTokenPolicyToJSON(json: any): UserTokenPolicy {
+      return UserTokenPolicyToJSONTyped(json, false);
+  }
+
+  export function UserTokenPolicyToJSONTyped(value?: UserTokenPolicy | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'PolicyId': value.PolicyId,
-        'TokenType': value.TokenType,
-        'IssuedTokenType': value.IssuedTokenType,
-        'IssuerEndpointUrl': value.IssuerEndpointUrl,
-        'SecurityPolicyUri': value.SecurityPolicyUri,
+        'PolicyId': value['PolicyId'],
+        'TokenType': value['TokenType'],
+        'IssuedTokenType': value['IssuedTokenType'],
+        'IssuerEndpointUrl': value['IssuerEndpointUrl'],
+        'SecurityPolicyUri': value['SecurityPolicyUri'],
     };
 }
 

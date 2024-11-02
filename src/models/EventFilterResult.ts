@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,18 +12,20 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ContentFilterResult } from './ContentFilterResult';
 import {
     ContentFilterResultFromJSON,
     ContentFilterResultFromJSONTyped,
     ContentFilterResultToJSON,
+    ContentFilterResultToJSONTyped,
 } from './ContentFilterResult';
 import type { DiagnosticInfo } from './DiagnosticInfo';
 import {
     DiagnosticInfoFromJSON,
     DiagnosticInfoFromJSONTyped,
     DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
 
 /**
@@ -55,10 +57,8 @@ export interface EventFilterResult {
 /**
  * Check if a given object implements the EventFilterResult interface.
  */
-export function instanceOfEventFilterResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEventFilterResult(value: object): value is EventFilterResult {
+    return true;
 }
 
 export function EventFilterResultFromJSON(json: any): EventFilterResult {
@@ -66,29 +66,31 @@ export function EventFilterResultFromJSON(json: any): EventFilterResult {
 }
 
 export function EventFilterResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): EventFilterResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'SelectClauseResults': !exists(json, 'SelectClauseResults') ? undefined : json['SelectClauseResults'],
-        'SelectClauseDiagnosticInfos': !exists(json, 'SelectClauseDiagnosticInfos') ? undefined : ((json['SelectClauseDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'WhereClauseResult': !exists(json, 'WhereClauseResult') ? undefined : ContentFilterResultFromJSON(json['WhereClauseResult']),
+        'SelectClauseResults': json['SelectClauseResults'] == null ? undefined : json['SelectClauseResults'],
+        'SelectClauseDiagnosticInfos': json['SelectClauseDiagnosticInfos'] == null ? undefined : ((json['SelectClauseDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'WhereClauseResult': json['WhereClauseResult'] == null ? undefined : ContentFilterResultFromJSON(json['WhereClauseResult']),
     };
 }
 
-export function EventFilterResultToJSON(value?: EventFilterResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EventFilterResultToJSON(json: any): EventFilterResult {
+      return EventFilterResultToJSONTyped(json, false);
+  }
+
+  export function EventFilterResultToJSONTyped(value?: EventFilterResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'SelectClauseResults': value.SelectClauseResults,
-        'SelectClauseDiagnosticInfos': value.SelectClauseDiagnosticInfos === undefined ? undefined : ((value.SelectClauseDiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
-        'WhereClauseResult': ContentFilterResultToJSON(value.WhereClauseResult),
+        'SelectClauseResults': value['SelectClauseResults'],
+        'SelectClauseDiagnosticInfos': value['SelectClauseDiagnosticInfos'] == null ? undefined : ((value['SelectClauseDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
+        'WhereClauseResult': ContentFilterResultToJSON(value['WhereClauseResult']),
     };
 }
 

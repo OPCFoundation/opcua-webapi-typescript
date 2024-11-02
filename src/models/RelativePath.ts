@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RelativePathElement } from './RelativePathElement';
 import {
     RelativePathElementFromJSON,
     RelativePathElementFromJSONTyped,
     RelativePathElementToJSON,
+    RelativePathElementToJSONTyped,
 } from './RelativePathElement';
 
 /**
@@ -37,10 +38,8 @@ export interface RelativePath {
 /**
  * Check if a given object implements the RelativePath interface.
  */
-export function instanceOfRelativePath(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRelativePath(value: object): value is RelativePath {
+    return true;
 }
 
 export function RelativePathFromJSON(json: any): RelativePath {
@@ -48,25 +47,27 @@ export function RelativePathFromJSON(json: any): RelativePath {
 }
 
 export function RelativePathFromJSONTyped(json: any, ignoreDiscriminator: boolean): RelativePath {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Elements': !exists(json, 'Elements') ? undefined : ((json['Elements'] as Array<any>).map(RelativePathElementFromJSON)),
+        'Elements': json['Elements'] == null ? undefined : ((json['Elements'] as Array<any>).map(RelativePathElementFromJSON)),
     };
 }
 
-export function RelativePathToJSON(value?: RelativePath | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RelativePathToJSON(json: any): RelativePath {
+      return RelativePathToJSONTyped(json, false);
+  }
+
+  export function RelativePathToJSONTyped(value?: RelativePath | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Elements': value.Elements === undefined ? undefined : ((value.Elements as Array<any>).map(RelativePathElementToJSON)),
+        'Elements': value['Elements'] == null ? undefined : ((value['Elements'] as Array<any>).map(RelativePathElementToJSON)),
     };
 }
 

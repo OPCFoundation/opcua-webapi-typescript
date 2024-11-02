@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -48,10 +48,8 @@ export interface BrokerWriterGroupTransportDataType {
 /**
  * Check if a given object implements the BrokerWriterGroupTransportDataType interface.
  */
-export function instanceOfBrokerWriterGroupTransportDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrokerWriterGroupTransportDataType(value: object): value is BrokerWriterGroupTransportDataType {
+    return true;
 }
 
 export function BrokerWriterGroupTransportDataTypeFromJSON(json: any): BrokerWriterGroupTransportDataType {
@@ -59,31 +57,33 @@ export function BrokerWriterGroupTransportDataTypeFromJSON(json: any): BrokerWri
 }
 
 export function BrokerWriterGroupTransportDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrokerWriterGroupTransportDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'QueueName': !exists(json, 'QueueName') ? undefined : json['QueueName'],
-        'ResourceUri': !exists(json, 'ResourceUri') ? undefined : json['ResourceUri'],
-        'AuthenticationProfileUri': !exists(json, 'AuthenticationProfileUri') ? undefined : json['AuthenticationProfileUri'],
-        'RequestedDeliveryGuarantee': !exists(json, 'RequestedDeliveryGuarantee') ? undefined : json['RequestedDeliveryGuarantee'],
+        'QueueName': json['QueueName'] == null ? undefined : json['QueueName'],
+        'ResourceUri': json['ResourceUri'] == null ? undefined : json['ResourceUri'],
+        'AuthenticationProfileUri': json['AuthenticationProfileUri'] == null ? undefined : json['AuthenticationProfileUri'],
+        'RequestedDeliveryGuarantee': json['RequestedDeliveryGuarantee'] == null ? undefined : json['RequestedDeliveryGuarantee'],
     };
 }
 
-export function BrokerWriterGroupTransportDataTypeToJSON(value?: BrokerWriterGroupTransportDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrokerWriterGroupTransportDataTypeToJSON(json: any): BrokerWriterGroupTransportDataType {
+      return BrokerWriterGroupTransportDataTypeToJSONTyped(json, false);
+  }
+
+  export function BrokerWriterGroupTransportDataTypeToJSONTyped(value?: BrokerWriterGroupTransportDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'QueueName': value.QueueName,
-        'ResourceUri': value.ResourceUri,
-        'AuthenticationProfileUri': value.AuthenticationProfileUri,
-        'RequestedDeliveryGuarantee': value.RequestedDeliveryGuarantee,
+        'QueueName': value['QueueName'],
+        'ResourceUri': value['ResourceUri'],
+        'AuthenticationProfileUri': value['AuthenticationProfileUri'],
+        'RequestedDeliveryGuarantee': value['RequestedDeliveryGuarantee'],
     };
 }
 

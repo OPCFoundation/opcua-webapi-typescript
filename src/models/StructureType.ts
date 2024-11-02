@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -27,6 +27,17 @@ export const StructureType = {
 export type StructureType = typeof StructureType[keyof typeof StructureType];
 
 
+export function instanceOfStructureType(value: any): boolean {
+    for (const key in StructureType) {
+        if (Object.prototype.hasOwnProperty.call(StructureType, key)) {
+            if (StructureType[key as keyof typeof StructureType] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function StructureTypeFromJSON(json: any): StructureType {
     return StructureTypeFromJSONTyped(json, false);
 }
@@ -37,5 +48,9 @@ export function StructureTypeFromJSONTyped(json: any, ignoreDiscriminator: boole
 
 export function StructureTypeToJSON(value?: StructureType | null): any {
     return value as any;
+}
+
+export function StructureTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): StructureType {
+    return value as StructureType;
 }
 

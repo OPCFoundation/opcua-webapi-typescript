@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { LocalizedText } from './LocalizedText';
 import {
     LocalizedTextFromJSON,
     LocalizedTextFromJSONTyped,
     LocalizedTextToJSON,
+    LocalizedTextToJSONTyped,
 } from './LocalizedText';
 
 /**
@@ -73,10 +74,8 @@ export interface StructureField {
 /**
  * Check if a given object implements the StructureField interface.
  */
-export function instanceOfStructureField(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfStructureField(value: object): value is StructureField {
+    return true;
 }
 
 export function StructureFieldFromJSON(json: any): StructureField {
@@ -84,37 +83,39 @@ export function StructureFieldFromJSON(json: any): StructureField {
 }
 
 export function StructureFieldFromJSONTyped(json: any, ignoreDiscriminator: boolean): StructureField {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'Description': !exists(json, 'Description') ? undefined : LocalizedTextFromJSON(json['Description']),
-        'DataType': !exists(json, 'DataType') ? undefined : json['DataType'],
-        'ValueRank': !exists(json, 'ValueRank') ? undefined : json['ValueRank'],
-        'ArrayDimensions': !exists(json, 'ArrayDimensions') ? undefined : json['ArrayDimensions'],
-        'MaxStringLength': !exists(json, 'MaxStringLength') ? undefined : json['MaxStringLength'],
-        'IsOptional': !exists(json, 'IsOptional') ? undefined : json['IsOptional'],
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
+        'DataType': json['DataType'] == null ? undefined : json['DataType'],
+        'ValueRank': json['ValueRank'] == null ? undefined : json['ValueRank'],
+        'ArrayDimensions': json['ArrayDimensions'] == null ? undefined : json['ArrayDimensions'],
+        'MaxStringLength': json['MaxStringLength'] == null ? undefined : json['MaxStringLength'],
+        'IsOptional': json['IsOptional'] == null ? undefined : json['IsOptional'],
     };
 }
 
-export function StructureFieldToJSON(value?: StructureField | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function StructureFieldToJSON(json: any): StructureField {
+      return StructureFieldToJSONTyped(json, false);
+  }
+
+  export function StructureFieldToJSONTyped(value?: StructureField | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'Description': LocalizedTextToJSON(value.Description),
-        'DataType': value.DataType,
-        'ValueRank': value.ValueRank,
-        'ArrayDimensions': value.ArrayDimensions,
-        'MaxStringLength': value.MaxStringLength,
-        'IsOptional': value.IsOptional,
+        'Name': value['Name'],
+        'Description': LocalizedTextToJSON(value['Description']),
+        'DataType': value['DataType'],
+        'ValueRank': value['ValueRank'],
+        'ArrayDimensions': value['ArrayDimensions'],
+        'MaxStringLength': value['MaxStringLength'],
+        'IsOptional': value['IsOptional'],
     };
 }
 

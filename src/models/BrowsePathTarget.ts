@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface BrowsePathTarget {
 /**
  * Check if a given object implements the BrowsePathTarget interface.
  */
-export function instanceOfBrowsePathTarget(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrowsePathTarget(value: object): value is BrowsePathTarget {
+    return true;
 }
 
 export function BrowsePathTargetFromJSON(json: any): BrowsePathTarget {
@@ -47,27 +45,29 @@ export function BrowsePathTargetFromJSON(json: any): BrowsePathTarget {
 }
 
 export function BrowsePathTargetFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrowsePathTarget {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'TargetId': !exists(json, 'TargetId') ? undefined : json['TargetId'],
-        'RemainingPathIndex': !exists(json, 'RemainingPathIndex') ? undefined : json['RemainingPathIndex'],
+        'TargetId': json['TargetId'] == null ? undefined : json['TargetId'],
+        'RemainingPathIndex': json['RemainingPathIndex'] == null ? undefined : json['RemainingPathIndex'],
     };
 }
 
-export function BrowsePathTargetToJSON(value?: BrowsePathTarget | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrowsePathTargetToJSON(json: any): BrowsePathTarget {
+      return BrowsePathTargetToJSONTyped(json, false);
+  }
+
+  export function BrowsePathTargetToJSONTyped(value?: BrowsePathTarget | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'TargetId': value.TargetId,
-        'RemainingPathIndex': value.RemainingPathIndex,
+        'TargetId': value['TargetId'],
+        'RemainingPathIndex': value['RemainingPathIndex'],
     };
 }
 

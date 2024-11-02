@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DiagnosticInfo } from './DiagnosticInfo';
 import {
     DiagnosticInfoFromJSON,
     DiagnosticInfoFromJSONTyped,
     DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
 
 /**
@@ -43,10 +44,8 @@ export interface StatusChangeNotification {
 /**
  * Check if a given object implements the StatusChangeNotification interface.
  */
-export function instanceOfStatusChangeNotification(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfStatusChangeNotification(value: object): value is StatusChangeNotification {
+    return true;
 }
 
 export function StatusChangeNotificationFromJSON(json: any): StatusChangeNotification {
@@ -54,27 +53,29 @@ export function StatusChangeNotificationFromJSON(json: any): StatusChangeNotific
 }
 
 export function StatusChangeNotificationFromJSONTyped(json: any, ignoreDiscriminator: boolean): StatusChangeNotification {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Status': !exists(json, 'Status') ? undefined : json['Status'],
-        'DiagnosticInfo': !exists(json, 'DiagnosticInfo') ? undefined : DiagnosticInfoFromJSON(json['DiagnosticInfo']),
+        'Status': json['Status'] == null ? undefined : json['Status'],
+        'DiagnosticInfo': json['DiagnosticInfo'] == null ? undefined : DiagnosticInfoFromJSON(json['DiagnosticInfo']),
     };
 }
 
-export function StatusChangeNotificationToJSON(value?: StatusChangeNotification | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function StatusChangeNotificationToJSON(json: any): StatusChangeNotification {
+      return StatusChangeNotificationToJSONTyped(json, false);
+  }
+
+  export function StatusChangeNotificationToJSONTyped(value?: StatusChangeNotification | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Status': value.Status,
-        'DiagnosticInfo': DiagnosticInfoToJSON(value.DiagnosticInfo),
+        'Status': value['Status'],
+        'DiagnosticInfo': DiagnosticInfoToJSON(value['DiagnosticInfo']),
     };
 }
 

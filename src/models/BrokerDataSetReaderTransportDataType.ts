@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -54,10 +54,8 @@ export interface BrokerDataSetReaderTransportDataType {
 /**
  * Check if a given object implements the BrokerDataSetReaderTransportDataType interface.
  */
-export function instanceOfBrokerDataSetReaderTransportDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrokerDataSetReaderTransportDataType(value: object): value is BrokerDataSetReaderTransportDataType {
+    return true;
 }
 
 export function BrokerDataSetReaderTransportDataTypeFromJSON(json: any): BrokerDataSetReaderTransportDataType {
@@ -65,33 +63,35 @@ export function BrokerDataSetReaderTransportDataTypeFromJSON(json: any): BrokerD
 }
 
 export function BrokerDataSetReaderTransportDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrokerDataSetReaderTransportDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'QueueName': !exists(json, 'QueueName') ? undefined : json['QueueName'],
-        'ResourceUri': !exists(json, 'ResourceUri') ? undefined : json['ResourceUri'],
-        'AuthenticationProfileUri': !exists(json, 'AuthenticationProfileUri') ? undefined : json['AuthenticationProfileUri'],
-        'RequestedDeliveryGuarantee': !exists(json, 'RequestedDeliveryGuarantee') ? undefined : json['RequestedDeliveryGuarantee'],
-        'MetaDataQueueName': !exists(json, 'MetaDataQueueName') ? undefined : json['MetaDataQueueName'],
+        'QueueName': json['QueueName'] == null ? undefined : json['QueueName'],
+        'ResourceUri': json['ResourceUri'] == null ? undefined : json['ResourceUri'],
+        'AuthenticationProfileUri': json['AuthenticationProfileUri'] == null ? undefined : json['AuthenticationProfileUri'],
+        'RequestedDeliveryGuarantee': json['RequestedDeliveryGuarantee'] == null ? undefined : json['RequestedDeliveryGuarantee'],
+        'MetaDataQueueName': json['MetaDataQueueName'] == null ? undefined : json['MetaDataQueueName'],
     };
 }
 
-export function BrokerDataSetReaderTransportDataTypeToJSON(value?: BrokerDataSetReaderTransportDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrokerDataSetReaderTransportDataTypeToJSON(json: any): BrokerDataSetReaderTransportDataType {
+      return BrokerDataSetReaderTransportDataTypeToJSONTyped(json, false);
+  }
+
+  export function BrokerDataSetReaderTransportDataTypeToJSONTyped(value?: BrokerDataSetReaderTransportDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'QueueName': value.QueueName,
-        'ResourceUri': value.ResourceUri,
-        'AuthenticationProfileUri': value.AuthenticationProfileUri,
-        'RequestedDeliveryGuarantee': value.RequestedDeliveryGuarantee,
-        'MetaDataQueueName': value.MetaDataQueueName,
+        'QueueName': value['QueueName'],
+        'ResourceUri': value['ResourceUri'],
+        'AuthenticationProfileUri': value['AuthenticationProfileUri'],
+        'RequestedDeliveryGuarantee': value['RequestedDeliveryGuarantee'],
+        'MetaDataQueueName': value['MetaDataQueueName'],
     };
 }
 

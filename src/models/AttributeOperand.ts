@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RelativePath } from './RelativePath';
 import {
     RelativePathFromJSON,
     RelativePathFromJSONTyped,
     RelativePathToJSON,
+    RelativePathToJSONTyped,
 } from './RelativePath';
 
 /**
@@ -61,10 +62,8 @@ export interface AttributeOperand {
 /**
  * Check if a given object implements the AttributeOperand interface.
  */
-export function instanceOfAttributeOperand(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfAttributeOperand(value: object): value is AttributeOperand {
+    return true;
 }
 
 export function AttributeOperandFromJSON(json: any): AttributeOperand {
@@ -72,33 +71,35 @@ export function AttributeOperandFromJSON(json: any): AttributeOperand {
 }
 
 export function AttributeOperandFromJSONTyped(json: any, ignoreDiscriminator: boolean): AttributeOperand {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NodeId': !exists(json, 'NodeId') ? undefined : json['NodeId'],
-        'Alias': !exists(json, 'Alias') ? undefined : json['Alias'],
-        'BrowsePath': !exists(json, 'BrowsePath') ? undefined : RelativePathFromJSON(json['BrowsePath']),
-        'AttributeId': !exists(json, 'AttributeId') ? undefined : json['AttributeId'],
-        'IndexRange': !exists(json, 'IndexRange') ? undefined : json['IndexRange'],
+        'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
+        'Alias': json['Alias'] == null ? undefined : json['Alias'],
+        'BrowsePath': json['BrowsePath'] == null ? undefined : RelativePathFromJSON(json['BrowsePath']),
+        'AttributeId': json['AttributeId'] == null ? undefined : json['AttributeId'],
+        'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
     };
 }
 
-export function AttributeOperandToJSON(value?: AttributeOperand | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function AttributeOperandToJSON(json: any): AttributeOperand {
+      return AttributeOperandToJSONTyped(json, false);
+  }
+
+  export function AttributeOperandToJSONTyped(value?: AttributeOperand | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NodeId': value.NodeId,
-        'Alias': value.Alias,
-        'BrowsePath': RelativePathToJSON(value.BrowsePath),
-        'AttributeId': value.AttributeId,
-        'IndexRange': value.IndexRange,
+        'NodeId': value['NodeId'],
+        'Alias': value['Alias'],
+        'BrowsePath': RelativePathToJSON(value['BrowsePath']),
+        'AttributeId': value['AttributeId'],
+        'IndexRange': value['IndexRange'],
     };
 }
 

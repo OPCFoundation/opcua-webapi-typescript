@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,15 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
+import type { EventFilter } from './EventFilter';
+import {
+    EventFilterFromJSON,
+    EventFilterFromJSONTyped,
+    EventFilterToJSON,
+    EventFilterToJSONTyped,
+} from './EventFilter';
+
 /**
  * 
  * @export
@@ -25,15 +33,37 @@ export interface ReadEventDetails2 {
      * @memberof ReadEventDetails2
      */
     ReadModified?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReadEventDetails2
+     */
+    NumValuesPerNode?: number;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ReadEventDetails2
+     */
+    StartTime?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ReadEventDetails2
+     */
+    EndTime?: Date;
+    /**
+     * 
+     * @type {EventFilter}
+     * @memberof ReadEventDetails2
+     */
+    Filter?: EventFilter;
 }
 
 /**
  * Check if a given object implements the ReadEventDetails2 interface.
  */
-export function instanceOfReadEventDetails2(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReadEventDetails2(value: object): value is ReadEventDetails2 {
+    return true;
 }
 
 export function ReadEventDetails2FromJSON(json: any): ReadEventDetails2 {
@@ -41,25 +71,35 @@ export function ReadEventDetails2FromJSON(json: any): ReadEventDetails2 {
 }
 
 export function ReadEventDetails2FromJSONTyped(json: any, ignoreDiscriminator: boolean): ReadEventDetails2 {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ReadModified': !exists(json, 'ReadModified') ? undefined : json['ReadModified'],
+        'ReadModified': json['ReadModified'] == null ? undefined : json['ReadModified'],
+        'NumValuesPerNode': json['NumValuesPerNode'] == null ? undefined : json['NumValuesPerNode'],
+        'StartTime': json['StartTime'] == null ? undefined : (new Date(json['StartTime'])),
+        'EndTime': json['EndTime'] == null ? undefined : (new Date(json['EndTime'])),
+        'Filter': json['Filter'] == null ? undefined : EventFilterFromJSON(json['Filter']),
     };
 }
 
-export function ReadEventDetails2ToJSON(value?: ReadEventDetails2 | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReadEventDetails2ToJSON(json: any): ReadEventDetails2 {
+      return ReadEventDetails2ToJSONTyped(json, false);
+  }
+
+  export function ReadEventDetails2ToJSONTyped(value?: ReadEventDetails2 | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ReadModified': value.ReadModified,
+        'ReadModified': value['ReadModified'],
+        'NumValuesPerNode': value['NumValuesPerNode'],
+        'StartTime': value['StartTime'] == null ? undefined : ((value['StartTime']).toISOString()),
+        'EndTime': value['EndTime'] == null ? undefined : ((value['EndTime']).toISOString()),
+        'Filter': EventFilterToJSON(value['Filter']),
     };
 }
 

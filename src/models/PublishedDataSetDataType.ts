@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,25 +12,28 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DataSetMetaDataType } from './DataSetMetaDataType';
 import {
     DataSetMetaDataTypeFromJSON,
     DataSetMetaDataTypeFromJSONTyped,
     DataSetMetaDataTypeToJSON,
+    DataSetMetaDataTypeToJSONTyped,
 } from './DataSetMetaDataType';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-} from './ExtensionObject';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
+import type { ExtensionObject } from './ExtensionObject';
+import {
+    ExtensionObjectFromJSON,
+    ExtensionObjectFromJSONTyped,
+    ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
+} from './ExtensionObject';
 
 /**
  * 
@@ -73,10 +76,8 @@ export interface PublishedDataSetDataType {
 /**
  * Check if a given object implements the PublishedDataSetDataType interface.
  */
-export function instanceOfPublishedDataSetDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfPublishedDataSetDataType(value: object): value is PublishedDataSetDataType {
+    return true;
 }
 
 export function PublishedDataSetDataTypeFromJSON(json: any): PublishedDataSetDataType {
@@ -84,33 +85,35 @@ export function PublishedDataSetDataTypeFromJSON(json: any): PublishedDataSetDat
 }
 
 export function PublishedDataSetDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): PublishedDataSetDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'DataSetFolder': !exists(json, 'DataSetFolder') ? undefined : json['DataSetFolder'],
-        'DataSetMetaData': !exists(json, 'DataSetMetaData') ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
-        'ExtensionFields': !exists(json, 'ExtensionFields') ? undefined : ((json['ExtensionFields'] as Array<any>).map(KeyValuePairFromJSON)),
-        'DataSetSource': !exists(json, 'DataSetSource') ? undefined : ExtensionObjectFromJSON(json['DataSetSource']),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'DataSetFolder': json['DataSetFolder'] == null ? undefined : json['DataSetFolder'],
+        'DataSetMetaData': json['DataSetMetaData'] == null ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
+        'ExtensionFields': json['ExtensionFields'] == null ? undefined : ((json['ExtensionFields'] as Array<any>).map(KeyValuePairFromJSON)),
+        'DataSetSource': json['DataSetSource'] == null ? undefined : ExtensionObjectFromJSON(json['DataSetSource']),
     };
 }
 
-export function PublishedDataSetDataTypeToJSON(value?: PublishedDataSetDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function PublishedDataSetDataTypeToJSON(json: any): PublishedDataSetDataType {
+      return PublishedDataSetDataTypeToJSONTyped(json, false);
+  }
+
+  export function PublishedDataSetDataTypeToJSONTyped(value?: PublishedDataSetDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'DataSetFolder': value.DataSetFolder,
-        'DataSetMetaData': DataSetMetaDataTypeToJSON(value.DataSetMetaData),
-        'ExtensionFields': value.ExtensionFields === undefined ? undefined : ((value.ExtensionFields as Array<any>).map(KeyValuePairToJSON)),
-        'DataSetSource': ExtensionObjectToJSON(value.DataSetSource),
+        'Name': value['Name'],
+        'DataSetFolder': value['DataSetFolder'],
+        'DataSetMetaData': DataSetMetaDataTypeToJSON(value['DataSetMetaData']),
+        'ExtensionFields': value['ExtensionFields'] == null ? undefined : ((value['ExtensionFields'] as Array<any>).map(KeyValuePairToJSON)),
+        'DataSetSource': ExtensionObjectToJSON(value['DataSetSource']),
     };
 }
 

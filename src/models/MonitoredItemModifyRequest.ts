@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { MonitoringParameters } from './MonitoringParameters';
 import {
     MonitoringParametersFromJSON,
     MonitoringParametersFromJSONTyped,
     MonitoringParametersToJSON,
+    MonitoringParametersToJSONTyped,
 } from './MonitoringParameters';
 
 /**
@@ -43,10 +44,8 @@ export interface MonitoredItemModifyRequest {
 /**
  * Check if a given object implements the MonitoredItemModifyRequest interface.
  */
-export function instanceOfMonitoredItemModifyRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfMonitoredItemModifyRequest(value: object): value is MonitoredItemModifyRequest {
+    return true;
 }
 
 export function MonitoredItemModifyRequestFromJSON(json: any): MonitoredItemModifyRequest {
@@ -54,27 +53,29 @@ export function MonitoredItemModifyRequestFromJSON(json: any): MonitoredItemModi
 }
 
 export function MonitoredItemModifyRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): MonitoredItemModifyRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'MonitoredItemId': !exists(json, 'MonitoredItemId') ? undefined : json['MonitoredItemId'],
-        'RequestedParameters': !exists(json, 'RequestedParameters') ? undefined : MonitoringParametersFromJSON(json['RequestedParameters']),
+        'MonitoredItemId': json['MonitoredItemId'] == null ? undefined : json['MonitoredItemId'],
+        'RequestedParameters': json['RequestedParameters'] == null ? undefined : MonitoringParametersFromJSON(json['RequestedParameters']),
     };
 }
 
-export function MonitoredItemModifyRequestToJSON(value?: MonitoredItemModifyRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function MonitoredItemModifyRequestToJSON(json: any): MonitoredItemModifyRequest {
+      return MonitoredItemModifyRequestToJSONTyped(json, false);
+  }
+
+  export function MonitoredItemModifyRequestToJSONTyped(value?: MonitoredItemModifyRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'MonitoredItemId': value.MonitoredItemId,
-        'RequestedParameters': MonitoringParametersToJSON(value.RequestedParameters),
+        'MonitoredItemId': value['MonitoredItemId'],
+        'RequestedParameters': MonitoringParametersToJSON(value['RequestedParameters']),
     };
 }
 

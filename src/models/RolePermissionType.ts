@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface RolePermissionType {
 /**
  * Check if a given object implements the RolePermissionType interface.
  */
-export function instanceOfRolePermissionType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRolePermissionType(value: object): value is RolePermissionType {
+    return true;
 }
 
 export function RolePermissionTypeFromJSON(json: any): RolePermissionType {
@@ -47,27 +45,29 @@ export function RolePermissionTypeFromJSON(json: any): RolePermissionType {
 }
 
 export function RolePermissionTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): RolePermissionType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RoleId': !exists(json, 'RoleId') ? undefined : json['RoleId'],
-        'Permissions': !exists(json, 'Permissions') ? undefined : json['Permissions'],
+        'RoleId': json['RoleId'] == null ? undefined : json['RoleId'],
+        'Permissions': json['Permissions'] == null ? undefined : json['Permissions'],
     };
 }
 
-export function RolePermissionTypeToJSON(value?: RolePermissionType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RolePermissionTypeToJSON(json: any): RolePermissionType {
+      return RolePermissionTypeToJSONTyped(json, false);
+  }
+
+  export function RolePermissionTypeToJSONTyped(value?: RolePermissionType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RoleId': value.RoleId,
-        'Permissions': value.Permissions,
+        'RoleId': value['RoleId'],
+        'Permissions': value['Permissions'],
     };
 }
 

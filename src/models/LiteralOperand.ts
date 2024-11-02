@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Variant } from './Variant';
 import {
     VariantFromJSON,
     VariantFromJSONTyped,
     VariantToJSON,
+    VariantToJSONTyped,
 } from './Variant';
 
 /**
@@ -37,10 +38,8 @@ export interface LiteralOperand {
 /**
  * Check if a given object implements the LiteralOperand interface.
  */
-export function instanceOfLiteralOperand(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfLiteralOperand(value: object): value is LiteralOperand {
+    return true;
 }
 
 export function LiteralOperandFromJSON(json: any): LiteralOperand {
@@ -48,25 +47,27 @@ export function LiteralOperandFromJSON(json: any): LiteralOperand {
 }
 
 export function LiteralOperandFromJSONTyped(json: any, ignoreDiscriminator: boolean): LiteralOperand {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Value': !exists(json, 'Value') ? undefined : VariantFromJSON(json['Value']),
+        'Value': json['Value'] == null ? undefined : VariantFromJSON(json['Value']),
     };
 }
 
-export function LiteralOperandToJSON(value?: LiteralOperand | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function LiteralOperandToJSON(json: any): LiteralOperand {
+      return LiteralOperandToJSONTyped(json, false);
+  }
+
+  export function LiteralOperandToJSONTyped(value?: LiteralOperand | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Value': VariantToJSON(value.Value),
+        'Value': VariantToJSON(value['Value']),
     };
 }
 

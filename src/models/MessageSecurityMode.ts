@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -26,6 +26,17 @@ export const MessageSecurityMode = {
 export type MessageSecurityMode = typeof MessageSecurityMode[keyof typeof MessageSecurityMode];
 
 
+export function instanceOfMessageSecurityMode(value: any): boolean {
+    for (const key in MessageSecurityMode) {
+        if (Object.prototype.hasOwnProperty.call(MessageSecurityMode, key)) {
+            if (MessageSecurityMode[key as keyof typeof MessageSecurityMode] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function MessageSecurityModeFromJSON(json: any): MessageSecurityMode {
     return MessageSecurityModeFromJSONTyped(json, false);
 }
@@ -36,5 +47,9 @@ export function MessageSecurityModeFromJSONTyped(json: any, ignoreDiscriminator:
 
 export function MessageSecurityModeToJSON(value?: MessageSecurityMode | null): any {
     return value as any;
+}
+
+export function MessageSecurityModeToJSONTyped(value: any, ignoreDiscriminator: boolean): MessageSecurityMode {
+    return value as MessageSecurityMode;
 }
 

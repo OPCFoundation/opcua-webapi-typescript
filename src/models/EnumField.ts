@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { LocalizedText } from './LocalizedText';
 import {
     LocalizedTextFromJSON,
     LocalizedTextFromJSONTyped,
     LocalizedTextToJSON,
+    LocalizedTextToJSONTyped,
 } from './LocalizedText';
 
 /**
@@ -55,10 +56,8 @@ export interface EnumField {
 /**
  * Check if a given object implements the EnumField interface.
  */
-export function instanceOfEnumField(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEnumField(value: object): value is EnumField {
+    return true;
 }
 
 export function EnumFieldFromJSON(json: any): EnumField {
@@ -66,31 +65,33 @@ export function EnumFieldFromJSON(json: any): EnumField {
 }
 
 export function EnumFieldFromJSONTyped(json: any, ignoreDiscriminator: boolean): EnumField {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'Value': !exists(json, 'Value') ? undefined : json['Value'],
-        'DisplayName': !exists(json, 'DisplayName') ? undefined : LocalizedTextFromJSON(json['DisplayName']),
-        'Description': !exists(json, 'Description') ? undefined : LocalizedTextFromJSON(json['Description']),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'Value': json['Value'] == null ? undefined : json['Value'],
+        'DisplayName': json['DisplayName'] == null ? undefined : LocalizedTextFromJSON(json['DisplayName']),
+        'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
     };
 }
 
-export function EnumFieldToJSON(value?: EnumField | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EnumFieldToJSON(json: any): EnumField {
+      return EnumFieldToJSONTyped(json, false);
+  }
+
+  export function EnumFieldToJSONTyped(value?: EnumField | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'Value': value.Value,
-        'DisplayName': LocalizedTextToJSON(value.DisplayName),
-        'Description': LocalizedTextToJSON(value.Description),
+        'Name': value['Name'],
+        'Value': value['Value'],
+        'DisplayName': LocalizedTextToJSON(value['DisplayName']),
+        'Description': LocalizedTextToJSON(value['Description']),
     };
 }
 

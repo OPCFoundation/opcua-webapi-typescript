@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
 
 /**
@@ -55,10 +56,8 @@ export interface ModifySubscriptionResponse {
 /**
  * Check if a given object implements the ModifySubscriptionResponse interface.
  */
-export function instanceOfModifySubscriptionResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfModifySubscriptionResponse(value: object): value is ModifySubscriptionResponse {
+    return true;
 }
 
 export function ModifySubscriptionResponseFromJSON(json: any): ModifySubscriptionResponse {
@@ -66,31 +65,33 @@ export function ModifySubscriptionResponseFromJSON(json: any): ModifySubscriptio
 }
 
 export function ModifySubscriptionResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModifySubscriptionResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'RevisedPublishingInterval': !exists(json, 'RevisedPublishingInterval') ? undefined : json['RevisedPublishingInterval'],
-        'RevisedLifetimeCount': !exists(json, 'RevisedLifetimeCount') ? undefined : json['RevisedLifetimeCount'],
-        'RevisedMaxKeepAliveCount': !exists(json, 'RevisedMaxKeepAliveCount') ? undefined : json['RevisedMaxKeepAliveCount'],
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'RevisedPublishingInterval': json['RevisedPublishingInterval'] == null ? undefined : json['RevisedPublishingInterval'],
+        'RevisedLifetimeCount': json['RevisedLifetimeCount'] == null ? undefined : json['RevisedLifetimeCount'],
+        'RevisedMaxKeepAliveCount': json['RevisedMaxKeepAliveCount'] == null ? undefined : json['RevisedMaxKeepAliveCount'],
     };
 }
 
-export function ModifySubscriptionResponseToJSON(value?: ModifySubscriptionResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ModifySubscriptionResponseToJSON(json: any): ModifySubscriptionResponse {
+      return ModifySubscriptionResponseToJSONTyped(json, false);
+  }
+
+  export function ModifySubscriptionResponseToJSONTyped(value?: ModifySubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'RevisedPublishingInterval': value.RevisedPublishingInterval,
-        'RevisedLifetimeCount': value.RevisedLifetimeCount,
-        'RevisedMaxKeepAliveCount': value.RevisedMaxKeepAliveCount,
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'RevisedPublishingInterval': value['RevisedPublishingInterval'],
+        'RevisedLifetimeCount': value['RevisedLifetimeCount'],
+        'RevisedMaxKeepAliveCount': value['RevisedMaxKeepAliveCount'],
     };
 }
 

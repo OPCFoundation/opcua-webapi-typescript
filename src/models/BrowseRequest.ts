@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,25 +12,28 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { BrowseDescription } from './BrowseDescription';
-import {
-    BrowseDescriptionFromJSON,
-    BrowseDescriptionFromJSONTyped,
-    BrowseDescriptionToJSON,
-} from './BrowseDescription';
-import type { RequestHeader } from './RequestHeader';
-import {
-    RequestHeaderFromJSON,
-    RequestHeaderFromJSONTyped,
-    RequestHeaderToJSON,
-} from './RequestHeader';
+import { mapValues } from '../runtime';
 import type { ViewDescription } from './ViewDescription';
 import {
     ViewDescriptionFromJSON,
     ViewDescriptionFromJSONTyped,
     ViewDescriptionToJSON,
+    ViewDescriptionToJSONTyped,
 } from './ViewDescription';
+import type { RequestHeader } from './RequestHeader';
+import {
+    RequestHeaderFromJSON,
+    RequestHeaderFromJSONTyped,
+    RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
+} from './RequestHeader';
+import type { BrowseDescription } from './BrowseDescription';
+import {
+    BrowseDescriptionFromJSON,
+    BrowseDescriptionFromJSONTyped,
+    BrowseDescriptionToJSON,
+    BrowseDescriptionToJSONTyped,
+} from './BrowseDescription';
 
 /**
  * 
@@ -67,10 +70,8 @@ export interface BrowseRequest {
 /**
  * Check if a given object implements the BrowseRequest interface.
  */
-export function instanceOfBrowseRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrowseRequest(value: object): value is BrowseRequest {
+    return true;
 }
 
 export function BrowseRequestFromJSON(json: any): BrowseRequest {
@@ -78,31 +79,33 @@ export function BrowseRequestFromJSON(json: any): BrowseRequest {
 }
 
 export function BrowseRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrowseRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'View': !exists(json, 'View') ? undefined : ViewDescriptionFromJSON(json['View']),
-        'RequestedMaxReferencesPerNode': !exists(json, 'RequestedMaxReferencesPerNode') ? undefined : json['RequestedMaxReferencesPerNode'],
-        'NodesToBrowse': !exists(json, 'NodesToBrowse') ? undefined : ((json['NodesToBrowse'] as Array<any>).map(BrowseDescriptionFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'View': json['View'] == null ? undefined : ViewDescriptionFromJSON(json['View']),
+        'RequestedMaxReferencesPerNode': json['RequestedMaxReferencesPerNode'] == null ? undefined : json['RequestedMaxReferencesPerNode'],
+        'NodesToBrowse': json['NodesToBrowse'] == null ? undefined : ((json['NodesToBrowse'] as Array<any>).map(BrowseDescriptionFromJSON)),
     };
 }
 
-export function BrowseRequestToJSON(value?: BrowseRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrowseRequestToJSON(json: any): BrowseRequest {
+      return BrowseRequestToJSONTyped(json, false);
+  }
+
+  export function BrowseRequestToJSONTyped(value?: BrowseRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'View': ViewDescriptionToJSON(value.View),
-        'RequestedMaxReferencesPerNode': value.RequestedMaxReferencesPerNode,
-        'NodesToBrowse': value.NodesToBrowse === undefined ? undefined : ((value.NodesToBrowse as Array<any>).map(BrowseDescriptionToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'View': ViewDescriptionToJSON(value['View']),
+        'RequestedMaxReferencesPerNode': value['RequestedMaxReferencesPerNode'],
+        'NodesToBrowse': value['NodesToBrowse'] == null ? undefined : ((value['NodesToBrowse'] as Array<any>).map(BrowseDescriptionToJSON)),
     };
 }
 

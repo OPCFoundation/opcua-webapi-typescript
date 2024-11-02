@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -55,10 +56,8 @@ export interface SetMonitoringModeRequest {
 /**
  * Check if a given object implements the SetMonitoringModeRequest interface.
  */
-export function instanceOfSetMonitoringModeRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfSetMonitoringModeRequest(value: object): value is SetMonitoringModeRequest {
+    return true;
 }
 
 export function SetMonitoringModeRequestFromJSON(json: any): SetMonitoringModeRequest {
@@ -66,31 +65,33 @@ export function SetMonitoringModeRequestFromJSON(json: any): SetMonitoringModeRe
 }
 
 export function SetMonitoringModeRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): SetMonitoringModeRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'SubscriptionId': !exists(json, 'SubscriptionId') ? undefined : json['SubscriptionId'],
-        'MonitoringMode': !exists(json, 'MonitoringMode') ? undefined : json['MonitoringMode'],
-        'MonitoredItemIds': !exists(json, 'MonitoredItemIds') ? undefined : json['MonitoredItemIds'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
+        'MonitoringMode': json['MonitoringMode'] == null ? undefined : json['MonitoringMode'],
+        'MonitoredItemIds': json['MonitoredItemIds'] == null ? undefined : json['MonitoredItemIds'],
     };
 }
 
-export function SetMonitoringModeRequestToJSON(value?: SetMonitoringModeRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function SetMonitoringModeRequestToJSON(json: any): SetMonitoringModeRequest {
+      return SetMonitoringModeRequestToJSONTyped(json, false);
+  }
+
+  export function SetMonitoringModeRequestToJSONTyped(value?: SetMonitoringModeRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'SubscriptionId': value.SubscriptionId,
-        'MonitoringMode': value.MonitoringMode,
-        'MonitoredItemIds': value.MonitoredItemIds,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'SubscriptionId': value['SubscriptionId'],
+        'MonitoringMode': value['MonitoringMode'],
+        'MonitoredItemIds': value['MonitoredItemIds'],
     };
 }
 

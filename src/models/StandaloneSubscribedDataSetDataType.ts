@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,18 +12,20 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DataSetMetaDataType } from './DataSetMetaDataType';
 import {
     DataSetMetaDataTypeFromJSON,
     DataSetMetaDataTypeFromJSONTyped,
     DataSetMetaDataTypeToJSON,
+    DataSetMetaDataTypeToJSONTyped,
 } from './DataSetMetaDataType';
 import type { ExtensionObject } from './ExtensionObject';
 import {
     ExtensionObjectFromJSON,
     ExtensionObjectFromJSONTyped,
     ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
 
 /**
@@ -61,10 +63,8 @@ export interface StandaloneSubscribedDataSetDataType {
 /**
  * Check if a given object implements the StandaloneSubscribedDataSetDataType interface.
  */
-export function instanceOfStandaloneSubscribedDataSetDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfStandaloneSubscribedDataSetDataType(value: object): value is StandaloneSubscribedDataSetDataType {
+    return true;
 }
 
 export function StandaloneSubscribedDataSetDataTypeFromJSON(json: any): StandaloneSubscribedDataSetDataType {
@@ -72,31 +72,33 @@ export function StandaloneSubscribedDataSetDataTypeFromJSON(json: any): Standalo
 }
 
 export function StandaloneSubscribedDataSetDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): StandaloneSubscribedDataSetDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'DataSetFolder': !exists(json, 'DataSetFolder') ? undefined : json['DataSetFolder'],
-        'DataSetMetaData': !exists(json, 'DataSetMetaData') ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
-        'SubscribedDataSet': !exists(json, 'SubscribedDataSet') ? undefined : ExtensionObjectFromJSON(json['SubscribedDataSet']),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'DataSetFolder': json['DataSetFolder'] == null ? undefined : json['DataSetFolder'],
+        'DataSetMetaData': json['DataSetMetaData'] == null ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
+        'SubscribedDataSet': json['SubscribedDataSet'] == null ? undefined : ExtensionObjectFromJSON(json['SubscribedDataSet']),
     };
 }
 
-export function StandaloneSubscribedDataSetDataTypeToJSON(value?: StandaloneSubscribedDataSetDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function StandaloneSubscribedDataSetDataTypeToJSON(json: any): StandaloneSubscribedDataSetDataType {
+      return StandaloneSubscribedDataSetDataTypeToJSONTyped(json, false);
+  }
+
+  export function StandaloneSubscribedDataSetDataTypeToJSONTyped(value?: StandaloneSubscribedDataSetDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'DataSetFolder': value.DataSetFolder,
-        'DataSetMetaData': DataSetMetaDataTypeToJSON(value.DataSetMetaData),
-        'SubscribedDataSet': ExtensionObjectToJSON(value.SubscribedDataSet),
+        'Name': value['Name'],
+        'DataSetFolder': value['DataSetFolder'],
+        'DataSetMetaData': DataSetMetaDataTypeToJSON(value['DataSetMetaData']),
+        'SubscribedDataSet': ExtensionObjectToJSON(value['SubscribedDataSet']),
     };
 }
 

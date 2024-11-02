@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -73,10 +74,8 @@ export interface CreateSubscriptionRequest {
 /**
  * Check if a given object implements the CreateSubscriptionRequest interface.
  */
-export function instanceOfCreateSubscriptionRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCreateSubscriptionRequest(value: object): value is CreateSubscriptionRequest {
+    return true;
 }
 
 export function CreateSubscriptionRequestFromJSON(json: any): CreateSubscriptionRequest {
@@ -84,37 +83,39 @@ export function CreateSubscriptionRequestFromJSON(json: any): CreateSubscription
 }
 
 export function CreateSubscriptionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateSubscriptionRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'RequestedPublishingInterval': !exists(json, 'RequestedPublishingInterval') ? undefined : json['RequestedPublishingInterval'],
-        'RequestedLifetimeCount': !exists(json, 'RequestedLifetimeCount') ? undefined : json['RequestedLifetimeCount'],
-        'RequestedMaxKeepAliveCount': !exists(json, 'RequestedMaxKeepAliveCount') ? undefined : json['RequestedMaxKeepAliveCount'],
-        'MaxNotificationsPerPublish': !exists(json, 'MaxNotificationsPerPublish') ? undefined : json['MaxNotificationsPerPublish'],
-        'PublishingEnabled': !exists(json, 'PublishingEnabled') ? undefined : json['PublishingEnabled'],
-        'Priority': !exists(json, 'Priority') ? undefined : json['Priority'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'RequestedPublishingInterval': json['RequestedPublishingInterval'] == null ? undefined : json['RequestedPublishingInterval'],
+        'RequestedLifetimeCount': json['RequestedLifetimeCount'] == null ? undefined : json['RequestedLifetimeCount'],
+        'RequestedMaxKeepAliveCount': json['RequestedMaxKeepAliveCount'] == null ? undefined : json['RequestedMaxKeepAliveCount'],
+        'MaxNotificationsPerPublish': json['MaxNotificationsPerPublish'] == null ? undefined : json['MaxNotificationsPerPublish'],
+        'PublishingEnabled': json['PublishingEnabled'] == null ? undefined : json['PublishingEnabled'],
+        'Priority': json['Priority'] == null ? undefined : json['Priority'],
     };
 }
 
-export function CreateSubscriptionRequestToJSON(value?: CreateSubscriptionRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CreateSubscriptionRequestToJSON(json: any): CreateSubscriptionRequest {
+      return CreateSubscriptionRequestToJSONTyped(json, false);
+  }
+
+  export function CreateSubscriptionRequestToJSONTyped(value?: CreateSubscriptionRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'RequestedPublishingInterval': value.RequestedPublishingInterval,
-        'RequestedLifetimeCount': value.RequestedLifetimeCount,
-        'RequestedMaxKeepAliveCount': value.RequestedMaxKeepAliveCount,
-        'MaxNotificationsPerPublish': value.MaxNotificationsPerPublish,
-        'PublishingEnabled': value.PublishingEnabled,
-        'Priority': value.Priority,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'RequestedPublishingInterval': value['RequestedPublishingInterval'],
+        'RequestedLifetimeCount': value['RequestedLifetimeCount'],
+        'RequestedMaxKeepAliveCount': value['RequestedMaxKeepAliveCount'],
+        'MaxNotificationsPerPublish': value['MaxNotificationsPerPublish'],
+        'PublishingEnabled': value['PublishingEnabled'],
+        'Priority': value['Priority'],
     };
 }
 

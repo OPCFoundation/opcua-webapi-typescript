@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ExtensionObject } from './ExtensionObject';
 import {
     ExtensionObjectFromJSON,
     ExtensionObjectFromJSONTyped,
     ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
 
 /**
@@ -73,10 +74,8 @@ export interface RequestHeader {
 /**
  * Check if a given object implements the RequestHeader interface.
  */
-export function instanceOfRequestHeader(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRequestHeader(value: object): value is RequestHeader {
+    return true;
 }
 
 export function RequestHeaderFromJSON(json: any): RequestHeader {
@@ -84,37 +83,39 @@ export function RequestHeaderFromJSON(json: any): RequestHeader {
 }
 
 export function RequestHeaderFromJSONTyped(json: any, ignoreDiscriminator: boolean): RequestHeader {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'AuthenticationToken': !exists(json, 'AuthenticationToken') ? undefined : json['AuthenticationToken'],
-        'Timestamp': !exists(json, 'Timestamp') ? undefined : (new Date(json['Timestamp'])),
-        'RequestHandle': !exists(json, 'RequestHandle') ? undefined : json['RequestHandle'],
-        'ReturnDiagnostics': !exists(json, 'ReturnDiagnostics') ? undefined : json['ReturnDiagnostics'],
-        'AuditEntryId': !exists(json, 'AuditEntryId') ? undefined : json['AuditEntryId'],
-        'TimeoutHint': !exists(json, 'TimeoutHint') ? undefined : json['TimeoutHint'],
-        'AdditionalHeader': !exists(json, 'AdditionalHeader') ? undefined : ExtensionObjectFromJSON(json['AdditionalHeader']),
+        'AuthenticationToken': json['AuthenticationToken'] == null ? undefined : json['AuthenticationToken'],
+        'Timestamp': json['Timestamp'] == null ? undefined : (new Date(json['Timestamp'])),
+        'RequestHandle': json['RequestHandle'] == null ? undefined : json['RequestHandle'],
+        'ReturnDiagnostics': json['ReturnDiagnostics'] == null ? undefined : json['ReturnDiagnostics'],
+        'AuditEntryId': json['AuditEntryId'] == null ? undefined : json['AuditEntryId'],
+        'TimeoutHint': json['TimeoutHint'] == null ? undefined : json['TimeoutHint'],
+        'AdditionalHeader': json['AdditionalHeader'] == null ? undefined : ExtensionObjectFromJSON(json['AdditionalHeader']),
     };
 }
 
-export function RequestHeaderToJSON(value?: RequestHeader | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RequestHeaderToJSON(json: any): RequestHeader {
+      return RequestHeaderToJSONTyped(json, false);
+  }
+
+  export function RequestHeaderToJSONTyped(value?: RequestHeader | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'AuthenticationToken': value.AuthenticationToken,
-        'Timestamp': value.Timestamp === undefined ? undefined : (value.Timestamp.toISOString()),
-        'RequestHandle': value.RequestHandle,
-        'ReturnDiagnostics': value.ReturnDiagnostics,
-        'AuditEntryId': value.AuditEntryId,
-        'TimeoutHint': value.TimeoutHint,
-        'AdditionalHeader': ExtensionObjectToJSON(value.AdditionalHeader),
+        'AuthenticationToken': value['AuthenticationToken'],
+        'Timestamp': value['Timestamp'] == null ? undefined : ((value['Timestamp']).toISOString()),
+        'RequestHandle': value['RequestHandle'],
+        'ReturnDiagnostics': value['ReturnDiagnostics'],
+        'AuditEntryId': value['AuditEntryId'],
+        'TimeoutHint': value['TimeoutHint'],
+        'AdditionalHeader': ExtensionObjectToJSON(value['AdditionalHeader']),
     };
 }
 

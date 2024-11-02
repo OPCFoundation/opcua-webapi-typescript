@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { BrowsePath } from './BrowsePath';
-import {
-    BrowsePathFromJSON,
-    BrowsePathFromJSONTyped,
-    BrowsePathToJSON,
-} from './BrowsePath';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
+import type { BrowsePath } from './BrowsePath';
+import {
+    BrowsePathFromJSON,
+    BrowsePathFromJSONTyped,
+    BrowsePathToJSON,
+    BrowsePathToJSONTyped,
+} from './BrowsePath';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface TranslateBrowsePathsToNodeIdsRequest {
 /**
  * Check if a given object implements the TranslateBrowsePathsToNodeIdsRequest interface.
  */
-export function instanceOfTranslateBrowsePathsToNodeIdsRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfTranslateBrowsePathsToNodeIdsRequest(value: object): value is TranslateBrowsePathsToNodeIdsRequest {
+    return true;
 }
 
 export function TranslateBrowsePathsToNodeIdsRequestFromJSON(json: any): TranslateBrowsePathsToNodeIdsRequest {
@@ -60,27 +60,29 @@ export function TranslateBrowsePathsToNodeIdsRequestFromJSON(json: any): Transla
 }
 
 export function TranslateBrowsePathsToNodeIdsRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): TranslateBrowsePathsToNodeIdsRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'BrowsePaths': !exists(json, 'BrowsePaths') ? undefined : ((json['BrowsePaths'] as Array<any>).map(BrowsePathFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'BrowsePaths': json['BrowsePaths'] == null ? undefined : ((json['BrowsePaths'] as Array<any>).map(BrowsePathFromJSON)),
     };
 }
 
-export function TranslateBrowsePathsToNodeIdsRequestToJSON(value?: TranslateBrowsePathsToNodeIdsRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function TranslateBrowsePathsToNodeIdsRequestToJSON(json: any): TranslateBrowsePathsToNodeIdsRequest {
+      return TranslateBrowsePathsToNodeIdsRequestToJSONTyped(json, false);
+  }
+
+  export function TranslateBrowsePathsToNodeIdsRequestToJSONTyped(value?: TranslateBrowsePathsToNodeIdsRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'BrowsePaths': value.BrowsePaths === undefined ? undefined : ((value.BrowsePaths as Array<any>).map(BrowsePathToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'BrowsePaths': value['BrowsePaths'] == null ? undefined : ((value['BrowsePaths'] as Array<any>).map(BrowsePathToJSON)),
     };
 }
 

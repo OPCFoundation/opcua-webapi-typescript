@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DiagnosticInfo } from './DiagnosticInfo';
 import {
     DiagnosticInfoFromJSON,
     DiagnosticInfoFromJSONTyped,
     DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
 
 /**
@@ -49,10 +50,8 @@ export interface ContentFilterElementResult {
 /**
  * Check if a given object implements the ContentFilterElementResult interface.
  */
-export function instanceOfContentFilterElementResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfContentFilterElementResult(value: object): value is ContentFilterElementResult {
+    return true;
 }
 
 export function ContentFilterElementResultFromJSON(json: any): ContentFilterElementResult {
@@ -60,29 +59,31 @@ export function ContentFilterElementResultFromJSON(json: any): ContentFilterElem
 }
 
 export function ContentFilterElementResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): ContentFilterElementResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StatusCode': !exists(json, 'StatusCode') ? undefined : json['StatusCode'],
-        'OperandStatusCodes': !exists(json, 'OperandStatusCodes') ? undefined : json['OperandStatusCodes'],
-        'OperandDiagnosticInfos': !exists(json, 'OperandDiagnosticInfos') ? undefined : ((json['OperandDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'OperandStatusCodes': json['OperandStatusCodes'] == null ? undefined : json['OperandStatusCodes'],
+        'OperandDiagnosticInfos': json['OperandDiagnosticInfos'] == null ? undefined : ((json['OperandDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function ContentFilterElementResultToJSON(value?: ContentFilterElementResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ContentFilterElementResultToJSON(json: any): ContentFilterElementResult {
+      return ContentFilterElementResultToJSONTyped(json, false);
+  }
+
+  export function ContentFilterElementResultToJSONTyped(value?: ContentFilterElementResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StatusCode': value.StatusCode,
-        'OperandStatusCodes': value.OperandStatusCodes,
-        'OperandDiagnosticInfos': value.OperandDiagnosticInfos === undefined ? undefined : ((value.OperandDiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'StatusCode': value['StatusCode'],
+        'OperandStatusCodes': value['OperandStatusCodes'],
+        'OperandDiagnosticInfos': value['OperandDiagnosticInfos'] == null ? undefined : ((value['OperandDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

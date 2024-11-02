@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { EndpointDescription } from './EndpointDescription';
-import {
-    EndpointDescriptionFromJSON,
-    EndpointDescriptionFromJSONTyped,
-    EndpointDescriptionToJSON,
-} from './EndpointDescription';
+import { mapValues } from '../runtime';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
+import type { EndpointDescription } from './EndpointDescription';
+import {
+    EndpointDescriptionFromJSON,
+    EndpointDescriptionFromJSONTyped,
+    EndpointDescriptionToJSON,
+    EndpointDescriptionToJSONTyped,
+} from './EndpointDescription';
 
 /**
  * 
@@ -79,10 +81,8 @@ export interface PubSubGroupDataType {
 /**
  * Check if a given object implements the PubSubGroupDataType interface.
  */
-export function instanceOfPubSubGroupDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfPubSubGroupDataType(value: object): value is PubSubGroupDataType {
+    return true;
 }
 
 export function PubSubGroupDataTypeFromJSON(json: any): PubSubGroupDataType {
@@ -90,37 +90,39 @@ export function PubSubGroupDataTypeFromJSON(json: any): PubSubGroupDataType {
 }
 
 export function PubSubGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): PubSubGroupDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'Enabled': !exists(json, 'Enabled') ? undefined : json['Enabled'],
-        'SecurityMode': !exists(json, 'SecurityMode') ? undefined : json['SecurityMode'],
-        'SecurityGroupId': !exists(json, 'SecurityGroupId') ? undefined : json['SecurityGroupId'],
-        'SecurityKeyServices': !exists(json, 'SecurityKeyServices') ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
-        'MaxNetworkMessageSize': !exists(json, 'MaxNetworkMessageSize') ? undefined : json['MaxNetworkMessageSize'],
-        'GroupProperties': !exists(json, 'GroupProperties') ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
+        'SecurityMode': json['SecurityMode'] == null ? undefined : json['SecurityMode'],
+        'SecurityGroupId': json['SecurityGroupId'] == null ? undefined : json['SecurityGroupId'],
+        'SecurityKeyServices': json['SecurityKeyServices'] == null ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
+        'MaxNetworkMessageSize': json['MaxNetworkMessageSize'] == null ? undefined : json['MaxNetworkMessageSize'],
+        'GroupProperties': json['GroupProperties'] == null ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
     };
 }
 
-export function PubSubGroupDataTypeToJSON(value?: PubSubGroupDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function PubSubGroupDataTypeToJSON(json: any): PubSubGroupDataType {
+      return PubSubGroupDataTypeToJSONTyped(json, false);
+  }
+
+  export function PubSubGroupDataTypeToJSONTyped(value?: PubSubGroupDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'Enabled': value.Enabled,
-        'SecurityMode': value.SecurityMode,
-        'SecurityGroupId': value.SecurityGroupId,
-        'SecurityKeyServices': value.SecurityKeyServices === undefined ? undefined : ((value.SecurityKeyServices as Array<any>).map(EndpointDescriptionToJSON)),
-        'MaxNetworkMessageSize': value.MaxNetworkMessageSize,
-        'GroupProperties': value.GroupProperties === undefined ? undefined : ((value.GroupProperties as Array<any>).map(KeyValuePairToJSON)),
+        'Name': value['Name'],
+        'Enabled': value['Enabled'],
+        'SecurityMode': value['SecurityMode'],
+        'SecurityGroupId': value['SecurityGroupId'],
+        'SecurityKeyServices': value['SecurityKeyServices'] == null ? undefined : ((value['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionToJSON)),
+        'MaxNetworkMessageSize': value['MaxNetworkMessageSize'],
+        'GroupProperties': value['GroupProperties'] == null ? undefined : ((value['GroupProperties'] as Array<any>).map(KeyValuePairToJSON)),
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { LocalizedText } from './LocalizedText';
 import {
     LocalizedTextFromJSON,
     LocalizedTextFromJSONTyped,
     LocalizedTextToJSON,
+    LocalizedTextToJSONTyped,
 } from './LocalizedText';
 
 /**
@@ -61,10 +62,8 @@ export interface Argument {
 /**
  * Check if a given object implements the Argument interface.
  */
-export function instanceOfArgument(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfArgument(value: object): value is Argument {
+    return true;
 }
 
 export function ArgumentFromJSON(json: any): Argument {
@@ -72,33 +71,35 @@ export function ArgumentFromJSON(json: any): Argument {
 }
 
 export function ArgumentFromJSONTyped(json: any, ignoreDiscriminator: boolean): Argument {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'DataType': !exists(json, 'DataType') ? undefined : json['DataType'],
-        'ValueRank': !exists(json, 'ValueRank') ? undefined : json['ValueRank'],
-        'ArrayDimensions': !exists(json, 'ArrayDimensions') ? undefined : json['ArrayDimensions'],
-        'Description': !exists(json, 'Description') ? undefined : LocalizedTextFromJSON(json['Description']),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'DataType': json['DataType'] == null ? undefined : json['DataType'],
+        'ValueRank': json['ValueRank'] == null ? undefined : json['ValueRank'],
+        'ArrayDimensions': json['ArrayDimensions'] == null ? undefined : json['ArrayDimensions'],
+        'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
     };
 }
 
-export function ArgumentToJSON(value?: Argument | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ArgumentToJSON(json: any): Argument {
+      return ArgumentToJSONTyped(json, false);
+  }
+
+  export function ArgumentToJSONTyped(value?: Argument | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'DataType': value.DataType,
-        'ValueRank': value.ValueRank,
-        'ArrayDimensions': value.ArrayDimensions,
-        'Description': LocalizedTextToJSON(value.Description),
+        'Name': value['Name'],
+        'DataType': value['DataType'],
+        'ValueRank': value['ValueRank'],
+        'ArrayDimensions': value['ArrayDimensions'],
+        'Description': LocalizedTextToJSON(value['Description']),
     };
 }
 

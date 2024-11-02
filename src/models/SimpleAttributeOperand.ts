@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -27,10 +27,10 @@ export interface SimpleAttributeOperand {
     TypeDefinitionId?: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {Array<object>}
      * @memberof SimpleAttributeOperand
      */
-    BrowsePath?: Array<string>;
+    BrowsePath?: Array<object>;
     /**
      * 
      * @type {number}
@@ -48,10 +48,8 @@ export interface SimpleAttributeOperand {
 /**
  * Check if a given object implements the SimpleAttributeOperand interface.
  */
-export function instanceOfSimpleAttributeOperand(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfSimpleAttributeOperand(value: object): value is SimpleAttributeOperand {
+    return true;
 }
 
 export function SimpleAttributeOperandFromJSON(json: any): SimpleAttributeOperand {
@@ -59,31 +57,33 @@ export function SimpleAttributeOperandFromJSON(json: any): SimpleAttributeOperan
 }
 
 export function SimpleAttributeOperandFromJSONTyped(json: any, ignoreDiscriminator: boolean): SimpleAttributeOperand {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'TypeDefinitionId': !exists(json, 'TypeDefinitionId') ? undefined : json['TypeDefinitionId'],
-        'BrowsePath': !exists(json, 'BrowsePath') ? undefined : json['BrowsePath'],
-        'AttributeId': !exists(json, 'AttributeId') ? undefined : json['AttributeId'],
-        'IndexRange': !exists(json, 'IndexRange') ? undefined : json['IndexRange'],
+        'TypeDefinitionId': json['TypeDefinitionId'] == null ? undefined : json['TypeDefinitionId'],
+        'BrowsePath': json['BrowsePath'] == null ? undefined : json['BrowsePath'],
+        'AttributeId': json['AttributeId'] == null ? undefined : json['AttributeId'],
+        'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
     };
 }
 
-export function SimpleAttributeOperandToJSON(value?: SimpleAttributeOperand | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function SimpleAttributeOperandToJSON(json: any): SimpleAttributeOperand {
+      return SimpleAttributeOperandToJSONTyped(json, false);
+  }
+
+  export function SimpleAttributeOperandToJSONTyped(value?: SimpleAttributeOperand | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'TypeDefinitionId': value.TypeDefinitionId,
-        'BrowsePath': value.BrowsePath,
-        'AttributeId': value.AttributeId,
-        'IndexRange': value.IndexRange,
+        'TypeDefinitionId': value['TypeDefinitionId'],
+        'BrowsePath': value['BrowsePath'],
+        'AttributeId': value['AttributeId'],
+        'IndexRange': value['IndexRange'],
     };
 }
 

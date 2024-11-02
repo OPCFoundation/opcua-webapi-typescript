@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -48,10 +48,8 @@ export interface UserNameIdentityToken {
 /**
  * Check if a given object implements the UserNameIdentityToken interface.
  */
-export function instanceOfUserNameIdentityToken(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUserNameIdentityToken(value: object): value is UserNameIdentityToken {
+    return true;
 }
 
 export function UserNameIdentityTokenFromJSON(json: any): UserNameIdentityToken {
@@ -59,31 +57,33 @@ export function UserNameIdentityTokenFromJSON(json: any): UserNameIdentityToken 
 }
 
 export function UserNameIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserNameIdentityToken {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'UserName': !exists(json, 'UserName') ? undefined : json['UserName'],
-        'Password': !exists(json, 'Password') ? undefined : json['Password'],
-        'EncryptionAlgorithm': !exists(json, 'EncryptionAlgorithm') ? undefined : json['EncryptionAlgorithm'],
-        'PolicyId': !exists(json, 'PolicyId') ? undefined : json['PolicyId'],
+        'UserName': json['UserName'] == null ? undefined : json['UserName'],
+        'Password': json['Password'] == null ? undefined : json['Password'],
+        'EncryptionAlgorithm': json['EncryptionAlgorithm'] == null ? undefined : json['EncryptionAlgorithm'],
+        'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
     };
 }
 
-export function UserNameIdentityTokenToJSON(value?: UserNameIdentityToken | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function UserNameIdentityTokenToJSON(json: any): UserNameIdentityToken {
+      return UserNameIdentityTokenToJSONTyped(json, false);
+  }
+
+  export function UserNameIdentityTokenToJSONTyped(value?: UserNameIdentityToken | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'UserName': value.UserName,
-        'Password': value.Password,
-        'EncryptionAlgorithm': value.EncryptionAlgorithm,
-        'PolicyId': value.PolicyId,
+        'UserName': value['UserName'],
+        'Password': value['Password'],
+        'EncryptionAlgorithm': value['EncryptionAlgorithm'],
+        'PolicyId': value['PolicyId'],
     };
 }
 

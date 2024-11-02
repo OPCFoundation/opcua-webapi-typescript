@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
 
 /**
@@ -37,10 +38,8 @@ export interface CloseSessionResponse {
 /**
  * Check if a given object implements the CloseSessionResponse interface.
  */
-export function instanceOfCloseSessionResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCloseSessionResponse(value: object): value is CloseSessionResponse {
+    return true;
 }
 
 export function CloseSessionResponseFromJSON(json: any): CloseSessionResponse {
@@ -48,25 +47,27 @@ export function CloseSessionResponseFromJSON(json: any): CloseSessionResponse {
 }
 
 export function CloseSessionResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CloseSessionResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
     };
 }
 
-export function CloseSessionResponseToJSON(value?: CloseSessionResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CloseSessionResponseToJSON(json: any): CloseSessionResponse {
+      return CloseSessionResponseToJSONTyped(json, false);
+  }
+
+  export function CloseSessionResponseToJSONTyped(value?: CloseSessionResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
     };
 }
 

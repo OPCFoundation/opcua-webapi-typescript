@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -55,10 +56,8 @@ export interface GetEndpointsRequest {
 /**
  * Check if a given object implements the GetEndpointsRequest interface.
  */
-export function instanceOfGetEndpointsRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfGetEndpointsRequest(value: object): value is GetEndpointsRequest {
+    return true;
 }
 
 export function GetEndpointsRequestFromJSON(json: any): GetEndpointsRequest {
@@ -66,31 +65,33 @@ export function GetEndpointsRequestFromJSON(json: any): GetEndpointsRequest {
 }
 
 export function GetEndpointsRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetEndpointsRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'EndpointUrl': !exists(json, 'EndpointUrl') ? undefined : json['EndpointUrl'],
-        'LocaleIds': !exists(json, 'LocaleIds') ? undefined : json['LocaleIds'],
-        'ProfileUris': !exists(json, 'ProfileUris') ? undefined : json['ProfileUris'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'EndpointUrl': json['EndpointUrl'] == null ? undefined : json['EndpointUrl'],
+        'LocaleIds': json['LocaleIds'] == null ? undefined : json['LocaleIds'],
+        'ProfileUris': json['ProfileUris'] == null ? undefined : json['ProfileUris'],
     };
 }
 
-export function GetEndpointsRequestToJSON(value?: GetEndpointsRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function GetEndpointsRequestToJSON(json: any): GetEndpointsRequest {
+      return GetEndpointsRequestToJSONTyped(json, false);
+  }
+
+  export function GetEndpointsRequestToJSONTyped(value?: GetEndpointsRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'EndpointUrl': value.EndpointUrl,
-        'LocaleIds': value.LocaleIds,
-        'ProfileUris': value.ProfileUris,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'EndpointUrl': value['EndpointUrl'],
+        'LocaleIds': value['LocaleIds'],
+        'ProfileUris': value['ProfileUris'],
     };
 }
 

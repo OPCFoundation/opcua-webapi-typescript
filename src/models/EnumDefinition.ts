@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { EnumField } from './EnumField';
 import {
     EnumFieldFromJSON,
     EnumFieldFromJSONTyped,
     EnumFieldToJSON,
+    EnumFieldToJSONTyped,
 } from './EnumField';
 
 /**
@@ -37,10 +38,8 @@ export interface EnumDefinition {
 /**
  * Check if a given object implements the EnumDefinition interface.
  */
-export function instanceOfEnumDefinition(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEnumDefinition(value: object): value is EnumDefinition {
+    return true;
 }
 
 export function EnumDefinitionFromJSON(json: any): EnumDefinition {
@@ -48,25 +47,27 @@ export function EnumDefinitionFromJSON(json: any): EnumDefinition {
 }
 
 export function EnumDefinitionFromJSONTyped(json: any, ignoreDiscriminator: boolean): EnumDefinition {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Fields': !exists(json, 'Fields') ? undefined : ((json['Fields'] as Array<any>).map(EnumFieldFromJSON)),
+        'Fields': json['Fields'] == null ? undefined : ((json['Fields'] as Array<any>).map(EnumFieldFromJSON)),
     };
 }
 
-export function EnumDefinitionToJSON(value?: EnumDefinition | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EnumDefinitionToJSON(json: any): EnumDefinition {
+      return EnumDefinitionToJSONTyped(json, false);
+  }
+
+  export function EnumDefinitionToJSONTyped(value?: EnumDefinition | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Fields': value.Fields === undefined ? undefined : ((value.Fields as Array<any>).map(EnumFieldToJSON)),
+        'Fields': value['Fields'] == null ? undefined : ((value['Fields'] as Array<any>).map(EnumFieldToJSON)),
     };
 }
 

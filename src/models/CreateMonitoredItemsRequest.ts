@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,18 +12,20 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { MonitoredItemCreateRequest } from './MonitoredItemCreateRequest';
 import {
     MonitoredItemCreateRequestFromJSON,
     MonitoredItemCreateRequestFromJSONTyped,
     MonitoredItemCreateRequestToJSON,
+    MonitoredItemCreateRequestToJSONTyped,
 } from './MonitoredItemCreateRequest';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -61,10 +63,8 @@ export interface CreateMonitoredItemsRequest {
 /**
  * Check if a given object implements the CreateMonitoredItemsRequest interface.
  */
-export function instanceOfCreateMonitoredItemsRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCreateMonitoredItemsRequest(value: object): value is CreateMonitoredItemsRequest {
+    return true;
 }
 
 export function CreateMonitoredItemsRequestFromJSON(json: any): CreateMonitoredItemsRequest {
@@ -72,31 +72,33 @@ export function CreateMonitoredItemsRequestFromJSON(json: any): CreateMonitoredI
 }
 
 export function CreateMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateMonitoredItemsRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'SubscriptionId': !exists(json, 'SubscriptionId') ? undefined : json['SubscriptionId'],
-        'TimestampsToReturn': !exists(json, 'TimestampsToReturn') ? undefined : json['TimestampsToReturn'],
-        'ItemsToCreate': !exists(json, 'ItemsToCreate') ? undefined : ((json['ItemsToCreate'] as Array<any>).map(MonitoredItemCreateRequestFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
+        'TimestampsToReturn': json['TimestampsToReturn'] == null ? undefined : json['TimestampsToReturn'],
+        'ItemsToCreate': json['ItemsToCreate'] == null ? undefined : ((json['ItemsToCreate'] as Array<any>).map(MonitoredItemCreateRequestFromJSON)),
     };
 }
 
-export function CreateMonitoredItemsRequestToJSON(value?: CreateMonitoredItemsRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CreateMonitoredItemsRequestToJSON(json: any): CreateMonitoredItemsRequest {
+      return CreateMonitoredItemsRequestToJSONTyped(json, false);
+  }
+
+  export function CreateMonitoredItemsRequestToJSONTyped(value?: CreateMonitoredItemsRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'SubscriptionId': value.SubscriptionId,
-        'TimestampsToReturn': value.TimestampsToReturn,
-        'ItemsToCreate': value.ItemsToCreate === undefined ? undefined : ((value.ItemsToCreate as Array<any>).map(MonitoredItemCreateRequestToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'SubscriptionId': value['SubscriptionId'],
+        'TimestampsToReturn': value['TimestampsToReturn'],
+        'ItemsToCreate': value['ItemsToCreate'] == null ? undefined : ((value['ItemsToCreate'] as Array<any>).map(MonitoredItemCreateRequestToJSON)),
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface TransferResult {
 /**
  * Check if a given object implements the TransferResult interface.
  */
-export function instanceOfTransferResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfTransferResult(value: object): value is TransferResult {
+    return true;
 }
 
 export function TransferResultFromJSON(json: any): TransferResult {
@@ -47,27 +45,29 @@ export function TransferResultFromJSON(json: any): TransferResult {
 }
 
 export function TransferResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): TransferResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StatusCode': !exists(json, 'StatusCode') ? undefined : json['StatusCode'],
-        'AvailableSequenceNumbers': !exists(json, 'AvailableSequenceNumbers') ? undefined : json['AvailableSequenceNumbers'],
+        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'AvailableSequenceNumbers': json['AvailableSequenceNumbers'] == null ? undefined : json['AvailableSequenceNumbers'],
     };
 }
 
-export function TransferResultToJSON(value?: TransferResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function TransferResultToJSON(json: any): TransferResult {
+      return TransferResultToJSONTyped(json, false);
+  }
+
+  export function TransferResultToJSONTyped(value?: TransferResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StatusCode': value.StatusCode,
-        'AvailableSequenceNumbers': value.AvailableSequenceNumbers,
+        'StatusCode': value['StatusCode'],
+        'AvailableSequenceNumbers': value['AvailableSequenceNumbers'],
     };
 }
 

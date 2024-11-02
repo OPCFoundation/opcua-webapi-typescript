@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -43,10 +44,8 @@ export interface CloseSessionRequest {
 /**
  * Check if a given object implements the CloseSessionRequest interface.
  */
-export function instanceOfCloseSessionRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCloseSessionRequest(value: object): value is CloseSessionRequest {
+    return true;
 }
 
 export function CloseSessionRequestFromJSON(json: any): CloseSessionRequest {
@@ -54,27 +53,29 @@ export function CloseSessionRequestFromJSON(json: any): CloseSessionRequest {
 }
 
 export function CloseSessionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CloseSessionRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'DeleteSubscriptions': !exists(json, 'DeleteSubscriptions') ? undefined : json['DeleteSubscriptions'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'DeleteSubscriptions': json['DeleteSubscriptions'] == null ? undefined : json['DeleteSubscriptions'],
     };
 }
 
-export function CloseSessionRequestToJSON(value?: CloseSessionRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CloseSessionRequestToJSON(json: any): CloseSessionRequest {
+      return CloseSessionRequestToJSONTyped(json, false);
+  }
+
+  export function CloseSessionRequestToJSONTyped(value?: CloseSessionRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'DeleteSubscriptions': value.DeleteSubscriptions,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'DeleteSubscriptions': value['DeleteSubscriptions'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DataValue } from './DataValue';
 import {
     DataValueFromJSON,
     DataValueFromJSONTyped,
     DataValueToJSON,
+    DataValueToJSONTyped,
 } from './DataValue';
 
 /**
@@ -49,10 +50,8 @@ export interface UpdateDataDetails {
 /**
  * Check if a given object implements the UpdateDataDetails interface.
  */
-export function instanceOfUpdateDataDetails(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUpdateDataDetails(value: object): value is UpdateDataDetails {
+    return true;
 }
 
 export function UpdateDataDetailsFromJSON(json: any): UpdateDataDetails {
@@ -60,29 +59,31 @@ export function UpdateDataDetailsFromJSON(json: any): UpdateDataDetails {
 }
 
 export function UpdateDataDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdateDataDetails {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NodeId': !exists(json, 'NodeId') ? undefined : json['NodeId'],
-        'PerformInsertReplace': !exists(json, 'PerformInsertReplace') ? undefined : json['PerformInsertReplace'],
-        'UpdateValues': !exists(json, 'UpdateValues') ? undefined : ((json['UpdateValues'] as Array<any>).map(DataValueFromJSON)),
+        'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
+        'PerformInsertReplace': json['PerformInsertReplace'] == null ? undefined : json['PerformInsertReplace'],
+        'UpdateValues': json['UpdateValues'] == null ? undefined : ((json['UpdateValues'] as Array<any>).map(DataValueFromJSON)),
     };
 }
 
-export function UpdateDataDetailsToJSON(value?: UpdateDataDetails | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function UpdateDataDetailsToJSON(json: any): UpdateDataDetails {
+      return UpdateDataDetailsToJSONTyped(json, false);
+  }
+
+  export function UpdateDataDetailsToJSONTyped(value?: UpdateDataDetails | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NodeId': value.NodeId,
-        'PerformInsertReplace': value.PerformInsertReplace,
-        'UpdateValues': value.UpdateValues === undefined ? undefined : ((value.UpdateValues as Array<any>).map(DataValueToJSON)),
+        'NodeId': value['NodeId'],
+        'PerformInsertReplace': value['PerformInsertReplace'],
+        'UpdateValues': value['UpdateValues'] == null ? undefined : ((value['UpdateValues'] as Array<any>).map(DataValueToJSON)),
     };
 }
 

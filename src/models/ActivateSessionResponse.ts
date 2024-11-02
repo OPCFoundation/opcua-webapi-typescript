@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DiagnosticInfo } from './DiagnosticInfo';
-import {
-    DiagnosticInfoFromJSON,
-    DiagnosticInfoFromJSONTyped,
-    DiagnosticInfoToJSON,
-} from './DiagnosticInfo';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
+import type { DiagnosticInfo } from './DiagnosticInfo';
+import {
+    DiagnosticInfoFromJSON,
+    DiagnosticInfoFromJSONTyped,
+    DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
+} from './DiagnosticInfo';
 
 /**
  * 
@@ -61,10 +63,8 @@ export interface ActivateSessionResponse {
 /**
  * Check if a given object implements the ActivateSessionResponse interface.
  */
-export function instanceOfActivateSessionResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfActivateSessionResponse(value: object): value is ActivateSessionResponse {
+    return true;
 }
 
 export function ActivateSessionResponseFromJSON(json: any): ActivateSessionResponse {
@@ -72,31 +72,33 @@ export function ActivateSessionResponseFromJSON(json: any): ActivateSessionRespo
 }
 
 export function ActivateSessionResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ActivateSessionResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'ServerNonce': !exists(json, 'ServerNonce') ? undefined : json['ServerNonce'],
-        'Results': !exists(json, 'Results') ? undefined : json['Results'],
-        'DiagnosticInfos': !exists(json, 'DiagnosticInfos') ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'ServerNonce': json['ServerNonce'] == null ? undefined : json['ServerNonce'],
+        'Results': json['Results'] == null ? undefined : json['Results'],
+        'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function ActivateSessionResponseToJSON(value?: ActivateSessionResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ActivateSessionResponseToJSON(json: any): ActivateSessionResponse {
+      return ActivateSessionResponseToJSONTyped(json, false);
+  }
+
+  export function ActivateSessionResponseToJSONTyped(value?: ActivateSessionResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'ServerNonce': value.ServerNonce,
-        'Results': value.Results,
-        'DiagnosticInfos': value.DiagnosticInfos === undefined ? undefined : ((value.DiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'ServerNonce': value['ServerNonce'],
+        'Results': value['Results'],
+        'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

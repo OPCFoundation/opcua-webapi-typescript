@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,18 +12,20 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
 import type { RolePermissionType } from './RolePermissionType';
 import {
     RolePermissionTypeFromJSON,
     RolePermissionTypeFromJSONTyped,
     RolePermissionTypeToJSON,
+    RolePermissionTypeToJSONTyped,
 } from './RolePermissionType';
 
 /**
@@ -91,10 +93,8 @@ export interface SecurityGroupDataType {
 /**
  * Check if a given object implements the SecurityGroupDataType interface.
  */
-export function instanceOfSecurityGroupDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfSecurityGroupDataType(value: object): value is SecurityGroupDataType {
+    return true;
 }
 
 export function SecurityGroupDataTypeFromJSON(json: any): SecurityGroupDataType {
@@ -102,41 +102,43 @@ export function SecurityGroupDataTypeFromJSON(json: any): SecurityGroupDataType 
 }
 
 export function SecurityGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): SecurityGroupDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'SecurityGroupFolder': !exists(json, 'SecurityGroupFolder') ? undefined : json['SecurityGroupFolder'],
-        'KeyLifetime': !exists(json, 'KeyLifetime') ? undefined : json['KeyLifetime'],
-        'SecurityPolicyUri': !exists(json, 'SecurityPolicyUri') ? undefined : json['SecurityPolicyUri'],
-        'MaxFutureKeyCount': !exists(json, 'MaxFutureKeyCount') ? undefined : json['MaxFutureKeyCount'],
-        'MaxPastKeyCount': !exists(json, 'MaxPastKeyCount') ? undefined : json['MaxPastKeyCount'],
-        'SecurityGroupId': !exists(json, 'SecurityGroupId') ? undefined : json['SecurityGroupId'],
-        'RolePermissions': !exists(json, 'RolePermissions') ? undefined : ((json['RolePermissions'] as Array<any>).map(RolePermissionTypeFromJSON)),
-        'GroupProperties': !exists(json, 'GroupProperties') ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'SecurityGroupFolder': json['SecurityGroupFolder'] == null ? undefined : json['SecurityGroupFolder'],
+        'KeyLifetime': json['KeyLifetime'] == null ? undefined : json['KeyLifetime'],
+        'SecurityPolicyUri': json['SecurityPolicyUri'] == null ? undefined : json['SecurityPolicyUri'],
+        'MaxFutureKeyCount': json['MaxFutureKeyCount'] == null ? undefined : json['MaxFutureKeyCount'],
+        'MaxPastKeyCount': json['MaxPastKeyCount'] == null ? undefined : json['MaxPastKeyCount'],
+        'SecurityGroupId': json['SecurityGroupId'] == null ? undefined : json['SecurityGroupId'],
+        'RolePermissions': json['RolePermissions'] == null ? undefined : ((json['RolePermissions'] as Array<any>).map(RolePermissionTypeFromJSON)),
+        'GroupProperties': json['GroupProperties'] == null ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
     };
 }
 
-export function SecurityGroupDataTypeToJSON(value?: SecurityGroupDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function SecurityGroupDataTypeToJSON(json: any): SecurityGroupDataType {
+      return SecurityGroupDataTypeToJSONTyped(json, false);
+  }
+
+  export function SecurityGroupDataTypeToJSONTyped(value?: SecurityGroupDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'SecurityGroupFolder': value.SecurityGroupFolder,
-        'KeyLifetime': value.KeyLifetime,
-        'SecurityPolicyUri': value.SecurityPolicyUri,
-        'MaxFutureKeyCount': value.MaxFutureKeyCount,
-        'MaxPastKeyCount': value.MaxPastKeyCount,
-        'SecurityGroupId': value.SecurityGroupId,
-        'RolePermissions': value.RolePermissions === undefined ? undefined : ((value.RolePermissions as Array<any>).map(RolePermissionTypeToJSON)),
-        'GroupProperties': value.GroupProperties === undefined ? undefined : ((value.GroupProperties as Array<any>).map(KeyValuePairToJSON)),
+        'Name': value['Name'],
+        'SecurityGroupFolder': value['SecurityGroupFolder'],
+        'KeyLifetime': value['KeyLifetime'],
+        'SecurityPolicyUri': value['SecurityPolicyUri'],
+        'MaxFutureKeyCount': value['MaxFutureKeyCount'],
+        'MaxPastKeyCount': value['MaxPastKeyCount'],
+        'SecurityGroupId': value['SecurityGroupId'],
+        'RolePermissions': value['RolePermissions'] == null ? undefined : ((value['RolePermissions'] as Array<any>).map(RolePermissionTypeToJSON)),
+        'GroupProperties': value['GroupProperties'] == null ? undefined : ((value['GroupProperties'] as Array<any>).map(KeyValuePairToJSON)),
     };
 }
 

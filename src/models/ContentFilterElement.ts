@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ExtensionObject } from './ExtensionObject';
 import {
     ExtensionObjectFromJSON,
     ExtensionObjectFromJSONTyped,
     ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
 
 /**
@@ -43,10 +44,8 @@ export interface ContentFilterElement {
 /**
  * Check if a given object implements the ContentFilterElement interface.
  */
-export function instanceOfContentFilterElement(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfContentFilterElement(value: object): value is ContentFilterElement {
+    return true;
 }
 
 export function ContentFilterElementFromJSON(json: any): ContentFilterElement {
@@ -54,27 +53,29 @@ export function ContentFilterElementFromJSON(json: any): ContentFilterElement {
 }
 
 export function ContentFilterElementFromJSONTyped(json: any, ignoreDiscriminator: boolean): ContentFilterElement {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'FilterOperator': !exists(json, 'FilterOperator') ? undefined : json['FilterOperator'],
-        'FilterOperands': !exists(json, 'FilterOperands') ? undefined : ((json['FilterOperands'] as Array<any>).map(ExtensionObjectFromJSON)),
+        'FilterOperator': json['FilterOperator'] == null ? undefined : json['FilterOperator'],
+        'FilterOperands': json['FilterOperands'] == null ? undefined : ((json['FilterOperands'] as Array<any>).map(ExtensionObjectFromJSON)),
     };
 }
 
-export function ContentFilterElementToJSON(value?: ContentFilterElement | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ContentFilterElementToJSON(json: any): ContentFilterElement {
+      return ContentFilterElementToJSONTyped(json, false);
+  }
+
+  export function ContentFilterElementToJSONTyped(value?: ContentFilterElement | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'FilterOperator': value.FilterOperator,
-        'FilterOperands': value.FilterOperands === undefined ? undefined : ((value.FilterOperands as Array<any>).map(ExtensionObjectToJSON)),
+        'FilterOperator': value['FilterOperator'],
+        'FilterOperands': value['FilterOperands'] == null ? undefined : ((value['FilterOperands'] as Array<any>).map(ExtensionObjectToJSON)),
     };
 }
 

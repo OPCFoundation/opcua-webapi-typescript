@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -27,19 +27,17 @@ export interface DataTypeDescription {
     DataTypeId?: string;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof DataTypeDescription
      */
-    Name?: string;
+    Name?: object;
 }
 
 /**
  * Check if a given object implements the DataTypeDescription interface.
  */
-export function instanceOfDataTypeDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDataTypeDescription(value: object): value is DataTypeDescription {
+    return true;
 }
 
 export function DataTypeDescriptionFromJSON(json: any): DataTypeDescription {
@@ -47,27 +45,29 @@ export function DataTypeDescriptionFromJSON(json: any): DataTypeDescription {
 }
 
 export function DataTypeDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): DataTypeDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'DataTypeId': !exists(json, 'DataTypeId') ? undefined : json['DataTypeId'],
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
+        'DataTypeId': json['DataTypeId'] == null ? undefined : json['DataTypeId'],
+        'Name': json['Name'] == null ? undefined : json['Name'],
     };
 }
 
-export function DataTypeDescriptionToJSON(value?: DataTypeDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DataTypeDescriptionToJSON(json: any): DataTypeDescription {
+      return DataTypeDescriptionToJSONTyped(json, false);
+  }
+
+  export function DataTypeDescriptionToJSONTyped(value?: DataTypeDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'DataTypeId': value.DataTypeId,
-        'Name': value.Name,
+        'DataTypeId': value['DataTypeId'],
+        'Name': value['Name'],
     };
 }
 

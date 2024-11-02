@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -43,10 +44,8 @@ export interface CancelRequest {
 /**
  * Check if a given object implements the CancelRequest interface.
  */
-export function instanceOfCancelRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCancelRequest(value: object): value is CancelRequest {
+    return true;
 }
 
 export function CancelRequestFromJSON(json: any): CancelRequest {
@@ -54,27 +53,29 @@ export function CancelRequestFromJSON(json: any): CancelRequest {
 }
 
 export function CancelRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CancelRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'RequestHandle': !exists(json, 'RequestHandle') ? undefined : json['RequestHandle'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'RequestHandle': json['RequestHandle'] == null ? undefined : json['RequestHandle'],
     };
 }
 
-export function CancelRequestToJSON(value?: CancelRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CancelRequestToJSON(json: any): CancelRequest {
+      return CancelRequestToJSONTyped(json, false);
+  }
+
+  export function CancelRequestToJSONTyped(value?: CancelRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'RequestHandle': value.RequestHandle,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'RequestHandle': value['RequestHandle'],
     };
 }
 

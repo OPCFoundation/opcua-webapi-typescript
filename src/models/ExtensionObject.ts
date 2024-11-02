@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -24,28 +24,26 @@ export interface ExtensionObject {
      * @type {string}
      * @memberof ExtensionObject
      */
-    TypeId?: string;
+    UaTypeId?: string;
     /**
      * 
      * @type {number}
      * @memberof ExtensionObject
      */
-    Encoding?: number;
+    UaEncoding?: number;
     /**
      * 
-     * @type {object}
+     * @type {string}
      * @memberof ExtensionObject
      */
-    Body?: object;
+    UaBody?: string;
 }
 
 /**
  * Check if a given object implements the ExtensionObject interface.
  */
-export function instanceOfExtensionObject(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfExtensionObject(value: object): value is ExtensionObject {
+    return true;
 }
 
 export function ExtensionObjectFromJSON(json: any): ExtensionObject {
@@ -53,29 +51,31 @@ export function ExtensionObjectFromJSON(json: any): ExtensionObject {
 }
 
 export function ExtensionObjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): ExtensionObject {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'TypeId': !exists(json, 'TypeId') ? undefined : json['TypeId'],
-        'Encoding': !exists(json, 'Encoding') ? undefined : json['Encoding'],
-        'Body': !exists(json, 'Body') ? undefined : json['Body'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
+        'UaEncoding': json['UaEncoding'] == null ? undefined : json['UaEncoding'],
+        'UaBody': json['UaBody'] == null ? undefined : json['UaBody'],
     };
 }
 
-export function ExtensionObjectToJSON(value?: ExtensionObject | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ExtensionObjectToJSON(json: any): ExtensionObject {
+      return ExtensionObjectToJSONTyped(json, false);
+  }
+
+  export function ExtensionObjectToJSONTyped(value?: ExtensionObject | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'TypeId': value.TypeId,
-        'Encoding': value.Encoding,
-        'Body': value.Body,
+        'UaTypeId': value['UaTypeId'],
+        'UaEncoding': value['UaEncoding'],
+        'UaBody': value['UaBody'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -42,10 +42,8 @@ export interface IssuedIdentityToken {
 /**
  * Check if a given object implements the IssuedIdentityToken interface.
  */
-export function instanceOfIssuedIdentityToken(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfIssuedIdentityToken(value: object): value is IssuedIdentityToken {
+    return true;
 }
 
 export function IssuedIdentityTokenFromJSON(json: any): IssuedIdentityToken {
@@ -53,29 +51,31 @@ export function IssuedIdentityTokenFromJSON(json: any): IssuedIdentityToken {
 }
 
 export function IssuedIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: boolean): IssuedIdentityToken {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'TokenData': !exists(json, 'TokenData') ? undefined : json['TokenData'],
-        'EncryptionAlgorithm': !exists(json, 'EncryptionAlgorithm') ? undefined : json['EncryptionAlgorithm'],
-        'PolicyId': !exists(json, 'PolicyId') ? undefined : json['PolicyId'],
+        'TokenData': json['TokenData'] == null ? undefined : json['TokenData'],
+        'EncryptionAlgorithm': json['EncryptionAlgorithm'] == null ? undefined : json['EncryptionAlgorithm'],
+        'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
     };
 }
 
-export function IssuedIdentityTokenToJSON(value?: IssuedIdentityToken | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function IssuedIdentityTokenToJSON(json: any): IssuedIdentityToken {
+      return IssuedIdentityTokenToJSONTyped(json, false);
+  }
+
+  export function IssuedIdentityTokenToJSONTyped(value?: IssuedIdentityToken | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'TokenData': value.TokenData,
-        'EncryptionAlgorithm': value.EncryptionAlgorithm,
-        'PolicyId': value.PolicyId,
+        'TokenData': value['TokenData'],
+        'EncryptionAlgorithm': value['EncryptionAlgorithm'],
+        'PolicyId': value['PolicyId'],
     };
 }
 

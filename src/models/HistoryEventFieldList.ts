@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Variant } from './Variant';
 import {
     VariantFromJSON,
     VariantFromJSONTyped,
     VariantToJSON,
+    VariantToJSONTyped,
 } from './Variant';
 
 /**
@@ -37,10 +38,8 @@ export interface HistoryEventFieldList {
 /**
  * Check if a given object implements the HistoryEventFieldList interface.
  */
-export function instanceOfHistoryEventFieldList(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfHistoryEventFieldList(value: object): value is HistoryEventFieldList {
+    return true;
 }
 
 export function HistoryEventFieldListFromJSON(json: any): HistoryEventFieldList {
@@ -48,25 +47,27 @@ export function HistoryEventFieldListFromJSON(json: any): HistoryEventFieldList 
 }
 
 export function HistoryEventFieldListFromJSONTyped(json: any, ignoreDiscriminator: boolean): HistoryEventFieldList {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'EventFields': !exists(json, 'EventFields') ? undefined : ((json['EventFields'] as Array<any>).map(VariantFromJSON)),
+        'EventFields': json['EventFields'] == null ? undefined : ((json['EventFields'] as Array<any>).map(VariantFromJSON)),
     };
 }
 
-export function HistoryEventFieldListToJSON(value?: HistoryEventFieldList | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function HistoryEventFieldListToJSON(json: any): HistoryEventFieldList {
+      return HistoryEventFieldListToJSONTyped(json, false);
+  }
+
+  export function HistoryEventFieldListToJSONTyped(value?: HistoryEventFieldList | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'EventFields': value.EventFields === undefined ? undefined : ((value.EventFields as Array<any>).map(VariantToJSON)),
+        'EventFields': value['EventFields'] == null ? undefined : ((value['EventFields'] as Array<any>).map(VariantToJSON)),
     };
 }
 

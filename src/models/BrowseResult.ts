@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ReferenceDescription } from './ReferenceDescription';
 import {
     ReferenceDescriptionFromJSON,
     ReferenceDescriptionFromJSONTyped,
     ReferenceDescriptionToJSON,
+    ReferenceDescriptionToJSONTyped,
 } from './ReferenceDescription';
 
 /**
@@ -49,10 +50,8 @@ export interface BrowseResult {
 /**
  * Check if a given object implements the BrowseResult interface.
  */
-export function instanceOfBrowseResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrowseResult(value: object): value is BrowseResult {
+    return true;
 }
 
 export function BrowseResultFromJSON(json: any): BrowseResult {
@@ -60,29 +59,31 @@ export function BrowseResultFromJSON(json: any): BrowseResult {
 }
 
 export function BrowseResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrowseResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StatusCode': !exists(json, 'StatusCode') ? undefined : json['StatusCode'],
-        'ContinuationPoint': !exists(json, 'ContinuationPoint') ? undefined : json['ContinuationPoint'],
-        'References': !exists(json, 'References') ? undefined : ((json['References'] as Array<any>).map(ReferenceDescriptionFromJSON)),
+        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'ContinuationPoint': json['ContinuationPoint'] == null ? undefined : json['ContinuationPoint'],
+        'References': json['References'] == null ? undefined : ((json['References'] as Array<any>).map(ReferenceDescriptionFromJSON)),
     };
 }
 
-export function BrowseResultToJSON(value?: BrowseResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrowseResultToJSON(json: any): BrowseResult {
+      return BrowseResultToJSONTyped(json, false);
+  }
+
+  export function BrowseResultToJSONTyped(value?: BrowseResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StatusCode': value.StatusCode,
-        'ContinuationPoint': value.ContinuationPoint,
-        'References': value.References === undefined ? undefined : ((value.References as Array<any>).map(ReferenceDescriptionToJSON)),
+        'StatusCode': value['StatusCode'],
+        'ContinuationPoint': value['ContinuationPoint'],
+        'References': value['References'] == null ? undefined : ((value['References'] as Array<any>).map(ReferenceDescriptionToJSON)),
     };
 }
 

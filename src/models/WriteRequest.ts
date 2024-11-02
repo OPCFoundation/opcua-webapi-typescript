@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { RequestHeader } from './RequestHeader';
-import {
-    RequestHeaderFromJSON,
-    RequestHeaderFromJSONTyped,
-    RequestHeaderToJSON,
-} from './RequestHeader';
+import { mapValues } from '../runtime';
 import type { WriteValue } from './WriteValue';
 import {
     WriteValueFromJSON,
     WriteValueFromJSONTyped,
     WriteValueToJSON,
+    WriteValueToJSONTyped,
 } from './WriteValue';
+import type { RequestHeader } from './RequestHeader';
+import {
+    RequestHeaderFromJSON,
+    RequestHeaderFromJSONTyped,
+    RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
+} from './RequestHeader';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface WriteRequest {
 /**
  * Check if a given object implements the WriteRequest interface.
  */
-export function instanceOfWriteRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfWriteRequest(value: object): value is WriteRequest {
+    return true;
 }
 
 export function WriteRequestFromJSON(json: any): WriteRequest {
@@ -60,27 +60,29 @@ export function WriteRequestFromJSON(json: any): WriteRequest {
 }
 
 export function WriteRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): WriteRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'NodesToWrite': !exists(json, 'NodesToWrite') ? undefined : ((json['NodesToWrite'] as Array<any>).map(WriteValueFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'NodesToWrite': json['NodesToWrite'] == null ? undefined : ((json['NodesToWrite'] as Array<any>).map(WriteValueFromJSON)),
     };
 }
 
-export function WriteRequestToJSON(value?: WriteRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function WriteRequestToJSON(json: any): WriteRequest {
+      return WriteRequestToJSONTyped(json, false);
+  }
+
+  export function WriteRequestToJSONTyped(value?: WriteRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'NodesToWrite': value.NodesToWrite === undefined ? undefined : ((value.NodesToWrite as Array<any>).map(WriteValueToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'NodesToWrite': value['NodesToWrite'] == null ? undefined : ((value['NodesToWrite'] as Array<any>).map(WriteValueToJSON)),
     };
 }
 

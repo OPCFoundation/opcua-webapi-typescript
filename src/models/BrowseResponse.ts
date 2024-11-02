@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,25 +12,28 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { BrowseResult } from './BrowseResult';
-import {
-    BrowseResultFromJSON,
-    BrowseResultFromJSONTyped,
-    BrowseResultToJSON,
-} from './BrowseResult';
-import type { DiagnosticInfo } from './DiagnosticInfo';
-import {
-    DiagnosticInfoFromJSON,
-    DiagnosticInfoFromJSONTyped,
-    DiagnosticInfoToJSON,
-} from './DiagnosticInfo';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
+import type { DiagnosticInfo } from './DiagnosticInfo';
+import {
+    DiagnosticInfoFromJSON,
+    DiagnosticInfoFromJSONTyped,
+    DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
+} from './DiagnosticInfo';
+import type { BrowseResult } from './BrowseResult';
+import {
+    BrowseResultFromJSON,
+    BrowseResultFromJSONTyped,
+    BrowseResultToJSON,
+    BrowseResultToJSONTyped,
+} from './BrowseResult';
 
 /**
  * 
@@ -61,10 +64,8 @@ export interface BrowseResponse {
 /**
  * Check if a given object implements the BrowseResponse interface.
  */
-export function instanceOfBrowseResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrowseResponse(value: object): value is BrowseResponse {
+    return true;
 }
 
 export function BrowseResponseFromJSON(json: any): BrowseResponse {
@@ -72,29 +73,31 @@ export function BrowseResponseFromJSON(json: any): BrowseResponse {
 }
 
 export function BrowseResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrowseResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'Results': !exists(json, 'Results') ? undefined : ((json['Results'] as Array<any>).map(BrowseResultFromJSON)),
-        'DiagnosticInfos': !exists(json, 'DiagnosticInfos') ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(BrowseResultFromJSON)),
+        'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function BrowseResponseToJSON(value?: BrowseResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrowseResponseToJSON(json: any): BrowseResponse {
+      return BrowseResponseToJSONTyped(json, false);
+  }
+
+  export function BrowseResponseToJSONTyped(value?: BrowseResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'Results': value.Results === undefined ? undefined : ((value.Results as Array<any>).map(BrowseResultToJSON)),
-        'DiagnosticInfos': value.DiagnosticInfos === undefined ? undefined : ((value.DiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(BrowseResultToJSON)),
+        'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

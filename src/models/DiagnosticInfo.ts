@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -66,10 +66,8 @@ export interface DiagnosticInfo {
 /**
  * Check if a given object implements the DiagnosticInfo interface.
  */
-export function instanceOfDiagnosticInfo(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDiagnosticInfo(value: object): value is DiagnosticInfo {
+    return true;
 }
 
 export function DiagnosticInfoFromJSON(json: any): DiagnosticInfo {
@@ -77,37 +75,39 @@ export function DiagnosticInfoFromJSON(json: any): DiagnosticInfo {
 }
 
 export function DiagnosticInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): DiagnosticInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'SymbolicId': !exists(json, 'SymbolicId') ? undefined : json['SymbolicId'],
-        'NamespaceUri': !exists(json, 'NamespaceUri') ? undefined : json['NamespaceUri'],
-        'Locale': !exists(json, 'Locale') ? undefined : json['Locale'],
-        'LocalizedText': !exists(json, 'LocalizedText') ? undefined : json['LocalizedText'],
-        'AdditionalInfo': !exists(json, 'AdditionalInfo') ? undefined : json['AdditionalInfo'],
-        'InnerStatusCode': !exists(json, 'InnerStatusCode') ? undefined : json['InnerStatusCode'],
-        'InnerDiagnosticInfo': !exists(json, 'InnerDiagnosticInfo') ? undefined : DiagnosticInfoFromJSON(json['InnerDiagnosticInfo']),
+        'SymbolicId': json['SymbolicId'] == null ? undefined : json['SymbolicId'],
+        'NamespaceUri': json['NamespaceUri'] == null ? undefined : json['NamespaceUri'],
+        'Locale': json['Locale'] == null ? undefined : json['Locale'],
+        'LocalizedText': json['LocalizedText'] == null ? undefined : json['LocalizedText'],
+        'AdditionalInfo': json['AdditionalInfo'] == null ? undefined : json['AdditionalInfo'],
+        'InnerStatusCode': json['InnerStatusCode'] == null ? undefined : json['InnerStatusCode'],
+        'InnerDiagnosticInfo': json['InnerDiagnosticInfo'] == null ? undefined : DiagnosticInfoFromJSON(json['InnerDiagnosticInfo']),
     };
 }
 
-export function DiagnosticInfoToJSON(value?: DiagnosticInfo | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DiagnosticInfoToJSON(json: any): DiagnosticInfo {
+      return DiagnosticInfoToJSONTyped(json, false);
+  }
+
+  export function DiagnosticInfoToJSONTyped(value?: DiagnosticInfo | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'SymbolicId': value.SymbolicId,
-        'NamespaceUri': value.NamespaceUri,
-        'Locale': value.Locale,
-        'LocalizedText': value.LocalizedText,
-        'AdditionalInfo': value.AdditionalInfo,
-        'InnerStatusCode': value.InnerStatusCode,
-        'InnerDiagnosticInfo': DiagnosticInfoToJSON(value.InnerDiagnosticInfo),
+        'SymbolicId': value['SymbolicId'],
+        'NamespaceUri': value['NamespaceUri'],
+        'Locale': value['Locale'],
+        'LocalizedText': value['LocalizedText'],
+        'AdditionalInfo': value['AdditionalInfo'],
+        'InnerStatusCode': value['InnerStatusCode'],
+        'InnerDiagnosticInfo': DiagnosticInfoToJSON(value['InnerDiagnosticInfo']),
     };
 }
 

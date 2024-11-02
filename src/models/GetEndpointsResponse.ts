@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { EndpointDescription } from './EndpointDescription';
-import {
-    EndpointDescriptionFromJSON,
-    EndpointDescriptionFromJSONTyped,
-    EndpointDescriptionToJSON,
-} from './EndpointDescription';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
+import type { EndpointDescription } from './EndpointDescription';
+import {
+    EndpointDescriptionFromJSON,
+    EndpointDescriptionFromJSONTyped,
+    EndpointDescriptionToJSON,
+    EndpointDescriptionToJSONTyped,
+} from './EndpointDescription';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface GetEndpointsResponse {
 /**
  * Check if a given object implements the GetEndpointsResponse interface.
  */
-export function instanceOfGetEndpointsResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfGetEndpointsResponse(value: object): value is GetEndpointsResponse {
+    return true;
 }
 
 export function GetEndpointsResponseFromJSON(json: any): GetEndpointsResponse {
@@ -60,27 +60,29 @@ export function GetEndpointsResponseFromJSON(json: any): GetEndpointsResponse {
 }
 
 export function GetEndpointsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetEndpointsResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'Endpoints': !exists(json, 'Endpoints') ? undefined : ((json['Endpoints'] as Array<any>).map(EndpointDescriptionFromJSON)),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'Endpoints': json['Endpoints'] == null ? undefined : ((json['Endpoints'] as Array<any>).map(EndpointDescriptionFromJSON)),
     };
 }
 
-export function GetEndpointsResponseToJSON(value?: GetEndpointsResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function GetEndpointsResponseToJSON(json: any): GetEndpointsResponse {
+      return GetEndpointsResponseToJSONTyped(json, false);
+  }
+
+  export function GetEndpointsResponseToJSONTyped(value?: GetEndpointsResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'Endpoints': value.Endpoints === undefined ? undefined : ((value.Endpoints as Array<any>).map(EndpointDescriptionToJSON)),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'Endpoints': value['Endpoints'] == null ? undefined : ((value['Endpoints'] as Array<any>).map(EndpointDescriptionToJSON)),
     };
 }
 

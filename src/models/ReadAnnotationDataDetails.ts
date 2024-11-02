@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -30,10 +30,8 @@ export interface ReadAnnotationDataDetails {
 /**
  * Check if a given object implements the ReadAnnotationDataDetails interface.
  */
-export function instanceOfReadAnnotationDataDetails(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReadAnnotationDataDetails(value: object): value is ReadAnnotationDataDetails {
+    return true;
 }
 
 export function ReadAnnotationDataDetailsFromJSON(json: any): ReadAnnotationDataDetails {
@@ -41,25 +39,27 @@ export function ReadAnnotationDataDetailsFromJSON(json: any): ReadAnnotationData
 }
 
 export function ReadAnnotationDataDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReadAnnotationDataDetails {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ReqTimes': !exists(json, 'ReqTimes') ? undefined : json['ReqTimes'],
+        'ReqTimes': json['ReqTimes'] == null ? undefined : json['ReqTimes'],
     };
 }
 
-export function ReadAnnotationDataDetailsToJSON(value?: ReadAnnotationDataDetails | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReadAnnotationDataDetailsToJSON(json: any): ReadAnnotationDataDetails {
+      return ReadAnnotationDataDetailsToJSONTyped(json, false);
+  }
+
+  export function ReadAnnotationDataDetailsToJSONTyped(value?: ReadAnnotationDataDetails | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ReqTimes': value.ReqTimes,
+        'ReqTimes': value['ReqTimes'],
     };
 }
 

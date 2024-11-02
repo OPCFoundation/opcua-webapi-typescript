@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -49,10 +50,8 @@ export interface TransferSubscriptionsRequest {
 /**
  * Check if a given object implements the TransferSubscriptionsRequest interface.
  */
-export function instanceOfTransferSubscriptionsRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfTransferSubscriptionsRequest(value: object): value is TransferSubscriptionsRequest {
+    return true;
 }
 
 export function TransferSubscriptionsRequestFromJSON(json: any): TransferSubscriptionsRequest {
@@ -60,29 +59,31 @@ export function TransferSubscriptionsRequestFromJSON(json: any): TransferSubscri
 }
 
 export function TransferSubscriptionsRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): TransferSubscriptionsRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'SubscriptionIds': !exists(json, 'SubscriptionIds') ? undefined : json['SubscriptionIds'],
-        'SendInitialValues': !exists(json, 'SendInitialValues') ? undefined : json['SendInitialValues'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'SubscriptionIds': json['SubscriptionIds'] == null ? undefined : json['SubscriptionIds'],
+        'SendInitialValues': json['SendInitialValues'] == null ? undefined : json['SendInitialValues'],
     };
 }
 
-export function TransferSubscriptionsRequestToJSON(value?: TransferSubscriptionsRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function TransferSubscriptionsRequestToJSON(json: any): TransferSubscriptionsRequest {
+      return TransferSubscriptionsRequestToJSONTyped(json, false);
+  }
+
+  export function TransferSubscriptionsRequestToJSONTyped(value?: TransferSubscriptionsRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'SubscriptionIds': value.SubscriptionIds,
-        'SendInitialValues': value.SendInitialValues,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'SubscriptionIds': value['SubscriptionIds'],
+        'SendInitialValues': value['SendInitialValues'],
     };
 }
 

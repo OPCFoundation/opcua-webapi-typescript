@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,31 +12,35 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DataSetWriterDataType } from './DataSetWriterDataType';
-import {
-    DataSetWriterDataTypeFromJSON,
-    DataSetWriterDataTypeFromJSONTyped,
-    DataSetWriterDataTypeToJSON,
-} from './DataSetWriterDataType';
-import type { EndpointDescription } from './EndpointDescription';
-import {
-    EndpointDescriptionFromJSON,
-    EndpointDescriptionFromJSONTyped,
-    EndpointDescriptionToJSON,
-} from './EndpointDescription';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-} from './ExtensionObject';
+import { mapValues } from '../runtime';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
+import type { ExtensionObject } from './ExtensionObject';
+import {
+    ExtensionObjectFromJSON,
+    ExtensionObjectFromJSONTyped,
+    ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
+} from './ExtensionObject';
+import type { EndpointDescription } from './EndpointDescription';
+import {
+    EndpointDescriptionFromJSON,
+    EndpointDescriptionFromJSONTyped,
+    EndpointDescriptionToJSON,
+    EndpointDescriptionToJSONTyped,
+} from './EndpointDescription';
+import type { DataSetWriterDataType } from './DataSetWriterDataType';
+import {
+    DataSetWriterDataTypeFromJSON,
+    DataSetWriterDataTypeFromJSONTyped,
+    DataSetWriterDataTypeToJSON,
+    DataSetWriterDataTypeToJSONTyped,
+} from './DataSetWriterDataType';
 
 /**
  * 
@@ -145,10 +149,8 @@ export interface WriterGroupDataType {
 /**
  * Check if a given object implements the WriterGroupDataType interface.
  */
-export function instanceOfWriterGroupDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfWriterGroupDataType(value: object): value is WriterGroupDataType {
+    return true;
 }
 
 export function WriterGroupDataTypeFromJSON(json: any): WriterGroupDataType {
@@ -156,55 +158,57 @@ export function WriterGroupDataTypeFromJSON(json: any): WriterGroupDataType {
 }
 
 export function WriterGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): WriterGroupDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'WriterGroupId': !exists(json, 'WriterGroupId') ? undefined : json['WriterGroupId'],
-        'PublishingInterval': !exists(json, 'PublishingInterval') ? undefined : json['PublishingInterval'],
-        'KeepAliveTime': !exists(json, 'KeepAliveTime') ? undefined : json['KeepAliveTime'],
-        'Priority': !exists(json, 'Priority') ? undefined : json['Priority'],
-        'LocaleIds': !exists(json, 'LocaleIds') ? undefined : json['LocaleIds'],
-        'HeaderLayoutUri': !exists(json, 'HeaderLayoutUri') ? undefined : json['HeaderLayoutUri'],
-        'TransportSettings': !exists(json, 'TransportSettings') ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
-        'MessageSettings': !exists(json, 'MessageSettings') ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
-        'DataSetWriters': !exists(json, 'DataSetWriters') ? undefined : ((json['DataSetWriters'] as Array<any>).map(DataSetWriterDataTypeFromJSON)),
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'Enabled': !exists(json, 'Enabled') ? undefined : json['Enabled'],
-        'SecurityMode': !exists(json, 'SecurityMode') ? undefined : json['SecurityMode'],
-        'SecurityGroupId': !exists(json, 'SecurityGroupId') ? undefined : json['SecurityGroupId'],
-        'SecurityKeyServices': !exists(json, 'SecurityKeyServices') ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
-        'MaxNetworkMessageSize': !exists(json, 'MaxNetworkMessageSize') ? undefined : json['MaxNetworkMessageSize'],
-        'GroupProperties': !exists(json, 'GroupProperties') ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'WriterGroupId': json['WriterGroupId'] == null ? undefined : json['WriterGroupId'],
+        'PublishingInterval': json['PublishingInterval'] == null ? undefined : json['PublishingInterval'],
+        'KeepAliveTime': json['KeepAliveTime'] == null ? undefined : json['KeepAliveTime'],
+        'Priority': json['Priority'] == null ? undefined : json['Priority'],
+        'LocaleIds': json['LocaleIds'] == null ? undefined : json['LocaleIds'],
+        'HeaderLayoutUri': json['HeaderLayoutUri'] == null ? undefined : json['HeaderLayoutUri'],
+        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
+        'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
+        'DataSetWriters': json['DataSetWriters'] == null ? undefined : ((json['DataSetWriters'] as Array<any>).map(DataSetWriterDataTypeFromJSON)),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
+        'SecurityMode': json['SecurityMode'] == null ? undefined : json['SecurityMode'],
+        'SecurityGroupId': json['SecurityGroupId'] == null ? undefined : json['SecurityGroupId'],
+        'SecurityKeyServices': json['SecurityKeyServices'] == null ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
+        'MaxNetworkMessageSize': json['MaxNetworkMessageSize'] == null ? undefined : json['MaxNetworkMessageSize'],
+        'GroupProperties': json['GroupProperties'] == null ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
     };
 }
 
-export function WriterGroupDataTypeToJSON(value?: WriterGroupDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function WriterGroupDataTypeToJSON(json: any): WriterGroupDataType {
+      return WriterGroupDataTypeToJSONTyped(json, false);
+  }
+
+  export function WriterGroupDataTypeToJSONTyped(value?: WriterGroupDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'WriterGroupId': value.WriterGroupId,
-        'PublishingInterval': value.PublishingInterval,
-        'KeepAliveTime': value.KeepAliveTime,
-        'Priority': value.Priority,
-        'LocaleIds': value.LocaleIds,
-        'HeaderLayoutUri': value.HeaderLayoutUri,
-        'TransportSettings': ExtensionObjectToJSON(value.TransportSettings),
-        'MessageSettings': ExtensionObjectToJSON(value.MessageSettings),
-        'DataSetWriters': value.DataSetWriters === undefined ? undefined : ((value.DataSetWriters as Array<any>).map(DataSetWriterDataTypeToJSON)),
-        'Name': value.Name,
-        'Enabled': value.Enabled,
-        'SecurityMode': value.SecurityMode,
-        'SecurityGroupId': value.SecurityGroupId,
-        'SecurityKeyServices': value.SecurityKeyServices === undefined ? undefined : ((value.SecurityKeyServices as Array<any>).map(EndpointDescriptionToJSON)),
-        'MaxNetworkMessageSize': value.MaxNetworkMessageSize,
-        'GroupProperties': value.GroupProperties === undefined ? undefined : ((value.GroupProperties as Array<any>).map(KeyValuePairToJSON)),
+        'WriterGroupId': value['WriterGroupId'],
+        'PublishingInterval': value['PublishingInterval'],
+        'KeepAliveTime': value['KeepAliveTime'],
+        'Priority': value['Priority'],
+        'LocaleIds': value['LocaleIds'],
+        'HeaderLayoutUri': value['HeaderLayoutUri'],
+        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
+        'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
+        'DataSetWriters': value['DataSetWriters'] == null ? undefined : ((value['DataSetWriters'] as Array<any>).map(DataSetWriterDataTypeToJSON)),
+        'Name': value['Name'],
+        'Enabled': value['Enabled'],
+        'SecurityMode': value['SecurityMode'],
+        'SecurityGroupId': value['SecurityGroupId'],
+        'SecurityKeyServices': value['SecurityKeyServices'] == null ? undefined : ((value['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionToJSON)),
+        'MaxNetworkMessageSize': value['MaxNetworkMessageSize'],
+        'GroupProperties': value['GroupProperties'] == null ? undefined : ((value['GroupProperties'] as Array<any>).map(KeyValuePairToJSON)),
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface ReadAtTimeDetails {
 /**
  * Check if a given object implements the ReadAtTimeDetails interface.
  */
-export function instanceOfReadAtTimeDetails(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReadAtTimeDetails(value: object): value is ReadAtTimeDetails {
+    return true;
 }
 
 export function ReadAtTimeDetailsFromJSON(json: any): ReadAtTimeDetails {
@@ -47,27 +45,29 @@ export function ReadAtTimeDetailsFromJSON(json: any): ReadAtTimeDetails {
 }
 
 export function ReadAtTimeDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReadAtTimeDetails {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ReqTimes': !exists(json, 'ReqTimes') ? undefined : json['ReqTimes'],
-        'UseSimpleBounds': !exists(json, 'UseSimpleBounds') ? undefined : json['UseSimpleBounds'],
+        'ReqTimes': json['ReqTimes'] == null ? undefined : json['ReqTimes'],
+        'UseSimpleBounds': json['UseSimpleBounds'] == null ? undefined : json['UseSimpleBounds'],
     };
 }
 
-export function ReadAtTimeDetailsToJSON(value?: ReadAtTimeDetails | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReadAtTimeDetailsToJSON(json: any): ReadAtTimeDetails {
+      return ReadAtTimeDetailsToJSONTyped(json, false);
+  }
+
+  export function ReadAtTimeDetailsToJSONTyped(value?: ReadAtTimeDetails | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ReqTimes': value.ReqTimes,
-        'UseSimpleBounds': value.UseSimpleBounds,
+        'ReqTimes': value['ReqTimes'],
+        'UseSimpleBounds': value['UseSimpleBounds'],
     };
 }
 

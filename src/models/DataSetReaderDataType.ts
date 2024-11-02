@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,37 +12,42 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DataSetMetaDataType } from './DataSetMetaDataType';
-import {
-    DataSetMetaDataTypeFromJSON,
-    DataSetMetaDataTypeFromJSONTyped,
-    DataSetMetaDataTypeToJSON,
-} from './DataSetMetaDataType';
-import type { EndpointDescription } from './EndpointDescription';
-import {
-    EndpointDescriptionFromJSON,
-    EndpointDescriptionFromJSONTyped,
-    EndpointDescriptionToJSON,
-} from './EndpointDescription';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-} from './ExtensionObject';
-import type { KeyValuePair } from './KeyValuePair';
-import {
-    KeyValuePairFromJSON,
-    KeyValuePairFromJSONTyped,
-    KeyValuePairToJSON,
-} from './KeyValuePair';
+import { mapValues } from '../runtime';
 import type { Variant } from './Variant';
 import {
     VariantFromJSON,
     VariantFromJSONTyped,
     VariantToJSON,
+    VariantToJSONTyped,
 } from './Variant';
+import type { DataSetMetaDataType } from './DataSetMetaDataType';
+import {
+    DataSetMetaDataTypeFromJSON,
+    DataSetMetaDataTypeFromJSONTyped,
+    DataSetMetaDataTypeToJSON,
+    DataSetMetaDataTypeToJSONTyped,
+} from './DataSetMetaDataType';
+import type { KeyValuePair } from './KeyValuePair';
+import {
+    KeyValuePairFromJSON,
+    KeyValuePairFromJSONTyped,
+    KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
+} from './KeyValuePair';
+import type { ExtensionObject } from './ExtensionObject';
+import {
+    ExtensionObjectFromJSON,
+    ExtensionObjectFromJSONTyped,
+    ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
+} from './ExtensionObject';
+import type { EndpointDescription } from './EndpointDescription';
+import {
+    EndpointDescriptionFromJSON,
+    EndpointDescriptionFromJSONTyped,
+    EndpointDescriptionToJSON,
+    EndpointDescriptionToJSONTyped,
+} from './EndpointDescription';
 
 /**
  * 
@@ -157,10 +162,8 @@ export interface DataSetReaderDataType {
 /**
  * Check if a given object implements the DataSetReaderDataType interface.
  */
-export function instanceOfDataSetReaderDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDataSetReaderDataType(value: object): value is DataSetReaderDataType {
+    return true;
 }
 
 export function DataSetReaderDataTypeFromJSON(json: any): DataSetReaderDataType {
@@ -168,57 +171,59 @@ export function DataSetReaderDataTypeFromJSON(json: any): DataSetReaderDataType 
 }
 
 export function DataSetReaderDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): DataSetReaderDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'Enabled': !exists(json, 'Enabled') ? undefined : json['Enabled'],
-        'PublisherId': !exists(json, 'PublisherId') ? undefined : VariantFromJSON(json['PublisherId']),
-        'WriterGroupId': !exists(json, 'WriterGroupId') ? undefined : json['WriterGroupId'],
-        'DataSetWriterId': !exists(json, 'DataSetWriterId') ? undefined : json['DataSetWriterId'],
-        'DataSetMetaData': !exists(json, 'DataSetMetaData') ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
-        'DataSetFieldContentMask': !exists(json, 'DataSetFieldContentMask') ? undefined : json['DataSetFieldContentMask'],
-        'MessageReceiveTimeout': !exists(json, 'MessageReceiveTimeout') ? undefined : json['MessageReceiveTimeout'],
-        'KeyFrameCount': !exists(json, 'KeyFrameCount') ? undefined : json['KeyFrameCount'],
-        'HeaderLayoutUri': !exists(json, 'HeaderLayoutUri') ? undefined : json['HeaderLayoutUri'],
-        'SecurityMode': !exists(json, 'SecurityMode') ? undefined : json['SecurityMode'],
-        'SecurityGroupId': !exists(json, 'SecurityGroupId') ? undefined : json['SecurityGroupId'],
-        'SecurityKeyServices': !exists(json, 'SecurityKeyServices') ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
-        'DataSetReaderProperties': !exists(json, 'DataSetReaderProperties') ? undefined : ((json['DataSetReaderProperties'] as Array<any>).map(KeyValuePairFromJSON)),
-        'TransportSettings': !exists(json, 'TransportSettings') ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
-        'MessageSettings': !exists(json, 'MessageSettings') ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
-        'SubscribedDataSet': !exists(json, 'SubscribedDataSet') ? undefined : ExtensionObjectFromJSON(json['SubscribedDataSet']),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
+        'PublisherId': json['PublisherId'] == null ? undefined : VariantFromJSON(json['PublisherId']),
+        'WriterGroupId': json['WriterGroupId'] == null ? undefined : json['WriterGroupId'],
+        'DataSetWriterId': json['DataSetWriterId'] == null ? undefined : json['DataSetWriterId'],
+        'DataSetMetaData': json['DataSetMetaData'] == null ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
+        'DataSetFieldContentMask': json['DataSetFieldContentMask'] == null ? undefined : json['DataSetFieldContentMask'],
+        'MessageReceiveTimeout': json['MessageReceiveTimeout'] == null ? undefined : json['MessageReceiveTimeout'],
+        'KeyFrameCount': json['KeyFrameCount'] == null ? undefined : json['KeyFrameCount'],
+        'HeaderLayoutUri': json['HeaderLayoutUri'] == null ? undefined : json['HeaderLayoutUri'],
+        'SecurityMode': json['SecurityMode'] == null ? undefined : json['SecurityMode'],
+        'SecurityGroupId': json['SecurityGroupId'] == null ? undefined : json['SecurityGroupId'],
+        'SecurityKeyServices': json['SecurityKeyServices'] == null ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
+        'DataSetReaderProperties': json['DataSetReaderProperties'] == null ? undefined : ((json['DataSetReaderProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
+        'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
+        'SubscribedDataSet': json['SubscribedDataSet'] == null ? undefined : ExtensionObjectFromJSON(json['SubscribedDataSet']),
     };
 }
 
-export function DataSetReaderDataTypeToJSON(value?: DataSetReaderDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DataSetReaderDataTypeToJSON(json: any): DataSetReaderDataType {
+      return DataSetReaderDataTypeToJSONTyped(json, false);
+  }
+
+  export function DataSetReaderDataTypeToJSONTyped(value?: DataSetReaderDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'Enabled': value.Enabled,
-        'PublisherId': VariantToJSON(value.PublisherId),
-        'WriterGroupId': value.WriterGroupId,
-        'DataSetWriterId': value.DataSetWriterId,
-        'DataSetMetaData': DataSetMetaDataTypeToJSON(value.DataSetMetaData),
-        'DataSetFieldContentMask': value.DataSetFieldContentMask,
-        'MessageReceiveTimeout': value.MessageReceiveTimeout,
-        'KeyFrameCount': value.KeyFrameCount,
-        'HeaderLayoutUri': value.HeaderLayoutUri,
-        'SecurityMode': value.SecurityMode,
-        'SecurityGroupId': value.SecurityGroupId,
-        'SecurityKeyServices': value.SecurityKeyServices === undefined ? undefined : ((value.SecurityKeyServices as Array<any>).map(EndpointDescriptionToJSON)),
-        'DataSetReaderProperties': value.DataSetReaderProperties === undefined ? undefined : ((value.DataSetReaderProperties as Array<any>).map(KeyValuePairToJSON)),
-        'TransportSettings': ExtensionObjectToJSON(value.TransportSettings),
-        'MessageSettings': ExtensionObjectToJSON(value.MessageSettings),
-        'SubscribedDataSet': ExtensionObjectToJSON(value.SubscribedDataSet),
+        'Name': value['Name'],
+        'Enabled': value['Enabled'],
+        'PublisherId': VariantToJSON(value['PublisherId']),
+        'WriterGroupId': value['WriterGroupId'],
+        'DataSetWriterId': value['DataSetWriterId'],
+        'DataSetMetaData': DataSetMetaDataTypeToJSON(value['DataSetMetaData']),
+        'DataSetFieldContentMask': value['DataSetFieldContentMask'],
+        'MessageReceiveTimeout': value['MessageReceiveTimeout'],
+        'KeyFrameCount': value['KeyFrameCount'],
+        'HeaderLayoutUri': value['HeaderLayoutUri'],
+        'SecurityMode': value['SecurityMode'],
+        'SecurityGroupId': value['SecurityGroupId'],
+        'SecurityKeyServices': value['SecurityKeyServices'] == null ? undefined : ((value['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionToJSON)),
+        'DataSetReaderProperties': value['DataSetReaderProperties'] == null ? undefined : ((value['DataSetReaderProperties'] as Array<any>).map(KeyValuePairToJSON)),
+        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
+        'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
+        'SubscribedDataSet': ExtensionObjectToJSON(value['SubscribedDataSet']),
     };
 }
 

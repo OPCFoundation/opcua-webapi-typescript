@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { ApplicationDescription } from './ApplicationDescription';
-import {
-    ApplicationDescriptionFromJSON,
-    ApplicationDescriptionFromJSONTyped,
-    ApplicationDescriptionToJSON,
-} from './ApplicationDescription';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
+import type { ApplicationDescription } from './ApplicationDescription';
+import {
+    ApplicationDescriptionFromJSON,
+    ApplicationDescriptionFromJSONTyped,
+    ApplicationDescriptionToJSON,
+    ApplicationDescriptionToJSONTyped,
+} from './ApplicationDescription';
 
 /**
  * 
@@ -91,10 +93,8 @@ export interface CreateSessionRequest {
 /**
  * Check if a given object implements the CreateSessionRequest interface.
  */
-export function instanceOfCreateSessionRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCreateSessionRequest(value: object): value is CreateSessionRequest {
+    return true;
 }
 
 export function CreateSessionRequestFromJSON(json: any): CreateSessionRequest {
@@ -102,41 +102,43 @@ export function CreateSessionRequestFromJSON(json: any): CreateSessionRequest {
 }
 
 export function CreateSessionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateSessionRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'ClientDescription': !exists(json, 'ClientDescription') ? undefined : ApplicationDescriptionFromJSON(json['ClientDescription']),
-        'ServerUri': !exists(json, 'ServerUri') ? undefined : json['ServerUri'],
-        'EndpointUrl': !exists(json, 'EndpointUrl') ? undefined : json['EndpointUrl'],
-        'SessionName': !exists(json, 'SessionName') ? undefined : json['SessionName'],
-        'ClientNonce': !exists(json, 'ClientNonce') ? undefined : json['ClientNonce'],
-        'ClientCertificate': !exists(json, 'ClientCertificate') ? undefined : json['ClientCertificate'],
-        'RequestedSessionTimeout': !exists(json, 'RequestedSessionTimeout') ? undefined : json['RequestedSessionTimeout'],
-        'MaxResponseMessageSize': !exists(json, 'MaxResponseMessageSize') ? undefined : json['MaxResponseMessageSize'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'ClientDescription': json['ClientDescription'] == null ? undefined : ApplicationDescriptionFromJSON(json['ClientDescription']),
+        'ServerUri': json['ServerUri'] == null ? undefined : json['ServerUri'],
+        'EndpointUrl': json['EndpointUrl'] == null ? undefined : json['EndpointUrl'],
+        'SessionName': json['SessionName'] == null ? undefined : json['SessionName'],
+        'ClientNonce': json['ClientNonce'] == null ? undefined : json['ClientNonce'],
+        'ClientCertificate': json['ClientCertificate'] == null ? undefined : json['ClientCertificate'],
+        'RequestedSessionTimeout': json['RequestedSessionTimeout'] == null ? undefined : json['RequestedSessionTimeout'],
+        'MaxResponseMessageSize': json['MaxResponseMessageSize'] == null ? undefined : json['MaxResponseMessageSize'],
     };
 }
 
-export function CreateSessionRequestToJSON(value?: CreateSessionRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CreateSessionRequestToJSON(json: any): CreateSessionRequest {
+      return CreateSessionRequestToJSONTyped(json, false);
+  }
+
+  export function CreateSessionRequestToJSONTyped(value?: CreateSessionRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'ClientDescription': ApplicationDescriptionToJSON(value.ClientDescription),
-        'ServerUri': value.ServerUri,
-        'EndpointUrl': value.EndpointUrl,
-        'SessionName': value.SessionName,
-        'ClientNonce': value.ClientNonce,
-        'ClientCertificate': value.ClientCertificate,
-        'RequestedSessionTimeout': value.RequestedSessionTimeout,
-        'MaxResponseMessageSize': value.MaxResponseMessageSize,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'ClientDescription': ApplicationDescriptionToJSON(value['ClientDescription']),
+        'ServerUri': value['ServerUri'],
+        'EndpointUrl': value['EndpointUrl'],
+        'SessionName': value['SessionName'],
+        'ClientNonce': value['ClientNonce'],
+        'ClientCertificate': value['ClientCertificate'],
+        'RequestedSessionTimeout': value['RequestedSessionTimeout'],
+        'MaxResponseMessageSize': value['MaxResponseMessageSize'],
     };
 }
 

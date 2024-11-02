@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -36,10 +36,8 @@ export interface BrokerConnectionTransportDataType {
 /**
  * Check if a given object implements the BrokerConnectionTransportDataType interface.
  */
-export function instanceOfBrokerConnectionTransportDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrokerConnectionTransportDataType(value: object): value is BrokerConnectionTransportDataType {
+    return true;
 }
 
 export function BrokerConnectionTransportDataTypeFromJSON(json: any): BrokerConnectionTransportDataType {
@@ -47,27 +45,29 @@ export function BrokerConnectionTransportDataTypeFromJSON(json: any): BrokerConn
 }
 
 export function BrokerConnectionTransportDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrokerConnectionTransportDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResourceUri': !exists(json, 'ResourceUri') ? undefined : json['ResourceUri'],
-        'AuthenticationProfileUri': !exists(json, 'AuthenticationProfileUri') ? undefined : json['AuthenticationProfileUri'],
+        'ResourceUri': json['ResourceUri'] == null ? undefined : json['ResourceUri'],
+        'AuthenticationProfileUri': json['AuthenticationProfileUri'] == null ? undefined : json['AuthenticationProfileUri'],
     };
 }
 
-export function BrokerConnectionTransportDataTypeToJSON(value?: BrokerConnectionTransportDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrokerConnectionTransportDataTypeToJSON(json: any): BrokerConnectionTransportDataType {
+      return BrokerConnectionTransportDataTypeToJSONTyped(json, false);
+  }
+
+  export function BrokerConnectionTransportDataTypeToJSONTyped(value?: BrokerConnectionTransportDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResourceUri': value.ResourceUri,
-        'AuthenticationProfileUri': value.AuthenticationProfileUri,
+        'ResourceUri': value['ResourceUri'],
+        'AuthenticationProfileUri': value['AuthenticationProfileUri'],
     };
 }
 

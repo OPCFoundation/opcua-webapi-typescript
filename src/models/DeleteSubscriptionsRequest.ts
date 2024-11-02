@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -43,10 +44,8 @@ export interface DeleteSubscriptionsRequest {
 /**
  * Check if a given object implements the DeleteSubscriptionsRequest interface.
  */
-export function instanceOfDeleteSubscriptionsRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDeleteSubscriptionsRequest(value: object): value is DeleteSubscriptionsRequest {
+    return true;
 }
 
 export function DeleteSubscriptionsRequestFromJSON(json: any): DeleteSubscriptionsRequest {
@@ -54,27 +53,29 @@ export function DeleteSubscriptionsRequestFromJSON(json: any): DeleteSubscriptio
 }
 
 export function DeleteSubscriptionsRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteSubscriptionsRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'SubscriptionIds': !exists(json, 'SubscriptionIds') ? undefined : json['SubscriptionIds'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'SubscriptionIds': json['SubscriptionIds'] == null ? undefined : json['SubscriptionIds'],
     };
 }
 
-export function DeleteSubscriptionsRequestToJSON(value?: DeleteSubscriptionsRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DeleteSubscriptionsRequestToJSON(json: any): DeleteSubscriptionsRequest {
+      return DeleteSubscriptionsRequestToJSONTyped(json, false);
+  }
+
+  export function DeleteSubscriptionsRequestToJSONTyped(value?: DeleteSubscriptionsRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'SubscriptionIds': value.SubscriptionIds,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'SubscriptionIds': value['SubscriptionIds'],
     };
 }
 

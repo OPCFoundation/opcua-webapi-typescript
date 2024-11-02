@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -42,10 +42,8 @@ export interface ModificationInfo {
 /**
  * Check if a given object implements the ModificationInfo interface.
  */
-export function instanceOfModificationInfo(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfModificationInfo(value: object): value is ModificationInfo {
+    return true;
 }
 
 export function ModificationInfoFromJSON(json: any): ModificationInfo {
@@ -53,29 +51,31 @@ export function ModificationInfoFromJSON(json: any): ModificationInfo {
 }
 
 export function ModificationInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModificationInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ModificationTime': !exists(json, 'ModificationTime') ? undefined : (new Date(json['ModificationTime'])),
-        'UpdateType': !exists(json, 'UpdateType') ? undefined : json['UpdateType'],
-        'UserName': !exists(json, 'UserName') ? undefined : json['UserName'],
+        'ModificationTime': json['ModificationTime'] == null ? undefined : (new Date(json['ModificationTime'])),
+        'UpdateType': json['UpdateType'] == null ? undefined : json['UpdateType'],
+        'UserName': json['UserName'] == null ? undefined : json['UserName'],
     };
 }
 
-export function ModificationInfoToJSON(value?: ModificationInfo | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ModificationInfoToJSON(json: any): ModificationInfo {
+      return ModificationInfoToJSONTyped(json, false);
+  }
+
+  export function ModificationInfoToJSONTyped(value?: ModificationInfo | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ModificationTime': value.ModificationTime === undefined ? undefined : (value.ModificationTime.toISOString()),
-        'UpdateType': value.UpdateType,
-        'UserName': value.UserName,
+        'ModificationTime': value['ModificationTime'] == null ? undefined : ((value['ModificationTime']).toISOString()),
+        'UpdateType': value['UpdateType'],
+        'UserName': value['UserName'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,18 +12,20 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { MonitoredItemModifyRequest } from './MonitoredItemModifyRequest';
 import {
     MonitoredItemModifyRequestFromJSON,
     MonitoredItemModifyRequestFromJSONTyped,
     MonitoredItemModifyRequestToJSON,
+    MonitoredItemModifyRequestToJSONTyped,
 } from './MonitoredItemModifyRequest';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -61,10 +63,8 @@ export interface ModifyMonitoredItemsRequest {
 /**
  * Check if a given object implements the ModifyMonitoredItemsRequest interface.
  */
-export function instanceOfModifyMonitoredItemsRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfModifyMonitoredItemsRequest(value: object): value is ModifyMonitoredItemsRequest {
+    return true;
 }
 
 export function ModifyMonitoredItemsRequestFromJSON(json: any): ModifyMonitoredItemsRequest {
@@ -72,31 +72,33 @@ export function ModifyMonitoredItemsRequestFromJSON(json: any): ModifyMonitoredI
 }
 
 export function ModifyMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModifyMonitoredItemsRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'SubscriptionId': !exists(json, 'SubscriptionId') ? undefined : json['SubscriptionId'],
-        'TimestampsToReturn': !exists(json, 'TimestampsToReturn') ? undefined : json['TimestampsToReturn'],
-        'ItemsToModify': !exists(json, 'ItemsToModify') ? undefined : ((json['ItemsToModify'] as Array<any>).map(MonitoredItemModifyRequestFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
+        'TimestampsToReturn': json['TimestampsToReturn'] == null ? undefined : json['TimestampsToReturn'],
+        'ItemsToModify': json['ItemsToModify'] == null ? undefined : ((json['ItemsToModify'] as Array<any>).map(MonitoredItemModifyRequestFromJSON)),
     };
 }
 
-export function ModifyMonitoredItemsRequestToJSON(value?: ModifyMonitoredItemsRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ModifyMonitoredItemsRequestToJSON(json: any): ModifyMonitoredItemsRequest {
+      return ModifyMonitoredItemsRequestToJSONTyped(json, false);
+  }
+
+  export function ModifyMonitoredItemsRequestToJSONTyped(value?: ModifyMonitoredItemsRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'SubscriptionId': value.SubscriptionId,
-        'TimestampsToReturn': value.TimestampsToReturn,
-        'ItemsToModify': value.ItemsToModify === undefined ? undefined : ((value.ItemsToModify as Array<any>).map(MonitoredItemModifyRequestToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'SubscriptionId': value['SubscriptionId'],
+        'TimestampsToReturn': value['TimestampsToReturn'],
+        'ItemsToModify': value['ItemsToModify'] == null ? undefined : ((value['ItemsToModify'] as Array<any>).map(MonitoredItemModifyRequestToJSON)),
     };
 }
 

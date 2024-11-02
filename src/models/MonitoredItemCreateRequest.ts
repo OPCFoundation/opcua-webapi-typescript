@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { MonitoringParameters } from './MonitoringParameters';
-import {
-    MonitoringParametersFromJSON,
-    MonitoringParametersFromJSONTyped,
-    MonitoringParametersToJSON,
-} from './MonitoringParameters';
+import { mapValues } from '../runtime';
 import type { ReadValueId } from './ReadValueId';
 import {
     ReadValueIdFromJSON,
     ReadValueIdFromJSONTyped,
     ReadValueIdToJSON,
+    ReadValueIdToJSONTyped,
 } from './ReadValueId';
+import type { MonitoringParameters } from './MonitoringParameters';
+import {
+    MonitoringParametersFromJSON,
+    MonitoringParametersFromJSONTyped,
+    MonitoringParametersToJSON,
+    MonitoringParametersToJSONTyped,
+} from './MonitoringParameters';
 
 /**
  * 
@@ -55,10 +57,8 @@ export interface MonitoredItemCreateRequest {
 /**
  * Check if a given object implements the MonitoredItemCreateRequest interface.
  */
-export function instanceOfMonitoredItemCreateRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfMonitoredItemCreateRequest(value: object): value is MonitoredItemCreateRequest {
+    return true;
 }
 
 export function MonitoredItemCreateRequestFromJSON(json: any): MonitoredItemCreateRequest {
@@ -66,29 +66,31 @@ export function MonitoredItemCreateRequestFromJSON(json: any): MonitoredItemCrea
 }
 
 export function MonitoredItemCreateRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): MonitoredItemCreateRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ItemToMonitor': !exists(json, 'ItemToMonitor') ? undefined : ReadValueIdFromJSON(json['ItemToMonitor']),
-        'MonitoringMode': !exists(json, 'MonitoringMode') ? undefined : json['MonitoringMode'],
-        'RequestedParameters': !exists(json, 'RequestedParameters') ? undefined : MonitoringParametersFromJSON(json['RequestedParameters']),
+        'ItemToMonitor': json['ItemToMonitor'] == null ? undefined : ReadValueIdFromJSON(json['ItemToMonitor']),
+        'MonitoringMode': json['MonitoringMode'] == null ? undefined : json['MonitoringMode'],
+        'RequestedParameters': json['RequestedParameters'] == null ? undefined : MonitoringParametersFromJSON(json['RequestedParameters']),
     };
 }
 
-export function MonitoredItemCreateRequestToJSON(value?: MonitoredItemCreateRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function MonitoredItemCreateRequestToJSON(json: any): MonitoredItemCreateRequest {
+      return MonitoredItemCreateRequestToJSONTyped(json, false);
+  }
+
+  export function MonitoredItemCreateRequestToJSONTyped(value?: MonitoredItemCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ItemToMonitor': ReadValueIdToJSON(value.ItemToMonitor),
-        'MonitoringMode': value.MonitoringMode,
-        'RequestedParameters': MonitoringParametersToJSON(value.RequestedParameters),
+        'ItemToMonitor': ReadValueIdToJSON(value['ItemToMonitor']),
+        'MonitoringMode': value['MonitoringMode'],
+        'RequestedParameters': MonitoringParametersToJSON(value['RequestedParameters']),
     };
 }
 

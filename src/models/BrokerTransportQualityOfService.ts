@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -27,6 +27,17 @@ export const BrokerTransportQualityOfService = {
 export type BrokerTransportQualityOfService = typeof BrokerTransportQualityOfService[keyof typeof BrokerTransportQualityOfService];
 
 
+export function instanceOfBrokerTransportQualityOfService(value: any): boolean {
+    for (const key in BrokerTransportQualityOfService) {
+        if (Object.prototype.hasOwnProperty.call(BrokerTransportQualityOfService, key)) {
+            if (BrokerTransportQualityOfService[key as keyof typeof BrokerTransportQualityOfService] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function BrokerTransportQualityOfServiceFromJSON(json: any): BrokerTransportQualityOfService {
     return BrokerTransportQualityOfServiceFromJSONTyped(json, false);
 }
@@ -37,5 +48,9 @@ export function BrokerTransportQualityOfServiceFromJSONTyped(json: any, ignoreDi
 
 export function BrokerTransportQualityOfServiceToJSON(value?: BrokerTransportQualityOfService | null): any {
     return value as any;
+}
+
+export function BrokerTransportQualityOfServiceToJSONTyped(value: any, ignoreDiscriminator: boolean): BrokerTransportQualityOfService {
+    return value as BrokerTransportQualityOfService;
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,18 +12,20 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
 import type { UserTokenPolicy } from './UserTokenPolicy';
 import {
     UserTokenPolicyFromJSON,
     UserTokenPolicyFromJSONTyped,
     UserTokenPolicyToJSON,
+    UserTokenPolicyToJSONTyped,
 } from './UserTokenPolicy';
 
 /**
@@ -91,10 +93,8 @@ export interface PubSubKeyPushTargetDataType {
 /**
  * Check if a given object implements the PubSubKeyPushTargetDataType interface.
  */
-export function instanceOfPubSubKeyPushTargetDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfPubSubKeyPushTargetDataType(value: object): value is PubSubKeyPushTargetDataType {
+    return true;
 }
 
 export function PubSubKeyPushTargetDataTypeFromJSON(json: any): PubSubKeyPushTargetDataType {
@@ -102,41 +102,43 @@ export function PubSubKeyPushTargetDataTypeFromJSON(json: any): PubSubKeyPushTar
 }
 
 export function PubSubKeyPushTargetDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): PubSubKeyPushTargetDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ApplicationUri': !exists(json, 'ApplicationUri') ? undefined : json['ApplicationUri'],
-        'PushTargetFolder': !exists(json, 'PushTargetFolder') ? undefined : json['PushTargetFolder'],
-        'EndpointUrl': !exists(json, 'EndpointUrl') ? undefined : json['EndpointUrl'],
-        'SecurityPolicyUri': !exists(json, 'SecurityPolicyUri') ? undefined : json['SecurityPolicyUri'],
-        'UserTokenType': !exists(json, 'UserTokenType') ? undefined : UserTokenPolicyFromJSON(json['UserTokenType']),
-        'RequestedKeyCount': !exists(json, 'RequestedKeyCount') ? undefined : json['RequestedKeyCount'],
-        'RetryInterval': !exists(json, 'RetryInterval') ? undefined : json['RetryInterval'],
-        'PushTargetProperties': !exists(json, 'PushTargetProperties') ? undefined : ((json['PushTargetProperties'] as Array<any>).map(KeyValuePairFromJSON)),
-        'SecurityGroups': !exists(json, 'SecurityGroups') ? undefined : json['SecurityGroups'],
+        'ApplicationUri': json['ApplicationUri'] == null ? undefined : json['ApplicationUri'],
+        'PushTargetFolder': json['PushTargetFolder'] == null ? undefined : json['PushTargetFolder'],
+        'EndpointUrl': json['EndpointUrl'] == null ? undefined : json['EndpointUrl'],
+        'SecurityPolicyUri': json['SecurityPolicyUri'] == null ? undefined : json['SecurityPolicyUri'],
+        'UserTokenType': json['UserTokenType'] == null ? undefined : UserTokenPolicyFromJSON(json['UserTokenType']),
+        'RequestedKeyCount': json['RequestedKeyCount'] == null ? undefined : json['RequestedKeyCount'],
+        'RetryInterval': json['RetryInterval'] == null ? undefined : json['RetryInterval'],
+        'PushTargetProperties': json['PushTargetProperties'] == null ? undefined : ((json['PushTargetProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'SecurityGroups': json['SecurityGroups'] == null ? undefined : json['SecurityGroups'],
     };
 }
 
-export function PubSubKeyPushTargetDataTypeToJSON(value?: PubSubKeyPushTargetDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function PubSubKeyPushTargetDataTypeToJSON(json: any): PubSubKeyPushTargetDataType {
+      return PubSubKeyPushTargetDataTypeToJSONTyped(json, false);
+  }
+
+  export function PubSubKeyPushTargetDataTypeToJSONTyped(value?: PubSubKeyPushTargetDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ApplicationUri': value.ApplicationUri,
-        'PushTargetFolder': value.PushTargetFolder,
-        'EndpointUrl': value.EndpointUrl,
-        'SecurityPolicyUri': value.SecurityPolicyUri,
-        'UserTokenType': UserTokenPolicyToJSON(value.UserTokenType),
-        'RequestedKeyCount': value.RequestedKeyCount,
-        'RetryInterval': value.RetryInterval,
-        'PushTargetProperties': value.PushTargetProperties === undefined ? undefined : ((value.PushTargetProperties as Array<any>).map(KeyValuePairToJSON)),
-        'SecurityGroups': value.SecurityGroups,
+        'ApplicationUri': value['ApplicationUri'],
+        'PushTargetFolder': value['PushTargetFolder'],
+        'EndpointUrl': value['EndpointUrl'],
+        'SecurityPolicyUri': value['SecurityPolicyUri'],
+        'UserTokenType': UserTokenPolicyToJSON(value['UserTokenType']),
+        'RequestedKeyCount': value['RequestedKeyCount'],
+        'RetryInterval': value['RetryInterval'],
+        'PushTargetProperties': value['PushTargetProperties'] == null ? undefined : ((value['PushTargetProperties'] as Array<any>).map(KeyValuePairToJSON)),
+        'SecurityGroups': value['SecurityGroups'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { CallMethodRequest } from './CallMethodRequest';
-import {
-    CallMethodRequestFromJSON,
-    CallMethodRequestFromJSONTyped,
-    CallMethodRequestToJSON,
-} from './CallMethodRequest';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
+import type { CallMethodRequest } from './CallMethodRequest';
+import {
+    CallMethodRequestFromJSON,
+    CallMethodRequestFromJSONTyped,
+    CallMethodRequestToJSON,
+    CallMethodRequestToJSONTyped,
+} from './CallMethodRequest';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface CallRequest {
 /**
  * Check if a given object implements the CallRequest interface.
  */
-export function instanceOfCallRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCallRequest(value: object): value is CallRequest {
+    return true;
 }
 
 export function CallRequestFromJSON(json: any): CallRequest {
@@ -60,27 +60,29 @@ export function CallRequestFromJSON(json: any): CallRequest {
 }
 
 export function CallRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CallRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'MethodsToCall': !exists(json, 'MethodsToCall') ? undefined : ((json['MethodsToCall'] as Array<any>).map(CallMethodRequestFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'MethodsToCall': json['MethodsToCall'] == null ? undefined : ((json['MethodsToCall'] as Array<any>).map(CallMethodRequestFromJSON)),
     };
 }
 
-export function CallRequestToJSON(value?: CallRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CallRequestToJSON(json: any): CallRequest {
+      return CallRequestToJSONTyped(json, false);
+  }
+
+  export function CallRequestToJSONTyped(value?: CallRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'MethodsToCall': value.MethodsToCall === undefined ? undefined : ((value.MethodsToCall as Array<any>).map(CallMethodRequestToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'MethodsToCall': value['MethodsToCall'] == null ? undefined : ((value['MethodsToCall'] as Array<any>).map(CallMethodRequestToJSON)),
     };
 }
 

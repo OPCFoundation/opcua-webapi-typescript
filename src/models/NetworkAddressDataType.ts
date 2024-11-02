@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -30,10 +30,8 @@ export interface NetworkAddressDataType {
 /**
  * Check if a given object implements the NetworkAddressDataType interface.
  */
-export function instanceOfNetworkAddressDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfNetworkAddressDataType(value: object): value is NetworkAddressDataType {
+    return true;
 }
 
 export function NetworkAddressDataTypeFromJSON(json: any): NetworkAddressDataType {
@@ -41,25 +39,27 @@ export function NetworkAddressDataTypeFromJSON(json: any): NetworkAddressDataTyp
 }
 
 export function NetworkAddressDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): NetworkAddressDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NetworkInterface': !exists(json, 'NetworkInterface') ? undefined : json['NetworkInterface'],
+        'NetworkInterface': json['NetworkInterface'] == null ? undefined : json['NetworkInterface'],
     };
 }
 
-export function NetworkAddressDataTypeToJSON(value?: NetworkAddressDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function NetworkAddressDataTypeToJSON(json: any): NetworkAddressDataType {
+      return NetworkAddressDataTypeToJSONTyped(json, false);
+  }
+
+  export function NetworkAddressDataTypeToJSONTyped(value?: NetworkAddressDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NetworkInterface': value.NetworkInterface,
+        'NetworkInterface': value['NetworkInterface'],
     };
 }
 

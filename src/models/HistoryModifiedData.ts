@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DataValue } from './DataValue';
-import {
-    DataValueFromJSON,
-    DataValueFromJSONTyped,
-    DataValueToJSON,
-} from './DataValue';
+import { mapValues } from '../runtime';
 import type { ModificationInfo } from './ModificationInfo';
 import {
     ModificationInfoFromJSON,
     ModificationInfoFromJSONTyped,
     ModificationInfoToJSON,
+    ModificationInfoToJSONTyped,
 } from './ModificationInfo';
+import type { DataValue } from './DataValue';
+import {
+    DataValueFromJSON,
+    DataValueFromJSONTyped,
+    DataValueToJSON,
+    DataValueToJSONTyped,
+} from './DataValue';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface HistoryModifiedData {
 /**
  * Check if a given object implements the HistoryModifiedData interface.
  */
-export function instanceOfHistoryModifiedData(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfHistoryModifiedData(value: object): value is HistoryModifiedData {
+    return true;
 }
 
 export function HistoryModifiedDataFromJSON(json: any): HistoryModifiedData {
@@ -60,27 +60,29 @@ export function HistoryModifiedDataFromJSON(json: any): HistoryModifiedData {
 }
 
 export function HistoryModifiedDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): HistoryModifiedData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ModificationInfos': !exists(json, 'ModificationInfos') ? undefined : ((json['ModificationInfos'] as Array<any>).map(ModificationInfoFromJSON)),
-        'DataValues': !exists(json, 'DataValues') ? undefined : ((json['DataValues'] as Array<any>).map(DataValueFromJSON)),
+        'ModificationInfos': json['ModificationInfos'] == null ? undefined : ((json['ModificationInfos'] as Array<any>).map(ModificationInfoFromJSON)),
+        'DataValues': json['DataValues'] == null ? undefined : ((json['DataValues'] as Array<any>).map(DataValueFromJSON)),
     };
 }
 
-export function HistoryModifiedDataToJSON(value?: HistoryModifiedData | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function HistoryModifiedDataToJSON(json: any): HistoryModifiedData {
+      return HistoryModifiedDataToJSONTyped(json, false);
+  }
+
+  export function HistoryModifiedDataToJSONTyped(value?: HistoryModifiedData | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ModificationInfos': value.ModificationInfos === undefined ? undefined : ((value.ModificationInfos as Array<any>).map(ModificationInfoToJSON)),
-        'DataValues': value.DataValues === undefined ? undefined : ((value.DataValues as Array<any>).map(DataValueToJSON)),
+        'ModificationInfos': value['ModificationInfos'] == null ? undefined : ((value['ModificationInfos'] as Array<any>).map(ModificationInfoToJSON)),
+        'DataValues': value['DataValues'] == null ? undefined : ((value['DataValues'] as Array<any>).map(DataValueToJSON)),
     };
 }
 

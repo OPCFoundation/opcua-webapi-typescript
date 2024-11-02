@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { RequestHeader } from './RequestHeader';
-import {
-    RequestHeaderFromJSON,
-    RequestHeaderFromJSONTyped,
-    RequestHeaderToJSON,
-} from './RequestHeader';
+import { mapValues } from '../runtime';
 import type { SubscriptionAcknowledgement } from './SubscriptionAcknowledgement';
 import {
     SubscriptionAcknowledgementFromJSON,
     SubscriptionAcknowledgementFromJSONTyped,
     SubscriptionAcknowledgementToJSON,
+    SubscriptionAcknowledgementToJSONTyped,
 } from './SubscriptionAcknowledgement';
+import type { RequestHeader } from './RequestHeader';
+import {
+    RequestHeaderFromJSON,
+    RequestHeaderFromJSONTyped,
+    RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
+} from './RequestHeader';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface PublishRequest {
 /**
  * Check if a given object implements the PublishRequest interface.
  */
-export function instanceOfPublishRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfPublishRequest(value: object): value is PublishRequest {
+    return true;
 }
 
 export function PublishRequestFromJSON(json: any): PublishRequest {
@@ -60,27 +60,29 @@ export function PublishRequestFromJSON(json: any): PublishRequest {
 }
 
 export function PublishRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PublishRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'SubscriptionAcknowledgements': !exists(json, 'SubscriptionAcknowledgements') ? undefined : ((json['SubscriptionAcknowledgements'] as Array<any>).map(SubscriptionAcknowledgementFromJSON)),
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'SubscriptionAcknowledgements': json['SubscriptionAcknowledgements'] == null ? undefined : ((json['SubscriptionAcknowledgements'] as Array<any>).map(SubscriptionAcknowledgementFromJSON)),
     };
 }
 
-export function PublishRequestToJSON(value?: PublishRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function PublishRequestToJSON(json: any): PublishRequest {
+      return PublishRequestToJSONTyped(json, false);
+  }
+
+  export function PublishRequestToJSONTyped(value?: PublishRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'SubscriptionAcknowledgements': value.SubscriptionAcknowledgements === undefined ? undefined : ((value.SubscriptionAcknowledgements as Array<any>).map(SubscriptionAcknowledgementToJSON)),
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'SubscriptionAcknowledgements': value['SubscriptionAcknowledgements'] == null ? undefined : ((value['SubscriptionAcknowledgements'] as Array<any>).map(SubscriptionAcknowledgementToJSON)),
     };
 }
 

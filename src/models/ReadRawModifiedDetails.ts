@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -54,10 +54,8 @@ export interface ReadRawModifiedDetails {
 /**
  * Check if a given object implements the ReadRawModifiedDetails interface.
  */
-export function instanceOfReadRawModifiedDetails(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReadRawModifiedDetails(value: object): value is ReadRawModifiedDetails {
+    return true;
 }
 
 export function ReadRawModifiedDetailsFromJSON(json: any): ReadRawModifiedDetails {
@@ -65,33 +63,35 @@ export function ReadRawModifiedDetailsFromJSON(json: any): ReadRawModifiedDetail
 }
 
 export function ReadRawModifiedDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReadRawModifiedDetails {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'IsReadModified': !exists(json, 'IsReadModified') ? undefined : json['IsReadModified'],
-        'StartTime': !exists(json, 'StartTime') ? undefined : (new Date(json['StartTime'])),
-        'EndTime': !exists(json, 'EndTime') ? undefined : (new Date(json['EndTime'])),
-        'NumValuesPerNode': !exists(json, 'NumValuesPerNode') ? undefined : json['NumValuesPerNode'],
-        'ReturnBounds': !exists(json, 'ReturnBounds') ? undefined : json['ReturnBounds'],
+        'IsReadModified': json['IsReadModified'] == null ? undefined : json['IsReadModified'],
+        'StartTime': json['StartTime'] == null ? undefined : (new Date(json['StartTime'])),
+        'EndTime': json['EndTime'] == null ? undefined : (new Date(json['EndTime'])),
+        'NumValuesPerNode': json['NumValuesPerNode'] == null ? undefined : json['NumValuesPerNode'],
+        'ReturnBounds': json['ReturnBounds'] == null ? undefined : json['ReturnBounds'],
     };
 }
 
-export function ReadRawModifiedDetailsToJSON(value?: ReadRawModifiedDetails | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReadRawModifiedDetailsToJSON(json: any): ReadRawModifiedDetails {
+      return ReadRawModifiedDetailsToJSONTyped(json, false);
+  }
+
+  export function ReadRawModifiedDetailsToJSONTyped(value?: ReadRawModifiedDetails | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'IsReadModified': value.IsReadModified,
-        'StartTime': value.StartTime === undefined ? undefined : (value.StartTime.toISOString()),
-        'EndTime': value.EndTime === undefined ? undefined : (value.EndTime.toISOString()),
-        'NumValuesPerNode': value.NumValuesPerNode,
-        'ReturnBounds': value.ReturnBounds,
+        'IsReadModified': value['IsReadModified'],
+        'StartTime': value['StartTime'] == null ? undefined : ((value['StartTime']).toISOString()),
+        'EndTime': value['EndTime'] == null ? undefined : ((value['EndTime']).toISOString()),
+        'NumValuesPerNode': value['NumValuesPerNode'],
+        'ReturnBounds': value['ReturnBounds'],
     };
 }
 

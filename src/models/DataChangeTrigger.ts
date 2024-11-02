@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -25,6 +25,17 @@ export const DataChangeTrigger = {
 export type DataChangeTrigger = typeof DataChangeTrigger[keyof typeof DataChangeTrigger];
 
 
+export function instanceOfDataChangeTrigger(value: any): boolean {
+    for (const key in DataChangeTrigger) {
+        if (Object.prototype.hasOwnProperty.call(DataChangeTrigger, key)) {
+            if (DataChangeTrigger[key as keyof typeof DataChangeTrigger] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function DataChangeTriggerFromJSON(json: any): DataChangeTrigger {
     return DataChangeTriggerFromJSONTyped(json, false);
 }
@@ -35,5 +46,9 @@ export function DataChangeTriggerFromJSONTyped(json: any, ignoreDiscriminator: b
 
 export function DataChangeTriggerToJSON(value?: DataChangeTrigger | null): any {
     return value as any;
+}
+
+export function DataChangeTriggerToJSONTyped(value: any, ignoreDiscriminator: boolean): DataChangeTrigger {
+    return value as DataChangeTrigger;
 }
 

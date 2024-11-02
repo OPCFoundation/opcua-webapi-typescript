@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,24 +12,27 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DiagnosticInfo } from './DiagnosticInfo';
-import {
-    DiagnosticInfoFromJSON,
-    DiagnosticInfoFromJSONTyped,
-    DiagnosticInfoToJSON,
-} from './DiagnosticInfo';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
+import type { DiagnosticInfo } from './DiagnosticInfo';
+import {
+    DiagnosticInfoFromJSON,
+    DiagnosticInfoFromJSONTyped,
+    DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
+} from './DiagnosticInfo';
 import type { TransferResult } from './TransferResult';
 import {
     TransferResultFromJSON,
     TransferResultFromJSONTyped,
     TransferResultToJSON,
+    TransferResultToJSONTyped,
 } from './TransferResult';
 
 /**
@@ -61,10 +64,8 @@ export interface TransferSubscriptionsResponse {
 /**
  * Check if a given object implements the TransferSubscriptionsResponse interface.
  */
-export function instanceOfTransferSubscriptionsResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfTransferSubscriptionsResponse(value: object): value is TransferSubscriptionsResponse {
+    return true;
 }
 
 export function TransferSubscriptionsResponseFromJSON(json: any): TransferSubscriptionsResponse {
@@ -72,29 +73,31 @@ export function TransferSubscriptionsResponseFromJSON(json: any): TransferSubscr
 }
 
 export function TransferSubscriptionsResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): TransferSubscriptionsResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'Results': !exists(json, 'Results') ? undefined : ((json['Results'] as Array<any>).map(TransferResultFromJSON)),
-        'DiagnosticInfos': !exists(json, 'DiagnosticInfos') ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(TransferResultFromJSON)),
+        'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function TransferSubscriptionsResponseToJSON(value?: TransferSubscriptionsResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function TransferSubscriptionsResponseToJSON(json: any): TransferSubscriptionsResponse {
+      return TransferSubscriptionsResponseToJSONTyped(json, false);
+  }
+
+  export function TransferSubscriptionsResponseToJSONTyped(value?: TransferSubscriptionsResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'Results': value.Results === undefined ? undefined : ((value.Results as Array<any>).map(TransferResultToJSON)),
-        'DiagnosticInfos': value.DiagnosticInfos === undefined ? undefined : ((value.DiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(TransferResultToJSON)),
+        'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

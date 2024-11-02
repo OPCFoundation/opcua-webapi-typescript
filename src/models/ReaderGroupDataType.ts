@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,31 +12,35 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DataSetReaderDataType } from './DataSetReaderDataType';
 import {
     DataSetReaderDataTypeFromJSON,
     DataSetReaderDataTypeFromJSONTyped,
     DataSetReaderDataTypeToJSON,
+    DataSetReaderDataTypeToJSONTyped,
 } from './DataSetReaderDataType';
-import type { EndpointDescription } from './EndpointDescription';
-import {
-    EndpointDescriptionFromJSON,
-    EndpointDescriptionFromJSONTyped,
-    EndpointDescriptionToJSON,
-} from './EndpointDescription';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-} from './ExtensionObject';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
+import type { ExtensionObject } from './ExtensionObject';
+import {
+    ExtensionObjectFromJSON,
+    ExtensionObjectFromJSONTyped,
+    ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
+} from './ExtensionObject';
+import type { EndpointDescription } from './EndpointDescription';
+import {
+    EndpointDescriptionFromJSON,
+    EndpointDescriptionFromJSONTyped,
+    EndpointDescriptionToJSON,
+    EndpointDescriptionToJSONTyped,
+} from './EndpointDescription';
 
 /**
  * 
@@ -109,10 +113,8 @@ export interface ReaderGroupDataType {
 /**
  * Check if a given object implements the ReaderGroupDataType interface.
  */
-export function instanceOfReaderGroupDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReaderGroupDataType(value: object): value is ReaderGroupDataType {
+    return true;
 }
 
 export function ReaderGroupDataTypeFromJSON(json: any): ReaderGroupDataType {
@@ -120,43 +122,45 @@ export function ReaderGroupDataTypeFromJSON(json: any): ReaderGroupDataType {
 }
 
 export function ReaderGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReaderGroupDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'TransportSettings': !exists(json, 'TransportSettings') ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
-        'MessageSettings': !exists(json, 'MessageSettings') ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
-        'DataSetReaders': !exists(json, 'DataSetReaders') ? undefined : ((json['DataSetReaders'] as Array<any>).map(DataSetReaderDataTypeFromJSON)),
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'Enabled': !exists(json, 'Enabled') ? undefined : json['Enabled'],
-        'SecurityMode': !exists(json, 'SecurityMode') ? undefined : json['SecurityMode'],
-        'SecurityGroupId': !exists(json, 'SecurityGroupId') ? undefined : json['SecurityGroupId'],
-        'SecurityKeyServices': !exists(json, 'SecurityKeyServices') ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
-        'MaxNetworkMessageSize': !exists(json, 'MaxNetworkMessageSize') ? undefined : json['MaxNetworkMessageSize'],
-        'GroupProperties': !exists(json, 'GroupProperties') ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
+        'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
+        'DataSetReaders': json['DataSetReaders'] == null ? undefined : ((json['DataSetReaders'] as Array<any>).map(DataSetReaderDataTypeFromJSON)),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
+        'SecurityMode': json['SecurityMode'] == null ? undefined : json['SecurityMode'],
+        'SecurityGroupId': json['SecurityGroupId'] == null ? undefined : json['SecurityGroupId'],
+        'SecurityKeyServices': json['SecurityKeyServices'] == null ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
+        'MaxNetworkMessageSize': json['MaxNetworkMessageSize'] == null ? undefined : json['MaxNetworkMessageSize'],
+        'GroupProperties': json['GroupProperties'] == null ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
     };
 }
 
-export function ReaderGroupDataTypeToJSON(value?: ReaderGroupDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReaderGroupDataTypeToJSON(json: any): ReaderGroupDataType {
+      return ReaderGroupDataTypeToJSONTyped(json, false);
+  }
+
+  export function ReaderGroupDataTypeToJSONTyped(value?: ReaderGroupDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'TransportSettings': ExtensionObjectToJSON(value.TransportSettings),
-        'MessageSettings': ExtensionObjectToJSON(value.MessageSettings),
-        'DataSetReaders': value.DataSetReaders === undefined ? undefined : ((value.DataSetReaders as Array<any>).map(DataSetReaderDataTypeToJSON)),
-        'Name': value.Name,
-        'Enabled': value.Enabled,
-        'SecurityMode': value.SecurityMode,
-        'SecurityGroupId': value.SecurityGroupId,
-        'SecurityKeyServices': value.SecurityKeyServices === undefined ? undefined : ((value.SecurityKeyServices as Array<any>).map(EndpointDescriptionToJSON)),
-        'MaxNetworkMessageSize': value.MaxNetworkMessageSize,
-        'GroupProperties': value.GroupProperties === undefined ? undefined : ((value.GroupProperties as Array<any>).map(KeyValuePairToJSON)),
+        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
+        'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
+        'DataSetReaders': value['DataSetReaders'] == null ? undefined : ((value['DataSetReaders'] as Array<any>).map(DataSetReaderDataTypeToJSON)),
+        'Name': value['Name'],
+        'Enabled': value['Enabled'],
+        'SecurityMode': value['SecurityMode'],
+        'SecurityGroupId': value['SecurityGroupId'],
+        'SecurityKeyServices': value['SecurityKeyServices'] == null ? undefined : ((value['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionToJSON)),
+        'MaxNetworkMessageSize': value['MaxNetworkMessageSize'],
+        'GroupProperties': value['GroupProperties'] == null ? undefined : ((value['GroupProperties'] as Array<any>).map(KeyValuePairToJSON)),
     };
 }
 

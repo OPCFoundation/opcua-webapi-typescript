@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { DiagnosticInfo } from './DiagnosticInfo';
-import {
-    DiagnosticInfoFromJSON,
-    DiagnosticInfoFromJSONTyped,
-    DiagnosticInfoToJSON,
-} from './DiagnosticInfo';
+import { mapValues } from '../runtime';
 import type { MonitoredItemNotification } from './MonitoredItemNotification';
 import {
     MonitoredItemNotificationFromJSON,
     MonitoredItemNotificationFromJSONTyped,
     MonitoredItemNotificationToJSON,
+    MonitoredItemNotificationToJSONTyped,
 } from './MonitoredItemNotification';
+import type { DiagnosticInfo } from './DiagnosticInfo';
+import {
+    DiagnosticInfoFromJSON,
+    DiagnosticInfoFromJSONTyped,
+    DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
+} from './DiagnosticInfo';
 
 /**
  * 
@@ -49,10 +51,8 @@ export interface DataChangeNotification {
 /**
  * Check if a given object implements the DataChangeNotification interface.
  */
-export function instanceOfDataChangeNotification(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfDataChangeNotification(value: object): value is DataChangeNotification {
+    return true;
 }
 
 export function DataChangeNotificationFromJSON(json: any): DataChangeNotification {
@@ -60,27 +60,29 @@ export function DataChangeNotificationFromJSON(json: any): DataChangeNotificatio
 }
 
 export function DataChangeNotificationFromJSONTyped(json: any, ignoreDiscriminator: boolean): DataChangeNotification {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'MonitoredItems': !exists(json, 'MonitoredItems') ? undefined : ((json['MonitoredItems'] as Array<any>).map(MonitoredItemNotificationFromJSON)),
-        'DiagnosticInfos': !exists(json, 'DiagnosticInfos') ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'MonitoredItems': json['MonitoredItems'] == null ? undefined : ((json['MonitoredItems'] as Array<any>).map(MonitoredItemNotificationFromJSON)),
+        'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function DataChangeNotificationToJSON(value?: DataChangeNotification | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function DataChangeNotificationToJSON(json: any): DataChangeNotification {
+      return DataChangeNotificationToJSONTyped(json, false);
+  }
+
+  export function DataChangeNotificationToJSONTyped(value?: DataChangeNotification | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'MonitoredItems': value.MonitoredItems === undefined ? undefined : ((value.MonitoredItems as Array<any>).map(MonitoredItemNotificationToJSON)),
-        'DiagnosticInfos': value.DiagnosticInfos === undefined ? undefined : ((value.DiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'MonitoredItems': value['MonitoredItems'] == null ? undefined : ((value['MonitoredItems'] as Array<any>).map(MonitoredItemNotificationToJSON)),
+        'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

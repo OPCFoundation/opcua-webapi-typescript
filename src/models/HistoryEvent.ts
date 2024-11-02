@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { HistoryEventFieldList } from './HistoryEventFieldList';
 import {
     HistoryEventFieldListFromJSON,
     HistoryEventFieldListFromJSONTyped,
     HistoryEventFieldListToJSON,
+    HistoryEventFieldListToJSONTyped,
 } from './HistoryEventFieldList';
 
 /**
@@ -37,10 +38,8 @@ export interface HistoryEvent {
 /**
  * Check if a given object implements the HistoryEvent interface.
  */
-export function instanceOfHistoryEvent(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfHistoryEvent(value: object): value is HistoryEvent {
+    return true;
 }
 
 export function HistoryEventFromJSON(json: any): HistoryEvent {
@@ -48,25 +47,27 @@ export function HistoryEventFromJSON(json: any): HistoryEvent {
 }
 
 export function HistoryEventFromJSONTyped(json: any, ignoreDiscriminator: boolean): HistoryEvent {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Events': !exists(json, 'Events') ? undefined : ((json['Events'] as Array<any>).map(HistoryEventFieldListFromJSON)),
+        'Events': json['Events'] == null ? undefined : ((json['Events'] as Array<any>).map(HistoryEventFieldListFromJSON)),
     };
 }
 
-export function HistoryEventToJSON(value?: HistoryEvent | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function HistoryEventToJSON(json: any): HistoryEvent {
+      return HistoryEventToJSONTyped(json, false);
+  }
+
+  export function HistoryEventToJSONTyped(value?: HistoryEvent | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Events': value.Events === undefined ? undefined : ((value.Events as Array<any>).map(HistoryEventFieldListToJSON)),
+        'Events': value['Events'] == null ? undefined : ((value['Events'] as Array<any>).map(HistoryEventFieldListToJSON)),
     };
 }
 

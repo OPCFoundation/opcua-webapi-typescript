@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { EnumDefinition } from './EnumDefinition';
 import {
     EnumDefinitionFromJSON,
     EnumDefinitionFromJSONTyped,
     EnumDefinitionToJSON,
+    EnumDefinitionToJSONTyped,
 } from './EnumDefinition';
 
 /**
@@ -46,19 +47,17 @@ export interface EnumDescription {
     DataTypeId?: string;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof EnumDescription
      */
-    Name?: string;
+    Name?: object;
 }
 
 /**
  * Check if a given object implements the EnumDescription interface.
  */
-export function instanceOfEnumDescription(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEnumDescription(value: object): value is EnumDescription {
+    return true;
 }
 
 export function EnumDescriptionFromJSON(json: any): EnumDescription {
@@ -66,31 +65,33 @@ export function EnumDescriptionFromJSON(json: any): EnumDescription {
 }
 
 export function EnumDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): EnumDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'EnumDefinition': !exists(json, 'EnumDefinition') ? undefined : EnumDefinitionFromJSON(json['EnumDefinition']),
-        'BuiltInType': !exists(json, 'BuiltInType') ? undefined : json['BuiltInType'],
-        'DataTypeId': !exists(json, 'DataTypeId') ? undefined : json['DataTypeId'],
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
+        'EnumDefinition': json['EnumDefinition'] == null ? undefined : EnumDefinitionFromJSON(json['EnumDefinition']),
+        'BuiltInType': json['BuiltInType'] == null ? undefined : json['BuiltInType'],
+        'DataTypeId': json['DataTypeId'] == null ? undefined : json['DataTypeId'],
+        'Name': json['Name'] == null ? undefined : json['Name'],
     };
 }
 
-export function EnumDescriptionToJSON(value?: EnumDescription | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EnumDescriptionToJSON(json: any): EnumDescription {
+      return EnumDescriptionToJSONTyped(json, false);
+  }
+
+  export function EnumDescriptionToJSONTyped(value?: EnumDescription | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'EnumDefinition': EnumDefinitionToJSON(value.EnumDefinition),
-        'BuiltInType': value.BuiltInType,
-        'DataTypeId': value.DataTypeId,
-        'Name': value.Name,
+        'EnumDefinition': EnumDefinitionToJSON(value['EnumDefinition']),
+        'BuiltInType': value['BuiltInType'],
+        'DataTypeId': value['DataTypeId'],
+        'Name': value['Name'],
     };
 }
 

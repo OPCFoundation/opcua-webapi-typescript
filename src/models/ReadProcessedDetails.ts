@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { AggregateConfiguration } from './AggregateConfiguration';
 import {
     AggregateConfigurationFromJSON,
     AggregateConfigurationFromJSONTyped,
     AggregateConfigurationToJSON,
+    AggregateConfigurationToJSONTyped,
 } from './AggregateConfiguration';
 
 /**
@@ -61,10 +62,8 @@ export interface ReadProcessedDetails {
 /**
  * Check if a given object implements the ReadProcessedDetails interface.
  */
-export function instanceOfReadProcessedDetails(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReadProcessedDetails(value: object): value is ReadProcessedDetails {
+    return true;
 }
 
 export function ReadProcessedDetailsFromJSON(json: any): ReadProcessedDetails {
@@ -72,33 +71,35 @@ export function ReadProcessedDetailsFromJSON(json: any): ReadProcessedDetails {
 }
 
 export function ReadProcessedDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReadProcessedDetails {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StartTime': !exists(json, 'StartTime') ? undefined : (new Date(json['StartTime'])),
-        'EndTime': !exists(json, 'EndTime') ? undefined : (new Date(json['EndTime'])),
-        'ProcessingInterval': !exists(json, 'ProcessingInterval') ? undefined : json['ProcessingInterval'],
-        'AggregateType': !exists(json, 'AggregateType') ? undefined : json['AggregateType'],
-        'AggregateConfiguration': !exists(json, 'AggregateConfiguration') ? undefined : AggregateConfigurationFromJSON(json['AggregateConfiguration']),
+        'StartTime': json['StartTime'] == null ? undefined : (new Date(json['StartTime'])),
+        'EndTime': json['EndTime'] == null ? undefined : (new Date(json['EndTime'])),
+        'ProcessingInterval': json['ProcessingInterval'] == null ? undefined : json['ProcessingInterval'],
+        'AggregateType': json['AggregateType'] == null ? undefined : json['AggregateType'],
+        'AggregateConfiguration': json['AggregateConfiguration'] == null ? undefined : AggregateConfigurationFromJSON(json['AggregateConfiguration']),
     };
 }
 
-export function ReadProcessedDetailsToJSON(value?: ReadProcessedDetails | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReadProcessedDetailsToJSON(json: any): ReadProcessedDetails {
+      return ReadProcessedDetailsToJSONTyped(json, false);
+  }
+
+  export function ReadProcessedDetailsToJSONTyped(value?: ReadProcessedDetails | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StartTime': value.StartTime === undefined ? undefined : (value.StartTime.toISOString()),
-        'EndTime': value.EndTime === undefined ? undefined : (value.EndTime.toISOString()),
-        'ProcessingInterval': value.ProcessingInterval,
-        'AggregateType': value.AggregateType,
-        'AggregateConfiguration': AggregateConfigurationToJSON(value.AggregateConfiguration),
+        'StartTime': value['StartTime'] == null ? undefined : ((value['StartTime']).toISOString()),
+        'EndTime': value['EndTime'] == null ? undefined : ((value['EndTime']).toISOString()),
+        'ProcessingInterval': value['ProcessingInterval'],
+        'AggregateType': value['AggregateType'],
+        'AggregateConfiguration': AggregateConfigurationToJSON(value['AggregateConfiguration']),
     };
 }
 

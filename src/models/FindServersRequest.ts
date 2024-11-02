@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -55,10 +56,8 @@ export interface FindServersRequest {
 /**
  * Check if a given object implements the FindServersRequest interface.
  */
-export function instanceOfFindServersRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfFindServersRequest(value: object): value is FindServersRequest {
+    return true;
 }
 
 export function FindServersRequestFromJSON(json: any): FindServersRequest {
@@ -66,31 +65,33 @@ export function FindServersRequestFromJSON(json: any): FindServersRequest {
 }
 
 export function FindServersRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): FindServersRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'EndpointUrl': !exists(json, 'EndpointUrl') ? undefined : json['EndpointUrl'],
-        'LocaleIds': !exists(json, 'LocaleIds') ? undefined : json['LocaleIds'],
-        'ServerUris': !exists(json, 'ServerUris') ? undefined : json['ServerUris'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'EndpointUrl': json['EndpointUrl'] == null ? undefined : json['EndpointUrl'],
+        'LocaleIds': json['LocaleIds'] == null ? undefined : json['LocaleIds'],
+        'ServerUris': json['ServerUris'] == null ? undefined : json['ServerUris'],
     };
 }
 
-export function FindServersRequestToJSON(value?: FindServersRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function FindServersRequestToJSON(json: any): FindServersRequest {
+      return FindServersRequestToJSONTyped(json, false);
+  }
+
+  export function FindServersRequestToJSONTyped(value?: FindServersRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'EndpointUrl': value.EndpointUrl,
-        'LocaleIds': value.LocaleIds,
-        'ServerUris': value.ServerUris,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'EndpointUrl': value['EndpointUrl'],
+        'LocaleIds': value['LocaleIds'],
+        'ServerUris': value['ServerUris'],
     };
 }
 

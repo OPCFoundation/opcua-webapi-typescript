@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ResponseHeader } from './ResponseHeader';
 import {
     ResponseHeaderFromJSON,
     ResponseHeaderFromJSONTyped,
     ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
 } from './ResponseHeader';
 
 /**
@@ -43,10 +44,8 @@ export interface CancelResponse {
 /**
  * Check if a given object implements the CancelResponse interface.
  */
-export function instanceOfCancelResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCancelResponse(value: object): value is CancelResponse {
+    return true;
 }
 
 export function CancelResponseFromJSON(json: any): CancelResponse {
@@ -54,27 +53,29 @@ export function CancelResponseFromJSON(json: any): CancelResponse {
 }
 
 export function CancelResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CancelResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'CancelCount': !exists(json, 'CancelCount') ? undefined : json['CancelCount'],
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'CancelCount': json['CancelCount'] == null ? undefined : json['CancelCount'],
     };
 }
 
-export function CancelResponseToJSON(value?: CancelResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CancelResponseToJSON(json: any): CancelResponse {
+      return CancelResponseToJSONTyped(json, false);
+  }
+
+  export function CancelResponseToJSONTyped(value?: CancelResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'CancelCount': value.CancelCount,
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'CancelCount': value['CancelCount'],
     };
 }
 

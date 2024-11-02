@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,19 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { EventFilter } from './EventFilter';
-import {
-    EventFilterFromJSON,
-    EventFilterFromJSONTyped,
-    EventFilterToJSON,
-} from './EventFilter';
+import { mapValues } from '../runtime';
 import type { HistoryEventFieldList } from './HistoryEventFieldList';
 import {
     HistoryEventFieldListFromJSON,
     HistoryEventFieldListFromJSONTyped,
     HistoryEventFieldListToJSON,
+    HistoryEventFieldListToJSONTyped,
 } from './HistoryEventFieldList';
+import type { EventFilter } from './EventFilter';
+import {
+    EventFilterFromJSON,
+    EventFilterFromJSONTyped,
+    EventFilterToJSON,
+    EventFilterToJSONTyped,
+} from './EventFilter';
 
 /**
  * 
@@ -61,10 +63,8 @@ export interface UpdateEventDetails {
 /**
  * Check if a given object implements the UpdateEventDetails interface.
  */
-export function instanceOfUpdateEventDetails(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUpdateEventDetails(value: object): value is UpdateEventDetails {
+    return true;
 }
 
 export function UpdateEventDetailsFromJSON(json: any): UpdateEventDetails {
@@ -72,31 +72,33 @@ export function UpdateEventDetailsFromJSON(json: any): UpdateEventDetails {
 }
 
 export function UpdateEventDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): UpdateEventDetails {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NodeId': !exists(json, 'NodeId') ? undefined : json['NodeId'],
-        'PerformInsertReplace': !exists(json, 'PerformInsertReplace') ? undefined : json['PerformInsertReplace'],
-        'Filter': !exists(json, 'Filter') ? undefined : EventFilterFromJSON(json['Filter']),
-        'EventData': !exists(json, 'EventData') ? undefined : ((json['EventData'] as Array<any>).map(HistoryEventFieldListFromJSON)),
+        'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
+        'PerformInsertReplace': json['PerformInsertReplace'] == null ? undefined : json['PerformInsertReplace'],
+        'Filter': json['Filter'] == null ? undefined : EventFilterFromJSON(json['Filter']),
+        'EventData': json['EventData'] == null ? undefined : ((json['EventData'] as Array<any>).map(HistoryEventFieldListFromJSON)),
     };
 }
 
-export function UpdateEventDetailsToJSON(value?: UpdateEventDetails | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function UpdateEventDetailsToJSON(json: any): UpdateEventDetails {
+      return UpdateEventDetailsToJSONTyped(json, false);
+  }
+
+  export function UpdateEventDetailsToJSONTyped(value?: UpdateEventDetails | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NodeId': value.NodeId,
-        'PerformInsertReplace': value.PerformInsertReplace,
-        'Filter': EventFilterToJSON(value.Filter),
-        'EventData': value.EventData === undefined ? undefined : ((value.EventData as Array<any>).map(HistoryEventFieldListToJSON)),
+        'NodeId': value['NodeId'],
+        'PerformInsertReplace': value['PerformInsertReplace'],
+        'Filter': EventFilterToJSON(value['Filter']),
+        'EventData': value['EventData'] == null ? undefined : ((value['EventData'] as Array<any>).map(HistoryEventFieldListToJSON)),
     };
 }
 

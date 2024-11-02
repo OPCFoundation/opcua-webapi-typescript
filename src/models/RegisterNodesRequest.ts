@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -43,10 +44,8 @@ export interface RegisterNodesRequest {
 /**
  * Check if a given object implements the RegisterNodesRequest interface.
  */
-export function instanceOfRegisterNodesRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfRegisterNodesRequest(value: object): value is RegisterNodesRequest {
+    return true;
 }
 
 export function RegisterNodesRequestFromJSON(json: any): RegisterNodesRequest {
@@ -54,27 +53,29 @@ export function RegisterNodesRequestFromJSON(json: any): RegisterNodesRequest {
 }
 
 export function RegisterNodesRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): RegisterNodesRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'NodesToRegister': !exists(json, 'NodesToRegister') ? undefined : json['NodesToRegister'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'NodesToRegister': json['NodesToRegister'] == null ? undefined : json['NodesToRegister'],
     };
 }
 
-export function RegisterNodesRequestToJSON(value?: RegisterNodesRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function RegisterNodesRequestToJSON(json: any): RegisterNodesRequest {
+      return RegisterNodesRequestToJSONTyped(json, false);
+  }
+
+  export function RegisterNodesRequestToJSONTyped(value?: RegisterNodesRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'NodesToRegister': value.NodesToRegister,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'NodesToRegister': value['NodesToRegister'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ExtensionObject } from './ExtensionObject';
 import {
     ExtensionObjectFromJSON,
     ExtensionObjectFromJSONTyped,
     ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
 
 /**
@@ -49,10 +50,8 @@ export interface HistoryReadResult {
 /**
  * Check if a given object implements the HistoryReadResult interface.
  */
-export function instanceOfHistoryReadResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfHistoryReadResult(value: object): value is HistoryReadResult {
+    return true;
 }
 
 export function HistoryReadResultFromJSON(json: any): HistoryReadResult {
@@ -60,29 +59,31 @@ export function HistoryReadResultFromJSON(json: any): HistoryReadResult {
 }
 
 export function HistoryReadResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): HistoryReadResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StatusCode': !exists(json, 'StatusCode') ? undefined : json['StatusCode'],
-        'ContinuationPoint': !exists(json, 'ContinuationPoint') ? undefined : json['ContinuationPoint'],
-        'HistoryData': !exists(json, 'HistoryData') ? undefined : ExtensionObjectFromJSON(json['HistoryData']),
+        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'ContinuationPoint': json['ContinuationPoint'] == null ? undefined : json['ContinuationPoint'],
+        'HistoryData': json['HistoryData'] == null ? undefined : ExtensionObjectFromJSON(json['HistoryData']),
     };
 }
 
-export function HistoryReadResultToJSON(value?: HistoryReadResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function HistoryReadResultToJSON(json: any): HistoryReadResult {
+      return HistoryReadResultToJSONTyped(json, false);
+  }
+
+  export function HistoryReadResultToJSONTyped(value?: HistoryReadResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StatusCode': value.StatusCode,
-        'ContinuationPoint': value.ContinuationPoint,
-        'HistoryData': ExtensionObjectToJSON(value.HistoryData),
+        'StatusCode': value['StatusCode'],
+        'ContinuationPoint': value['ContinuationPoint'],
+        'HistoryData': ExtensionObjectToJSON(value['HistoryData']),
     };
 }
 

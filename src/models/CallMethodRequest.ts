@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Variant } from './Variant';
 import {
     VariantFromJSON,
     VariantFromJSONTyped,
     VariantToJSON,
+    VariantToJSONTyped,
 } from './Variant';
 
 /**
@@ -49,10 +50,8 @@ export interface CallMethodRequest {
 /**
  * Check if a given object implements the CallMethodRequest interface.
  */
-export function instanceOfCallMethodRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCallMethodRequest(value: object): value is CallMethodRequest {
+    return true;
 }
 
 export function CallMethodRequestFromJSON(json: any): CallMethodRequest {
@@ -60,29 +59,31 @@ export function CallMethodRequestFromJSON(json: any): CallMethodRequest {
 }
 
 export function CallMethodRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CallMethodRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ObjectId': !exists(json, 'ObjectId') ? undefined : json['ObjectId'],
-        'MethodId': !exists(json, 'MethodId') ? undefined : json['MethodId'],
-        'InputArguments': !exists(json, 'InputArguments') ? undefined : ((json['InputArguments'] as Array<any>).map(VariantFromJSON)),
+        'ObjectId': json['ObjectId'] == null ? undefined : json['ObjectId'],
+        'MethodId': json['MethodId'] == null ? undefined : json['MethodId'],
+        'InputArguments': json['InputArguments'] == null ? undefined : ((json['InputArguments'] as Array<any>).map(VariantFromJSON)),
     };
 }
 
-export function CallMethodRequestToJSON(value?: CallMethodRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CallMethodRequestToJSON(json: any): CallMethodRequest {
+      return CallMethodRequestToJSONTyped(json, false);
+  }
+
+  export function CallMethodRequestToJSONTyped(value?: CallMethodRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ObjectId': value.ObjectId,
-        'MethodId': value.MethodId,
-        'InputArguments': value.InputArguments === undefined ? undefined : ((value.InputArguments as Array<any>).map(VariantToJSON)),
+        'ObjectId': value['ObjectId'],
+        'MethodId': value['MethodId'],
+        'InputArguments': value['InputArguments'] == null ? undefined : ((value['InputArguments'] as Array<any>).map(VariantToJSON)),
     };
 }
 

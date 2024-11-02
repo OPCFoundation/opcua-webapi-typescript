@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { EventFilter } from './EventFilter';
 import {
     EventFilterFromJSON,
     EventFilterFromJSONTyped,
     EventFilterToJSON,
+    EventFilterToJSONTyped,
 } from './EventFilter';
 
 /**
@@ -55,10 +56,8 @@ export interface ReadEventDetails {
 /**
  * Check if a given object implements the ReadEventDetails interface.
  */
-export function instanceOfReadEventDetails(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfReadEventDetails(value: object): value is ReadEventDetails {
+    return true;
 }
 
 export function ReadEventDetailsFromJSON(json: any): ReadEventDetails {
@@ -66,31 +65,33 @@ export function ReadEventDetailsFromJSON(json: any): ReadEventDetails {
 }
 
 export function ReadEventDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ReadEventDetails {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NumValuesPerNode': !exists(json, 'NumValuesPerNode') ? undefined : json['NumValuesPerNode'],
-        'StartTime': !exists(json, 'StartTime') ? undefined : (new Date(json['StartTime'])),
-        'EndTime': !exists(json, 'EndTime') ? undefined : (new Date(json['EndTime'])),
-        'Filter': !exists(json, 'Filter') ? undefined : EventFilterFromJSON(json['Filter']),
+        'NumValuesPerNode': json['NumValuesPerNode'] == null ? undefined : json['NumValuesPerNode'],
+        'StartTime': json['StartTime'] == null ? undefined : (new Date(json['StartTime'])),
+        'EndTime': json['EndTime'] == null ? undefined : (new Date(json['EndTime'])),
+        'Filter': json['Filter'] == null ? undefined : EventFilterFromJSON(json['Filter']),
     };
 }
 
-export function ReadEventDetailsToJSON(value?: ReadEventDetails | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function ReadEventDetailsToJSON(json: any): ReadEventDetails {
+      return ReadEventDetailsToJSONTyped(json, false);
+  }
+
+  export function ReadEventDetailsToJSONTyped(value?: ReadEventDetails | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NumValuesPerNode': value.NumValuesPerNode,
-        'StartTime': value.StartTime === undefined ? undefined : (value.StartTime.toISOString()),
-        'EndTime': value.EndTime === undefined ? undefined : (value.EndTime.toISOString()),
-        'Filter': EventFilterToJSON(value.Filter),
+        'NumValuesPerNode': value['NumValuesPerNode'],
+        'StartTime': value['StartTime'] == null ? undefined : ((value['StartTime']).toISOString()),
+        'EndTime': value['EndTime'] == null ? undefined : ((value['EndTime']).toISOString()),
+        'Filter': EventFilterToJSON(value['Filter']),
     };
 }
 

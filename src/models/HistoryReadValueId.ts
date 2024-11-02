@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -33,10 +33,10 @@ export interface HistoryReadValueId {
     IndexRange?: string;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof HistoryReadValueId
      */
-    DataEncoding?: string;
+    DataEncoding?: object;
     /**
      * 
      * @type {string}
@@ -48,10 +48,8 @@ export interface HistoryReadValueId {
 /**
  * Check if a given object implements the HistoryReadValueId interface.
  */
-export function instanceOfHistoryReadValueId(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfHistoryReadValueId(value: object): value is HistoryReadValueId {
+    return true;
 }
 
 export function HistoryReadValueIdFromJSON(json: any): HistoryReadValueId {
@@ -59,31 +57,33 @@ export function HistoryReadValueIdFromJSON(json: any): HistoryReadValueId {
 }
 
 export function HistoryReadValueIdFromJSONTyped(json: any, ignoreDiscriminator: boolean): HistoryReadValueId {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NodeId': !exists(json, 'NodeId') ? undefined : json['NodeId'],
-        'IndexRange': !exists(json, 'IndexRange') ? undefined : json['IndexRange'],
-        'DataEncoding': !exists(json, 'DataEncoding') ? undefined : json['DataEncoding'],
-        'ContinuationPoint': !exists(json, 'ContinuationPoint') ? undefined : json['ContinuationPoint'],
+        'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
+        'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
+        'DataEncoding': json['DataEncoding'] == null ? undefined : json['DataEncoding'],
+        'ContinuationPoint': json['ContinuationPoint'] == null ? undefined : json['ContinuationPoint'],
     };
 }
 
-export function HistoryReadValueIdToJSON(value?: HistoryReadValueId | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function HistoryReadValueIdToJSON(json: any): HistoryReadValueId {
+      return HistoryReadValueIdToJSONTyped(json, false);
+  }
+
+  export function HistoryReadValueIdToJSONTyped(value?: HistoryReadValueId | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NodeId': value.NodeId,
-        'IndexRange': value.IndexRange,
-        'DataEncoding': value.DataEncoding,
-        'ContinuationPoint': value.ContinuationPoint,
+        'NodeId': value['NodeId'],
+        'IndexRange': value['IndexRange'],
+        'DataEncoding': value['DataEncoding'],
+        'ContinuationPoint': value['ContinuationPoint'],
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,18 +12,20 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { KeyValuePair } from './KeyValuePair';
 import {
     KeyValuePairFromJSON,
     KeyValuePairFromJSONTyped,
     KeyValuePairToJSON,
+    KeyValuePairToJSONTyped,
 } from './KeyValuePair';
 import type { LocalizedText } from './LocalizedText';
 import {
     LocalizedTextFromJSON,
     LocalizedTextFromJSONTyped,
     LocalizedTextToJSON,
+    LocalizedTextToJSONTyped,
 } from './LocalizedText';
 
 /**
@@ -97,10 +99,8 @@ export interface FieldMetaData {
 /**
  * Check if a given object implements the FieldMetaData interface.
  */
-export function instanceOfFieldMetaData(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfFieldMetaData(value: object): value is FieldMetaData {
+    return true;
 }
 
 export function FieldMetaDataFromJSON(json: any): FieldMetaData {
@@ -108,43 +108,45 @@ export function FieldMetaDataFromJSON(json: any): FieldMetaData {
 }
 
 export function FieldMetaDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): FieldMetaData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Name': !exists(json, 'Name') ? undefined : json['Name'],
-        'Description': !exists(json, 'Description') ? undefined : LocalizedTextFromJSON(json['Description']),
-        'FieldFlags': !exists(json, 'FieldFlags') ? undefined : json['FieldFlags'],
-        'BuiltInType': !exists(json, 'BuiltInType') ? undefined : json['BuiltInType'],
-        'DataType': !exists(json, 'DataType') ? undefined : json['DataType'],
-        'ValueRank': !exists(json, 'ValueRank') ? undefined : json['ValueRank'],
-        'ArrayDimensions': !exists(json, 'ArrayDimensions') ? undefined : json['ArrayDimensions'],
-        'MaxStringLength': !exists(json, 'MaxStringLength') ? undefined : json['MaxStringLength'],
-        'DataSetFieldId': !exists(json, 'DataSetFieldId') ? undefined : json['DataSetFieldId'],
-        'Properties': !exists(json, 'Properties') ? undefined : ((json['Properties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'Name': json['Name'] == null ? undefined : json['Name'],
+        'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
+        'FieldFlags': json['FieldFlags'] == null ? undefined : json['FieldFlags'],
+        'BuiltInType': json['BuiltInType'] == null ? undefined : json['BuiltInType'],
+        'DataType': json['DataType'] == null ? undefined : json['DataType'],
+        'ValueRank': json['ValueRank'] == null ? undefined : json['ValueRank'],
+        'ArrayDimensions': json['ArrayDimensions'] == null ? undefined : json['ArrayDimensions'],
+        'MaxStringLength': json['MaxStringLength'] == null ? undefined : json['MaxStringLength'],
+        'DataSetFieldId': json['DataSetFieldId'] == null ? undefined : json['DataSetFieldId'],
+        'Properties': json['Properties'] == null ? undefined : ((json['Properties'] as Array<any>).map(KeyValuePairFromJSON)),
     };
 }
 
-export function FieldMetaDataToJSON(value?: FieldMetaData | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function FieldMetaDataToJSON(json: any): FieldMetaData {
+      return FieldMetaDataToJSONTyped(json, false);
+  }
+
+  export function FieldMetaDataToJSONTyped(value?: FieldMetaData | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Name': value.Name,
-        'Description': LocalizedTextToJSON(value.Description),
-        'FieldFlags': value.FieldFlags,
-        'BuiltInType': value.BuiltInType,
-        'DataType': value.DataType,
-        'ValueRank': value.ValueRank,
-        'ArrayDimensions': value.ArrayDimensions,
-        'MaxStringLength': value.MaxStringLength,
-        'DataSetFieldId': value.DataSetFieldId,
-        'Properties': value.Properties === undefined ? undefined : ((value.Properties as Array<any>).map(KeyValuePairToJSON)),
+        'Name': value['Name'],
+        'Description': LocalizedTextToJSON(value['Description']),
+        'FieldFlags': value['FieldFlags'],
+        'BuiltInType': value['BuiltInType'],
+        'DataType': value['DataType'],
+        'ValueRank': value['ValueRank'],
+        'ArrayDimensions': value['ArrayDimensions'],
+        'MaxStringLength': value['MaxStringLength'],
+        'DataSetFieldId': value['DataSetFieldId'],
+        'Properties': value['Properties'] == null ? undefined : ((value['Properties'] as Array<any>).map(KeyValuePairToJSON)),
     };
 }
 

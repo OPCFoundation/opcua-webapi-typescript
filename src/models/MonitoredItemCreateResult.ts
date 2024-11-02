@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ExtensionObject } from './ExtensionObject';
 import {
     ExtensionObjectFromJSON,
     ExtensionObjectFromJSONTyped,
     ExtensionObjectToJSON,
+    ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
 
 /**
@@ -61,10 +62,8 @@ export interface MonitoredItemCreateResult {
 /**
  * Check if a given object implements the MonitoredItemCreateResult interface.
  */
-export function instanceOfMonitoredItemCreateResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfMonitoredItemCreateResult(value: object): value is MonitoredItemCreateResult {
+    return true;
 }
 
 export function MonitoredItemCreateResultFromJSON(json: any): MonitoredItemCreateResult {
@@ -72,33 +71,35 @@ export function MonitoredItemCreateResultFromJSON(json: any): MonitoredItemCreat
 }
 
 export function MonitoredItemCreateResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): MonitoredItemCreateResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StatusCode': !exists(json, 'StatusCode') ? undefined : json['StatusCode'],
-        'MonitoredItemId': !exists(json, 'MonitoredItemId') ? undefined : json['MonitoredItemId'],
-        'RevisedSamplingInterval': !exists(json, 'RevisedSamplingInterval') ? undefined : json['RevisedSamplingInterval'],
-        'RevisedQueueSize': !exists(json, 'RevisedQueueSize') ? undefined : json['RevisedQueueSize'],
-        'FilterResult': !exists(json, 'FilterResult') ? undefined : ExtensionObjectFromJSON(json['FilterResult']),
+        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'MonitoredItemId': json['MonitoredItemId'] == null ? undefined : json['MonitoredItemId'],
+        'RevisedSamplingInterval': json['RevisedSamplingInterval'] == null ? undefined : json['RevisedSamplingInterval'],
+        'RevisedQueueSize': json['RevisedQueueSize'] == null ? undefined : json['RevisedQueueSize'],
+        'FilterResult': json['FilterResult'] == null ? undefined : ExtensionObjectFromJSON(json['FilterResult']),
     };
 }
 
-export function MonitoredItemCreateResultToJSON(value?: MonitoredItemCreateResult | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function MonitoredItemCreateResultToJSON(json: any): MonitoredItemCreateResult {
+      return MonitoredItemCreateResultToJSONTyped(json, false);
+  }
+
+  export function MonitoredItemCreateResultToJSONTyped(value?: MonitoredItemCreateResult | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StatusCode': value.StatusCode,
-        'MonitoredItemId': value.MonitoredItemId,
-        'RevisedSamplingInterval': value.RevisedSamplingInterval,
-        'RevisedQueueSize': value.RevisedQueueSize,
-        'FilterResult': ExtensionObjectToJSON(value.FilterResult),
+        'StatusCode': value['StatusCode'],
+        'MonitoredItemId': value['MonitoredItemId'],
+        'RevisedSamplingInterval': value['RevisedSamplingInterval'],
+        'RevisedQueueSize': value['RevisedQueueSize'],
+        'FilterResult': ExtensionObjectToJSON(value['FilterResult']),
     };
 }
 

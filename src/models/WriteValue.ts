@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DataValue } from './DataValue';
 import {
     DataValueFromJSON,
     DataValueFromJSONTyped,
     DataValueToJSON,
+    DataValueToJSONTyped,
 } from './DataValue';
 
 /**
@@ -55,10 +56,8 @@ export interface WriteValue {
 /**
  * Check if a given object implements the WriteValue interface.
  */
-export function instanceOfWriteValue(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfWriteValue(value: object): value is WriteValue {
+    return true;
 }
 
 export function WriteValueFromJSON(json: any): WriteValue {
@@ -66,31 +65,33 @@ export function WriteValueFromJSON(json: any): WriteValue {
 }
 
 export function WriteValueFromJSONTyped(json: any, ignoreDiscriminator: boolean): WriteValue {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'NodeId': !exists(json, 'NodeId') ? undefined : json['NodeId'],
-        'AttributeId': !exists(json, 'AttributeId') ? undefined : json['AttributeId'],
-        'IndexRange': !exists(json, 'IndexRange') ? undefined : json['IndexRange'],
-        'Value': !exists(json, 'Value') ? undefined : DataValueFromJSON(json['Value']),
+        'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
+        'AttributeId': json['AttributeId'] == null ? undefined : json['AttributeId'],
+        'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
+        'Value': json['Value'] == null ? undefined : DataValueFromJSON(json['Value']),
     };
 }
 
-export function WriteValueToJSON(value?: WriteValue | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function WriteValueToJSON(json: any): WriteValue {
+      return WriteValueToJSONTyped(json, false);
+  }
+
+  export function WriteValueToJSONTyped(value?: WriteValue | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'NodeId': value.NodeId,
-        'AttributeId': value.AttributeId,
-        'IndexRange': value.IndexRange,
-        'Value': DataValueToJSON(value.Value),
+        'NodeId': value['NodeId'],
+        'AttributeId': value['AttributeId'],
+        'IndexRange': value['IndexRange'],
+        'Value': DataValueToJSON(value['Value']),
     };
 }
 

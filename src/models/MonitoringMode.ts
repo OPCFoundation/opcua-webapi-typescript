@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -25,6 +25,17 @@ export const MonitoringMode = {
 export type MonitoringMode = typeof MonitoringMode[keyof typeof MonitoringMode];
 
 
+export function instanceOfMonitoringMode(value: any): boolean {
+    for (const key in MonitoringMode) {
+        if (Object.prototype.hasOwnProperty.call(MonitoringMode, key)) {
+            if (MonitoringMode[key as keyof typeof MonitoringMode] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function MonitoringModeFromJSON(json: any): MonitoringMode {
     return MonitoringModeFromJSONTyped(json, false);
 }
@@ -35,5 +46,9 @@ export function MonitoringModeFromJSONTyped(json: any, ignoreDiscriminator: bool
 
 export function MonitoringModeToJSON(value?: MonitoringMode | null): any {
     return value as any;
+}
+
+export function MonitoringModeToJSONTyped(value: any, ignoreDiscriminator: boolean): MonitoringMode {
+    return value as MonitoringMode;
 }
 

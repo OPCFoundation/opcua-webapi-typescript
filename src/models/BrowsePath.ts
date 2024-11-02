@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RelativePath } from './RelativePath';
 import {
     RelativePathFromJSON,
     RelativePathFromJSONTyped,
     RelativePathToJSON,
+    RelativePathToJSONTyped,
 } from './RelativePath';
 
 /**
@@ -43,10 +44,8 @@ export interface BrowsePath {
 /**
  * Check if a given object implements the BrowsePath interface.
  */
-export function instanceOfBrowsePath(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrowsePath(value: object): value is BrowsePath {
+    return true;
 }
 
 export function BrowsePathFromJSON(json: any): BrowsePath {
@@ -54,27 +53,29 @@ export function BrowsePathFromJSON(json: any): BrowsePath {
 }
 
 export function BrowsePathFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrowsePath {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'StartingNode': !exists(json, 'StartingNode') ? undefined : json['StartingNode'],
-        'RelativePath': !exists(json, 'RelativePath') ? undefined : RelativePathFromJSON(json['RelativePath']),
+        'StartingNode': json['StartingNode'] == null ? undefined : json['StartingNode'],
+        'RelativePath': json['RelativePath'] == null ? undefined : RelativePathFromJSON(json['RelativePath']),
     };
 }
 
-export function BrowsePathToJSON(value?: BrowsePath | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrowsePathToJSON(json: any): BrowsePath {
+      return BrowsePathToJSONTyped(json, false);
+  }
+
+  export function BrowsePathToJSONTyped(value?: BrowsePath | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'StartingNode': value.StartingNode,
-        'RelativePath': RelativePathToJSON(value.RelativePath),
+        'StartingNode': value['StartingNode'],
+        'RelativePath': RelativePathToJSON(value['RelativePath']),
     };
 }
 

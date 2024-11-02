@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,25 +12,28 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
+import type { ResponseHeader } from './ResponseHeader';
+import {
+    ResponseHeaderFromJSON,
+    ResponseHeaderFromJSONTyped,
+    ResponseHeaderToJSON,
+    ResponseHeaderToJSONTyped,
+} from './ResponseHeader';
 import type { CallMethodResult } from './CallMethodResult';
 import {
     CallMethodResultFromJSON,
     CallMethodResultFromJSONTyped,
     CallMethodResultToJSON,
+    CallMethodResultToJSONTyped,
 } from './CallMethodResult';
 import type { DiagnosticInfo } from './DiagnosticInfo';
 import {
     DiagnosticInfoFromJSON,
     DiagnosticInfoFromJSONTyped,
     DiagnosticInfoToJSON,
+    DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
-import type { ResponseHeader } from './ResponseHeader';
-import {
-    ResponseHeaderFromJSON,
-    ResponseHeaderFromJSONTyped,
-    ResponseHeaderToJSON,
-} from './ResponseHeader';
 
 /**
  * 
@@ -61,10 +64,8 @@ export interface CallResponse {
 /**
  * Check if a given object implements the CallResponse interface.
  */
-export function instanceOfCallResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfCallResponse(value: object): value is CallResponse {
+    return true;
 }
 
 export function CallResponseFromJSON(json: any): CallResponse {
@@ -72,29 +73,31 @@ export function CallResponseFromJSON(json: any): CallResponse {
 }
 
 export function CallResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): CallResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ResponseHeader': !exists(json, 'ResponseHeader') ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'Results': !exists(json, 'Results') ? undefined : ((json['Results'] as Array<any>).map(CallMethodResultFromJSON)),
-        'DiagnosticInfos': !exists(json, 'DiagnosticInfos') ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(CallMethodResultFromJSON)),
+        'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
 
-export function CallResponseToJSON(value?: CallResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function CallResponseToJSON(json: any): CallResponse {
+      return CallResponseToJSONTyped(json, false);
+  }
+
+  export function CallResponseToJSONTyped(value?: CallResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'ResponseHeader': ResponseHeaderToJSON(value.ResponseHeader),
-        'Results': value.Results === undefined ? undefined : ((value.Results as Array<any>).map(CallMethodResultToJSON)),
-        'DiagnosticInfos': value.DiagnosticInfos === undefined ? undefined : ((value.DiagnosticInfos as Array<any>).map(DiagnosticInfoToJSON)),
+        'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(CallMethodResultToJSON)),
+        'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -60,10 +60,8 @@ export interface BrokerDataSetWriterTransportDataType {
 /**
  * Check if a given object implements the BrokerDataSetWriterTransportDataType interface.
  */
-export function instanceOfBrokerDataSetWriterTransportDataType(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfBrokerDataSetWriterTransportDataType(value: object): value is BrokerDataSetWriterTransportDataType {
+    return true;
 }
 
 export function BrokerDataSetWriterTransportDataTypeFromJSON(json: any): BrokerDataSetWriterTransportDataType {
@@ -71,35 +69,37 @@ export function BrokerDataSetWriterTransportDataTypeFromJSON(json: any): BrokerD
 }
 
 export function BrokerDataSetWriterTransportDataTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): BrokerDataSetWriterTransportDataType {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'QueueName': !exists(json, 'QueueName') ? undefined : json['QueueName'],
-        'ResourceUri': !exists(json, 'ResourceUri') ? undefined : json['ResourceUri'],
-        'AuthenticationProfileUri': !exists(json, 'AuthenticationProfileUri') ? undefined : json['AuthenticationProfileUri'],
-        'RequestedDeliveryGuarantee': !exists(json, 'RequestedDeliveryGuarantee') ? undefined : json['RequestedDeliveryGuarantee'],
-        'MetaDataQueueName': !exists(json, 'MetaDataQueueName') ? undefined : json['MetaDataQueueName'],
-        'MetaDataUpdateTime': !exists(json, 'MetaDataUpdateTime') ? undefined : json['MetaDataUpdateTime'],
+        'QueueName': json['QueueName'] == null ? undefined : json['QueueName'],
+        'ResourceUri': json['ResourceUri'] == null ? undefined : json['ResourceUri'],
+        'AuthenticationProfileUri': json['AuthenticationProfileUri'] == null ? undefined : json['AuthenticationProfileUri'],
+        'RequestedDeliveryGuarantee': json['RequestedDeliveryGuarantee'] == null ? undefined : json['RequestedDeliveryGuarantee'],
+        'MetaDataQueueName': json['MetaDataQueueName'] == null ? undefined : json['MetaDataQueueName'],
+        'MetaDataUpdateTime': json['MetaDataUpdateTime'] == null ? undefined : json['MetaDataUpdateTime'],
     };
 }
 
-export function BrokerDataSetWriterTransportDataTypeToJSON(value?: BrokerDataSetWriterTransportDataType | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function BrokerDataSetWriterTransportDataTypeToJSON(json: any): BrokerDataSetWriterTransportDataType {
+      return BrokerDataSetWriterTransportDataTypeToJSONTyped(json, false);
+  }
+
+  export function BrokerDataSetWriterTransportDataTypeToJSONTyped(value?: BrokerDataSetWriterTransportDataType | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'QueueName': value.QueueName,
-        'ResourceUri': value.ResourceUri,
-        'AuthenticationProfileUri': value.AuthenticationProfileUri,
-        'RequestedDeliveryGuarantee': value.RequestedDeliveryGuarantee,
-        'MetaDataQueueName': value.MetaDataQueueName,
-        'MetaDataUpdateTime': value.MetaDataUpdateTime,
+        'QueueName': value['QueueName'],
+        'ResourceUri': value['ResourceUri'],
+        'AuthenticationProfileUri': value['AuthenticationProfileUri'],
+        'RequestedDeliveryGuarantee': value['RequestedDeliveryGuarantee'],
+        'MetaDataQueueName': value['MetaDataQueueName'],
+        'MetaDataUpdateTime': value['MetaDataUpdateTime'],
     };
 }
 

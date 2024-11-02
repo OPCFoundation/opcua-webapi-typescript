@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RequestHeader } from './RequestHeader';
 import {
     RequestHeaderFromJSON,
     RequestHeaderFromJSONTyped,
     RequestHeaderToJSON,
+    RequestHeaderToJSONTyped,
 } from './RequestHeader';
 
 /**
@@ -43,10 +44,8 @@ export interface UnregisterNodesRequest {
 /**
  * Check if a given object implements the UnregisterNodesRequest interface.
  */
-export function instanceOfUnregisterNodesRequest(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfUnregisterNodesRequest(value: object): value is UnregisterNodesRequest {
+    return true;
 }
 
 export function UnregisterNodesRequestFromJSON(json: any): UnregisterNodesRequest {
@@ -54,27 +53,29 @@ export function UnregisterNodesRequestFromJSON(json: any): UnregisterNodesReques
 }
 
 export function UnregisterNodesRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): UnregisterNodesRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'RequestHeader': !exists(json, 'RequestHeader') ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
-        'NodesToUnregister': !exists(json, 'NodesToUnregister') ? undefined : json['NodesToUnregister'],
+        'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
+        'NodesToUnregister': json['NodesToUnregister'] == null ? undefined : json['NodesToUnregister'],
     };
 }
 
-export function UnregisterNodesRequestToJSON(value?: UnregisterNodesRequest | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function UnregisterNodesRequestToJSON(json: any): UnregisterNodesRequest {
+      return UnregisterNodesRequestToJSONTyped(json, false);
+  }
+
+  export function UnregisterNodesRequestToJSONTyped(value?: UnregisterNodesRequest | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'RequestHeader': RequestHeaderToJSON(value.RequestHeader),
-        'NodesToUnregister': value.NodesToUnregister,
+        'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
+        'NodesToUnregister': value['NodesToUnregister'],
     };
 }
 

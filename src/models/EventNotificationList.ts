@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * OPC UA Web API
- * This API provides simple HTTPS based access to an OPC UA server.
+ * Provides simple HTTPS based access to an OPC UA server.
  *
  * The version of the OpenAPI document: 1.05.4
  * Contact: office@opcfoundation.org
@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { EventFieldList } from './EventFieldList';
 import {
     EventFieldListFromJSON,
     EventFieldListFromJSONTyped,
     EventFieldListToJSON,
+    EventFieldListToJSONTyped,
 } from './EventFieldList';
 
 /**
@@ -37,10 +38,8 @@ export interface EventNotificationList {
 /**
  * Check if a given object implements the EventNotificationList interface.
  */
-export function instanceOfEventNotificationList(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfEventNotificationList(value: object): value is EventNotificationList {
+    return true;
 }
 
 export function EventNotificationListFromJSON(json: any): EventNotificationList {
@@ -48,25 +47,27 @@ export function EventNotificationListFromJSON(json: any): EventNotificationList 
 }
 
 export function EventNotificationListFromJSONTyped(json: any, ignoreDiscriminator: boolean): EventNotificationList {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'Events': !exists(json, 'Events') ? undefined : ((json['Events'] as Array<any>).map(EventFieldListFromJSON)),
+        'Events': json['Events'] == null ? undefined : ((json['Events'] as Array<any>).map(EventFieldListFromJSON)),
     };
 }
 
-export function EventNotificationListToJSON(value?: EventNotificationList | null): any {
-    if (value === undefined) {
-        return undefined;
+  export function EventNotificationListToJSON(json: any): EventNotificationList {
+      return EventNotificationListToJSONTyped(json, false);
+  }
+
+  export function EventNotificationListToJSONTyped(value?: EventNotificationList | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'Events': value.Events === undefined ? undefined : ((value.Events as Array<any>).map(EventFieldListToJSON)),
+        'Events': value['Events'] == null ? undefined : ((value['Events'] as Array<any>).map(EventFieldListToJSON)),
     };
 }
 
