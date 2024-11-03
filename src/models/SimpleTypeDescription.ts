@@ -43,6 +43,12 @@ export interface SimpleTypeDescription {
      * @memberof SimpleTypeDescription
      */
     Name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SimpleTypeDescription
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -66,6 +72,7 @@ export function SimpleTypeDescriptionFromJSONTyped(json: any, ignoreDiscriminato
         'BuiltInType': json['BuiltInType'] == null ? undefined : json['BuiltInType'],
         'DataTypeId': json['DataTypeId'] == null ? undefined : json['DataTypeId'],
         'Name': json['Name'] == null ? undefined : json['Name'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function SimpleTypeDescriptionFromJSONTyped(json: any, ignoreDiscriminato
         'BuiltInType': value['BuiltInType'],
         'DataTypeId': value['DataTypeId'],
         'Name': value['Name'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

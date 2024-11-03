@@ -45,6 +45,12 @@ export interface CallMethodRequest {
      * @memberof CallMethodRequest
      */
     InputArguments?: Array<Variant>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CallMethodRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function CallMethodRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'ObjectId': json['ObjectId'] == null ? undefined : json['ObjectId'],
         'MethodId': json['MethodId'] == null ? undefined : json['MethodId'],
         'InputArguments': json['InputArguments'] == null ? undefined : ((json['InputArguments'] as Array<any>).map(VariantFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function CallMethodRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'ObjectId': value['ObjectId'],
         'MethodId': value['MethodId'],
         'InputArguments': value['InputArguments'] == null ? undefined : ((value['InputArguments'] as Array<any>).map(VariantToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

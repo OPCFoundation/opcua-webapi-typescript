@@ -43,6 +43,12 @@ export interface BrokerWriterGroupTransportDataType {
      * @memberof BrokerWriterGroupTransportDataType
      */
     RequestedDeliveryGuarantee?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BrokerWriterGroupTransportDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -66,6 +72,7 @@ export function BrokerWriterGroupTransportDataTypeFromJSONTyped(json: any, ignor
         'ResourceUri': json['ResourceUri'] == null ? undefined : json['ResourceUri'],
         'AuthenticationProfileUri': json['AuthenticationProfileUri'] == null ? undefined : json['AuthenticationProfileUri'],
         'RequestedDeliveryGuarantee': json['RequestedDeliveryGuarantee'] == null ? undefined : json['RequestedDeliveryGuarantee'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function BrokerWriterGroupTransportDataTypeFromJSONTyped(json: any, ignor
         'ResourceUri': value['ResourceUri'],
         'AuthenticationProfileUri': value['AuthenticationProfileUri'],
         'RequestedDeliveryGuarantee': value['RequestedDeliveryGuarantee'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

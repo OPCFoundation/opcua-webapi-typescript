@@ -49,6 +49,12 @@ export interface ReadRawModifiedDetails {
      * @memberof ReadRawModifiedDetails
      */
     ReturnBounds?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReadRawModifiedDetails
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -73,6 +79,7 @@ export function ReadRawModifiedDetailsFromJSONTyped(json: any, ignoreDiscriminat
         'EndTime': json['EndTime'] == null ? undefined : (new Date(json['EndTime'])),
         'NumValuesPerNode': json['NumValuesPerNode'] == null ? undefined : json['NumValuesPerNode'],
         'ReturnBounds': json['ReturnBounds'] == null ? undefined : json['ReturnBounds'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -92,6 +99,7 @@ export function ReadRawModifiedDetailsFromJSONTyped(json: any, ignoreDiscriminat
         'EndTime': value['EndTime'] == null ? undefined : ((value['EndTime']).toISOString()),
         'NumValuesPerNode': value['NumValuesPerNode'],
         'ReturnBounds': value['ReturnBounds'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -58,6 +58,12 @@ export interface MonitoredItemModifyResult {
      * @memberof MonitoredItemModifyResult
      */
     FilterResult?: ExtensionObject;
+    /**
+     * 
+     * @type {string}
+     * @memberof MonitoredItemModifyResult
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function MonitoredItemModifyResultFromJSONTyped(json: any, ignoreDiscrimi
         'RevisedSamplingInterval': json['RevisedSamplingInterval'] == null ? undefined : json['RevisedSamplingInterval'],
         'RevisedQueueSize': json['RevisedQueueSize'] == null ? undefined : json['RevisedQueueSize'],
         'FilterResult': json['FilterResult'] == null ? undefined : ExtensionObjectFromJSON(json['FilterResult']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,6 +106,7 @@ export function MonitoredItemModifyResultFromJSONTyped(json: any, ignoreDiscrimi
         'RevisedSamplingInterval': value['RevisedSamplingInterval'],
         'RevisedQueueSize': value['RevisedQueueSize'],
         'FilterResult': ExtensionObjectToJSON(value['FilterResult']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

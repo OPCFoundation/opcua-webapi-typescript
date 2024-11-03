@@ -33,6 +33,12 @@ export interface EnumDefinition {
      * @memberof EnumDefinition
      */
     Fields?: Array<EnumField>;
+    /**
+     * 
+     * @type {string}
+     * @memberof EnumDefinition
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -53,6 +59,7 @@ export function EnumDefinitionFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         'Fields': json['Fields'] == null ? undefined : ((json['Fields'] as Array<any>).map(EnumFieldFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function EnumDefinitionFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         'Fields': value['Fields'] == null ? undefined : ((value['Fields'] as Array<any>).map(EnumFieldToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

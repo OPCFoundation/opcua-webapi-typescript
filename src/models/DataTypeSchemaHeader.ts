@@ -65,6 +65,12 @@ export interface DataTypeSchemaHeader {
      * @memberof DataTypeSchemaHeader
      */
     SimpleDataTypes?: Array<SimpleTypeDescription>;
+    /**
+     * 
+     * @type {string}
+     * @memberof DataTypeSchemaHeader
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -88,6 +94,7 @@ export function DataTypeSchemaHeaderFromJSONTyped(json: any, ignoreDiscriminator
         'StructureDataTypes': json['StructureDataTypes'] == null ? undefined : ((json['StructureDataTypes'] as Array<any>).map(StructureDescriptionFromJSON)),
         'EnumDataTypes': json['EnumDataTypes'] == null ? undefined : ((json['EnumDataTypes'] as Array<any>).map(EnumDescriptionFromJSON)),
         'SimpleDataTypes': json['SimpleDataTypes'] == null ? undefined : ((json['SimpleDataTypes'] as Array<any>).map(SimpleTypeDescriptionFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -106,6 +113,7 @@ export function DataTypeSchemaHeaderFromJSONTyped(json: any, ignoreDiscriminator
         'StructureDataTypes': value['StructureDataTypes'] == null ? undefined : ((value['StructureDataTypes'] as Array<any>).map(StructureDescriptionToJSON)),
         'EnumDataTypes': value['EnumDataTypes'] == null ? undefined : ((value['EnumDataTypes'] as Array<any>).map(EnumDescriptionToJSON)),
         'SimpleDataTypes': value['SimpleDataTypes'] == null ? undefined : ((value['SimpleDataTypes'] as Array<any>).map(SimpleTypeDescriptionToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

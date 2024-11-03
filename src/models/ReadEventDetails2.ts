@@ -57,6 +57,12 @@ export interface ReadEventDetails2 {
      * @memberof ReadEventDetails2
      */
     Filter?: EventFilter;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReadEventDetails2
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function ReadEventDetails2FromJSONTyped(json: any, ignoreDiscriminator: b
         'StartTime': json['StartTime'] == null ? undefined : (new Date(json['StartTime'])),
         'EndTime': json['EndTime'] == null ? undefined : (new Date(json['EndTime'])),
         'Filter': json['Filter'] == null ? undefined : EventFilterFromJSON(json['Filter']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -100,6 +107,7 @@ export function ReadEventDetails2FromJSONTyped(json: any, ignoreDiscriminator: b
         'StartTime': value['StartTime'] == null ? undefined : ((value['StartTime']).toISOString()),
         'EndTime': value['EndTime'] == null ? undefined : ((value['EndTime']).toISOString()),
         'Filter': EventFilterToJSON(value['Filter']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

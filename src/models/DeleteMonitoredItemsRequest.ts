@@ -45,6 +45,12 @@ export interface DeleteMonitoredItemsRequest {
      * @memberof DeleteMonitoredItemsRequest
      */
     MonitoredItemIds?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeleteMonitoredItemsRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function DeleteMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscri
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
         'MonitoredItemIds': json['MonitoredItemIds'] == null ? undefined : json['MonitoredItemIds'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function DeleteMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscri
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'SubscriptionId': value['SubscriptionId'],
         'MonitoredItemIds': value['MonitoredItemIds'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

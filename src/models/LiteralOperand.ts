@@ -33,6 +33,12 @@ export interface LiteralOperand {
      * @memberof LiteralOperand
      */
     Value?: Variant;
+    /**
+     * 
+     * @type {string}
+     * @memberof LiteralOperand
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -53,6 +59,7 @@ export function LiteralOperandFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         'Value': json['Value'] == null ? undefined : VariantFromJSON(json['Value']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function LiteralOperandFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         'Value': VariantToJSON(value['Value']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

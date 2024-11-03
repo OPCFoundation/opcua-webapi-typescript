@@ -43,6 +43,12 @@ export interface ReadValueId {
      * @memberof ReadValueId
      */
     DataEncoding?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReadValueId
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -66,6 +72,7 @@ export function ReadValueIdFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'AttributeId': json['AttributeId'] == null ? undefined : json['AttributeId'],
         'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
         'DataEncoding': json['DataEncoding'] == null ? undefined : json['DataEncoding'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function ReadValueIdFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'AttributeId': value['AttributeId'],
         'IndexRange': value['IndexRange'],
         'DataEncoding': value['DataEncoding'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

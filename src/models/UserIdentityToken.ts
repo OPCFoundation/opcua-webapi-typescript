@@ -25,6 +25,12 @@ export interface UserIdentityToken {
      * @memberof UserIdentityToken
      */
     PolicyId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserIdentityToken
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -45,6 +51,7 @@ export function UserIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -60,6 +67,7 @@ export function UserIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'PolicyId': value['PolicyId'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

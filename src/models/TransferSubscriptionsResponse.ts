@@ -59,6 +59,12 @@ export interface TransferSubscriptionsResponse {
      * @memberof TransferSubscriptionsResponse
      */
     DiagnosticInfos?: Array<DiagnosticInfo>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TransferSubscriptionsResponse
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function TransferSubscriptionsResponseFromJSONTyped(json: any, ignoreDisc
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(TransferResultFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -98,6 +105,7 @@ export function TransferSubscriptionsResponseFromJSONTyped(json: any, ignoreDisc
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(TransferResultToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

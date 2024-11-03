@@ -31,6 +31,12 @@ export interface X509IdentityToken {
      * @memberof X509IdentityToken
      */
     PolicyId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof X509IdentityToken
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -52,6 +58,7 @@ export function X509IdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'CertificateData': json['CertificateData'] == null ? undefined : json['CertificateData'],
         'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function X509IdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'CertificateData': value['CertificateData'],
         'PolicyId': value['PolicyId'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

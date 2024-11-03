@@ -55,6 +55,12 @@ export interface BrowseDescription {
      * @memberof BrowseDescription
      */
     ResultMask?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BrowseDescription
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -80,6 +86,7 @@ export function BrowseDescriptionFromJSONTyped(json: any, ignoreDiscriminator: b
         'IncludeSubtypes': json['IncludeSubtypes'] == null ? undefined : json['IncludeSubtypes'],
         'NodeClassMask': json['NodeClassMask'] == null ? undefined : json['NodeClassMask'],
         'ResultMask': json['ResultMask'] == null ? undefined : json['ResultMask'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -100,6 +107,7 @@ export function BrowseDescriptionFromJSONTyped(json: any, ignoreDiscriminator: b
         'IncludeSubtypes': value['IncludeSubtypes'],
         'NodeClassMask': value['NodeClassMask'],
         'ResultMask': value['ResultMask'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

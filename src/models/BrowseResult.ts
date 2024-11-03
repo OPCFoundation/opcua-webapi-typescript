@@ -52,6 +52,12 @@ export interface BrowseResult {
      * @memberof BrowseResult
      */
     References?: Array<ReferenceDescription>;
+    /**
+     * 
+     * @type {string}
+     * @memberof BrowseResult
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -74,6 +80,7 @@ export function BrowseResultFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'ContinuationPoint': json['ContinuationPoint'] == null ? undefined : json['ContinuationPoint'],
         'References': json['References'] == null ? undefined : ((json['References'] as Array<any>).map(ReferenceDescriptionFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,6 +98,7 @@ export function BrowseResultFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'ContinuationPoint': value['ContinuationPoint'],
         'References': value['References'] == null ? undefined : ((value['References'] as Array<any>).map(ReferenceDescriptionToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

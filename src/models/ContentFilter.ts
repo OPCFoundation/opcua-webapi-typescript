@@ -33,6 +33,12 @@ export interface ContentFilter {
      * @memberof ContentFilter
      */
     Elements?: Array<ContentFilterElement>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContentFilter
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -53,6 +59,7 @@ export function ContentFilterFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'Elements': json['Elements'] == null ? undefined : ((json['Elements'] as Array<any>).map(ContentFilterElementFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function ContentFilterFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'Elements': value['Elements'] == null ? undefined : ((value['Elements'] as Array<any>).map(ContentFilterElementToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

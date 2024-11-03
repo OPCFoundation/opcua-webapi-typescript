@@ -88,6 +88,12 @@ export interface PubSubKeyPushTargetDataType {
      * @memberof PubSubKeyPushTargetDataType
      */
     SecurityGroups?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof PubSubKeyPushTargetDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -116,6 +122,7 @@ export function PubSubKeyPushTargetDataTypeFromJSONTyped(json: any, ignoreDiscri
         'RetryInterval': json['RetryInterval'] == null ? undefined : json['RetryInterval'],
         'PushTargetProperties': json['PushTargetProperties'] == null ? undefined : ((json['PushTargetProperties'] as Array<any>).map(KeyValuePairFromJSON)),
         'SecurityGroups': json['SecurityGroups'] == null ? undefined : json['SecurityGroups'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -139,6 +146,7 @@ export function PubSubKeyPushTargetDataTypeFromJSONTyped(json: any, ignoreDiscri
         'RetryInterval': value['RetryInterval'],
         'PushTargetProperties': value['PushTargetProperties'] == null ? undefined : ((value['PushTargetProperties'] as Array<any>).map(KeyValuePairToJSON)),
         'SecurityGroups': value['SecurityGroups'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

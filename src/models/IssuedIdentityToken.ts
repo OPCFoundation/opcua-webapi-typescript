@@ -37,6 +37,12 @@ export interface IssuedIdentityToken {
      * @memberof IssuedIdentityToken
      */
     PolicyId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof IssuedIdentityToken
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -59,6 +65,7 @@ export function IssuedIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator:
         'TokenData': json['TokenData'] == null ? undefined : json['TokenData'],
         'EncryptionAlgorithm': json['EncryptionAlgorithm'] == null ? undefined : json['EncryptionAlgorithm'],
         'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function IssuedIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator:
         'TokenData': value['TokenData'],
         'EncryptionAlgorithm': value['EncryptionAlgorithm'],
         'PolicyId': value['PolicyId'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -51,6 +51,12 @@ export interface EnumDescription {
      * @memberof EnumDescription
      */
     Name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EnumDescription
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -74,6 +80,7 @@ export function EnumDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boo
         'BuiltInType': json['BuiltInType'] == null ? undefined : json['BuiltInType'],
         'DataTypeId': json['DataTypeId'] == null ? undefined : json['DataTypeId'],
         'Name': json['Name'] == null ? undefined : json['Name'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -92,6 +99,7 @@ export function EnumDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boo
         'BuiltInType': value['BuiltInType'],
         'DataTypeId': value['DataTypeId'],
         'Name': value['Name'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

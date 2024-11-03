@@ -58,6 +58,12 @@ export interface ReadRequest {
      * @memberof ReadRequest
      */
     NodesToRead?: Array<ReadValueId>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReadRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function ReadRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'MaxAge': json['MaxAge'] == null ? undefined : json['MaxAge'],
         'TimestampsToReturn': json['TimestampsToReturn'] == null ? undefined : json['TimestampsToReturn'],
         'NodesToRead': json['NodesToRead'] == null ? undefined : ((json['NodesToRead'] as Array<any>).map(ReadValueIdFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,6 +106,7 @@ export function ReadRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'MaxAge': value['MaxAge'],
         'TimestampsToReturn': value['TimestampsToReturn'],
         'NodesToRead': value['NodesToRead'] == null ? undefined : ((value['NodesToRead'] as Array<any>).map(ReadValueIdToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

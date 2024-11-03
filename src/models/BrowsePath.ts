@@ -39,6 +39,12 @@ export interface BrowsePath {
      * @memberof BrowsePath
      */
     RelativePath?: RelativePath;
+    /**
+     * 
+     * @type {string}
+     * @memberof BrowsePath
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -60,6 +66,7 @@ export function BrowsePathFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         
         'StartingNode': json['StartingNode'] == null ? undefined : json['StartingNode'],
         'RelativePath': json['RelativePath'] == null ? undefined : RelativePathFromJSON(json['RelativePath']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function BrowsePathFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         
         'StartingNode': value['StartingNode'],
         'RelativePath': RelativePathToJSON(value['RelativePath']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

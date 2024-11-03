@@ -88,6 +88,12 @@ export interface SecurityGroupDataType {
      * @memberof SecurityGroupDataType
      */
     GroupProperties?: Array<KeyValuePair>;
+    /**
+     * 
+     * @type {string}
+     * @memberof SecurityGroupDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -116,6 +122,7 @@ export function SecurityGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'SecurityGroupId': json['SecurityGroupId'] == null ? undefined : json['SecurityGroupId'],
         'RolePermissions': json['RolePermissions'] == null ? undefined : ((json['RolePermissions'] as Array<any>).map(RolePermissionTypeFromJSON)),
         'GroupProperties': json['GroupProperties'] == null ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -139,6 +146,7 @@ export function SecurityGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'SecurityGroupId': value['SecurityGroupId'],
         'RolePermissions': value['RolePermissions'] == null ? undefined : ((value['RolePermissions'] as Array<any>).map(RolePermissionTypeToJSON)),
         'GroupProperties': value['GroupProperties'] == null ? undefined : ((value['GroupProperties'] as Array<any>).map(KeyValuePairToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

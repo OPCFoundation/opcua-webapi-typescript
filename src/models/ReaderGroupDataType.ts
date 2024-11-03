@@ -108,6 +108,12 @@ export interface ReaderGroupDataType {
      * @memberof ReaderGroupDataType
      */
     GroupProperties?: Array<KeyValuePair>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReaderGroupDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -137,6 +143,7 @@ export function ReaderGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
         'SecurityKeyServices': json['SecurityKeyServices'] == null ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
         'MaxNetworkMessageSize': json['MaxNetworkMessageSize'] == null ? undefined : json['MaxNetworkMessageSize'],
         'GroupProperties': json['GroupProperties'] == null ? undefined : ((json['GroupProperties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -161,6 +168,7 @@ export function ReaderGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
         'SecurityKeyServices': value['SecurityKeyServices'] == null ? undefined : ((value['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionToJSON)),
         'MaxNetworkMessageSize': value['MaxNetworkMessageSize'],
         'GroupProperties': value['GroupProperties'] == null ? undefined : ((value['GroupProperties'] as Array<any>).map(KeyValuePairToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

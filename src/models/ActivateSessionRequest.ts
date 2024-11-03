@@ -84,6 +84,12 @@ export interface ActivateSessionRequest {
      * @memberof ActivateSessionRequest
      */
     UserTokenSignature?: SignatureData;
+    /**
+     * 
+     * @type {string}
+     * @memberof ActivateSessionRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -109,6 +115,7 @@ export function ActivateSessionRequestFromJSONTyped(json: any, ignoreDiscriminat
         'LocaleIds': json['LocaleIds'] == null ? undefined : json['LocaleIds'],
         'UserIdentityToken': json['UserIdentityToken'] == null ? undefined : ExtensionObjectFromJSON(json['UserIdentityToken']),
         'UserTokenSignature': json['UserTokenSignature'] == null ? undefined : SignatureDataFromJSON(json['UserTokenSignature']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -129,6 +136,7 @@ export function ActivateSessionRequestFromJSONTyped(json: any, ignoreDiscriminat
         'LocaleIds': value['LocaleIds'],
         'UserIdentityToken': ExtensionObjectToJSON(value['UserIdentityToken']),
         'UserTokenSignature': SignatureDataToJSON(value['UserTokenSignature']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

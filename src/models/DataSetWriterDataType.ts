@@ -88,6 +88,12 @@ export interface DataSetWriterDataType {
      * @memberof DataSetWriterDataType
      */
     MessageSettings?: ExtensionObject;
+    /**
+     * 
+     * @type {string}
+     * @memberof DataSetWriterDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -116,6 +122,7 @@ export function DataSetWriterDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'DataSetWriterProperties': json['DataSetWriterProperties'] == null ? undefined : ((json['DataSetWriterProperties'] as Array<any>).map(KeyValuePairFromJSON)),
         'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
         'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -139,6 +146,7 @@ export function DataSetWriterDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'DataSetWriterProperties': value['DataSetWriterProperties'] == null ? undefined : ((value['DataSetWriterProperties'] as Array<any>).map(KeyValuePairToJSON)),
         'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
         'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

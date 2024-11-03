@@ -69,6 +69,12 @@ export interface StructureField {
      * @memberof StructureField
      */
     IsOptional?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof StructureField
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -95,6 +101,7 @@ export function StructureFieldFromJSONTyped(json: any, ignoreDiscriminator: bool
         'ArrayDimensions': json['ArrayDimensions'] == null ? undefined : json['ArrayDimensions'],
         'MaxStringLength': json['MaxStringLength'] == null ? undefined : json['MaxStringLength'],
         'IsOptional': json['IsOptional'] == null ? undefined : json['IsOptional'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -116,6 +123,7 @@ export function StructureFieldFromJSONTyped(json: any, ignoreDiscriminator: bool
         'ArrayDimensions': value['ArrayDimensions'],
         'MaxStringLength': value['MaxStringLength'],
         'IsOptional': value['IsOptional'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

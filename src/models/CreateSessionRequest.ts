@@ -88,6 +88,12 @@ export interface CreateSessionRequest {
      * @memberof CreateSessionRequest
      */
     MaxResponseMessageSize?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSessionRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -116,6 +122,7 @@ export function CreateSessionRequestFromJSONTyped(json: any, ignoreDiscriminator
         'ClientCertificate': json['ClientCertificate'] == null ? undefined : json['ClientCertificate'],
         'RequestedSessionTimeout': json['RequestedSessionTimeout'] == null ? undefined : json['RequestedSessionTimeout'],
         'MaxResponseMessageSize': json['MaxResponseMessageSize'] == null ? undefined : json['MaxResponseMessageSize'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -139,6 +146,7 @@ export function CreateSessionRequestFromJSONTyped(json: any, ignoreDiscriminator
         'ClientCertificate': value['ClientCertificate'],
         'RequestedSessionTimeout': value['RequestedSessionTimeout'],
         'MaxResponseMessageSize': value['MaxResponseMessageSize'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

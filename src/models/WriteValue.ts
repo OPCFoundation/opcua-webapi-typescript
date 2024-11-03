@@ -51,6 +51,12 @@ export interface WriteValue {
      * @memberof WriteValue
      */
     Value?: DataValue;
+    /**
+     * 
+     * @type {string}
+     * @memberof WriteValue
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -74,6 +80,7 @@ export function WriteValueFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'AttributeId': json['AttributeId'] == null ? undefined : json['AttributeId'],
         'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
         'Value': json['Value'] == null ? undefined : DataValueFromJSON(json['Value']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -92,6 +99,7 @@ export function WriteValueFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'AttributeId': value['AttributeId'],
         'IndexRange': value['IndexRange'],
         'Value': DataValueToJSON(value['Value']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

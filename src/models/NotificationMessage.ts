@@ -45,6 +45,12 @@ export interface NotificationMessage {
      * @memberof NotificationMessage
      */
     NotificationData?: Array<ExtensionObject>;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationMessage
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function NotificationMessageFromJSONTyped(json: any, ignoreDiscriminator:
         'SequenceNumber': json['SequenceNumber'] == null ? undefined : json['SequenceNumber'],
         'PublishTime': json['PublishTime'] == null ? undefined : (new Date(json['PublishTime'])),
         'NotificationData': json['NotificationData'] == null ? undefined : ((json['NotificationData'] as Array<any>).map(ExtensionObjectFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function NotificationMessageFromJSONTyped(json: any, ignoreDiscriminator:
         'SequenceNumber': value['SequenceNumber'],
         'PublishTime': value['PublishTime'] == null ? undefined : ((value['PublishTime']).toISOString()),
         'NotificationData': value['NotificationData'] == null ? undefined : ((value['NotificationData'] as Array<any>).map(ExtensionObjectToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

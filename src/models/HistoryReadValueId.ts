@@ -43,6 +43,12 @@ export interface HistoryReadValueId {
      * @memberof HistoryReadValueId
      */
     ContinuationPoint?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryReadValueId
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -66,6 +72,7 @@ export function HistoryReadValueIdFromJSONTyped(json: any, ignoreDiscriminator: 
         'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
         'DataEncoding': json['DataEncoding'] == null ? undefined : json['DataEncoding'],
         'ContinuationPoint': json['ContinuationPoint'] == null ? undefined : json['ContinuationPoint'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function HistoryReadValueIdFromJSONTyped(json: any, ignoreDiscriminator: 
         'IndexRange': value['IndexRange'],
         'DataEncoding': value['DataEncoding'],
         'ContinuationPoint': value['ContinuationPoint'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

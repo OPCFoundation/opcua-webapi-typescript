@@ -25,6 +25,12 @@ export interface ReadAnnotationDataDetails {
      * @memberof ReadAnnotationDataDetails
      */
     ReqTimes?: Array<Date>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReadAnnotationDataDetails
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -45,6 +51,7 @@ export function ReadAnnotationDataDetailsFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'ReqTimes': json['ReqTimes'] == null ? undefined : json['ReqTimes'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -60,6 +67,7 @@ export function ReadAnnotationDataDetailsFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'ReqTimes': value['ReqTimes'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

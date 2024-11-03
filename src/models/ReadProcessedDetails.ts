@@ -57,6 +57,12 @@ export interface ReadProcessedDetails {
      * @memberof ReadProcessedDetails
      */
     AggregateConfiguration?: AggregateConfiguration;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReadProcessedDetails
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function ReadProcessedDetailsFromJSONTyped(json: any, ignoreDiscriminator
         'ProcessingInterval': json['ProcessingInterval'] == null ? undefined : json['ProcessingInterval'],
         'AggregateType': json['AggregateType'] == null ? undefined : json['AggregateType'],
         'AggregateConfiguration': json['AggregateConfiguration'] == null ? undefined : AggregateConfigurationFromJSON(json['AggregateConfiguration']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -100,6 +107,7 @@ export function ReadProcessedDetailsFromJSONTyped(json: any, ignoreDiscriminator
         'ProcessingInterval': value['ProcessingInterval'],
         'AggregateType': value['AggregateType'],
         'AggregateConfiguration': AggregateConfigurationToJSON(value['AggregateConfiguration']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

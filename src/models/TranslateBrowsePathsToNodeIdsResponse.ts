@@ -59,6 +59,12 @@ export interface TranslateBrowsePathsToNodeIdsResponse {
      * @memberof TranslateBrowsePathsToNodeIdsResponse
      */
     DiagnosticInfos?: Array<DiagnosticInfo>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateBrowsePathsToNodeIdsResponse
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function TranslateBrowsePathsToNodeIdsResponseFromJSONTyped(json: any, ig
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(BrowsePathResultFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -98,6 +105,7 @@ export function TranslateBrowsePathsToNodeIdsResponseFromJSONTyped(json: any, ig
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(BrowsePathResultToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

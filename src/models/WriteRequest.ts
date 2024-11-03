@@ -46,6 +46,12 @@ export interface WriteRequest {
      * @memberof WriteRequest
      */
     NodesToWrite?: Array<WriteValue>;
+    /**
+     * 
+     * @type {string}
+     * @memberof WriteRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function WriteRequestFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'NodesToWrite': json['NodesToWrite'] == null ? undefined : ((json['NodesToWrite'] as Array<any>).map(WriteValueFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,6 +90,7 @@ export function WriteRequestFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'NodesToWrite': value['NodesToWrite'] == null ? undefined : ((value['NodesToWrite'] as Array<any>).map(WriteValueToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

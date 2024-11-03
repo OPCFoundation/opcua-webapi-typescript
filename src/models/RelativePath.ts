@@ -33,6 +33,12 @@ export interface RelativePath {
      * @memberof RelativePath
      */
     Elements?: Array<RelativePathElement>;
+    /**
+     * 
+     * @type {string}
+     * @memberof RelativePath
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -53,6 +59,7 @@ export function RelativePathFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'Elements': json['Elements'] == null ? undefined : ((json['Elements'] as Array<any>).map(RelativePathElementFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function RelativePathFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'Elements': value['Elements'] == null ? undefined : ((value['Elements'] as Array<any>).map(RelativePathElementToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -65,6 +65,12 @@ export interface ActivateSessionResponse {
      * @memberof ActivateSessionResponse
      */
     DiagnosticInfos?: Array<DiagnosticInfo>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ActivateSessionResponse
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -88,6 +94,7 @@ export function ActivateSessionResponseFromJSONTyped(json: any, ignoreDiscrimina
         'ServerNonce': json['ServerNonce'] == null ? undefined : json['ServerNonce'],
         'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(StatusCodeFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -106,6 +113,7 @@ export function ActivateSessionResponseFromJSONTyped(json: any, ignoreDiscrimina
         'ServerNonce': value['ServerNonce'],
         'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(StatusCodeToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

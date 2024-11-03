@@ -39,6 +39,12 @@ export interface CloseSessionRequest {
      * @memberof CloseSessionRequest
      */
     DeleteSubscriptions?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CloseSessionRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -60,6 +66,7 @@ export function CloseSessionRequestFromJSONTyped(json: any, ignoreDiscriminator:
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'DeleteSubscriptions': json['DeleteSubscriptions'] == null ? undefined : json['DeleteSubscriptions'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function CloseSessionRequestFromJSONTyped(json: any, ignoreDiscriminator:
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'DeleteSubscriptions': value['DeleteSubscriptions'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

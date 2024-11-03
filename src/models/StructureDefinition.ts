@@ -51,6 +51,12 @@ export interface StructureDefinition {
      * @memberof StructureDefinition
      */
     Fields?: Array<StructureField>;
+    /**
+     * 
+     * @type {string}
+     * @memberof StructureDefinition
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -74,6 +80,7 @@ export function StructureDefinitionFromJSONTyped(json: any, ignoreDiscriminator:
         'BaseDataType': json['BaseDataType'] == null ? undefined : json['BaseDataType'],
         'StructureType': json['StructureType'] == null ? undefined : json['StructureType'],
         'Fields': json['Fields'] == null ? undefined : ((json['Fields'] as Array<any>).map(StructureFieldFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -92,6 +99,7 @@ export function StructureDefinitionFromJSONTyped(json: any, ignoreDiscriminator:
         'BaseDataType': value['BaseDataType'],
         'StructureType': value['StructureType'],
         'Fields': value['Fields'] == null ? undefined : ((value['Fields'] as Array<any>).map(StructureFieldToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -52,6 +52,12 @@ export interface HistoryReadResult {
      * @memberof HistoryReadResult
      */
     HistoryData?: ExtensionObject;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryReadResult
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -74,6 +80,7 @@ export function HistoryReadResultFromJSONTyped(json: any, ignoreDiscriminator: b
         'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'ContinuationPoint': json['ContinuationPoint'] == null ? undefined : json['ContinuationPoint'],
         'HistoryData': json['HistoryData'] == null ? undefined : ExtensionObjectFromJSON(json['HistoryData']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,6 +98,7 @@ export function HistoryReadResultFromJSONTyped(json: any, ignoreDiscriminator: b
         'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'ContinuationPoint': value['ContinuationPoint'],
         'HistoryData': ExtensionObjectToJSON(value['HistoryData']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

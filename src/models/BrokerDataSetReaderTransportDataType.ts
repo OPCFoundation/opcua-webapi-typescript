@@ -49,6 +49,12 @@ export interface BrokerDataSetReaderTransportDataType {
      * @memberof BrokerDataSetReaderTransportDataType
      */
     MetaDataQueueName?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BrokerDataSetReaderTransportDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -73,6 +79,7 @@ export function BrokerDataSetReaderTransportDataTypeFromJSONTyped(json: any, ign
         'AuthenticationProfileUri': json['AuthenticationProfileUri'] == null ? undefined : json['AuthenticationProfileUri'],
         'RequestedDeliveryGuarantee': json['RequestedDeliveryGuarantee'] == null ? undefined : json['RequestedDeliveryGuarantee'],
         'MetaDataQueueName': json['MetaDataQueueName'] == null ? undefined : json['MetaDataQueueName'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -92,6 +99,7 @@ export function BrokerDataSetReaderTransportDataTypeFromJSONTyped(json: any, ign
         'AuthenticationProfileUri': value['AuthenticationProfileUri'],
         'RequestedDeliveryGuarantee': value['RequestedDeliveryGuarantee'],
         'MetaDataQueueName': value['MetaDataQueueName'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

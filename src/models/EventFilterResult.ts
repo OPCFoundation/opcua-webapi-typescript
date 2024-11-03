@@ -59,6 +59,12 @@ export interface EventFilterResult {
      * @memberof EventFilterResult
      */
     WhereClauseResult?: ContentFilterResult;
+    /**
+     * 
+     * @type {string}
+     * @memberof EventFilterResult
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function EventFilterResultFromJSONTyped(json: any, ignoreDiscriminator: b
         'SelectClauseResults': json['SelectClauseResults'] == null ? undefined : ((json['SelectClauseResults'] as Array<any>).map(StatusCodeFromJSON)),
         'SelectClauseDiagnosticInfos': json['SelectClauseDiagnosticInfos'] == null ? undefined : ((json['SelectClauseDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
         'WhereClauseResult': json['WhereClauseResult'] == null ? undefined : ContentFilterResultFromJSON(json['WhereClauseResult']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -98,6 +105,7 @@ export function EventFilterResultFromJSONTyped(json: any, ignoreDiscriminator: b
         'SelectClauseResults': value['SelectClauseResults'] == null ? undefined : ((value['SelectClauseResults'] as Array<any>).map(StatusCodeToJSON)),
         'SelectClauseDiagnosticInfos': value['SelectClauseDiagnosticInfos'] == null ? undefined : ((value['SelectClauseDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
         'WhereClauseResult': ContentFilterResultToJSON(value['WhereClauseResult']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

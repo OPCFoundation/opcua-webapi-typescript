@@ -90,6 +90,12 @@ export interface PublishResponse {
      * @memberof PublishResponse
      */
     DiagnosticInfos?: Array<DiagnosticInfo>;
+    /**
+     * 
+     * @type {string}
+     * @memberof PublishResponse
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -116,6 +122,7 @@ export function PublishResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
         'NotificationMessage': json['NotificationMessage'] == null ? undefined : NotificationMessageFromJSON(json['NotificationMessage']),
         'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(StatusCodeFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -137,6 +144,7 @@ export function PublishResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
         'NotificationMessage': NotificationMessageToJSON(value['NotificationMessage']),
         'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(StatusCodeToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

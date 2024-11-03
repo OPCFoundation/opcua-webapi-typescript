@@ -37,6 +37,12 @@ export interface DataChangeFilter {
      * @memberof DataChangeFilter
      */
     DeadbandValue?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof DataChangeFilter
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -59,6 +65,7 @@ export function DataChangeFilterFromJSONTyped(json: any, ignoreDiscriminator: bo
         'Trigger': json['Trigger'] == null ? undefined : json['Trigger'],
         'DeadbandType': json['DeadbandType'] == null ? undefined : json['DeadbandType'],
         'DeadbandValue': json['DeadbandValue'] == null ? undefined : json['DeadbandValue'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function DataChangeFilterFromJSONTyped(json: any, ignoreDiscriminator: bo
         'Trigger': value['Trigger'],
         'DeadbandType': value['DeadbandType'],
         'DeadbandValue': value['DeadbandValue'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

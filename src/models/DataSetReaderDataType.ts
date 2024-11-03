@@ -157,6 +157,12 @@ export interface DataSetReaderDataType {
      * @memberof DataSetReaderDataType
      */
     SubscribedDataSet?: ExtensionObject;
+    /**
+     * 
+     * @type {string}
+     * @memberof DataSetReaderDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -193,6 +199,7 @@ export function DataSetReaderDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
         'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
         'SubscribedDataSet': json['SubscribedDataSet'] == null ? undefined : ExtensionObjectFromJSON(json['SubscribedDataSet']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -224,6 +231,7 @@ export function DataSetReaderDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
         'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
         'SubscribedDataSet': ExtensionObjectToJSON(value['SubscribedDataSet']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

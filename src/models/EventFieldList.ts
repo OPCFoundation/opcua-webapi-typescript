@@ -39,6 +39,12 @@ export interface EventFieldList {
      * @memberof EventFieldList
      */
     EventFields?: Array<Variant>;
+    /**
+     * 
+     * @type {string}
+     * @memberof EventFieldList
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -60,6 +66,7 @@ export function EventFieldListFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'ClientHandle': json['ClientHandle'] == null ? undefined : json['ClientHandle'],
         'EventFields': json['EventFields'] == null ? undefined : ((json['EventFields'] as Array<any>).map(VariantFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function EventFieldListFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'ClientHandle': value['ClientHandle'],
         'EventFields': value['EventFields'] == null ? undefined : ((value['EventFields'] as Array<any>).map(VariantToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

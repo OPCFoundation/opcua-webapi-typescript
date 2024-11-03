@@ -46,6 +46,12 @@ export interface RepublishResponse {
      * @memberof RepublishResponse
      */
     NotificationMessage?: NotificationMessage;
+    /**
+     * 
+     * @type {string}
+     * @memberof RepublishResponse
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function RepublishResponseFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'NotificationMessage': json['NotificationMessage'] == null ? undefined : NotificationMessageFromJSON(json['NotificationMessage']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,6 +90,7 @@ export function RepublishResponseFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'NotificationMessage': NotificationMessageToJSON(value['NotificationMessage']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

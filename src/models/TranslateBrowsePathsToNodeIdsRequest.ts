@@ -46,6 +46,12 @@ export interface TranslateBrowsePathsToNodeIdsRequest {
      * @memberof TranslateBrowsePathsToNodeIdsRequest
      */
     BrowsePaths?: Array<BrowsePath>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateBrowsePathsToNodeIdsRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function TranslateBrowsePathsToNodeIdsRequestFromJSONTyped(json: any, ign
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'BrowsePaths': json['BrowsePaths'] == null ? undefined : ((json['BrowsePaths'] as Array<any>).map(BrowsePathFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,6 +90,7 @@ export function TranslateBrowsePathsToNodeIdsRequestFromJSONTyped(json: any, ign
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'BrowsePaths': value['BrowsePaths'] == null ? undefined : ((value['BrowsePaths'] as Array<any>).map(BrowsePathToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

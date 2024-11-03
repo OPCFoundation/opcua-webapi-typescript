@@ -39,6 +39,12 @@ export interface CancelRequest {
      * @memberof CancelRequest
      */
     RequestHandle?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CancelRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -60,6 +66,7 @@ export function CancelRequestFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'RequestHandle': json['RequestHandle'] == null ? undefined : json['RequestHandle'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function CancelRequestFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'RequestHandle': value['RequestHandle'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

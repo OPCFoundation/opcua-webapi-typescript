@@ -58,6 +58,12 @@ export interface UpdateEventDetails {
      * @memberof UpdateEventDetails
      */
     EventData?: Array<HistoryEventFieldList>;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateEventDetails
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function UpdateEventDetailsFromJSONTyped(json: any, ignoreDiscriminator: 
         'PerformInsertReplace': json['PerformInsertReplace'] == null ? undefined : json['PerformInsertReplace'],
         'Filter': json['Filter'] == null ? undefined : EventFilterFromJSON(json['Filter']),
         'EventData': json['EventData'] == null ? undefined : ((json['EventData'] as Array<any>).map(HistoryEventFieldListFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,6 +106,7 @@ export function UpdateEventDetailsFromJSONTyped(json: any, ignoreDiscriminator: 
         'PerformInsertReplace': value['PerformInsertReplace'],
         'Filter': EventFilterToJSON(value['Filter']),
         'EventData': value['EventData'] == null ? undefined : ((value['EventData'] as Array<any>).map(HistoryEventFieldListToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

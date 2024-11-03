@@ -58,6 +58,12 @@ export interface StandaloneSubscribedDataSetDataType {
      * @memberof StandaloneSubscribedDataSetDataType
      */
     SubscribedDataSet?: ExtensionObject;
+    /**
+     * 
+     * @type {string}
+     * @memberof StandaloneSubscribedDataSetDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function StandaloneSubscribedDataSetDataTypeFromJSONTyped(json: any, igno
         'DataSetFolder': json['DataSetFolder'] == null ? undefined : json['DataSetFolder'],
         'DataSetMetaData': json['DataSetMetaData'] == null ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
         'SubscribedDataSet': json['SubscribedDataSet'] == null ? undefined : ExtensionObjectFromJSON(json['SubscribedDataSet']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,6 +106,7 @@ export function StandaloneSubscribedDataSetDataTypeFromJSONTyped(json: any, igno
         'DataSetFolder': value['DataSetFolder'],
         'DataSetMetaData': DataSetMetaDataTypeToJSON(value['DataSetMetaData']),
         'SubscribedDataSet': ExtensionObjectToJSON(value['SubscribedDataSet']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

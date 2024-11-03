@@ -33,6 +33,12 @@ export interface CloseSessionResponse {
      * @memberof CloseSessionResponse
      */
     ResponseHeader?: ResponseHeader;
+    /**
+     * 
+     * @type {string}
+     * @memberof CloseSessionResponse
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -53,6 +59,7 @@ export function CloseSessionResponseFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function CloseSessionResponseFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

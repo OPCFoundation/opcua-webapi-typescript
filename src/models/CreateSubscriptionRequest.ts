@@ -69,6 +69,12 @@ export interface CreateSubscriptionRequest {
      * @memberof CreateSubscriptionRequest
      */
     Priority?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSubscriptionRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -95,6 +101,7 @@ export function CreateSubscriptionRequestFromJSONTyped(json: any, ignoreDiscrimi
         'MaxNotificationsPerPublish': json['MaxNotificationsPerPublish'] == null ? undefined : json['MaxNotificationsPerPublish'],
         'PublishingEnabled': json['PublishingEnabled'] == null ? undefined : json['PublishingEnabled'],
         'Priority': json['Priority'] == null ? undefined : json['Priority'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -116,6 +123,7 @@ export function CreateSubscriptionRequestFromJSONTyped(json: any, ignoreDiscrimi
         'MaxNotificationsPerPublish': value['MaxNotificationsPerPublish'],
         'PublishingEnabled': value['PublishingEnabled'],
         'Priority': value['Priority'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
+
 /**
  * 
  * @export
@@ -51,10 +59,10 @@ export interface DiagnosticInfo {
     AdditionalInfo?: string;
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof DiagnosticInfo
      */
-    InnerStatusCode?: number;
+    InnerStatusCode?: StatusCode;
     /**
      * 
      * @type {DiagnosticInfo}
@@ -85,7 +93,7 @@ export function DiagnosticInfoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'Locale': json['Locale'] == null ? undefined : json['Locale'],
         'LocalizedText': json['LocalizedText'] == null ? undefined : json['LocalizedText'],
         'AdditionalInfo': json['AdditionalInfo'] == null ? undefined : json['AdditionalInfo'],
-        'InnerStatusCode': json['InnerStatusCode'] == null ? undefined : json['InnerStatusCode'],
+        'InnerStatusCode': json['InnerStatusCode'] == null ? undefined : StatusCodeFromJSON(json['InnerStatusCode']),
         'InnerDiagnosticInfo': json['InnerDiagnosticInfo'] == null ? undefined : DiagnosticInfoFromJSON(json['InnerDiagnosticInfo']),
     };
 }
@@ -106,7 +114,7 @@ export function DiagnosticInfoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'Locale': value['Locale'],
         'LocalizedText': value['LocalizedText'],
         'AdditionalInfo': value['AdditionalInfo'],
-        'InnerStatusCode': value['InnerStatusCode'],
+        'InnerStatusCode': StatusCodeToJSON(value['InnerStatusCode']),
         'InnerDiagnosticInfo': DiagnosticInfoToJSON(value['InnerDiagnosticInfo']),
     };
 }

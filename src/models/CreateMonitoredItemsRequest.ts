@@ -58,6 +58,12 @@ export interface CreateMonitoredItemsRequest {
      * @memberof CreateMonitoredItemsRequest
      */
     ItemsToCreate?: Array<MonitoredItemCreateRequest>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateMonitoredItemsRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function CreateMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscri
         'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
         'TimestampsToReturn': json['TimestampsToReturn'] == null ? undefined : json['TimestampsToReturn'],
         'ItemsToCreate': json['ItemsToCreate'] == null ? undefined : ((json['ItemsToCreate'] as Array<any>).map(MonitoredItemCreateRequestFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,6 +106,7 @@ export function CreateMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscri
         'SubscriptionId': value['SubscriptionId'],
         'TimestampsToReturn': value['TimestampsToReturn'],
         'ItemsToCreate': value['ItemsToCreate'] == null ? undefined : ((value['ItemsToCreate'] as Array<any>).map(MonitoredItemCreateRequestToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

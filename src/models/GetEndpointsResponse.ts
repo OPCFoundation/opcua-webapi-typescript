@@ -46,6 +46,12 @@ export interface GetEndpointsResponse {
      * @memberof GetEndpointsResponse
      */
     Endpoints?: Array<EndpointDescription>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetEndpointsResponse
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function GetEndpointsResponseFromJSONTyped(json: any, ignoreDiscriminator
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'Endpoints': json['Endpoints'] == null ? undefined : ((json['Endpoints'] as Array<any>).map(EndpointDescriptionFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,6 +90,7 @@ export function GetEndpointsResponseFromJSONTyped(json: any, ignoreDiscriminator
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'Endpoints': value['Endpoints'] == null ? undefined : ((value['Endpoints'] as Array<any>).map(EndpointDescriptionToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

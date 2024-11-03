@@ -57,6 +57,12 @@ export interface AttributeOperand {
      * @memberof AttributeOperand
      */
     IndexRange?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AttributeOperand
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function AttributeOperandFromJSONTyped(json: any, ignoreDiscriminator: bo
         'BrowsePath': json['BrowsePath'] == null ? undefined : RelativePathFromJSON(json['BrowsePath']),
         'AttributeId': json['AttributeId'] == null ? undefined : json['AttributeId'],
         'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -100,6 +107,7 @@ export function AttributeOperandFromJSONTyped(json: any, ignoreDiscriminator: bo
         'BrowsePath': RelativePathToJSON(value['BrowsePath']),
         'AttributeId': value['AttributeId'],
         'IndexRange': value['IndexRange'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

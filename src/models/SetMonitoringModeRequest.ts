@@ -51,6 +51,12 @@ export interface SetMonitoringModeRequest {
      * @memberof SetMonitoringModeRequest
      */
     MonitoredItemIds?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof SetMonitoringModeRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -74,6 +80,7 @@ export function SetMonitoringModeRequestFromJSONTyped(json: any, ignoreDiscrimin
         'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
         'MonitoringMode': json['MonitoringMode'] == null ? undefined : json['MonitoringMode'],
         'MonitoredItemIds': json['MonitoredItemIds'] == null ? undefined : json['MonitoredItemIds'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -92,6 +99,7 @@ export function SetMonitoringModeRequestFromJSONTyped(json: any, ignoreDiscrimin
         'SubscriptionId': value['SubscriptionId'],
         'MonitoringMode': value['MonitoringMode'],
         'MonitoredItemIds': value['MonitoredItemIds'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -49,6 +49,12 @@ export interface AggregateConfiguration {
      * @memberof AggregateConfiguration
      */
     UseSlopedExtrapolation?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof AggregateConfiguration
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -73,6 +79,7 @@ export function AggregateConfigurationFromJSONTyped(json: any, ignoreDiscriminat
         'PercentDataBad': json['PercentDataBad'] == null ? undefined : json['PercentDataBad'],
         'PercentDataGood': json['PercentDataGood'] == null ? undefined : json['PercentDataGood'],
         'UseSlopedExtrapolation': json['UseSlopedExtrapolation'] == null ? undefined : json['UseSlopedExtrapolation'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -92,6 +99,7 @@ export function AggregateConfigurationFromJSONTyped(json: any, ignoreDiscriminat
         'PercentDataBad': value['PercentDataBad'],
         'PercentDataGood': value['PercentDataGood'],
         'UseSlopedExtrapolation': value['UseSlopedExtrapolation'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

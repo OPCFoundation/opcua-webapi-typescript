@@ -46,6 +46,12 @@ export interface HistoryModifiedData {
      * @memberof HistoryModifiedData
      */
     DataValues?: Array<DataValue>;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryModifiedData
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function HistoryModifiedDataFromJSONTyped(json: any, ignoreDiscriminator:
         
         'ModificationInfos': json['ModificationInfos'] == null ? undefined : ((json['ModificationInfos'] as Array<any>).map(ModificationInfoFromJSON)),
         'DataValues': json['DataValues'] == null ? undefined : ((json['DataValues'] as Array<any>).map(DataValueFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,6 +90,7 @@ export function HistoryModifiedDataFromJSONTyped(json: any, ignoreDiscriminator:
         
         'ModificationInfos': value['ModificationInfos'] == null ? undefined : ((value['ModificationInfos'] as Array<any>).map(ModificationInfoToJSON)),
         'DataValues': value['DataValues'] == null ? undefined : ((value['DataValues'] as Array<any>).map(DataValueToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

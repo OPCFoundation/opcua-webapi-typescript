@@ -46,6 +46,12 @@ export interface HistoryUpdateRequest {
      * @memberof HistoryUpdateRequest
      */
     HistoryUpdateDetails?: Array<ExtensionObject>;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryUpdateRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function HistoryUpdateRequestFromJSONTyped(json: any, ignoreDiscriminator
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'HistoryUpdateDetails': json['HistoryUpdateDetails'] == null ? undefined : ((json['HistoryUpdateDetails'] as Array<any>).map(ExtensionObjectFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,6 +90,7 @@ export function HistoryUpdateRequestFromJSONTyped(json: any, ignoreDiscriminator
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'HistoryUpdateDetails': value['HistoryUpdateDetails'] == null ? undefined : ((value['HistoryUpdateDetails'] as Array<any>).map(ExtensionObjectToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

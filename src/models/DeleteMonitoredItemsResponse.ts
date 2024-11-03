@@ -59,6 +59,12 @@ export interface DeleteMonitoredItemsResponse {
      * @memberof DeleteMonitoredItemsResponse
      */
     DiagnosticInfos?: Array<DiagnosticInfo>;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeleteMonitoredItemsResponse
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function DeleteMonitoredItemsResponseFromJSONTyped(json: any, ignoreDiscr
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(StatusCodeFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -98,6 +105,7 @@ export function DeleteMonitoredItemsResponseFromJSONTyped(json: any, ignoreDiscr
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(StatusCodeToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

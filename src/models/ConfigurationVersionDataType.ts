@@ -31,6 +31,12 @@ export interface ConfigurationVersionDataType {
      * @memberof ConfigurationVersionDataType
      */
     MinorVersion?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConfigurationVersionDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -52,6 +58,7 @@ export function ConfigurationVersionDataTypeFromJSONTyped(json: any, ignoreDiscr
         
         'MajorVersion': json['MajorVersion'] == null ? undefined : json['MajorVersion'],
         'MinorVersion': json['MinorVersion'] == null ? undefined : json['MinorVersion'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function ConfigurationVersionDataTypeFromJSONTyped(json: any, ignoreDiscr
         
         'MajorVersion': value['MajorVersion'],
         'MinorVersion': value['MinorVersion'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

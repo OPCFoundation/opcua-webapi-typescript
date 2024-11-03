@@ -33,6 +33,12 @@ export interface HistoryEventFieldList {
      * @memberof HistoryEventFieldList
      */
     EventFields?: Array<Variant>;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryEventFieldList
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -53,6 +59,7 @@ export function HistoryEventFieldListFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'EventFields': json['EventFields'] == null ? undefined : ((json['EventFields'] as Array<any>).map(VariantFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function HistoryEventFieldListFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'EventFields': value['EventFields'] == null ? undefined : ((value['EventFields'] as Array<any>).map(VariantToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

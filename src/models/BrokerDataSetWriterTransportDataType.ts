@@ -55,6 +55,12 @@ export interface BrokerDataSetWriterTransportDataType {
      * @memberof BrokerDataSetWriterTransportDataType
      */
     MetaDataUpdateTime?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BrokerDataSetWriterTransportDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -80,6 +86,7 @@ export function BrokerDataSetWriterTransportDataTypeFromJSONTyped(json: any, ign
         'RequestedDeliveryGuarantee': json['RequestedDeliveryGuarantee'] == null ? undefined : json['RequestedDeliveryGuarantee'],
         'MetaDataQueueName': json['MetaDataQueueName'] == null ? undefined : json['MetaDataQueueName'],
         'MetaDataUpdateTime': json['MetaDataUpdateTime'] == null ? undefined : json['MetaDataUpdateTime'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -100,6 +107,7 @@ export function BrokerDataSetWriterTransportDataTypeFromJSONTyped(json: any, ign
         'RequestedDeliveryGuarantee': value['RequestedDeliveryGuarantee'],
         'MetaDataQueueName': value['MetaDataQueueName'],
         'MetaDataUpdateTime': value['MetaDataUpdateTime'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

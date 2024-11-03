@@ -37,6 +37,12 @@ export interface ViewDescription {
      * @memberof ViewDescription
      */
     ViewVersion?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ViewDescription
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -59,6 +65,7 @@ export function ViewDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boo
         'ViewId': json['ViewId'] == null ? undefined : json['ViewId'],
         'Timestamp': json['Timestamp'] == null ? undefined : (new Date(json['Timestamp'])),
         'ViewVersion': json['ViewVersion'] == null ? undefined : json['ViewVersion'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function ViewDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boo
         'ViewId': value['ViewId'],
         'Timestamp': value['Timestamp'] == null ? undefined : ((value['Timestamp']).toISOString()),
         'ViewVersion': value['ViewVersion'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

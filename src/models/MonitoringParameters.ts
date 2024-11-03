@@ -57,6 +57,12 @@ export interface MonitoringParameters {
      * @memberof MonitoringParameters
      */
     DiscardOldest?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof MonitoringParameters
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function MonitoringParametersFromJSONTyped(json: any, ignoreDiscriminator
         'Filter': json['Filter'] == null ? undefined : ExtensionObjectFromJSON(json['Filter']),
         'QueueSize': json['QueueSize'] == null ? undefined : json['QueueSize'],
         'DiscardOldest': json['DiscardOldest'] == null ? undefined : json['DiscardOldest'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -100,6 +107,7 @@ export function MonitoringParametersFromJSONTyped(json: any, ignoreDiscriminator
         'Filter': ExtensionObjectToJSON(value['Filter']),
         'QueueSize': value['QueueSize'],
         'DiscardOldest': value['DiscardOldest'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

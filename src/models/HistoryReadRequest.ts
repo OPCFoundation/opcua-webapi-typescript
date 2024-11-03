@@ -71,6 +71,12 @@ export interface HistoryReadRequest {
      * @memberof HistoryReadRequest
      */
     NodesToRead?: Array<HistoryReadValueId>;
+    /**
+     * 
+     * @type {string}
+     * @memberof HistoryReadRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -95,6 +101,7 @@ export function HistoryReadRequestFromJSONTyped(json: any, ignoreDiscriminator: 
         'TimestampsToReturn': json['TimestampsToReturn'] == null ? undefined : json['TimestampsToReturn'],
         'ReleaseContinuationPoints': json['ReleaseContinuationPoints'] == null ? undefined : json['ReleaseContinuationPoints'],
         'NodesToRead': json['NodesToRead'] == null ? undefined : ((json['NodesToRead'] as Array<any>).map(HistoryReadValueIdFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -114,6 +121,7 @@ export function HistoryReadRequestFromJSONTyped(json: any, ignoreDiscriminator: 
         'TimestampsToReturn': value['TimestampsToReturn'],
         'ReleaseContinuationPoints': value['ReleaseContinuationPoints'],
         'NodesToRead': value['NodesToRead'] == null ? undefined : ((value['NodesToRead'] as Array<any>).map(HistoryReadValueIdToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

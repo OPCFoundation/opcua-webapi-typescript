@@ -46,6 +46,12 @@ export interface PublishRequest {
      * @memberof PublishRequest
      */
     SubscriptionAcknowledgements?: Array<SubscriptionAcknowledgement>;
+    /**
+     * 
+     * @type {string}
+     * @memberof PublishRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function PublishRequestFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'SubscriptionAcknowledgements': json['SubscriptionAcknowledgements'] == null ? undefined : ((json['SubscriptionAcknowledgements'] as Array<any>).map(SubscriptionAcknowledgementFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,6 +90,7 @@ export function PublishRequestFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'SubscriptionAcknowledgements': value['SubscriptionAcknowledgements'] == null ? undefined : ((value['SubscriptionAcknowledgements'] as Array<any>).map(SubscriptionAcknowledgementToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

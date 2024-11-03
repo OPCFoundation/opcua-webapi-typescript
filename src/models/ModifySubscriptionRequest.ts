@@ -69,6 +69,12 @@ export interface ModifySubscriptionRequest {
      * @memberof ModifySubscriptionRequest
      */
     Priority?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModifySubscriptionRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -95,6 +101,7 @@ export function ModifySubscriptionRequestFromJSONTyped(json: any, ignoreDiscrimi
         'RequestedMaxKeepAliveCount': json['RequestedMaxKeepAliveCount'] == null ? undefined : json['RequestedMaxKeepAliveCount'],
         'MaxNotificationsPerPublish': json['MaxNotificationsPerPublish'] == null ? undefined : json['MaxNotificationsPerPublish'],
         'Priority': json['Priority'] == null ? undefined : json['Priority'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -116,6 +123,7 @@ export function ModifySubscriptionRequestFromJSONTyped(json: any, ignoreDiscrimi
         'RequestedMaxKeepAliveCount': value['RequestedMaxKeepAliveCount'],
         'MaxNotificationsPerPublish': value['MaxNotificationsPerPublish'],
         'Priority': value['Priority'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

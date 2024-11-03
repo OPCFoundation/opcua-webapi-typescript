@@ -71,6 +71,12 @@ export interface PublishedDataSetDataType {
      * @memberof PublishedDataSetDataType
      */
     DataSetSource?: ExtensionObject;
+    /**
+     * 
+     * @type {string}
+     * @memberof PublishedDataSetDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -95,6 +101,7 @@ export function PublishedDataSetDataTypeFromJSONTyped(json: any, ignoreDiscrimin
         'DataSetMetaData': json['DataSetMetaData'] == null ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
         'ExtensionFields': json['ExtensionFields'] == null ? undefined : ((json['ExtensionFields'] as Array<any>).map(KeyValuePairFromJSON)),
         'DataSetSource': json['DataSetSource'] == null ? undefined : ExtensionObjectFromJSON(json['DataSetSource']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -114,6 +121,7 @@ export function PublishedDataSetDataTypeFromJSONTyped(json: any, ignoreDiscrimin
         'DataSetMetaData': DataSetMetaDataTypeToJSON(value['DataSetMetaData']),
         'ExtensionFields': value['ExtensionFields'] == null ? undefined : ((value['ExtensionFields'] as Array<any>).map(KeyValuePairToJSON)),
         'DataSetSource': ExtensionObjectToJSON(value['DataSetSource']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

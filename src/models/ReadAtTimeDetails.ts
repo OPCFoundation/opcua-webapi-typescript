@@ -31,6 +31,12 @@ export interface ReadAtTimeDetails {
      * @memberof ReadAtTimeDetails
      */
     UseSimpleBounds?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReadAtTimeDetails
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -52,6 +58,7 @@ export function ReadAtTimeDetailsFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'ReqTimes': json['ReqTimes'] == null ? undefined : json['ReqTimes'],
         'UseSimpleBounds': json['UseSimpleBounds'] == null ? undefined : json['UseSimpleBounds'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function ReadAtTimeDetailsFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'ReqTimes': value['ReqTimes'],
         'UseSimpleBounds': value['UseSimpleBounds'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

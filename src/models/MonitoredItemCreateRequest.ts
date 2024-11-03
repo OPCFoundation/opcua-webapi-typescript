@@ -52,6 +52,12 @@ export interface MonitoredItemCreateRequest {
      * @memberof MonitoredItemCreateRequest
      */
     RequestedParameters?: MonitoringParameters;
+    /**
+     * 
+     * @type {string}
+     * @memberof MonitoredItemCreateRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -74,6 +80,7 @@ export function MonitoredItemCreateRequestFromJSONTyped(json: any, ignoreDiscrim
         'ItemToMonitor': json['ItemToMonitor'] == null ? undefined : ReadValueIdFromJSON(json['ItemToMonitor']),
         'MonitoringMode': json['MonitoringMode'] == null ? undefined : json['MonitoringMode'],
         'RequestedParameters': json['RequestedParameters'] == null ? undefined : MonitoringParametersFromJSON(json['RequestedParameters']),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,6 +98,7 @@ export function MonitoredItemCreateRequestFromJSONTyped(json: any, ignoreDiscrim
         'ItemToMonitor': ReadValueIdToJSON(value['ItemToMonitor']),
         'MonitoringMode': value['MonitoringMode'],
         'RequestedParameters': MonitoringParametersToJSON(value['RequestedParameters']),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

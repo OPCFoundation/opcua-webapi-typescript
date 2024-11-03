@@ -52,6 +52,12 @@ export interface PubSubConfigurationDataType {
      * @memberof PubSubConfigurationDataType
      */
     Enabled?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof PubSubConfigurationDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -74,6 +80,7 @@ export function PubSubConfigurationDataTypeFromJSONTyped(json: any, ignoreDiscri
         'PublishedDataSets': json['PublishedDataSets'] == null ? undefined : ((json['PublishedDataSets'] as Array<any>).map(PublishedDataSetDataTypeFromJSON)),
         'Connections': json['Connections'] == null ? undefined : ((json['Connections'] as Array<any>).map(PubSubConnectionDataTypeFromJSON)),
         'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,6 +98,7 @@ export function PubSubConfigurationDataTypeFromJSONTyped(json: any, ignoreDiscri
         'PublishedDataSets': value['PublishedDataSets'] == null ? undefined : ((value['PublishedDataSets'] as Array<any>).map(PublishedDataSetDataTypeToJSON)),
         'Connections': value['Connections'] == null ? undefined : ((value['Connections'] as Array<any>).map(PubSubConnectionDataTypeToJSON)),
         'Enabled': value['Enabled'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

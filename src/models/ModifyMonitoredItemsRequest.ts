@@ -58,6 +58,12 @@ export interface ModifyMonitoredItemsRequest {
      * @memberof ModifyMonitoredItemsRequest
      */
     ItemsToModify?: Array<MonitoredItemModifyRequest>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModifyMonitoredItemsRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -81,6 +87,7 @@ export function ModifyMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscri
         'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
         'TimestampsToReturn': json['TimestampsToReturn'] == null ? undefined : json['TimestampsToReturn'],
         'ItemsToModify': json['ItemsToModify'] == null ? undefined : ((json['ItemsToModify'] as Array<any>).map(MonitoredItemModifyRequestFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,6 +106,7 @@ export function ModifyMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscri
         'SubscriptionId': value['SubscriptionId'],
         'TimestampsToReturn': value['TimestampsToReturn'],
         'ItemsToModify': value['ItemsToModify'] == null ? undefined : ((value['ItemsToModify'] as Array<any>).map(MonitoredItemModifyRequestToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

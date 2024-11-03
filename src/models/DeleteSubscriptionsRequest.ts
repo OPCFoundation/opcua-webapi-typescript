@@ -39,6 +39,12 @@ export interface DeleteSubscriptionsRequest {
      * @memberof DeleteSubscriptionsRequest
      */
     SubscriptionIds?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeleteSubscriptionsRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -60,6 +66,7 @@ export function DeleteSubscriptionsRequestFromJSONTyped(json: any, ignoreDiscrim
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'SubscriptionIds': json['SubscriptionIds'] == null ? undefined : json['SubscriptionIds'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function DeleteSubscriptionsRequestFromJSONTyped(json: any, ignoreDiscrim
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'SubscriptionIds': value['SubscriptionIds'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

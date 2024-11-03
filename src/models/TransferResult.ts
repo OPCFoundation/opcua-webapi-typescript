@@ -39,6 +39,12 @@ export interface TransferResult {
      * @memberof TransferResult
      */
     AvailableSequenceNumbers?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TransferResult
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -60,6 +66,7 @@ export function TransferResultFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'AvailableSequenceNumbers': json['AvailableSequenceNumbers'] == null ? undefined : json['AvailableSequenceNumbers'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -76,6 +83,7 @@ export function TransferResultFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'AvailableSequenceNumbers': value['AvailableSequenceNumbers'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

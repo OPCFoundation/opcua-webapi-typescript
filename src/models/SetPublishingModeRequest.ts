@@ -45,6 +45,12 @@ export interface SetPublishingModeRequest {
      * @memberof SetPublishingModeRequest
      */
     SubscriptionIds?: Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof SetPublishingModeRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function SetPublishingModeRequestFromJSONTyped(json: any, ignoreDiscrimin
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'PublishingEnabled': json['PublishingEnabled'] == null ? undefined : json['PublishingEnabled'],
         'SubscriptionIds': json['SubscriptionIds'] == null ? undefined : json['SubscriptionIds'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function SetPublishingModeRequestFromJSONTyped(json: any, ignoreDiscrimin
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'PublishingEnabled': value['PublishingEnabled'],
         'SubscriptionIds': value['SubscriptionIds'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

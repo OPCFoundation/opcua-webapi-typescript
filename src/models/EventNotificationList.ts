@@ -33,6 +33,12 @@ export interface EventNotificationList {
      * @memberof EventNotificationList
      */
     Events?: Array<EventFieldList>;
+    /**
+     * 
+     * @type {string}
+     * @memberof EventNotificationList
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -53,6 +59,7 @@ export function EventNotificationListFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'Events': json['Events'] == null ? undefined : ((json['Events'] as Array<any>).map(EventFieldListFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -68,6 +75,7 @@ export function EventNotificationListFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'Events': value['Events'] == null ? undefined : ((value['Events'] as Array<any>).map(EventFieldListToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

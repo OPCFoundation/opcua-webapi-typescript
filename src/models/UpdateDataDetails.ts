@@ -45,6 +45,12 @@ export interface UpdateDataDetails {
      * @memberof UpdateDataDetails
      */
     UpdateValues?: Array<DataValue>;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateDataDetails
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function UpdateDataDetailsFromJSONTyped(json: any, ignoreDiscriminator: b
         'NodeId': json['NodeId'] == null ? undefined : json['NodeId'],
         'PerformInsertReplace': json['PerformInsertReplace'] == null ? undefined : json['PerformInsertReplace'],
         'UpdateValues': json['UpdateValues'] == null ? undefined : ((json['UpdateValues'] as Array<any>).map(DataValueFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function UpdateDataDetailsFromJSONTyped(json: any, ignoreDiscriminator: b
         'NodeId': value['NodeId'],
         'PerformInsertReplace': value['PerformInsertReplace'],
         'UpdateValues': value['UpdateValues'] == null ? undefined : ((value['UpdateValues'] as Array<any>).map(DataValueToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

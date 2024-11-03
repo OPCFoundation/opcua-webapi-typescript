@@ -25,6 +25,12 @@ export interface NetworkAddressDataType {
      * @memberof NetworkAddressDataType
      */
     NetworkInterface?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NetworkAddressDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -45,6 +51,7 @@ export function NetworkAddressDataTypeFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'NetworkInterface': json['NetworkInterface'] == null ? undefined : json['NetworkInterface'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -60,6 +67,7 @@ export function NetworkAddressDataTypeFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'NetworkInterface': value['NetworkInterface'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -45,6 +45,12 @@ export interface TransferSubscriptionsRequest {
      * @memberof TransferSubscriptionsRequest
      */
     SendInitialValues?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof TransferSubscriptionsRequest
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -67,6 +73,7 @@ export function TransferSubscriptionsRequestFromJSONTyped(json: any, ignoreDiscr
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'SubscriptionIds': json['SubscriptionIds'] == null ? undefined : json['SubscriptionIds'],
         'SendInitialValues': json['SendInitialValues'] == null ? undefined : json['SendInitialValues'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -84,6 +91,7 @@ export function TransferSubscriptionsRequestFromJSONTyped(json: any, ignoreDiscr
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'SubscriptionIds': value['SubscriptionIds'],
         'SendInitialValues': value['SendInitialValues'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

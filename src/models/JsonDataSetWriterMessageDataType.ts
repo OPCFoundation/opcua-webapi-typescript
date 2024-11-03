@@ -25,6 +25,12 @@ export interface JsonDataSetWriterMessageDataType {
      * @memberof JsonDataSetWriterMessageDataType
      */
     DataSetMessageContentMask?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof JsonDataSetWriterMessageDataType
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -45,6 +51,7 @@ export function JsonDataSetWriterMessageDataTypeFromJSONTyped(json: any, ignoreD
     return {
         
         'DataSetMessageContentMask': json['DataSetMessageContentMask'] == null ? undefined : json['DataSetMessageContentMask'],
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -60,6 +67,7 @@ export function JsonDataSetWriterMessageDataTypeFromJSONTyped(json: any, ignoreD
     return {
         
         'DataSetMessageContentMask': value['DataSetMessageContentMask'],
+        'UaTypeId': value['UaTypeId'],
     };
 }
 

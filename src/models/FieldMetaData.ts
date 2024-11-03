@@ -94,6 +94,12 @@ export interface FieldMetaData {
      * @memberof FieldMetaData
      */
     Properties?: Array<KeyValuePair>;
+    /**
+     * 
+     * @type {string}
+     * @memberof FieldMetaData
+     */
+    UaTypeId?: string;
 }
 
 /**
@@ -123,6 +129,7 @@ export function FieldMetaDataFromJSONTyped(json: any, ignoreDiscriminator: boole
         'MaxStringLength': json['MaxStringLength'] == null ? undefined : json['MaxStringLength'],
         'DataSetFieldId': json['DataSetFieldId'] == null ? undefined : json['DataSetFieldId'],
         'Properties': json['Properties'] == null ? undefined : ((json['Properties'] as Array<any>).map(KeyValuePairFromJSON)),
+        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -147,6 +154,7 @@ export function FieldMetaDataFromJSONTyped(json: any, ignoreDiscriminator: boole
         'MaxStringLength': value['MaxStringLength'],
         'DataSetFieldId': value['DataSetFieldId'],
         'Properties': value['Properties'] == null ? undefined : ((value['Properties'] as Array<any>).map(KeyValuePairToJSON)),
+        'UaTypeId': value['UaTypeId'],
     };
 }
 
