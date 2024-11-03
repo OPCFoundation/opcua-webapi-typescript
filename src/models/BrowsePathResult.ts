@@ -46,12 +46,6 @@ export interface BrowsePathResult {
      * @memberof BrowsePathResult
      */
     Targets?: Array<BrowsePathTarget>;
-    /**
-     * 
-     * @type {string}
-     * @memberof BrowsePathResult
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function BrowsePathResultFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'Targets': json['Targets'] == null ? undefined : ((json['Targets'] as Array<any>).map(BrowsePathTargetFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -90,7 +83,6 @@ export function BrowsePathResultFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'Targets': value['Targets'] == null ? undefined : ((value['Targets'] as Array<any>).map(BrowsePathTargetToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

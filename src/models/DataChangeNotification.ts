@@ -46,12 +46,6 @@ export interface DataChangeNotification {
      * @memberof DataChangeNotification
      */
     DiagnosticInfos?: Array<DiagnosticInfo>;
-    /**
-     * 
-     * @type {string}
-     * @memberof DataChangeNotification
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function DataChangeNotificationFromJSONTyped(json: any, ignoreDiscriminat
         
         'MonitoredItems': json['MonitoredItems'] == null ? undefined : ((json['MonitoredItems'] as Array<any>).map(MonitoredItemNotificationFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -90,7 +83,6 @@ export function DataChangeNotificationFromJSONTyped(json: any, ignoreDiscriminat
         
         'MonitoredItems': value['MonitoredItems'] == null ? undefined : ((value['MonitoredItems'] as Array<any>).map(MonitoredItemNotificationToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -46,12 +46,6 @@ export interface EventFilter {
      * @memberof EventFilter
      */
     WhereClause?: ContentFilter;
-    /**
-     * 
-     * @type {string}
-     * @memberof EventFilter
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function EventFilterFromJSONTyped(json: any, ignoreDiscriminator: boolean
         
         'SelectClauses': json['SelectClauses'] == null ? undefined : ((json['SelectClauses'] as Array<any>).map(SimpleAttributeOperandFromJSON)),
         'WhereClause': json['WhereClause'] == null ? undefined : ContentFilterFromJSON(json['WhereClause']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -90,7 +83,6 @@ export function EventFilterFromJSONTyped(json: any, ignoreDiscriminator: boolean
         
         'SelectClauses': value['SelectClauses'] == null ? undefined : ((value['SelectClauses'] as Array<any>).map(SimpleAttributeOperandToJSON)),
         'WhereClause': ContentFilterToJSON(value['WhereClause']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

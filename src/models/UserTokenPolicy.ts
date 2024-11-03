@@ -49,12 +49,6 @@ export interface UserTokenPolicy {
      * @memberof UserTokenPolicy
      */
     SecurityPolicyUri?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserTokenPolicy
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -79,7 +73,6 @@ export function UserTokenPolicyFromJSONTyped(json: any, ignoreDiscriminator: boo
         'IssuedTokenType': json['IssuedTokenType'] == null ? undefined : json['IssuedTokenType'],
         'IssuerEndpointUrl': json['IssuerEndpointUrl'] == null ? undefined : json['IssuerEndpointUrl'],
         'SecurityPolicyUri': json['SecurityPolicyUri'] == null ? undefined : json['SecurityPolicyUri'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,7 +92,6 @@ export function UserTokenPolicyFromJSONTyped(json: any, ignoreDiscriminator: boo
         'IssuedTokenType': value['IssuedTokenType'],
         'IssuerEndpointUrl': value['IssuerEndpointUrl'],
         'SecurityPolicyUri': value['SecurityPolicyUri'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

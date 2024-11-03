@@ -52,12 +52,6 @@ export interface ContentFilterElementResult {
      * @memberof ContentFilterElementResult
      */
     OperandDiagnosticInfos?: Array<DiagnosticInfo>;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentFilterElementResult
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -80,7 +74,6 @@ export function ContentFilterElementResultFromJSONTyped(json: any, ignoreDiscrim
         'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'OperandStatusCodes': json['OperandStatusCodes'] == null ? undefined : ((json['OperandStatusCodes'] as Array<any>).map(StatusCodeFromJSON)),
         'OperandDiagnosticInfos': json['OperandDiagnosticInfos'] == null ? undefined : ((json['OperandDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -98,7 +91,6 @@ export function ContentFilterElementResultFromJSONTyped(json: any, ignoreDiscrim
         'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'OperandStatusCodes': value['OperandStatusCodes'] == null ? undefined : ((value['OperandStatusCodes'] as Array<any>).map(StatusCodeToJSON)),
         'OperandDiagnosticInfos': value['OperandDiagnosticInfos'] == null ? undefined : ((value['OperandDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

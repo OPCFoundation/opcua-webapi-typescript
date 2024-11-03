@@ -33,12 +33,6 @@ export interface UnregisterNodesResponse {
      * @memberof UnregisterNodesResponse
      */
     ResponseHeader?: ResponseHeader;
-    /**
-     * 
-     * @type {string}
-     * @memberof UnregisterNodesResponse
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -59,7 +53,6 @@ export function UnregisterNodesResponseFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function UnregisterNodesResponseFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

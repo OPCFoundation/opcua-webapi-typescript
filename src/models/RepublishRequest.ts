@@ -45,12 +45,6 @@ export interface RepublishRequest {
      * @memberof RepublishRequest
      */
     RetransmitSequenceNumber?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepublishRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function RepublishRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
         'RetransmitSequenceNumber': json['RetransmitSequenceNumber'] == null ? undefined : json['RetransmitSequenceNumber'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,7 +84,6 @@ export function RepublishRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'SubscriptionId': value['SubscriptionId'],
         'RetransmitSequenceNumber': value['RetransmitSequenceNumber'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

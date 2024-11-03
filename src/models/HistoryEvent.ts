@@ -33,12 +33,6 @@ export interface HistoryEvent {
      * @memberof HistoryEvent
      */
     Events?: Array<HistoryEventFieldList>;
-    /**
-     * 
-     * @type {string}
-     * @memberof HistoryEvent
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -59,7 +53,6 @@ export function HistoryEventFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'Events': json['Events'] == null ? undefined : ((json['Events'] as Array<any>).map(HistoryEventFieldListFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function HistoryEventFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'Events': value['Events'] == null ? undefined : ((value['Events'] as Array<any>).map(HistoryEventFieldListToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

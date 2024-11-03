@@ -39,12 +39,6 @@ export interface MonitoredItemModifyRequest {
      * @memberof MonitoredItemModifyRequest
      */
     RequestedParameters?: MonitoringParameters;
-    /**
-     * 
-     * @type {string}
-     * @memberof MonitoredItemModifyRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -66,7 +60,6 @@ export function MonitoredItemModifyRequestFromJSONTyped(json: any, ignoreDiscrim
         
         'MonitoredItemId': json['MonitoredItemId'] == null ? undefined : json['MonitoredItemId'],
         'RequestedParameters': json['RequestedParameters'] == null ? undefined : MonitoringParametersFromJSON(json['RequestedParameters']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,7 +76,6 @@ export function MonitoredItemModifyRequestFromJSONTyped(json: any, ignoreDiscrim
         
         'MonitoredItemId': value['MonitoredItemId'],
         'RequestedParameters': MonitoringParametersToJSON(value['RequestedParameters']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

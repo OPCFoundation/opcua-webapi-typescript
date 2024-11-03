@@ -39,12 +39,6 @@ export interface CancelResponse {
      * @memberof CancelResponse
      */
     CancelCount?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CancelResponse
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -66,7 +60,6 @@ export function CancelResponseFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'CancelCount': json['CancelCount'] == null ? undefined : json['CancelCount'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,7 +76,6 @@ export function CancelResponseFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'CancelCount': value['CancelCount'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

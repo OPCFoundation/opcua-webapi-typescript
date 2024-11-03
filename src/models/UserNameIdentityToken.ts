@@ -43,12 +43,6 @@ export interface UserNameIdentityToken {
      * @memberof UserNameIdentityToken
      */
     PolicyId?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserNameIdentityToken
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -72,7 +66,6 @@ export function UserNameIdentityTokenFromJSONTyped(json: any, ignoreDiscriminato
         'Password': json['Password'] == null ? undefined : json['Password'],
         'EncryptionAlgorithm': json['EncryptionAlgorithm'] == null ? undefined : json['EncryptionAlgorithm'],
         'PolicyId': json['PolicyId'] == null ? undefined : json['PolicyId'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,7 +84,6 @@ export function UserNameIdentityTokenFromJSONTyped(json: any, ignoreDiscriminato
         'Password': value['Password'],
         'EncryptionAlgorithm': value['EncryptionAlgorithm'],
         'PolicyId': value['PolicyId'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

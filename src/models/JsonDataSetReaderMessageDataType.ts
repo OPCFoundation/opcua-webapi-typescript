@@ -31,12 +31,6 @@ export interface JsonDataSetReaderMessageDataType {
      * @memberof JsonDataSetReaderMessageDataType
      */
     DataSetMessageContentMask?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof JsonDataSetReaderMessageDataType
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function JsonDataSetReaderMessageDataTypeFromJSONTyped(json: any, ignoreD
         
         'NetworkMessageContentMask': json['NetworkMessageContentMask'] == null ? undefined : json['NetworkMessageContentMask'],
         'DataSetMessageContentMask': json['DataSetMessageContentMask'] == null ? undefined : json['DataSetMessageContentMask'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function JsonDataSetReaderMessageDataTypeFromJSONTyped(json: any, ignoreD
         
         'NetworkMessageContentMask': value['NetworkMessageContentMask'],
         'DataSetMessageContentMask': value['DataSetMessageContentMask'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

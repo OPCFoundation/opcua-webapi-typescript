@@ -51,12 +51,6 @@ export interface ModifySubscriptionResponse {
      * @memberof ModifySubscriptionResponse
      */
     RevisedMaxKeepAliveCount?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModifySubscriptionResponse
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -80,7 +74,6 @@ export function ModifySubscriptionResponseFromJSONTyped(json: any, ignoreDiscrim
         'RevisedPublishingInterval': json['RevisedPublishingInterval'] == null ? undefined : json['RevisedPublishingInterval'],
         'RevisedLifetimeCount': json['RevisedLifetimeCount'] == null ? undefined : json['RevisedLifetimeCount'],
         'RevisedMaxKeepAliveCount': json['RevisedMaxKeepAliveCount'] == null ? undefined : json['RevisedMaxKeepAliveCount'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,7 +92,6 @@ export function ModifySubscriptionResponseFromJSONTyped(json: any, ignoreDiscrim
         'RevisedPublishingInterval': value['RevisedPublishingInterval'],
         'RevisedLifetimeCount': value['RevisedLifetimeCount'],
         'RevisedMaxKeepAliveCount': value['RevisedMaxKeepAliveCount'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

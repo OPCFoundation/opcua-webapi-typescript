@@ -45,12 +45,6 @@ export interface EnumValueType {
      * @memberof EnumValueType
      */
     Description?: LocalizedText;
-    /**
-     * 
-     * @type {string}
-     * @memberof EnumValueType
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function EnumValueTypeFromJSONTyped(json: any, ignoreDiscriminator: boole
         'Value': json['Value'] == null ? undefined : json['Value'],
         'DisplayName': json['DisplayName'] == null ? undefined : LocalizedTextFromJSON(json['DisplayName']),
         'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,7 +84,6 @@ export function EnumValueTypeFromJSONTyped(json: any, ignoreDiscriminator: boole
         'Value': value['Value'],
         'DisplayName': LocalizedTextToJSON(value['DisplayName']),
         'Description': LocalizedTextToJSON(value['Description']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

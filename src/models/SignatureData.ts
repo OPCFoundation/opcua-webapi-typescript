@@ -31,12 +31,6 @@ export interface SignatureData {
      * @memberof SignatureData
      */
     Signature?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SignatureData
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function SignatureDataFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'Algorithm': json['Algorithm'] == null ? undefined : json['Algorithm'],
         'Signature': json['Signature'] == null ? undefined : json['Signature'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function SignatureDataFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'Algorithm': value['Algorithm'],
         'Signature': value['Signature'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

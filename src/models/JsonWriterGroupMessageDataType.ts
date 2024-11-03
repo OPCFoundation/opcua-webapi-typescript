@@ -25,12 +25,6 @@ export interface JsonWriterGroupMessageDataType {
      * @memberof JsonWriterGroupMessageDataType
      */
     NetworkMessageContentMask?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof JsonWriterGroupMessageDataType
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -51,7 +45,6 @@ export function JsonWriterGroupMessageDataTypeFromJSONTyped(json: any, ignoreDis
     return {
         
         'NetworkMessageContentMask': json['NetworkMessageContentMask'] == null ? undefined : json['NetworkMessageContentMask'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -67,7 +60,6 @@ export function JsonWriterGroupMessageDataTypeFromJSONTyped(json: any, ignoreDis
     return {
         
         'NetworkMessageContentMask': value['NetworkMessageContentMask'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

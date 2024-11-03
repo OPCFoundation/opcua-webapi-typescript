@@ -10,7 +10,6 @@ src/models/ActivateSessionResponse.ts
 src/models/AggregateConfiguration.ts
 src/models/AggregateFilter.ts
 src/models/AggregateFilterResult.ts
-src/models/AnonymousIdentityToken.ts
 src/models/ApplicationDescription.ts
 src/models/ApplicationType.ts
 src/models/Argument.ts
@@ -39,7 +38,6 @@ src/models/CancelResponse.ts
 src/models/CloseSessionRequest.ts
 src/models/CloseSessionResponse.ts
 src/models/ConfigurationVersionDataType.ts
-src/models/ConnectionTransportDataType.ts
 src/models/ContentFilter.ts
 src/models/ContentFilterElement.ts
 src/models/ContentFilterElementResult.ts
@@ -55,12 +53,7 @@ src/models/DataChangeNotification.ts
 src/models/DataChangeTrigger.ts
 src/models/DataSetMetaDataType.ts
 src/models/DataSetReaderDataType.ts
-src/models/DataSetReaderMessageDataType.ts
-src/models/DataSetReaderTransportDataType.ts
 src/models/DataSetWriterDataType.ts
-src/models/DataSetWriterMessageDataType.ts
-src/models/DataSetWriterTransportDataType.ts
-src/models/DataTypeDefinition.ts
 src/models/DataTypeDescription.ts
 src/models/DataTypeSchemaHeader.ts
 src/models/DataValue.ts
@@ -83,7 +76,6 @@ src/models/EventFilterResult.ts
 src/models/EventNotificationList.ts
 src/models/ExtensionObject.ts
 src/models/FieldMetaData.ts
-src/models/FilterOperand.ts
 src/models/FilterOperator.ts
 src/models/FindServersRequest.ts
 src/models/FindServersResponse.ts
@@ -93,12 +85,10 @@ src/models/HistoryData.ts
 src/models/HistoryEvent.ts
 src/models/HistoryEventFieldList.ts
 src/models/HistoryModifiedData.ts
-src/models/HistoryReadDetails.ts
 src/models/HistoryReadRequest.ts
 src/models/HistoryReadResponse.ts
 src/models/HistoryReadResult.ts
 src/models/HistoryReadValueId.ts
-src/models/HistoryUpdateDetails.ts
 src/models/HistoryUpdateRequest.ts
 src/models/HistoryUpdateResponse.ts
 src/models/HistoryUpdateResult.ts
@@ -121,13 +111,10 @@ src/models/MonitoredItemCreateResult.ts
 src/models/MonitoredItemModifyRequest.ts
 src/models/MonitoredItemModifyResult.ts
 src/models/MonitoredItemNotification.ts
-src/models/MonitoringFilter.ts
-src/models/MonitoringFilterResult.ts
 src/models/MonitoringMode.ts
 src/models/MonitoringParameters.ts
 src/models/NetworkAddressDataType.ts
 src/models/NodeClass.ts
-src/models/NotificationData.ts
 src/models/NotificationMessage.ts
 src/models/PerformUpdateType.ts
 src/models/PubSubConfiguration2DataType.ts
@@ -150,8 +137,6 @@ src/models/ReadRequest.ts
 src/models/ReadResponse.ts
 src/models/ReadValueId.ts
 src/models/ReaderGroupDataType.ts
-src/models/ReaderGroupMessageDataType.ts
-src/models/ReaderGroupTransportDataType.ts
 src/models/ReferenceDescription.ts
 src/models/RegisterNodesRequest.ts
 src/models/RegisterNodesResponse.ts
@@ -176,12 +161,10 @@ src/models/SimpleTypeDescription.ts
 src/models/StandaloneSubscribedDataSetDataType.ts
 src/models/StatusChangeNotification.ts
 src/models/StatusCode.ts
-src/models/Structure.ts
 src/models/StructureDefinition.ts
 src/models/StructureDescription.ts
 src/models/StructureField.ts
 src/models/StructureType.ts
-src/models/SubscribedDataSetDataType.ts
 src/models/SubscriptionAcknowledgement.ts
 src/models/TimestampsToReturn.ts
 src/models/TransferResult.ts
@@ -189,7 +172,6 @@ src/models/TransferSubscriptionsRequest.ts
 src/models/TransferSubscriptionsResponse.ts
 src/models/TranslateBrowsePathsToNodeIdsRequest.ts
 src/models/TranslateBrowsePathsToNodeIdsResponse.ts
-src/models/Union.ts
 src/models/UnregisterNodesRequest.ts
 src/models/UnregisterNodesResponse.ts
 src/models/UpdateDataDetails.ts
@@ -205,8 +187,6 @@ src/models/WriteRequest.ts
 src/models/WriteResponse.ts
 src/models/WriteValue.ts
 src/models/WriterGroupDataType.ts
-src/models/WriterGroupMessageDataType.ts
-src/models/WriterGroupTransportDataType.ts
 src/models/X509IdentityToken.ts
 src/models/index.ts
 src/runtime.ts

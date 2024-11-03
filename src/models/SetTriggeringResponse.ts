@@ -71,12 +71,6 @@ export interface SetTriggeringResponse {
      * @memberof SetTriggeringResponse
      */
     RemoveDiagnosticInfos?: Array<DiagnosticInfo>;
-    /**
-     * 
-     * @type {string}
-     * @memberof SetTriggeringResponse
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -101,7 +95,6 @@ export function SetTriggeringResponseFromJSONTyped(json: any, ignoreDiscriminato
         'AddDiagnosticInfos': json['AddDiagnosticInfos'] == null ? undefined : ((json['AddDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
         'RemoveResults': json['RemoveResults'] == null ? undefined : ((json['RemoveResults'] as Array<any>).map(StatusCodeFromJSON)),
         'RemoveDiagnosticInfos': json['RemoveDiagnosticInfos'] == null ? undefined : ((json['RemoveDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -121,7 +114,6 @@ export function SetTriggeringResponseFromJSONTyped(json: any, ignoreDiscriminato
         'AddDiagnosticInfos': value['AddDiagnosticInfos'] == null ? undefined : ((value['AddDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
         'RemoveResults': value['RemoveResults'] == null ? undefined : ((value['RemoveResults'] as Array<any>).map(StatusCodeToJSON)),
         'RemoveDiagnosticInfos': value['RemoveDiagnosticInfos'] == null ? undefined : ((value['RemoveDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

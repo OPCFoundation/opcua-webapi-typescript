@@ -59,12 +59,6 @@ export interface SetMonitoringModeResponse {
      * @memberof SetMonitoringModeResponse
      */
     DiagnosticInfos?: Array<DiagnosticInfo>;
-    /**
-     * 
-     * @type {string}
-     * @memberof SetMonitoringModeResponse
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -87,7 +81,6 @@ export function SetMonitoringModeResponseFromJSONTyped(json: any, ignoreDiscrimi
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(StatusCodeFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -105,7 +98,6 @@ export function SetMonitoringModeResponseFromJSONTyped(json: any, ignoreDiscrimi
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(StatusCodeToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

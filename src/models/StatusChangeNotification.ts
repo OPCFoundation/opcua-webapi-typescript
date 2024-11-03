@@ -46,12 +46,6 @@ export interface StatusChangeNotification {
      * @memberof StatusChangeNotification
      */
     DiagnosticInfo?: DiagnosticInfo;
-    /**
-     * 
-     * @type {string}
-     * @memberof StatusChangeNotification
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function StatusChangeNotificationFromJSONTyped(json: any, ignoreDiscrimin
         
         'Status': json['Status'] == null ? undefined : StatusCodeFromJSON(json['Status']),
         'DiagnosticInfo': json['DiagnosticInfo'] == null ? undefined : DiagnosticInfoFromJSON(json['DiagnosticInfo']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -90,7 +83,6 @@ export function StatusChangeNotificationFromJSONTyped(json: any, ignoreDiscrimin
         
         'Status': StatusCodeToJSON(value['Status']),
         'DiagnosticInfo': DiagnosticInfoToJSON(value['DiagnosticInfo']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

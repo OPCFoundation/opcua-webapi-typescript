@@ -31,12 +31,6 @@ export interface SubscriptionAcknowledgement {
      * @memberof SubscriptionAcknowledgement
      */
     SequenceNumber?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof SubscriptionAcknowledgement
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function SubscriptionAcknowledgementFromJSONTyped(json: any, ignoreDiscri
         
         'SubscriptionId': json['SubscriptionId'] == null ? undefined : json['SubscriptionId'],
         'SequenceNumber': json['SequenceNumber'] == null ? undefined : json['SequenceNumber'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function SubscriptionAcknowledgementFromJSONTyped(json: any, ignoreDiscri
         
         'SubscriptionId': value['SubscriptionId'],
         'SequenceNumber': value['SequenceNumber'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

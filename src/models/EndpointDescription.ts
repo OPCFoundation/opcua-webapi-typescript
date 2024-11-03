@@ -82,12 +82,6 @@ export interface EndpointDescription {
      * @memberof EndpointDescription
      */
     SecurityLevel?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof EndpointDescription
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -115,7 +109,6 @@ export function EndpointDescriptionFromJSONTyped(json: any, ignoreDiscriminator:
         'UserIdentityTokens': json['UserIdentityTokens'] == null ? undefined : ((json['UserIdentityTokens'] as Array<any>).map(UserTokenPolicyFromJSON)),
         'TransportProfileUri': json['TransportProfileUri'] == null ? undefined : json['TransportProfileUri'],
         'SecurityLevel': json['SecurityLevel'] == null ? undefined : json['SecurityLevel'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -138,7 +131,6 @@ export function EndpointDescriptionFromJSONTyped(json: any, ignoreDiscriminator:
         'UserIdentityTokens': value['UserIdentityTokens'] == null ? undefined : ((value['UserIdentityTokens'] as Array<any>).map(UserTokenPolicyToJSON)),
         'TransportProfileUri': value['TransportProfileUri'],
         'SecurityLevel': value['SecurityLevel'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

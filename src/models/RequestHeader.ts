@@ -69,12 +69,6 @@ export interface RequestHeader {
      * @memberof RequestHeader
      */
     AdditionalHeader?: ExtensionObject;
-    /**
-     * 
-     * @type {string}
-     * @memberof RequestHeader
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -101,7 +95,6 @@ export function RequestHeaderFromJSONTyped(json: any, ignoreDiscriminator: boole
         'AuditEntryId': json['AuditEntryId'] == null ? undefined : json['AuditEntryId'],
         'TimeoutHint': json['TimeoutHint'] == null ? undefined : json['TimeoutHint'],
         'AdditionalHeader': json['AdditionalHeader'] == null ? undefined : ExtensionObjectFromJSON(json['AdditionalHeader']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -123,7 +116,6 @@ export function RequestHeaderFromJSONTyped(json: any, ignoreDiscriminator: boole
         'AuditEntryId': value['AuditEntryId'],
         'TimeoutHint': value['TimeoutHint'],
         'AdditionalHeader': ExtensionObjectToJSON(value['AdditionalHeader']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

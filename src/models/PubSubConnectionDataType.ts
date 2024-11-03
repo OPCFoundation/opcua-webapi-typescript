@@ -109,12 +109,6 @@ export interface PubSubConnectionDataType {
      * @memberof PubSubConnectionDataType
      */
     ReaderGroups?: Array<ReaderGroupDataType>;
-    /**
-     * 
-     * @type {string}
-     * @memberof PubSubConnectionDataType
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -143,7 +137,6 @@ export function PubSubConnectionDataTypeFromJSONTyped(json: any, ignoreDiscrimin
         'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
         'WriterGroups': json['WriterGroups'] == null ? undefined : ((json['WriterGroups'] as Array<any>).map(WriterGroupDataTypeFromJSON)),
         'ReaderGroups': json['ReaderGroups'] == null ? undefined : ((json['ReaderGroups'] as Array<any>).map(ReaderGroupDataTypeFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -167,7 +160,6 @@ export function PubSubConnectionDataTypeFromJSONTyped(json: any, ignoreDiscrimin
         'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
         'WriterGroups': value['WriterGroups'] == null ? undefined : ((value['WriterGroups'] as Array<any>).map(WriterGroupDataTypeToJSON)),
         'ReaderGroups': value['ReaderGroups'] == null ? undefined : ((value['ReaderGroups'] as Array<any>).map(ReaderGroupDataTypeToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

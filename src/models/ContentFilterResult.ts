@@ -46,12 +46,6 @@ export interface ContentFilterResult {
      * @memberof ContentFilterResult
      */
     ElementDiagnosticInfos?: Array<DiagnosticInfo>;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentFilterResult
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function ContentFilterResultFromJSONTyped(json: any, ignoreDiscriminator:
         
         'ElementResults': json['ElementResults'] == null ? undefined : ((json['ElementResults'] as Array<any>).map(ContentFilterElementResultFromJSON)),
         'ElementDiagnosticInfos': json['ElementDiagnosticInfos'] == null ? undefined : ((json['ElementDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -90,7 +83,6 @@ export function ContentFilterResultFromJSONTyped(json: any, ignoreDiscriminator:
         
         'ElementResults': value['ElementResults'] == null ? undefined : ((value['ElementResults'] as Array<any>).map(ContentFilterElementResultToJSON)),
         'ElementDiagnosticInfos': value['ElementDiagnosticInfos'] == null ? undefined : ((value['ElementDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

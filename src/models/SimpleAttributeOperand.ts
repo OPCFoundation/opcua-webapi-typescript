@@ -43,12 +43,6 @@ export interface SimpleAttributeOperand {
      * @memberof SimpleAttributeOperand
      */
     IndexRange?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SimpleAttributeOperand
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -72,7 +66,6 @@ export function SimpleAttributeOperandFromJSONTyped(json: any, ignoreDiscriminat
         'BrowsePath': json['BrowsePath'] == null ? undefined : json['BrowsePath'],
         'AttributeId': json['AttributeId'] == null ? undefined : json['AttributeId'],
         'IndexRange': json['IndexRange'] == null ? undefined : json['IndexRange'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,7 +84,6 @@ export function SimpleAttributeOperandFromJSONTyped(json: any, ignoreDiscriminat
         'BrowsePath': value['BrowsePath'],
         'AttributeId': value['AttributeId'],
         'IndexRange': value['IndexRange'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

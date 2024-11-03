@@ -57,12 +57,6 @@ export interface SetTriggeringRequest {
      * @memberof SetTriggeringRequest
      */
     LinksToRemove?: Array<number>;
-    /**
-     * 
-     * @type {string}
-     * @memberof SetTriggeringRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -87,7 +81,6 @@ export function SetTriggeringRequestFromJSONTyped(json: any, ignoreDiscriminator
         'TriggeringItemId': json['TriggeringItemId'] == null ? undefined : json['TriggeringItemId'],
         'LinksToAdd': json['LinksToAdd'] == null ? undefined : json['LinksToAdd'],
         'LinksToRemove': json['LinksToRemove'] == null ? undefined : json['LinksToRemove'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -107,7 +100,6 @@ export function SetTriggeringRequestFromJSONTyped(json: any, ignoreDiscriminator
         'TriggeringItemId': value['TriggeringItemId'],
         'LinksToAdd': value['LinksToAdd'],
         'LinksToRemove': value['LinksToRemove'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

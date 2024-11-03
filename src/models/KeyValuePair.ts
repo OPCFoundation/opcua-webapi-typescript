@@ -39,12 +39,6 @@ export interface KeyValuePair {
      * @memberof KeyValuePair
      */
     Value?: Variant;
-    /**
-     * 
-     * @type {string}
-     * @memberof KeyValuePair
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -66,7 +60,6 @@ export function KeyValuePairFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'Key': json['Key'] == null ? undefined : json['Key'],
         'Value': json['Value'] == null ? undefined : VariantFromJSON(json['Value']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,7 +76,6 @@ export function KeyValuePairFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'Key': value['Key'],
         'Value': VariantToJSON(value['Value']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

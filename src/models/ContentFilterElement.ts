@@ -39,12 +39,6 @@ export interface ContentFilterElement {
      * @memberof ContentFilterElement
      */
     FilterOperands?: Array<ExtensionObject>;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContentFilterElement
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -66,7 +60,6 @@ export function ContentFilterElementFromJSONTyped(json: any, ignoreDiscriminator
         
         'FilterOperator': json['FilterOperator'] == null ? undefined : json['FilterOperator'],
         'FilterOperands': json['FilterOperands'] == null ? undefined : ((json['FilterOperands'] as Array<any>).map(ExtensionObjectFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,7 +76,6 @@ export function ContentFilterElementFromJSONTyped(json: any, ignoreDiscriminator
         
         'FilterOperator': value['FilterOperator'],
         'FilterOperands': value['FilterOperands'] == null ? undefined : ((value['FilterOperands'] as Array<any>).map(ExtensionObjectToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -37,12 +37,6 @@ export interface ModificationInfo {
      * @memberof ModificationInfo
      */
     UserName?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModificationInfo
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -65,7 +59,6 @@ export function ModificationInfoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'ModificationTime': json['ModificationTime'] == null ? undefined : (new Date(json['ModificationTime'])),
         'UpdateType': json['UpdateType'] == null ? undefined : json['UpdateType'],
         'UserName': json['UserName'] == null ? undefined : json['UserName'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,7 +76,6 @@ export function ModificationInfoFromJSONTyped(json: any, ignoreDiscriminator: bo
         'ModificationTime': value['ModificationTime'] == null ? undefined : ((value['ModificationTime']).toISOString()),
         'UpdateType': value['UpdateType'],
         'UserName': value['UserName'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

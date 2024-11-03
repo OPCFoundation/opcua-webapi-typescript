@@ -108,12 +108,6 @@ export interface CreateSessionResponse {
      * @memberof CreateSessionResponse
      */
     MaxRequestMessageSize?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSessionResponse
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -143,7 +137,6 @@ export function CreateSessionResponseFromJSONTyped(json: any, ignoreDiscriminato
         'ServerSoftwareCertificates': json['ServerSoftwareCertificates'] == null ? undefined : ((json['ServerSoftwareCertificates'] as Array<any>).map(SignedSoftwareCertificateFromJSON)),
         'ServerSignature': json['ServerSignature'] == null ? undefined : SignatureDataFromJSON(json['ServerSignature']),
         'MaxRequestMessageSize': json['MaxRequestMessageSize'] == null ? undefined : json['MaxRequestMessageSize'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -168,7 +161,6 @@ export function CreateSessionResponseFromJSONTyped(json: any, ignoreDiscriminato
         'ServerSoftwareCertificates': value['ServerSoftwareCertificates'] == null ? undefined : ((value['ServerSoftwareCertificates'] as Array<any>).map(SignedSoftwareCertificateToJSON)),
         'ServerSignature': SignatureDataToJSON(value['ServerSignature']),
         'MaxRequestMessageSize': value['MaxRequestMessageSize'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

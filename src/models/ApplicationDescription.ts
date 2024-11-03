@@ -69,12 +69,6 @@ export interface ApplicationDescription {
      * @memberof ApplicationDescription
      */
     DiscoveryUrls?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof ApplicationDescription
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -101,7 +95,6 @@ export function ApplicationDescriptionFromJSONTyped(json: any, ignoreDiscriminat
         'GatewayServerUri': json['GatewayServerUri'] == null ? undefined : json['GatewayServerUri'],
         'DiscoveryProfileUri': json['DiscoveryProfileUri'] == null ? undefined : json['DiscoveryProfileUri'],
         'DiscoveryUrls': json['DiscoveryUrls'] == null ? undefined : json['DiscoveryUrls'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -123,7 +116,6 @@ export function ApplicationDescriptionFromJSONTyped(json: any, ignoreDiscriminat
         'GatewayServerUri': value['GatewayServerUri'],
         'DiscoveryProfileUri': value['DiscoveryProfileUri'],
         'DiscoveryUrls': value['DiscoveryUrls'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

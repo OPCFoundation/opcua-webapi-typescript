@@ -43,12 +43,6 @@ export interface RelativePathElement {
      * @memberof RelativePathElement
      */
     TargetName?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RelativePathElement
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -72,7 +66,6 @@ export function RelativePathElementFromJSONTyped(json: any, ignoreDiscriminator:
         'IsInverse': json['IsInverse'] == null ? undefined : json['IsInverse'],
         'IncludeSubtypes': json['IncludeSubtypes'] == null ? undefined : json['IncludeSubtypes'],
         'TargetName': json['TargetName'] == null ? undefined : json['TargetName'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,7 +84,6 @@ export function RelativePathElementFromJSONTyped(json: any, ignoreDiscriminator:
         'IsInverse': value['IsInverse'],
         'IncludeSubtypes': value['IncludeSubtypes'],
         'TargetName': value['TargetName'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

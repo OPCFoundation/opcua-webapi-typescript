@@ -57,12 +57,6 @@ export interface Argument {
      * @memberof Argument
      */
     Description?: LocalizedText;
-    /**
-     * 
-     * @type {string}
-     * @memberof Argument
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -87,7 +81,6 @@ export function ArgumentFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'ValueRank': json['ValueRank'] == null ? undefined : json['ValueRank'],
         'ArrayDimensions': json['ArrayDimensions'] == null ? undefined : json['ArrayDimensions'],
         'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -107,7 +100,6 @@ export function ArgumentFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'ValueRank': value['ValueRank'],
         'ArrayDimensions': value['ArrayDimensions'],
         'Description': LocalizedTextToJSON(value['Description']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

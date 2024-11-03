@@ -46,12 +46,6 @@ export interface CallRequest {
      * @memberof CallRequest
      */
     MethodsToCall?: Array<CallMethodRequest>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CallRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function CallRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'MethodsToCall': json['MethodsToCall'] == null ? undefined : ((json['MethodsToCall'] as Array<any>).map(CallMethodRequestFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -90,7 +83,6 @@ export function CallRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'MethodsToCall': value['MethodsToCall'] == null ? undefined : ((value['MethodsToCall'] as Array<any>).map(CallMethodRequestToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

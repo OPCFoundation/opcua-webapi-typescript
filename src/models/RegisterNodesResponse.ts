@@ -39,12 +39,6 @@ export interface RegisterNodesResponse {
      * @memberof RegisterNodesResponse
      */
     RegisteredNodeIds?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegisterNodesResponse
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -66,7 +60,6 @@ export function RegisterNodesResponseFromJSONTyped(json: any, ignoreDiscriminato
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'RegisteredNodeIds': json['RegisteredNodeIds'] == null ? undefined : json['RegisteredNodeIds'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,7 +76,6 @@ export function RegisterNodesResponseFromJSONTyped(json: any, ignoreDiscriminato
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'RegisteredNodeIds': value['RegisteredNodeIds'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

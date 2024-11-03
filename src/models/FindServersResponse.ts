@@ -46,12 +46,6 @@ export interface FindServersResponse {
      * @memberof FindServersResponse
      */
     Servers?: Array<ApplicationDescription>;
-    /**
-     * 
-     * @type {string}
-     * @memberof FindServersResponse
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function FindServersResponseFromJSONTyped(json: any, ignoreDiscriminator:
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
         'Servers': json['Servers'] == null ? undefined : ((json['Servers'] as Array<any>).map(ApplicationDescriptionFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -90,7 +83,6 @@ export function FindServersResponseFromJSONTyped(json: any, ignoreDiscriminator:
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
         'Servers': value['Servers'] == null ? undefined : ((value['Servers'] as Array<any>).map(ApplicationDescriptionToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

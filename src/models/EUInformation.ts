@@ -51,12 +51,6 @@ export interface EUInformation {
      * @memberof EUInformation
      */
     Description?: LocalizedText;
-    /**
-     * 
-     * @type {string}
-     * @memberof EUInformation
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -80,7 +74,6 @@ export function EUInformationFromJSONTyped(json: any, ignoreDiscriminator: boole
         'UnitId': json['UnitId'] == null ? undefined : json['UnitId'],
         'DisplayName': json['DisplayName'] == null ? undefined : LocalizedTextFromJSON(json['DisplayName']),
         'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,7 +92,6 @@ export function EUInformationFromJSONTyped(json: any, ignoreDiscriminator: boole
         'UnitId': value['UnitId'],
         'DisplayName': LocalizedTextToJSON(value['DisplayName']),
         'Description': LocalizedTextToJSON(value['Description']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

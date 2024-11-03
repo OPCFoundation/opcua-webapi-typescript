@@ -39,12 +39,6 @@ export interface UnregisterNodesRequest {
      * @memberof UnregisterNodesRequest
      */
     NodesToUnregister?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof UnregisterNodesRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -66,7 +60,6 @@ export function UnregisterNodesRequestFromJSONTyped(json: any, ignoreDiscriminat
         
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'NodesToUnregister': json['NodesToUnregister'] == null ? undefined : json['NodesToUnregister'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,7 +76,6 @@ export function UnregisterNodesRequestFromJSONTyped(json: any, ignoreDiscriminat
         
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'NodesToUnregister': value['NodesToUnregister'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

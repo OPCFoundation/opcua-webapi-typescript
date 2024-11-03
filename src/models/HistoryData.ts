@@ -33,12 +33,6 @@ export interface HistoryData {
      * @memberof HistoryData
      */
     DataValues?: Array<DataValue>;
-    /**
-     * 
-     * @type {string}
-     * @memberof HistoryData
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -59,7 +53,6 @@ export function HistoryDataFromJSONTyped(json: any, ignoreDiscriminator: boolean
     return {
         
         'DataValues': json['DataValues'] == null ? undefined : ((json['DataValues'] as Array<any>).map(DataValueFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function HistoryDataFromJSONTyped(json: any, ignoreDiscriminator: boolean
     return {
         
         'DataValues': value['DataValues'] == null ? undefined : ((value['DataValues'] as Array<any>).map(DataValueToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

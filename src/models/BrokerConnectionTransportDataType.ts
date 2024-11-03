@@ -31,12 +31,6 @@ export interface BrokerConnectionTransportDataType {
      * @memberof BrokerConnectionTransportDataType
      */
     AuthenticationProfileUri?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BrokerConnectionTransportDataType
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function BrokerConnectionTransportDataTypeFromJSONTyped(json: any, ignore
         
         'ResourceUri': json['ResourceUri'] == null ? undefined : json['ResourceUri'],
         'AuthenticationProfileUri': json['AuthenticationProfileUri'] == null ? undefined : json['AuthenticationProfileUri'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function BrokerConnectionTransportDataTypeFromJSONTyped(json: any, ignore
         
         'ResourceUri': value['ResourceUri'],
         'AuthenticationProfileUri': value['AuthenticationProfileUri'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

@@ -31,12 +31,6 @@ export interface Range {
      * @memberof Range
      */
     High?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Range
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function RangeFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ran
         
         'Low': json['Low'] == null ? undefined : json['Low'],
         'High': json['High'] == null ? undefined : json['High'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function RangeFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ran
         
         'Low': value['Low'],
         'High': value['High'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

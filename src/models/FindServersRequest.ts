@@ -51,12 +51,6 @@ export interface FindServersRequest {
      * @memberof FindServersRequest
      */
     ServerUris?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof FindServersRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -80,7 +74,6 @@ export function FindServersRequestFromJSONTyped(json: any, ignoreDiscriminator: 
         'EndpointUrl': json['EndpointUrl'] == null ? undefined : json['EndpointUrl'],
         'LocaleIds': json['LocaleIds'] == null ? undefined : json['LocaleIds'],
         'ServerUris': json['ServerUris'] == null ? undefined : json['ServerUris'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,7 +92,6 @@ export function FindServersRequestFromJSONTyped(json: any, ignoreDiscriminator: 
         'EndpointUrl': value['EndpointUrl'],
         'LocaleIds': value['LocaleIds'],
         'ServerUris': value['ServerUris'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

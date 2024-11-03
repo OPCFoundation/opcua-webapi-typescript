@@ -51,12 +51,6 @@ export interface EnumField {
      * @memberof EnumField
      */
     Description?: LocalizedText;
-    /**
-     * 
-     * @type {string}
-     * @memberof EnumField
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -80,7 +74,6 @@ export function EnumFieldFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'Value': json['Value'] == null ? undefined : json['Value'],
         'DisplayName': json['DisplayName'] == null ? undefined : LocalizedTextFromJSON(json['DisplayName']),
         'Description': json['Description'] == null ? undefined : LocalizedTextFromJSON(json['Description']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,7 +92,6 @@ export function EnumFieldFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'Value': value['Value'],
         'DisplayName': LocalizedTextToJSON(value['DisplayName']),
         'Description': LocalizedTextToJSON(value['Description']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

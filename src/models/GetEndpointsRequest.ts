@@ -51,12 +51,6 @@ export interface GetEndpointsRequest {
      * @memberof GetEndpointsRequest
      */
     ProfileUris?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetEndpointsRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -80,7 +74,6 @@ export function GetEndpointsRequestFromJSONTyped(json: any, ignoreDiscriminator:
         'EndpointUrl': json['EndpointUrl'] == null ? undefined : json['EndpointUrl'],
         'LocaleIds': json['LocaleIds'] == null ? undefined : json['LocaleIds'],
         'ProfileUris': json['ProfileUris'] == null ? undefined : json['ProfileUris'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,7 +92,6 @@ export function GetEndpointsRequestFromJSONTyped(json: any, ignoreDiscriminator:
         'EndpointUrl': value['EndpointUrl'],
         'LocaleIds': value['LocaleIds'],
         'ProfileUris': value['ProfileUris'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

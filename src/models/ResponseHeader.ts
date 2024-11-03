@@ -77,12 +77,6 @@ export interface ResponseHeader {
      * @memberof ResponseHeader
      */
     AdditionalHeader?: ExtensionObject;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResponseHeader
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -108,7 +102,6 @@ export function ResponseHeaderFromJSONTyped(json: any, ignoreDiscriminator: bool
         'ServiceDiagnostics': json['ServiceDiagnostics'] == null ? undefined : DiagnosticInfoFromJSON(json['ServiceDiagnostics']),
         'StringTable': json['StringTable'] == null ? undefined : json['StringTable'],
         'AdditionalHeader': json['AdditionalHeader'] == null ? undefined : ExtensionObjectFromJSON(json['AdditionalHeader']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -129,7 +122,6 @@ export function ResponseHeaderFromJSONTyped(json: any, ignoreDiscriminator: bool
         'ServiceDiagnostics': DiagnosticInfoToJSON(value['ServiceDiagnostics']),
         'StringTable': value['StringTable'],
         'AdditionalHeader': ExtensionObjectToJSON(value['AdditionalHeader']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

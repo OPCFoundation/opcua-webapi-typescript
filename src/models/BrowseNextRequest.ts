@@ -45,12 +45,6 @@ export interface BrowseNextRequest {
      * @memberof BrowseNextRequest
      */
     ContinuationPoints?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof BrowseNextRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function BrowseNextRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'RequestHeader': json['RequestHeader'] == null ? undefined : RequestHeaderFromJSON(json['RequestHeader']),
         'ReleaseContinuationPoints': json['ReleaseContinuationPoints'] == null ? undefined : json['ReleaseContinuationPoints'],
         'ContinuationPoints': json['ContinuationPoints'] == null ? undefined : json['ContinuationPoints'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,7 +84,6 @@ export function BrowseNextRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'RequestHeader': RequestHeaderToJSON(value['RequestHeader']),
         'ReleaseContinuationPoints': value['ReleaseContinuationPoints'],
         'ContinuationPoints': value['ContinuationPoints'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

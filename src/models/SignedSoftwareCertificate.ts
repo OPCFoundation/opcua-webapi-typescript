@@ -31,12 +31,6 @@ export interface SignedSoftwareCertificate {
      * @memberof SignedSoftwareCertificate
      */
     Signature?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SignedSoftwareCertificate
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function SignedSoftwareCertificateFromJSONTyped(json: any, ignoreDiscrimi
         
         'CertificateData': json['CertificateData'] == null ? undefined : json['CertificateData'],
         'Signature': json['Signature'] == null ? undefined : json['Signature'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function SignedSoftwareCertificateFromJSONTyped(json: any, ignoreDiscrimi
         
         'CertificateData': value['CertificateData'],
         'Signature': value['Signature'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

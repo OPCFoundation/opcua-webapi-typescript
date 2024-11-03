@@ -51,12 +51,6 @@ export interface AggregateFilter {
      * @memberof AggregateFilter
      */
     AggregateConfiguration?: AggregateConfiguration;
-    /**
-     * 
-     * @type {string}
-     * @memberof AggregateFilter
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -80,7 +74,6 @@ export function AggregateFilterFromJSONTyped(json: any, ignoreDiscriminator: boo
         'AggregateType': json['AggregateType'] == null ? undefined : json['AggregateType'],
         'ProcessingInterval': json['ProcessingInterval'] == null ? undefined : json['ProcessingInterval'],
         'AggregateConfiguration': json['AggregateConfiguration'] == null ? undefined : AggregateConfigurationFromJSON(json['AggregateConfiguration']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -99,7 +92,6 @@ export function AggregateFilterFromJSONTyped(json: any, ignoreDiscriminator: boo
         'AggregateType': value['AggregateType'],
         'ProcessingInterval': value['ProcessingInterval'],
         'AggregateConfiguration': AggregateConfigurationToJSON(value['AggregateConfiguration']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

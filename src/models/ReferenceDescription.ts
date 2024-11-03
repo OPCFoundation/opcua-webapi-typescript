@@ -69,12 +69,6 @@ export interface ReferenceDescription {
      * @memberof ReferenceDescription
      */
     TypeDefinition?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReferenceDescription
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -101,7 +95,6 @@ export function ReferenceDescriptionFromJSONTyped(json: any, ignoreDiscriminator
         'DisplayName': json['DisplayName'] == null ? undefined : LocalizedTextFromJSON(json['DisplayName']),
         'NodeClass': json['NodeClass'] == null ? undefined : json['NodeClass'],
         'TypeDefinition': json['TypeDefinition'] == null ? undefined : json['TypeDefinition'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -123,7 +116,6 @@ export function ReferenceDescriptionFromJSONTyped(json: any, ignoreDiscriminator
         'DisplayName': LocalizedTextToJSON(value['DisplayName']),
         'NodeClass': value['NodeClass'],
         'TypeDefinition': value['TypeDefinition'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

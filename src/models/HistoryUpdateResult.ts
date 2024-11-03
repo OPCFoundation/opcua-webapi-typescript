@@ -52,12 +52,6 @@ export interface HistoryUpdateResult {
      * @memberof HistoryUpdateResult
      */
     DiagnosticInfos?: Array<DiagnosticInfo>;
-    /**
-     * 
-     * @type {string}
-     * @memberof HistoryUpdateResult
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -80,7 +74,6 @@ export function HistoryUpdateResultFromJSONTyped(json: any, ignoreDiscriminator:
         'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'OperationResults': json['OperationResults'] == null ? undefined : ((json['OperationResults'] as Array<any>).map(StatusCodeFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -98,7 +91,6 @@ export function HistoryUpdateResultFromJSONTyped(json: any, ignoreDiscriminator:
         'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'OperationResults': value['OperationResults'] == null ? undefined : ((value['OperationResults'] as Array<any>).map(StatusCodeToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

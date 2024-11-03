@@ -25,12 +25,6 @@ export interface ElementOperand {
      * @memberof ElementOperand
      */
     _Index?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ElementOperand
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -51,7 +45,6 @@ export function ElementOperandFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         '_Index': json['Index'] == null ? undefined : json['Index'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -67,7 +60,6 @@ export function ElementOperandFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         'Index': value['_Index'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

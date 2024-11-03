@@ -39,12 +39,6 @@ export interface MonitoredItemNotification {
      * @memberof MonitoredItemNotification
      */
     Value?: DataValue;
-    /**
-     * 
-     * @type {string}
-     * @memberof MonitoredItemNotification
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -66,7 +60,6 @@ export function MonitoredItemNotificationFromJSONTyped(json: any, ignoreDiscrimi
         
         'ClientHandle': json['ClientHandle'] == null ? undefined : json['ClientHandle'],
         'Value': json['Value'] == null ? undefined : DataValueFromJSON(json['Value']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -83,7 +76,6 @@ export function MonitoredItemNotificationFromJSONTyped(json: any, ignoreDiscrimi
         
         'ClientHandle': value['ClientHandle'],
         'Value': DataValueToJSON(value['Value']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

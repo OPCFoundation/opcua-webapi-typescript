@@ -31,12 +31,6 @@ export interface RolePermissionType {
      * @memberof RolePermissionType
      */
     Permissions?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RolePermissionType
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function RolePermissionTypeFromJSONTyped(json: any, ignoreDiscriminator: 
         
         'RoleId': json['RoleId'] == null ? undefined : json['RoleId'],
         'Permissions': json['Permissions'] == null ? undefined : json['Permissions'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function RolePermissionTypeFromJSONTyped(json: any, ignoreDiscriminator: 
         
         'RoleId': value['RoleId'],
         'Permissions': value['Permissions'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

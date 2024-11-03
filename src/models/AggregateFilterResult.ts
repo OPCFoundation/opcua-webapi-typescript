@@ -45,12 +45,6 @@ export interface AggregateFilterResult {
      * @memberof AggregateFilterResult
      */
     RevisedAggregateConfiguration?: AggregateConfiguration;
-    /**
-     * 
-     * @type {string}
-     * @memberof AggregateFilterResult
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -73,7 +67,6 @@ export function AggregateFilterResultFromJSONTyped(json: any, ignoreDiscriminato
         'RevisedStartTime': json['RevisedStartTime'] == null ? undefined : (new Date(json['RevisedStartTime'])),
         'RevisedProcessingInterval': json['RevisedProcessingInterval'] == null ? undefined : json['RevisedProcessingInterval'],
         'RevisedAggregateConfiguration': json['RevisedAggregateConfiguration'] == null ? undefined : AggregateConfigurationFromJSON(json['RevisedAggregateConfiguration']),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -91,7 +84,6 @@ export function AggregateFilterResultFromJSONTyped(json: any, ignoreDiscriminato
         'RevisedStartTime': value['RevisedStartTime'] == null ? undefined : ((value['RevisedStartTime']).toISOString()),
         'RevisedProcessingInterval': value['RevisedProcessingInterval'],
         'RevisedAggregateConfiguration': AggregateConfigurationToJSON(value['RevisedAggregateConfiguration']),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

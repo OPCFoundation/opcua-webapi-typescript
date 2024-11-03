@@ -31,12 +31,6 @@ export interface DataTypeDescription {
      * @memberof DataTypeDescription
      */
     Name?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DataTypeDescription
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function DataTypeDescriptionFromJSONTyped(json: any, ignoreDiscriminator:
         
         'DataTypeId': json['DataTypeId'] == null ? undefined : json['DataTypeId'],
         'Name': json['Name'] == null ? undefined : json['Name'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function DataTypeDescriptionFromJSONTyped(json: any, ignoreDiscriminator:
         
         'DataTypeId': value['DataTypeId'],
         'Name': value['Name'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

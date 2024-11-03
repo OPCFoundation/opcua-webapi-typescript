@@ -65,12 +65,6 @@ export interface BrowseRequest {
      * @memberof BrowseRequest
      */
     NodesToBrowse?: Array<BrowseDescription>;
-    /**
-     * 
-     * @type {string}
-     * @memberof BrowseRequest
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -94,7 +88,6 @@ export function BrowseRequestFromJSONTyped(json: any, ignoreDiscriminator: boole
         'View': json['View'] == null ? undefined : ViewDescriptionFromJSON(json['View']),
         'RequestedMaxReferencesPerNode': json['RequestedMaxReferencesPerNode'] == null ? undefined : json['RequestedMaxReferencesPerNode'],
         'NodesToBrowse': json['NodesToBrowse'] == null ? undefined : ((json['NodesToBrowse'] as Array<any>).map(BrowseDescriptionFromJSON)),
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -113,7 +106,6 @@ export function BrowseRequestFromJSONTyped(json: any, ignoreDiscriminator: boole
         'View': ViewDescriptionToJSON(value['View']),
         'RequestedMaxReferencesPerNode': value['RequestedMaxReferencesPerNode'],
         'NodesToBrowse': value['NodesToBrowse'] == null ? undefined : ((value['NodesToBrowse'] as Array<any>).map(BrowseDescriptionToJSON)),
-        'UaTypeId': value['UaTypeId'],
     };
 }
 

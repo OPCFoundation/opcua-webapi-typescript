@@ -31,12 +31,6 @@ export interface BrowsePathTarget {
      * @memberof BrowsePathTarget
      */
     RemainingPathIndex?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof BrowsePathTarget
-     */
-    UaTypeId?: string;
 }
 
 /**
@@ -58,7 +52,6 @@ export function BrowsePathTargetFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'TargetId': json['TargetId'] == null ? undefined : json['TargetId'],
         'RemainingPathIndex': json['RemainingPathIndex'] == null ? undefined : json['RemainingPathIndex'],
-        'UaTypeId': json['UaTypeId'] == null ? undefined : json['UaTypeId'],
     };
 }
 
@@ -75,7 +68,6 @@ export function BrowsePathTargetFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'TargetId': value['TargetId'],
         'RemainingPathIndex': value['RemainingPathIndex'],
-        'UaTypeId': value['UaTypeId'],
     };
 }
 
