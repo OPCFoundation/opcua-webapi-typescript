@@ -27,6 +27,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -36,10 +43,10 @@ import {
 export interface EventFilterResult {
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<StatusCode>}
      * @memberof EventFilterResult
      */
-    SelectClauseResults?: Array<number>;
+    SelectClauseResults?: Array<StatusCode>;
     /**
      * 
      * @type {Array<DiagnosticInfo>}
@@ -71,7 +78,7 @@ export function EventFilterResultFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'SelectClauseResults': json['SelectClauseResults'] == null ? undefined : json['SelectClauseResults'],
+        'SelectClauseResults': json['SelectClauseResults'] == null ? undefined : ((json['SelectClauseResults'] as Array<any>).map(StatusCodeFromJSON)),
         'SelectClauseDiagnosticInfos': json['SelectClauseDiagnosticInfos'] == null ? undefined : ((json['SelectClauseDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
         'WhereClauseResult': json['WhereClauseResult'] == null ? undefined : ContentFilterResultFromJSON(json['WhereClauseResult']),
     };
@@ -88,7 +95,7 @@ export function EventFilterResultFromJSONTyped(json: any, ignoreDiscriminator: b
 
     return {
         
-        'SelectClauseResults': value['SelectClauseResults'],
+        'SelectClauseResults': value['SelectClauseResults'] == null ? undefined : ((value['SelectClauseResults'] as Array<any>).map(StatusCodeToJSON)),
         'SelectClauseDiagnosticInfos': value['SelectClauseDiagnosticInfos'] == null ? undefined : ((value['SelectClauseDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
         'WhereClauseResult': ContentFilterResultToJSON(value['WhereClauseResult']),
     };

@@ -160,6 +160,7 @@ src/models/SimpleAttributeOperand.ts
 src/models/SimpleTypeDescription.ts
 src/models/StandaloneSubscribedDataSetDataType.ts
 src/models/StatusChangeNotification.ts
+src/models/StatusCode.ts
 src/models/StructureDefinition.ts
 src/models/StructureDescription.ts
 src/models/StructureField.ts

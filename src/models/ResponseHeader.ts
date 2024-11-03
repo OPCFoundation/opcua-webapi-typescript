@@ -27,6 +27,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -48,10 +55,10 @@ export interface ResponseHeader {
     RequestHandle?: number;
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof ResponseHeader
      */
-    ServiceResult?: number;
+    ServiceResult?: StatusCode;
     /**
      * 
      * @type {DiagnosticInfo}
@@ -91,7 +98,7 @@ export function ResponseHeaderFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'Timestamp': json['Timestamp'] == null ? undefined : (new Date(json['Timestamp'])),
         'RequestHandle': json['RequestHandle'] == null ? undefined : json['RequestHandle'],
-        'ServiceResult': json['ServiceResult'] == null ? undefined : json['ServiceResult'],
+        'ServiceResult': json['ServiceResult'] == null ? undefined : StatusCodeFromJSON(json['ServiceResult']),
         'ServiceDiagnostics': json['ServiceDiagnostics'] == null ? undefined : DiagnosticInfoFromJSON(json['ServiceDiagnostics']),
         'StringTable': json['StringTable'] == null ? undefined : json['StringTable'],
         'AdditionalHeader': json['AdditionalHeader'] == null ? undefined : ExtensionObjectFromJSON(json['AdditionalHeader']),
@@ -111,7 +118,7 @@ export function ResponseHeaderFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'Timestamp': value['Timestamp'] == null ? undefined : ((value['Timestamp']).toISOString()),
         'RequestHandle': value['RequestHandle'],
-        'ServiceResult': value['ServiceResult'],
+        'ServiceResult': StatusCodeToJSON(value['ServiceResult']),
         'ServiceDiagnostics': DiagnosticInfoToJSON(value['ServiceDiagnostics']),
         'StringTable': value['StringTable'],
         'AdditionalHeader': ExtensionObjectToJSON(value['AdditionalHeader']),

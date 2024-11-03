@@ -155,6 +155,7 @@ export * from './SimpleAttributeOperand';
 export * from './SimpleTypeDescription';
 export * from './StandaloneSubscribedDataSetDataType';
 export * from './StatusChangeNotification';
+export * from './StatusCode';
 export * from './StructureDefinition';
 export * from './StructureDescription';
 export * from './StructureField';

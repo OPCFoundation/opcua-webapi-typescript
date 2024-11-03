@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 import type { BrowsePathTarget } from './BrowsePathTarget';
 import {
     BrowsePathTargetFromJSON,
@@ -29,10 +36,10 @@ import {
 export interface BrowsePathResult {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof BrowsePathResult
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
      * @type {Array<BrowsePathTarget>}
@@ -58,7 +65,7 @@ export function BrowsePathResultFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'Targets': json['Targets'] == null ? undefined : ((json['Targets'] as Array<any>).map(BrowsePathTargetFromJSON)),
     };
 }
@@ -74,7 +81,7 @@ export function BrowsePathResultFromJSONTyped(json: any, ignoreDiscriminator: bo
 
     return {
         
-        'StatusCode': value['StatusCode'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'Targets': value['Targets'] == null ? undefined : ((value['Targets'] as Array<any>).map(BrowsePathTargetToJSON)),
     };
 }

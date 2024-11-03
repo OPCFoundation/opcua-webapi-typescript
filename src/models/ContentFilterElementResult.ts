@@ -20,6 +20,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -29,16 +36,16 @@ import {
 export interface ContentFilterElementResult {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof ContentFilterElementResult
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<StatusCode>}
      * @memberof ContentFilterElementResult
      */
-    OperandStatusCodes?: Array<number>;
+    OperandStatusCodes?: Array<StatusCode>;
     /**
      * 
      * @type {Array<DiagnosticInfo>}
@@ -64,8 +71,8 @@ export function ContentFilterElementResultFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
-        'OperandStatusCodes': json['OperandStatusCodes'] == null ? undefined : json['OperandStatusCodes'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
+        'OperandStatusCodes': json['OperandStatusCodes'] == null ? undefined : ((json['OperandStatusCodes'] as Array<any>).map(StatusCodeFromJSON)),
         'OperandDiagnosticInfos': json['OperandDiagnosticInfos'] == null ? undefined : ((json['OperandDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
@@ -81,8 +88,8 @@ export function ContentFilterElementResultFromJSONTyped(json: any, ignoreDiscrim
 
     return {
         
-        'StatusCode': value['StatusCode'],
-        'OperandStatusCodes': value['OperandStatusCodes'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
+        'OperandStatusCodes': value['OperandStatusCodes'] == null ? undefined : ((value['OperandStatusCodes'] as Array<any>).map(StatusCodeToJSON)),
         'OperandDiagnosticInfos': value['OperandDiagnosticInfos'] == null ? undefined : ((value['OperandDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }

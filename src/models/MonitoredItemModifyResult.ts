@@ -20,6 +20,13 @@ import {
     ExtensionObjectToJSON,
     ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -29,10 +36,10 @@ import {
 export interface MonitoredItemModifyResult {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof MonitoredItemModifyResult
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
      * @type {number}
@@ -70,7 +77,7 @@ export function MonitoredItemModifyResultFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'RevisedSamplingInterval': json['RevisedSamplingInterval'] == null ? undefined : json['RevisedSamplingInterval'],
         'RevisedQueueSize': json['RevisedQueueSize'] == null ? undefined : json['RevisedQueueSize'],
         'FilterResult': json['FilterResult'] == null ? undefined : ExtensionObjectFromJSON(json['FilterResult']),
@@ -88,7 +95,7 @@ export function MonitoredItemModifyResultFromJSONTyped(json: any, ignoreDiscrimi
 
     return {
         
-        'StatusCode': value['StatusCode'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'RevisedSamplingInterval': value['RevisedSamplingInterval'],
         'RevisedQueueSize': value['RevisedQueueSize'],
         'FilterResult': ExtensionObjectToJSON(value['FilterResult']),

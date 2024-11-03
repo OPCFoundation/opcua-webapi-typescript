@@ -27,6 +27,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -42,10 +49,10 @@ export interface SetTriggeringResponse {
     ResponseHeader?: ResponseHeader;
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<StatusCode>}
      * @memberof SetTriggeringResponse
      */
-    AddResults?: Array<number>;
+    AddResults?: Array<StatusCode>;
     /**
      * 
      * @type {Array<DiagnosticInfo>}
@@ -54,10 +61,10 @@ export interface SetTriggeringResponse {
     AddDiagnosticInfos?: Array<DiagnosticInfo>;
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<StatusCode>}
      * @memberof SetTriggeringResponse
      */
-    RemoveResults?: Array<number>;
+    RemoveResults?: Array<StatusCode>;
     /**
      * 
      * @type {Array<DiagnosticInfo>}
@@ -84,9 +91,9 @@ export function SetTriggeringResponseFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'AddResults': json['AddResults'] == null ? undefined : json['AddResults'],
+        'AddResults': json['AddResults'] == null ? undefined : ((json['AddResults'] as Array<any>).map(StatusCodeFromJSON)),
         'AddDiagnosticInfos': json['AddDiagnosticInfos'] == null ? undefined : ((json['AddDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
-        'RemoveResults': json['RemoveResults'] == null ? undefined : json['RemoveResults'],
+        'RemoveResults': json['RemoveResults'] == null ? undefined : ((json['RemoveResults'] as Array<any>).map(StatusCodeFromJSON)),
         'RemoveDiagnosticInfos': json['RemoveDiagnosticInfos'] == null ? undefined : ((json['RemoveDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
@@ -103,9 +110,9 @@ export function SetTriggeringResponseFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
-        'AddResults': value['AddResults'],
+        'AddResults': value['AddResults'] == null ? undefined : ((value['AddResults'] as Array<any>).map(StatusCodeToJSON)),
         'AddDiagnosticInfos': value['AddDiagnosticInfos'] == null ? undefined : ((value['AddDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
-        'RemoveResults': value['RemoveResults'],
+        'RemoveResults': value['RemoveResults'] == null ? undefined : ((value['RemoveResults'] as Array<any>).map(StatusCodeToJSON)),
         'RemoveDiagnosticInfos': value['RemoveDiagnosticInfos'] == null ? undefined : ((value['RemoveDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }

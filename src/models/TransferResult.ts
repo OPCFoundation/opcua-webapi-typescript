@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
+
 /**
  * 
  * @export
@@ -21,10 +29,10 @@ import { mapValues } from '../runtime';
 export interface TransferResult {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof TransferResult
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
      * @type {Array<number>}
@@ -50,7 +58,7 @@ export function TransferResultFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'AvailableSequenceNumbers': json['AvailableSequenceNumbers'] == null ? undefined : json['AvailableSequenceNumbers'],
     };
 }
@@ -66,7 +74,7 @@ export function TransferResultFromJSONTyped(json: any, ignoreDiscriminator: bool
 
     return {
         
-        'StatusCode': value['StatusCode'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'AvailableSequenceNumbers': value['AvailableSequenceNumbers'],
     };
 }

@@ -20,6 +20,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -29,16 +36,16 @@ import {
 export interface HistoryUpdateResult {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof HistoryUpdateResult
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<StatusCode>}
      * @memberof HistoryUpdateResult
      */
-    OperationResults?: Array<number>;
+    OperationResults?: Array<StatusCode>;
     /**
      * 
      * @type {Array<DiagnosticInfo>}
@@ -64,8 +71,8 @@ export function HistoryUpdateResultFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
-        'OperationResults': json['OperationResults'] == null ? undefined : json['OperationResults'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
+        'OperationResults': json['OperationResults'] == null ? undefined : ((json['OperationResults'] as Array<any>).map(StatusCodeFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
@@ -81,8 +88,8 @@ export function HistoryUpdateResultFromJSONTyped(json: any, ignoreDiscriminator:
 
     return {
         
-        'StatusCode': value['StatusCode'],
-        'OperationResults': value['OperationResults'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
+        'OperationResults': value['OperationResults'] == null ? undefined : ((value['OperationResults'] as Array<any>).map(StatusCodeToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }

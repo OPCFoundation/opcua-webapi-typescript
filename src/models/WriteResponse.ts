@@ -27,6 +27,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -42,10 +49,10 @@ export interface WriteResponse {
     ResponseHeader?: ResponseHeader;
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<StatusCode>}
      * @memberof WriteResponse
      */
-    Results?: Array<number>;
+    Results?: Array<StatusCode>;
     /**
      * 
      * @type {Array<DiagnosticInfo>}
@@ -72,7 +79,7 @@ export function WriteResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'ResponseHeader': json['ResponseHeader'] == null ? undefined : ResponseHeaderFromJSON(json['ResponseHeader']),
-        'Results': json['Results'] == null ? undefined : json['Results'],
+        'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(StatusCodeFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
@@ -89,7 +96,7 @@ export function WriteResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'ResponseHeader': ResponseHeaderToJSON(value['ResponseHeader']),
-        'Results': value['Results'],
+        'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(StatusCodeToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }

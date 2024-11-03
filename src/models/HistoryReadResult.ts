@@ -20,6 +20,13 @@ import {
     ExtensionObjectToJSON,
     ExtensionObjectToJSONTyped,
 } from './ExtensionObject';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -29,10 +36,10 @@ import {
 export interface HistoryReadResult {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof HistoryReadResult
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
      * @type {string}
@@ -64,7 +71,7 @@ export function HistoryReadResultFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'ContinuationPoint': json['ContinuationPoint'] == null ? undefined : json['ContinuationPoint'],
         'HistoryData': json['HistoryData'] == null ? undefined : ExtensionObjectFromJSON(json['HistoryData']),
     };
@@ -81,7 +88,7 @@ export function HistoryReadResultFromJSONTyped(json: any, ignoreDiscriminator: b
 
     return {
         
-        'StatusCode': value['StatusCode'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'ContinuationPoint': value['ContinuationPoint'],
         'HistoryData': ExtensionObjectToJSON(value['HistoryData']),
     };

@@ -34,6 +34,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -73,10 +80,10 @@ export interface PublishResponse {
     NotificationMessage?: NotificationMessage;
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<StatusCode>}
      * @memberof PublishResponse
      */
-    Results?: Array<number>;
+    Results?: Array<StatusCode>;
     /**
      * 
      * @type {Array<DiagnosticInfo>}
@@ -107,7 +114,7 @@ export function PublishResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
         'AvailableSequenceNumbers': json['AvailableSequenceNumbers'] == null ? undefined : json['AvailableSequenceNumbers'],
         'MoreNotifications': json['MoreNotifications'] == null ? undefined : json['MoreNotifications'],
         'NotificationMessage': json['NotificationMessage'] == null ? undefined : NotificationMessageFromJSON(json['NotificationMessage']),
-        'Results': json['Results'] == null ? undefined : json['Results'],
+        'Results': json['Results'] == null ? undefined : ((json['Results'] as Array<any>).map(StatusCodeFromJSON)),
         'DiagnosticInfos': json['DiagnosticInfos'] == null ? undefined : ((json['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
     };
 }
@@ -128,7 +135,7 @@ export function PublishResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
         'AvailableSequenceNumbers': value['AvailableSequenceNumbers'],
         'MoreNotifications': value['MoreNotifications'],
         'NotificationMessage': NotificationMessageToJSON(value['NotificationMessage']),
-        'Results': value['Results'],
+        'Results': value['Results'] == null ? undefined : ((value['Results'] as Array<any>).map(StatusCodeToJSON)),
         'DiagnosticInfos': value['DiagnosticInfos'] == null ? undefined : ((value['DiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
     };
 }

@@ -20,6 +20,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -29,10 +36,10 @@ import {
 export interface StatusChangeNotification {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof StatusChangeNotification
      */
-    Status?: number;
+    Status?: StatusCode;
     /**
      * 
      * @type {DiagnosticInfo}
@@ -58,7 +65,7 @@ export function StatusChangeNotificationFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'Status': json['Status'] == null ? undefined : json['Status'],
+        'Status': json['Status'] == null ? undefined : StatusCodeFromJSON(json['Status']),
         'DiagnosticInfo': json['DiagnosticInfo'] == null ? undefined : DiagnosticInfoFromJSON(json['DiagnosticInfo']),
     };
 }
@@ -74,7 +81,7 @@ export function StatusChangeNotificationFromJSONTyped(json: any, ignoreDiscrimin
 
     return {
         
-        'Status': value['Status'],
+        'Status': StatusCodeToJSON(value['Status']),
         'DiagnosticInfo': DiagnosticInfoToJSON(value['DiagnosticInfo']),
     };
 }

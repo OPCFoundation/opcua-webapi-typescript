@@ -20,6 +20,13 @@ import {
     ReferenceDescriptionToJSON,
     ReferenceDescriptionToJSONTyped,
 } from './ReferenceDescription';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -29,10 +36,10 @@ import {
 export interface BrowseResult {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof BrowseResult
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
      * @type {string}
@@ -64,7 +71,7 @@ export function BrowseResultFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'ContinuationPoint': json['ContinuationPoint'] == null ? undefined : json['ContinuationPoint'],
         'References': json['References'] == null ? undefined : ((json['References'] as Array<any>).map(ReferenceDescriptionFromJSON)),
     };
@@ -81,7 +88,7 @@ export function BrowseResultFromJSONTyped(json: any, ignoreDiscriminator: boolea
 
     return {
         
-        'StatusCode': value['StatusCode'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'ContinuationPoint': value['ContinuationPoint'],
         'References': value['References'] == null ? undefined : ((value['References'] as Array<any>).map(ReferenceDescriptionToJSON)),
     };

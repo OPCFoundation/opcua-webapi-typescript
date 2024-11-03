@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
+
 /**
  * 
  * @export
@@ -39,10 +47,10 @@ export interface DataValue {
     Dimensions?: Array<number>;
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof DataValue
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
      * @type {Date}
@@ -89,7 +97,7 @@ export function DataValueFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'UaType': json['UaType'] == null ? undefined : json['UaType'],
         'Value': json['Value'] == null ? undefined : json['Value'],
         'Dimensions': json['Dimensions'] == null ? undefined : json['Dimensions'],
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'SourceTimestamp': json['SourceTimestamp'] == null ? undefined : (new Date(json['SourceTimestamp'])),
         'SourcePicoseconds': json['SourcePicoseconds'] == null ? undefined : json['SourcePicoseconds'],
         'ServerTimestamp': json['ServerTimestamp'] == null ? undefined : (new Date(json['ServerTimestamp'])),
@@ -111,7 +119,7 @@ export function DataValueFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'UaType': value['UaType'],
         'Value': value['Value'],
         'Dimensions': value['Dimensions'],
-        'StatusCode': value['StatusCode'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'SourceTimestamp': value['SourceTimestamp'] == null ? undefined : ((value['SourceTimestamp']).toISOString()),
         'SourcePicoseconds': value['SourcePicoseconds'],
         'ServerTimestamp': value['ServerTimestamp'] == null ? undefined : ((value['ServerTimestamp']).toISOString()),

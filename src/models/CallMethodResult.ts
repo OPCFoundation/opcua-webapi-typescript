@@ -27,6 +27,13 @@ import {
     DiagnosticInfoToJSON,
     DiagnosticInfoToJSONTyped,
 } from './DiagnosticInfo';
+import type { StatusCode } from './StatusCode';
+import {
+    StatusCodeFromJSON,
+    StatusCodeFromJSONTyped,
+    StatusCodeToJSON,
+    StatusCodeToJSONTyped,
+} from './StatusCode';
 
 /**
  * 
@@ -36,16 +43,16 @@ import {
 export interface CallMethodResult {
     /**
      * 
-     * @type {number}
+     * @type {StatusCode}
      * @memberof CallMethodResult
      */
-    StatusCode?: number;
+    StatusCode?: StatusCode;
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<StatusCode>}
      * @memberof CallMethodResult
      */
-    InputArgumentResults?: Array<number>;
+    InputArgumentResults?: Array<StatusCode>;
     /**
      * 
      * @type {Array<DiagnosticInfo>}
@@ -77,8 +84,8 @@ export function CallMethodResultFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'StatusCode': json['StatusCode'] == null ? undefined : json['StatusCode'],
-        'InputArgumentResults': json['InputArgumentResults'] == null ? undefined : json['InputArgumentResults'],
+        'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
+        'InputArgumentResults': json['InputArgumentResults'] == null ? undefined : ((json['InputArgumentResults'] as Array<any>).map(StatusCodeFromJSON)),
         'InputArgumentDiagnosticInfos': json['InputArgumentDiagnosticInfos'] == null ? undefined : ((json['InputArgumentDiagnosticInfos'] as Array<any>).map(DiagnosticInfoFromJSON)),
         'OutputArguments': json['OutputArguments'] == null ? undefined : ((json['OutputArguments'] as Array<any>).map(VariantFromJSON)),
     };
@@ -95,8 +102,8 @@ export function CallMethodResultFromJSONTyped(json: any, ignoreDiscriminator: bo
 
     return {
         
-        'StatusCode': value['StatusCode'],
-        'InputArgumentResults': value['InputArgumentResults'],
+        'StatusCode': StatusCodeToJSON(value['StatusCode']),
+        'InputArgumentResults': value['InputArgumentResults'] == null ? undefined : ((value['InputArgumentResults'] as Array<any>).map(StatusCodeToJSON)),
         'InputArgumentDiagnosticInfos': value['InputArgumentDiagnosticInfos'] == null ? undefined : ((value['InputArgumentDiagnosticInfos'] as Array<any>).map(DiagnosticInfoToJSON)),
         'OutputArguments': value['OutputArguments'] == null ? undefined : ((value['OutputArguments'] as Array<any>).map(VariantToJSON)),
     };
