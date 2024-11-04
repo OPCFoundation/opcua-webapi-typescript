@@ -272,7 +272,7 @@ export enum StatusCodes {
    BadDataSetIdInvalid = 0x80E70000,
 }
 
-export class StatusCodeUtils {
+export class StatusUtils {
    public static isGood(code?: number): boolean {
       return !code || (code & 0xD0000000) === 0;
    }
