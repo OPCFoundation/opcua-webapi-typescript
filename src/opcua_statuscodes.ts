@@ -274,6 +274,7 @@ export enum StatusCodes {
 
 export class StatusUtils {
    public static toCode(value: number | object | undefined): number {
+      if (!value) return 0;
       let code: number | undefined = typeof value === 'number' ? value : undefined;
       if (code === undefined) {
          const field = value["code"];
