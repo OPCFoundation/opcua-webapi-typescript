@@ -273,19 +273,38 @@ export enum StatusCodes {
 }
 
 export class StatusUtils {
-   public static isGood(code?: number): boolean {
-      return !code || (code & 0xD0000000) === 0;
+   public static toCode(value: number | object | undefined): number {
+      let code: number | undefined = typeof value === 'number' ? value : undefined;
+      if (code === undefined) {
+         const field = value["code"];
+         code = typeof field === 'number' ? field : undefined;
+      }
+      return code ?? 0;
    }
-   public static isUncertain(code?: number): boolean {
-      return (code ?? 0 & 0x40000000) !== 0;
+   public static toHex(code: number): string {
+      let text: string = code.toString(16).toUpperCase();
+      while (text.length < 8) {
+         text = '0' + text;
+      }
+      return '0x' + text;
    }
-   public static isBad(code?: number): boolean {
-      return (code ?? 0 & 0x80000000) !== 0;
+   public static isGood(value: number | object | undefined): boolean {
+      return (StatusUtils.toCode(value) & 0xD0000000) === 0;
    }
-   public static codeBits(code?: number): number {
-      return (code ?? 0 & 0xFFFF0000);
+   public static isUncertain(value: number | object | undefined): boolean {
+      return (StatusUtils.toCode(value) & 0x40000000) !== 0;
    }
-   public static infoBits(code?: number): number {
-      return (code ?? 0 & 0x0000FFFF);
+   public static isBad(value: number | object | undefined): boolean {
+      return (StatusUtils.toCode(value) & 0x80000000) !== 0;
+   }
+   public static codeBits(value: number | object | undefined): number {
+      return (StatusUtils.toCode(value) ?? 0 & 0xFFFF0000);
+   }
+   public static infoBits(value: number | object | undefined): number {
+      return (StatusUtils.toCode(value) ?? 0 & 0x0000FFFF);
+   }
+   public static toText(value: number | object | undefined): string {
+      const code = StatusUtils.toCode(value);
+      return Object.keys(StatusCodes).find(key => StatusCodes[key] === code) ?? StatusUtils.toHex(code);
    }
 }
