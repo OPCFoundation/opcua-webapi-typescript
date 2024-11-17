@@ -27,13 +27,6 @@ import {
     KeyValuePairToJSON,
     KeyValuePairToJSONTyped,
 } from './KeyValuePair';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-    ExtensionObjectToJSONTyped,
-} from './ExtensionObject';
 
 /**
  * 
@@ -67,10 +60,10 @@ export interface PublishedDataSetDataType {
     ExtensionFields?: Array<KeyValuePair>;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof PublishedDataSetDataType
      */
-    DataSetSource?: ExtensionObject;
+    DataSetSource?: object;
 }
 
 /**
@@ -94,7 +87,7 @@ export function PublishedDataSetDataTypeFromJSONTyped(json: any, ignoreDiscrimin
         'DataSetFolder': json['DataSetFolder'] == null ? undefined : json['DataSetFolder'],
         'DataSetMetaData': json['DataSetMetaData'] == null ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
         'ExtensionFields': json['ExtensionFields'] == null ? undefined : ((json['ExtensionFields'] as Array<any>).map(KeyValuePairFromJSON)),
-        'DataSetSource': json['DataSetSource'] == null ? undefined : ExtensionObjectFromJSON(json['DataSetSource']),
+        'DataSetSource': json['DataSetSource'] == null ? undefined : json['DataSetSource'],
     };
 }
 
@@ -113,7 +106,7 @@ export function PublishedDataSetDataTypeFromJSONTyped(json: any, ignoreDiscrimin
         'DataSetFolder': value['DataSetFolder'],
         'DataSetMetaData': DataSetMetaDataTypeToJSON(value['DataSetMetaData']),
         'ExtensionFields': value['ExtensionFields'] == null ? undefined : ((value['ExtensionFields'] as Array<any>).map(KeyValuePairToJSON)),
-        'DataSetSource': ExtensionObjectToJSON(value['DataSetSource']),
+        'DataSetSource': value['DataSetSource'],
     };
 }
 

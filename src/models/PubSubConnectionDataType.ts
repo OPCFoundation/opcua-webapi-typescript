@@ -34,13 +34,6 @@ import {
     KeyValuePairToJSON,
     KeyValuePairToJSONTyped,
 } from './KeyValuePair';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-    ExtensionObjectToJSONTyped,
-} from './ExtensionObject';
 import type { ReaderGroupDataType } from './ReaderGroupDataType';
 import {
     ReaderGroupDataTypeFromJSON,
@@ -81,10 +74,10 @@ export interface PubSubConnectionDataType {
     TransportProfileUri?: string;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof PubSubConnectionDataType
      */
-    Address?: ExtensionObject;
+    Address?: object;
     /**
      * 
      * @type {Array<KeyValuePair>}
@@ -93,10 +86,10 @@ export interface PubSubConnectionDataType {
     ConnectionProperties?: Array<KeyValuePair>;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof PubSubConnectionDataType
      */
-    TransportSettings?: ExtensionObject;
+    TransportSettings?: object;
     /**
      * 
      * @type {Array<WriterGroupDataType>}
@@ -132,9 +125,9 @@ export function PubSubConnectionDataTypeFromJSONTyped(json: any, ignoreDiscrimin
         'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
         'PublisherId': json['PublisherId'] == null ? undefined : VariantFromJSON(json['PublisherId']),
         'TransportProfileUri': json['TransportProfileUri'] == null ? undefined : json['TransportProfileUri'],
-        'Address': json['Address'] == null ? undefined : ExtensionObjectFromJSON(json['Address']),
+        'Address': json['Address'] == null ? undefined : json['Address'],
         'ConnectionProperties': json['ConnectionProperties'] == null ? undefined : ((json['ConnectionProperties'] as Array<any>).map(KeyValuePairFromJSON)),
-        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
+        'TransportSettings': json['TransportSettings'] == null ? undefined : json['TransportSettings'],
         'WriterGroups': json['WriterGroups'] == null ? undefined : ((json['WriterGroups'] as Array<any>).map(WriterGroupDataTypeFromJSON)),
         'ReaderGroups': json['ReaderGroups'] == null ? undefined : ((json['ReaderGroups'] as Array<any>).map(ReaderGroupDataTypeFromJSON)),
     };
@@ -155,9 +148,9 @@ export function PubSubConnectionDataTypeFromJSONTyped(json: any, ignoreDiscrimin
         'Enabled': value['Enabled'],
         'PublisherId': VariantToJSON(value['PublisherId']),
         'TransportProfileUri': value['TransportProfileUri'],
-        'Address': ExtensionObjectToJSON(value['Address']),
+        'Address': value['Address'],
         'ConnectionProperties': value['ConnectionProperties'] == null ? undefined : ((value['ConnectionProperties'] as Array<any>).map(KeyValuePairToJSON)),
-        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
+        'TransportSettings': value['TransportSettings'],
         'WriterGroups': value['WriterGroups'] == null ? undefined : ((value['WriterGroups'] as Array<any>).map(WriterGroupDataTypeToJSON)),
         'ReaderGroups': value['ReaderGroups'] == null ? undefined : ((value['ReaderGroups'] as Array<any>).map(ReaderGroupDataTypeToJSON)),
     };

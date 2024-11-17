@@ -20,13 +20,6 @@ import {
     DataSetMetaDataTypeToJSON,
     DataSetMetaDataTypeToJSONTyped,
 } from './DataSetMetaDataType';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-    ExtensionObjectToJSONTyped,
-} from './ExtensionObject';
 
 /**
  * 
@@ -54,10 +47,10 @@ export interface StandaloneSubscribedDataSetDataType {
     DataSetMetaData?: DataSetMetaDataType;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof StandaloneSubscribedDataSetDataType
      */
-    SubscribedDataSet?: ExtensionObject;
+    SubscribedDataSet?: object;
 }
 
 /**
@@ -80,7 +73,7 @@ export function StandaloneSubscribedDataSetDataTypeFromJSONTyped(json: any, igno
         'Name': json['Name'] == null ? undefined : json['Name'],
         'DataSetFolder': json['DataSetFolder'] == null ? undefined : json['DataSetFolder'],
         'DataSetMetaData': json['DataSetMetaData'] == null ? undefined : DataSetMetaDataTypeFromJSON(json['DataSetMetaData']),
-        'SubscribedDataSet': json['SubscribedDataSet'] == null ? undefined : ExtensionObjectFromJSON(json['SubscribedDataSet']),
+        'SubscribedDataSet': json['SubscribedDataSet'] == null ? undefined : json['SubscribedDataSet'],
     };
 }
 
@@ -98,7 +91,7 @@ export function StandaloneSubscribedDataSetDataTypeFromJSONTyped(json: any, igno
         'Name': value['Name'],
         'DataSetFolder': value['DataSetFolder'],
         'DataSetMetaData': DataSetMetaDataTypeToJSON(value['DataSetMetaData']),
-        'SubscribedDataSet': ExtensionObjectToJSON(value['SubscribedDataSet']),
+        'SubscribedDataSet': value['SubscribedDataSet'],
     };
 }
 

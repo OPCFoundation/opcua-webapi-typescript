@@ -27,13 +27,6 @@ import {
     KeyValuePairToJSON,
     KeyValuePairToJSONTyped,
 } from './KeyValuePair';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-    ExtensionObjectToJSONTyped,
-} from './ExtensionObject';
 import type { EndpointDescription } from './EndpointDescription';
 import {
     EndpointDescriptionFromJSON,
@@ -50,16 +43,16 @@ import {
 export interface ReaderGroupDataType {
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof ReaderGroupDataType
      */
-    TransportSettings?: ExtensionObject;
+    TransportSettings?: object;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof ReaderGroupDataType
      */
-    MessageSettings?: ExtensionObject;
+    MessageSettings?: object;
     /**
      * 
      * @type {Array<DataSetReaderDataType>}
@@ -127,8 +120,8 @@ export function ReaderGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
-        'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
+        'TransportSettings': json['TransportSettings'] == null ? undefined : json['TransportSettings'],
+        'MessageSettings': json['MessageSettings'] == null ? undefined : json['MessageSettings'],
         'DataSetReaders': json['DataSetReaders'] == null ? undefined : ((json['DataSetReaders'] as Array<any>).map(DataSetReaderDataTypeFromJSON)),
         'Name': json['Name'] == null ? undefined : json['Name'],
         'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
@@ -151,8 +144,8 @@ export function ReaderGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
 
     return {
         
-        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
-        'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
+        'TransportSettings': value['TransportSettings'],
+        'MessageSettings': value['MessageSettings'],
         'DataSetReaders': value['DataSetReaders'] == null ? undefined : ((value['DataSetReaders'] as Array<any>).map(DataSetReaderDataTypeToJSON)),
         'Name': value['Name'],
         'Enabled': value['Enabled'],

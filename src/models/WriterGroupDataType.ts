@@ -20,13 +20,6 @@ import {
     KeyValuePairToJSON,
     KeyValuePairToJSONTyped,
 } from './KeyValuePair';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-    ExtensionObjectToJSONTyped,
-} from './ExtensionObject';
 import type { EndpointDescription } from './EndpointDescription';
 import {
     EndpointDescriptionFromJSON,
@@ -86,16 +79,16 @@ export interface WriterGroupDataType {
     HeaderLayoutUri?: string;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof WriterGroupDataType
      */
-    TransportSettings?: ExtensionObject;
+    TransportSettings?: object;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof WriterGroupDataType
      */
-    MessageSettings?: ExtensionObject;
+    MessageSettings?: object;
     /**
      * 
      * @type {Array<DataSetWriterDataType>}
@@ -169,8 +162,8 @@ export function WriterGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
         'Priority': json['Priority'] == null ? undefined : json['Priority'],
         'LocaleIds': json['LocaleIds'] == null ? undefined : json['LocaleIds'],
         'HeaderLayoutUri': json['HeaderLayoutUri'] == null ? undefined : json['HeaderLayoutUri'],
-        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
-        'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
+        'TransportSettings': json['TransportSettings'] == null ? undefined : json['TransportSettings'],
+        'MessageSettings': json['MessageSettings'] == null ? undefined : json['MessageSettings'],
         'DataSetWriters': json['DataSetWriters'] == null ? undefined : ((json['DataSetWriters'] as Array<any>).map(DataSetWriterDataTypeFromJSON)),
         'Name': json['Name'] == null ? undefined : json['Name'],
         'Enabled': json['Enabled'] == null ? undefined : json['Enabled'],
@@ -199,8 +192,8 @@ export function WriterGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
         'Priority': value['Priority'],
         'LocaleIds': value['LocaleIds'],
         'HeaderLayoutUri': value['HeaderLayoutUri'],
-        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
-        'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
+        'TransportSettings': value['TransportSettings'],
+        'MessageSettings': value['MessageSettings'],
         'DataSetWriters': value['DataSetWriters'] == null ? undefined : ((value['DataSetWriters'] as Array<any>).map(DataSetWriterDataTypeToJSON)),
         'Name': value['Name'],
         'Enabled': value['Enabled'],

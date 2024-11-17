@@ -34,13 +34,6 @@ import {
     KeyValuePairToJSON,
     KeyValuePairToJSONTyped,
 } from './KeyValuePair';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-    ExtensionObjectToJSONTyped,
-} from './ExtensionObject';
 import type { EndpointDescription } from './EndpointDescription';
 import {
     EndpointDescriptionFromJSON,
@@ -141,22 +134,22 @@ export interface DataSetReaderDataType {
     DataSetReaderProperties?: Array<KeyValuePair>;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof DataSetReaderDataType
      */
-    TransportSettings?: ExtensionObject;
+    TransportSettings?: object;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof DataSetReaderDataType
      */
-    MessageSettings?: ExtensionObject;
+    MessageSettings?: object;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof DataSetReaderDataType
      */
-    SubscribedDataSet?: ExtensionObject;
+    SubscribedDataSet?: object;
 }
 
 /**
@@ -190,9 +183,9 @@ export function DataSetReaderDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'SecurityGroupId': json['SecurityGroupId'] == null ? undefined : json['SecurityGroupId'],
         'SecurityKeyServices': json['SecurityKeyServices'] == null ? undefined : ((json['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionFromJSON)),
         'DataSetReaderProperties': json['DataSetReaderProperties'] == null ? undefined : ((json['DataSetReaderProperties'] as Array<any>).map(KeyValuePairFromJSON)),
-        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
-        'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
-        'SubscribedDataSet': json['SubscribedDataSet'] == null ? undefined : ExtensionObjectFromJSON(json['SubscribedDataSet']),
+        'TransportSettings': json['TransportSettings'] == null ? undefined : json['TransportSettings'],
+        'MessageSettings': json['MessageSettings'] == null ? undefined : json['MessageSettings'],
+        'SubscribedDataSet': json['SubscribedDataSet'] == null ? undefined : json['SubscribedDataSet'],
     };
 }
 
@@ -221,9 +214,9 @@ export function DataSetReaderDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'SecurityGroupId': value['SecurityGroupId'],
         'SecurityKeyServices': value['SecurityKeyServices'] == null ? undefined : ((value['SecurityKeyServices'] as Array<any>).map(EndpointDescriptionToJSON)),
         'DataSetReaderProperties': value['DataSetReaderProperties'] == null ? undefined : ((value['DataSetReaderProperties'] as Array<any>).map(KeyValuePairToJSON)),
-        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
-        'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
-        'SubscribedDataSet': ExtensionObjectToJSON(value['SubscribedDataSet']),
+        'TransportSettings': value['TransportSettings'],
+        'MessageSettings': value['MessageSettings'],
+        'SubscribedDataSet': value['SubscribedDataSet'],
     };
 }
 

@@ -20,13 +20,6 @@ import {
     KeyValuePairToJSON,
     KeyValuePairToJSONTyped,
 } from './KeyValuePair';
-import type { ExtensionObject } from './ExtensionObject';
-import {
-    ExtensionObjectFromJSON,
-    ExtensionObjectFromJSONTyped,
-    ExtensionObjectToJSON,
-    ExtensionObjectToJSONTyped,
-} from './ExtensionObject';
 
 /**
  * 
@@ -78,16 +71,16 @@ export interface DataSetWriterDataType {
     DataSetWriterProperties?: Array<KeyValuePair>;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof DataSetWriterDataType
      */
-    TransportSettings?: ExtensionObject;
+    TransportSettings?: object;
     /**
      * 
-     * @type {ExtensionObject}
+     * @type {object}
      * @memberof DataSetWriterDataType
      */
-    MessageSettings?: ExtensionObject;
+    MessageSettings?: object;
 }
 
 /**
@@ -114,8 +107,8 @@ export function DataSetWriterDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'KeyFrameCount': json['KeyFrameCount'] == null ? undefined : json['KeyFrameCount'],
         'DataSetName': json['DataSetName'] == null ? undefined : json['DataSetName'],
         'DataSetWriterProperties': json['DataSetWriterProperties'] == null ? undefined : ((json['DataSetWriterProperties'] as Array<any>).map(KeyValuePairFromJSON)),
-        'TransportSettings': json['TransportSettings'] == null ? undefined : ExtensionObjectFromJSON(json['TransportSettings']),
-        'MessageSettings': json['MessageSettings'] == null ? undefined : ExtensionObjectFromJSON(json['MessageSettings']),
+        'TransportSettings': json['TransportSettings'] == null ? undefined : json['TransportSettings'],
+        'MessageSettings': json['MessageSettings'] == null ? undefined : json['MessageSettings'],
     };
 }
 
@@ -137,8 +130,8 @@ export function DataSetWriterDataTypeFromJSONTyped(json: any, ignoreDiscriminato
         'KeyFrameCount': value['KeyFrameCount'],
         'DataSetName': value['DataSetName'],
         'DataSetWriterProperties': value['DataSetWriterProperties'] == null ? undefined : ((value['DataSetWriterProperties'] as Array<any>).map(KeyValuePairToJSON)),
-        'TransportSettings': ExtensionObjectToJSON(value['TransportSettings']),
-        'MessageSettings': ExtensionObjectToJSON(value['MessageSettings']),
+        'TransportSettings': value['TransportSettings'],
+        'MessageSettings': value['MessageSettings'],
     };
 }
 
