@@ -31,6 +31,12 @@ export interface Variant {
      * @memberof Variant
      */
     Value?: any | null;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof Variant
+     */
+    Dimensions?: Array<number>;
 }
 
 /**
@@ -52,6 +58,7 @@ export function VariantFromJSONTyped(json: any, ignoreDiscriminator: boolean): V
         
         'UaType': json['UaType'] == null ? undefined : json['UaType'],
         'Value': json['Value'] == null ? undefined : json['Value'],
+        'Dimensions': json['Dimensions'] == null ? undefined : json['Dimensions'],
     };
 }
 
@@ -68,6 +75,7 @@ export function VariantFromJSONTyped(json: any, ignoreDiscriminator: boolean): V
         
         'UaType': value['UaType'],
         'Value': value['Value'],
+        'Dimensions': value['Dimensions'],
     };
 }
 

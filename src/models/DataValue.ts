@@ -41,6 +41,12 @@ export interface DataValue {
     Value?: any | null;
     /**
      * 
+     * @type {Array<number>}
+     * @memberof DataValue
+     */
+    Dimensions?: Array<number>;
+    /**
+     * 
      * @type {StatusCode}
      * @memberof DataValue
      */
@@ -90,6 +96,7 @@ export function DataValueFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         
         'UaType': json['UaType'] == null ? undefined : json['UaType'],
         'Value': json['Value'] == null ? undefined : json['Value'],
+        'Dimensions': json['Dimensions'] == null ? undefined : json['Dimensions'],
         'StatusCode': json['StatusCode'] == null ? undefined : StatusCodeFromJSON(json['StatusCode']),
         'SourceTimestamp': json['SourceTimestamp'] == null ? undefined : (new Date(json['SourceTimestamp'])),
         'SourcePicoseconds': json['SourcePicoseconds'] == null ? undefined : json['SourcePicoseconds'],
@@ -111,6 +118,7 @@ export function DataValueFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         
         'UaType': value['UaType'],
         'Value': value['Value'],
+        'Dimensions': value['Dimensions'],
         'StatusCode': StatusCodeToJSON(value['StatusCode']),
         'SourceTimestamp': value['SourceTimestamp'] == null ? undefined : ((value['SourceTimestamp']).toISOString()),
         'SourcePicoseconds': value['SourcePicoseconds'],

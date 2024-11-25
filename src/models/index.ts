@@ -105,6 +105,7 @@ export * from './JsonDataSetMessageContentMaskBits';
 export * from './JsonDataSetMetaDataMessage';
 export * from './JsonDataSetReaderMessageDataType';
 export * from './JsonDataSetWriterMessageDataType';
+export * from './JsonMessageType';
 export * from './JsonNetworkMessage';
 export * from './JsonNetworkMessageContentMaskBits';
 export * from './JsonPubSubConnectionMessage';

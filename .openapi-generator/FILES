@@ -110,6 +110,7 @@ src/models/JsonDataSetMessageContentMaskBits.ts
 src/models/JsonDataSetMetaDataMessage.ts
 src/models/JsonDataSetReaderMessageDataType.ts
 src/models/JsonDataSetWriterMessageDataType.ts
+src/models/JsonMessageType.ts
 src/models/JsonNetworkMessage.ts
 src/models/JsonNetworkMessageContentMaskBits.ts
 src/models/JsonPubSubConnectionMessage.ts
