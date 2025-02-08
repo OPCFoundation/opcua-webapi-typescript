@@ -22,7 +22,7 @@ import {
 } from './DataValue';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.9.3/#6.9.3.1).
  * @export
  * @interface UpdateStructureDataDetails
  */
@@ -34,7 +34,7 @@ export interface UpdateStructureDataDetails {
      */
     NodeId?: string;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.8).
      * @type {number}
      * @memberof UpdateStructureDataDetails
      */

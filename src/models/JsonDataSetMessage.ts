@@ -29,7 +29,7 @@ import {
 } from './StatusCode';
 
 /**
- * 
+ * [Link to specification]().
  * @export
  * @interface JsonDataSetMessage
  */

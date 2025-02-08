@@ -36,7 +36,7 @@ import {
 } from './StatusCode';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.22.3).
  * @export
  * @interface EventFilterResult
  */

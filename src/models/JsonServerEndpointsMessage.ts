@@ -29,7 +29,7 @@ import {
 } from './ApplicationDescription';
 
 /**
- * 
+ * [Link to specification]().
  * @export
  * @interface JsonServerEndpointsMessage
  */

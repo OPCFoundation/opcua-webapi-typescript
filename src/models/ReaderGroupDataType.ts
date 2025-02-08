@@ -36,7 +36,7 @@ import {
 } from './EndpointDescription';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.2.8/#6.2.8.2.1).
  * @export
  * @interface ReaderGroupDataType
  */
@@ -72,7 +72,7 @@ export interface ReaderGroupDataType {
      */
     Enabled?: boolean;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.3.10).
      * @type {number}
      * @memberof ReaderGroupDataType
      */

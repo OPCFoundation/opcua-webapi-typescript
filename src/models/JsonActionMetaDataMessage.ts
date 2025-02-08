@@ -36,7 +36,7 @@ import {
 } from './ActionTargetDataType';
 
 /**
- * 
+ * [Link to specification]().
  * @export
  * @interface JsonActionMetaDataMessage
  */

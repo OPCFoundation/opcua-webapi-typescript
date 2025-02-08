@@ -22,7 +22,7 @@ import {
 } from './EventFieldList';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.25.3).
  * @export
  * @interface EventNotificationList
  */

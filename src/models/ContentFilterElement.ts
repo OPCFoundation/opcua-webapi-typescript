@@ -22,13 +22,13 @@ import {
 } from './ExtensionObject';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.7.1).
  * @export
  * @interface ContentFilterElement
  */
 export interface ContentFilterElement {
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.7.3).
      * @type {number}
      * @memberof ContentFilterElement
      */

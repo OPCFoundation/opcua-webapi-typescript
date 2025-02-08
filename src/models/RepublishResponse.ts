@@ -29,7 +29,7 @@ import {
 } from './NotificationMessage';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.14.6/#5.14.6.2).
  * @export
  * @interface RepublishResponse
  */

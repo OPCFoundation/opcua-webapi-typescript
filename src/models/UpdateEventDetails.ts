@@ -29,7 +29,7 @@ import {
 } from './EventFilter';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.9.4/#6.9.4.1).
  * @export
  * @interface UpdateEventDetails
  */
@@ -41,7 +41,7 @@ export interface UpdateEventDetails {
      */
     NodeId?: string;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.8).
      * @type {number}
      * @memberof UpdateEventDetails
      */

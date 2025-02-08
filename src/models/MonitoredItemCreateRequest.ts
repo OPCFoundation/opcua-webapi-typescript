@@ -29,7 +29,7 @@ import {
 } from './MonitoringParameters';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.13.2/#5.13.2.2).
  * @export
  * @interface MonitoredItemCreateRequest
  */
@@ -41,7 +41,7 @@ export interface MonitoredItemCreateRequest {
      */
     ItemToMonitor?: ReadValueId;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.23).
      * @type {number}
      * @memberof MonitoredItemCreateRequest
      */

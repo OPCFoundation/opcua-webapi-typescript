@@ -29,7 +29,7 @@ import {
 } from './StatusCode';
 
 /**
- * 
+ * [Link to specification]().
  * @export
  * @interface JsonActionResponseMessage
  */
@@ -95,7 +95,7 @@ export interface JsonActionResponseMessage {
      */
     RequestId?: number;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.2.11/#6.2.11.2.1).
      * @type {number}
      * @memberof JsonActionResponseMessage
      */

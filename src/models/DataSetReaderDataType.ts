@@ -43,7 +43,7 @@ import {
 } from './EndpointDescription';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.2.9/#6.2.9.13.1).
  * @export
  * @interface DataSetReaderDataType
  */
@@ -109,7 +109,7 @@ export interface DataSetReaderDataType {
      */
     HeaderLayoutUri?: string;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.3.10).
      * @type {number}
      * @memberof DataSetReaderDataType
      */

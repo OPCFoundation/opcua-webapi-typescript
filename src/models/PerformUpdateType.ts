@@ -14,7 +14,7 @@
 
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.8).
  * @export
  */
 export const PerformUpdateType = {

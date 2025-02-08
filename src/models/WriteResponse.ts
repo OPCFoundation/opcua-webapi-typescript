@@ -36,7 +36,7 @@ import {
 } from './StatusCode';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.11.4/#5.11.4.2).
  * @export
  * @interface WriteResponse
  */

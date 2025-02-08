@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification]().
  * @export
  * @interface JsonNetworkMessage
  */

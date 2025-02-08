@@ -29,7 +29,7 @@ import {
 } from './EndpointDescription';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.2.5/#6.2.5.7).
  * @export
  * @interface PubSubGroupDataType
  */
@@ -47,7 +47,7 @@ export interface PubSubGroupDataType {
      */
     Enabled?: boolean;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.3.10).
      * @type {number}
      * @memberof PubSubGroupDataType
      */

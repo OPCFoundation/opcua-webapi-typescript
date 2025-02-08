@@ -29,7 +29,7 @@ import {
 } from './ApplicationDescription';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.14).
  * @export
  * @interface EndpointDescription
  */
@@ -53,7 +53,7 @@ export interface EndpointDescription {
      */
     ServerCertificate?: string;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.3.10).
      * @type {number}
      * @memberof EndpointDescription
      */

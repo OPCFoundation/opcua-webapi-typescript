@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.6.5).
  * @export
  * @interface ModificationInfo
  */
@@ -26,7 +26,7 @@ export interface ModificationInfo {
      */
     ModificationTime?: Date;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.7).
      * @type {number}
      * @memberof ModificationInfo
      */

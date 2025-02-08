@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.42).
  * @export
  * @interface UserTokenPolicy
  */
@@ -26,7 +26,7 @@ export interface UserTokenPolicy {
      */
     PolicyId?: string;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.43).
      * @type {number}
      * @memberof UserTokenPolicy
      */

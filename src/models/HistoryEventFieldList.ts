@@ -22,7 +22,7 @@ import {
 } from './Variant';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.6.4).
  * @export
  * @interface HistoryEventFieldList
  */

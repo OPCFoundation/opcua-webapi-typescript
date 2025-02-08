@@ -36,7 +36,7 @@ import {
 } from './DataSetWriterDataType';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.2.6/#6.2.6.7.1).
  * @export
  * @interface WriterGroupDataType
  */
@@ -108,7 +108,7 @@ export interface WriterGroupDataType {
      */
     Enabled?: boolean;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.3.10).
      * @type {number}
      * @memberof WriterGroupDataType
      */

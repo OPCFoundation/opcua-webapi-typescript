@@ -22,7 +22,7 @@ import {
 } from './RequestHeader';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.13.6/#5.13.6.2).
  * @export
  * @interface DeleteMonitoredItemsRequest
  */

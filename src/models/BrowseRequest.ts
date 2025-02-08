@@ -36,7 +36,7 @@ import {
 } from './BrowseDescription';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.9.2/#5.9.2.2).
  * @export
  * @interface BrowseRequest
  */

@@ -22,7 +22,7 @@ import {
 } from './StatusCode';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/Core/Part4/v105/docs/7.12).
  * @export
  * @interface DiagnosticInfo
  */

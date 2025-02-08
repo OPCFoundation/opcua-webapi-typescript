@@ -14,7 +14,7 @@
 
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part3/8.55).
  * @export
  */
 export const PermissionTypeBits = {

@@ -22,7 +22,7 @@ import {
 } from './LocalizedText';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/7.2.4/#7.2.4.6.5).
  * @export
  * @interface ApplicationDescription
  */
@@ -46,7 +46,7 @@ export interface ApplicationDescription {
      */
     ApplicationName?: LocalizedText;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.4).
      * @type {number}
      * @memberof ApplicationDescription
      */

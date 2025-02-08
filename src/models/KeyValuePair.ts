@@ -22,7 +22,7 @@ import {
 } from './Variant';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.21).
  * @export
  * @interface KeyValuePair
  */

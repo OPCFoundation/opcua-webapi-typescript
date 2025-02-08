@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.35).
  * @export
  * @interface SimpleTypeDescription
  */

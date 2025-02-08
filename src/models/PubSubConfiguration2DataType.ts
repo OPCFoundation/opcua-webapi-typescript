@@ -71,7 +71,7 @@ import {
 } from './EndpointDescription';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.2.12/#6.2.12.4).
  * @export
  * @interface PubSubConfiguration2DataType
  */

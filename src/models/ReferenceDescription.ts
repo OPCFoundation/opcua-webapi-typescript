@@ -22,7 +22,7 @@ import {
 } from './LocalizedText';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30).
  * @export
  * @interface ReferenceDescription
  */
@@ -58,7 +58,7 @@ export interface ReferenceDescription {
      */
     DisplayName?: LocalizedText;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.5/#12.2.5.2).
      * @type {number}
      * @memberof ReferenceDescription
      */

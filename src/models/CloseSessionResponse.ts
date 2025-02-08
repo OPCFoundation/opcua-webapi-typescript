@@ -22,7 +22,7 @@ import {
 } from './ResponseHeader';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.7.4/#5.7.4.2).
  * @export
  * @interface CloseSessionResponse
  */

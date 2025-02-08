@@ -22,7 +22,7 @@ import {
 } from './RequestHeader';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.13.4/#5.13.4.2).
  * @export
  * @interface SetMonitoringModeRequest
  */
@@ -40,7 +40,7 @@ export interface SetMonitoringModeRequest {
      */
     SubscriptionId?: number;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.23).
      * @type {number}
      * @memberof SetMonitoringModeRequest
      */

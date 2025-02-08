@@ -36,7 +36,7 @@ import {
 } from './RequestHeader';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.11.3/#5.11.3.2).
  * @export
  * @interface HistoryReadRequest
  */
@@ -54,7 +54,7 @@ export interface HistoryReadRequest {
      */
     HistoryReadDetails?: ExtensionObject;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.40).
      * @type {number}
      * @memberof HistoryReadRequest
      */

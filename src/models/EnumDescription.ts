@@ -22,7 +22,7 @@ import {
 } from './EnumDefinition';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.34).
  * @export
  * @interface EnumDescription
  */

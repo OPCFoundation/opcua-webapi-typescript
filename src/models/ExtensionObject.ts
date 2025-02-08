@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/Core/Part6/v105/docs/5.4.2.16).
  * @export
  * @interface ExtensionObject
  */

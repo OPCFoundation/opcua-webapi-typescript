@@ -22,7 +22,7 @@ import {
 } from './DataSetMetaDataType';
 
 /**
- * 
+ * [Link to specification]().
  * @export
  * @interface JsonDataSetMetaDataMessage
  */

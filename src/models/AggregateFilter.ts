@@ -22,7 +22,7 @@ import {
 } from './AggregateConfiguration';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.22.4).
  * @export
  * @interface AggregateFilter
  */

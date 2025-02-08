@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification]().
  * @export
  * @interface JsonStatusMessage
  */
@@ -50,7 +50,7 @@ export interface JsonStatusMessage {
      */
     IsCyclic?: boolean;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.2.1).
      * @type {number}
      * @memberof JsonStatusMessage
      */

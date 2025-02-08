@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.9.2/#5.9.2.2).
  * @export
  * @interface BrowseDescription
  */
@@ -26,7 +26,7 @@ export interface BrowseDescription {
      */
     NodeId?: string;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.5).
      * @type {number}
      * @memberof BrowseDescription
      */

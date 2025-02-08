@@ -22,7 +22,7 @@ import {
 } from './PubSubConnectionDataType';
 
 /**
- * 
+ * [Link to specification]().
  * @export
  * @interface JsonPubSubConnectionMessage
  */

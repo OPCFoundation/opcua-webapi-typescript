@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.4.2/#6.4.2.5.7).
  * @export
  * @interface BrokerDataSetWriterTransportDataType
  */
@@ -38,7 +38,7 @@ export interface BrokerDataSetWriterTransportDataType {
      */
     AuthenticationProfileUri?: string;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.4.2/#6.4.2.1).
      * @type {number}
      * @memberof BrokerDataSetWriterTransportDataType
      */

@@ -14,13 +14,13 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.22.2).
  * @export
  * @interface DataChangeFilter
  */
 export interface DataChangeFilter {
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.10).
      * @type {number}
      * @memberof DataChangeFilter
      */

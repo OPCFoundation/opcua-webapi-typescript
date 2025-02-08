@@ -29,7 +29,7 @@ import {
 } from './RequestHeader';
 
 /**
- * 
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.11.2/#5.11.2.2).
  * @export
  * @interface ReadRequest
  */
@@ -47,7 +47,7 @@ export interface ReadRequest {
      */
     MaxAge?: number;
     /**
-     * 
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.40).
      * @type {number}
      * @memberof ReadRequest
      */
