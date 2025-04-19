@@ -1,11 +1,11 @@
 {
   "name": "opcua-webapi",
-  "version": "1.05.4",
+  "version": "1.504.1",
   "description": "Provides HTTPS based access to an OPC UA server.",
   "author": "OPC Foundation",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OPCFoundation/opcua-webapi.git"
+    "url": "https://github.com/OPCFoundation/opcua-webapi-typescript.git"
   },
   "main": "./dist/cjs/index.js",
   "typings": "./dist/index.d.ts",
@@ -19,6 +19,6 @@
     "typescript": "^4.0 || ^5.0"
   },
   "publishConfig": {
-    "registry": "https://github.com/OPCFoundation/opcua-webapi-dotnet"
+    "registry": "https://github.com/OPCFoundation/opcua-webapi-typescript"
   }
 }
