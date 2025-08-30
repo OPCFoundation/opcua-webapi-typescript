@@ -36,7 +36,7 @@ import {
 } from './StructureDescription';
 
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part14/6.2.3/#6.2.3.2.2).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part5/12.31).
  * @export
  * @interface DataTypeSchemaHeader
  */
@@ -91,11 +91,11 @@ export function DataTypeSchemaHeaderFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function DataTypeSchemaHeaderToJSON(json: any): DataTypeSchemaHeader {
-      return DataTypeSchemaHeaderToJSONTyped(json, false);
-  }
+export function DataTypeSchemaHeaderToJSON(json: any): DataTypeSchemaHeader {
+    return DataTypeSchemaHeaderToJSONTyped(json, false);
+}
 
-  export function DataTypeSchemaHeaderToJSONTyped(value?: DataTypeSchemaHeader | null, ignoreDiscriminator: boolean = false): any {
+export function DataTypeSchemaHeaderToJSONTyped(value?: DataTypeSchemaHeader | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

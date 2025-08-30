@@ -55,11 +55,11 @@ export function BrowsePathTargetFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function BrowsePathTargetToJSON(json: any): BrowsePathTarget {
-      return BrowsePathTargetToJSONTyped(json, false);
-  }
+export function BrowsePathTargetToJSON(json: any): BrowsePathTarget {
+    return BrowsePathTargetToJSONTyped(json, false);
+}
 
-  export function BrowsePathTargetToJSONTyped(value?: BrowsePathTarget | null, ignoreDiscriminator: boolean = false): any {
+export function BrowsePathTargetToJSONTyped(value?: BrowsePathTarget | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

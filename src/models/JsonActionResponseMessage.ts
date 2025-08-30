@@ -140,11 +140,11 @@ export function JsonActionResponseMessageFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function JsonActionResponseMessageToJSON(json: any): JsonActionResponseMessage {
-      return JsonActionResponseMessageToJSONTyped(json, false);
-  }
+export function JsonActionResponseMessageToJSON(json: any): JsonActionResponseMessage {
+    return JsonActionResponseMessageToJSONTyped(json, false);
+}
 
-  export function JsonActionResponseMessageToJSONTyped(value?: JsonActionResponseMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonActionResponseMessageToJSONTyped(value?: JsonActionResponseMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

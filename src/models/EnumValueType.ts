@@ -70,11 +70,11 @@ export function EnumValueTypeFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function EnumValueTypeToJSON(json: any): EnumValueType {
-      return EnumValueTypeToJSONTyped(json, false);
-  }
+export function EnumValueTypeToJSON(json: any): EnumValueType {
+    return EnumValueTypeToJSONTyped(json, false);
+}
 
-  export function EnumValueTypeToJSONTyped(value?: EnumValueType | null, ignoreDiscriminator: boolean = false): any {
+export function EnumValueTypeToJSONTyped(value?: EnumValueType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

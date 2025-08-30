@@ -84,11 +84,11 @@ export function EventFilterResultFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function EventFilterResultToJSON(json: any): EventFilterResult {
-      return EventFilterResultToJSONTyped(json, false);
-  }
+export function EventFilterResultToJSON(json: any): EventFilterResult {
+    return EventFilterResultToJSONTyped(json, false);
+}
 
-  export function EventFilterResultToJSONTyped(value?: EventFilterResult | null, ignoreDiscriminator: boolean = false): any {
+export function EventFilterResultToJSONTyped(value?: EventFilterResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

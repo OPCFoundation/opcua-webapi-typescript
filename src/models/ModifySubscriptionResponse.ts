@@ -77,11 +77,11 @@ export function ModifySubscriptionResponseFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function ModifySubscriptionResponseToJSON(json: any): ModifySubscriptionResponse {
-      return ModifySubscriptionResponseToJSONTyped(json, false);
-  }
+export function ModifySubscriptionResponseToJSON(json: any): ModifySubscriptionResponse {
+    return ModifySubscriptionResponseToJSONTyped(json, false);
+}
 
-  export function ModifySubscriptionResponseToJSONTyped(value?: ModifySubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ModifySubscriptionResponseToJSONTyped(value?: ModifySubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

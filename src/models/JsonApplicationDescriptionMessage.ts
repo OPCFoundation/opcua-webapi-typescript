@@ -91,11 +91,11 @@ export function JsonApplicationDescriptionMessageFromJSONTyped(json: any, ignore
     };
 }
 
-  export function JsonApplicationDescriptionMessageToJSON(json: any): JsonApplicationDescriptionMessage {
-      return JsonApplicationDescriptionMessageToJSONTyped(json, false);
-  }
+export function JsonApplicationDescriptionMessageToJSON(json: any): JsonApplicationDescriptionMessage {
+    return JsonApplicationDescriptionMessageToJSONTyped(json, false);
+}
 
-  export function JsonApplicationDescriptionMessageToJSONTyped(value?: JsonApplicationDescriptionMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonApplicationDescriptionMessageToJSONTyped(value?: JsonApplicationDescriptionMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

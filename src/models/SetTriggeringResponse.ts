@@ -98,11 +98,11 @@ export function SetTriggeringResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function SetTriggeringResponseToJSON(json: any): SetTriggeringResponse {
-      return SetTriggeringResponseToJSONTyped(json, false);
-  }
+export function SetTriggeringResponseToJSON(json: any): SetTriggeringResponse {
+    return SetTriggeringResponseToJSONTyped(json, false);
+}
 
-  export function SetTriggeringResponseToJSONTyped(value?: SetTriggeringResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SetTriggeringResponseToJSONTyped(value?: SetTriggeringResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function CallRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function CallRequestToJSON(json: any): CallRequest {
-      return CallRequestToJSONTyped(json, false);
-  }
+export function CallRequestToJSON(json: any): CallRequest {
+    return CallRequestToJSONTyped(json, false);
+}
 
-  export function CallRequestToJSONTyped(value?: CallRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CallRequestToJSONTyped(value?: CallRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -55,11 +55,11 @@ export function ReadAtTimeDetailsFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function ReadAtTimeDetailsToJSON(json: any): ReadAtTimeDetails {
-      return ReadAtTimeDetailsToJSONTyped(json, false);
-  }
+export function ReadAtTimeDetailsToJSON(json: any): ReadAtTimeDetails {
+    return ReadAtTimeDetailsToJSONTyped(json, false);
+}
 
-  export function ReadAtTimeDetailsToJSONTyped(value?: ReadAtTimeDetails | null, ignoreDiscriminator: boolean = false): any {
+export function ReadAtTimeDetailsToJSONTyped(value?: ReadAtTimeDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

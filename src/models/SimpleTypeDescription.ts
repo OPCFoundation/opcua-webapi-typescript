@@ -69,11 +69,11 @@ export function SimpleTypeDescriptionFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function SimpleTypeDescriptionToJSON(json: any): SimpleTypeDescription {
-      return SimpleTypeDescriptionToJSONTyped(json, false);
-  }
+export function SimpleTypeDescriptionToJSON(json: any): SimpleTypeDescription {
+    return SimpleTypeDescriptionToJSONTyped(json, false);
+}
 
-  export function SimpleTypeDescriptionToJSONTyped(value?: SimpleTypeDescription | null, ignoreDiscriminator: boolean = false): any {
+export function SimpleTypeDescriptionToJSONTyped(value?: SimpleTypeDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

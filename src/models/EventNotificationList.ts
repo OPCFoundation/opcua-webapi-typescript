@@ -56,11 +56,11 @@ export function EventNotificationListFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function EventNotificationListToJSON(json: any): EventNotificationList {
-      return EventNotificationListToJSONTyped(json, false);
-  }
+export function EventNotificationListToJSON(json: any): EventNotificationList {
+    return EventNotificationListToJSONTyped(json, false);
+}
 
-  export function EventNotificationListToJSONTyped(value?: EventNotificationList | null, ignoreDiscriminator: boolean = false): any {
+export function EventNotificationListToJSONTyped(value?: EventNotificationList | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

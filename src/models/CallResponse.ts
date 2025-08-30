@@ -84,11 +84,11 @@ export function CallResponseFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function CallResponseToJSON(json: any): CallResponse {
-      return CallResponseToJSONTyped(json, false);
-  }
+export function CallResponseToJSON(json: any): CallResponse {
+    return CallResponseToJSONTyped(json, false);
+}
 
-  export function CallResponseToJSONTyped(value?: CallResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CallResponseToJSONTyped(value?: CallResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

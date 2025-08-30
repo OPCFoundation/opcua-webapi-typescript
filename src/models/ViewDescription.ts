@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.45).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.44).
  * @export
  * @interface ViewDescription
  */
@@ -62,11 +62,11 @@ export function ViewDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function ViewDescriptionToJSON(json: any): ViewDescription {
-      return ViewDescriptionToJSONTyped(json, false);
-  }
+export function ViewDescriptionToJSON(json: any): ViewDescription {
+    return ViewDescriptionToJSONTyped(json, false);
+}
 
-  export function ViewDescriptionToJSONTyped(value?: ViewDescription | null, ignoreDiscriminator: boolean = false): any {
+export function ViewDescriptionToJSONTyped(value?: ViewDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

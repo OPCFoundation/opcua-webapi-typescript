@@ -84,11 +84,11 @@ export function SetPublishingModeResponseFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function SetPublishingModeResponseToJSON(json: any): SetPublishingModeResponse {
-      return SetPublishingModeResponseToJSONTyped(json, false);
-  }
+export function SetPublishingModeResponseToJSON(json: any): SetPublishingModeResponse {
+    return SetPublishingModeResponseToJSONTyped(json, false);
+}
 
-  export function SetPublishingModeResponseToJSONTyped(value?: SetPublishingModeResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SetPublishingModeResponseToJSONTyped(value?: SetPublishingModeResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

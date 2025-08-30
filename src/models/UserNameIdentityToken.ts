@@ -69,11 +69,11 @@ export function UserNameIdentityTokenFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function UserNameIdentityTokenToJSON(json: any): UserNameIdentityToken {
-      return UserNameIdentityTokenToJSONTyped(json, false);
-  }
+export function UserNameIdentityTokenToJSON(json: any): UserNameIdentityToken {
+    return UserNameIdentityTokenToJSONTyped(json, false);
+}
 
-  export function UserNameIdentityTokenToJSONTyped(value?: UserNameIdentityToken | null, ignoreDiscriminator: boolean = false): any {
+export function UserNameIdentityTokenToJSONTyped(value?: UserNameIdentityToken | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

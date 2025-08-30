@@ -119,11 +119,11 @@ export function SecurityGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function SecurityGroupDataTypeToJSON(json: any): SecurityGroupDataType {
-      return SecurityGroupDataTypeToJSONTyped(json, false);
-  }
+export function SecurityGroupDataTypeToJSON(json: any): SecurityGroupDataType {
+    return SecurityGroupDataTypeToJSONTyped(json, false);
+}
 
-  export function SecurityGroupDataTypeToJSONTyped(value?: SecurityGroupDataType | null, ignoreDiscriminator: boolean = false): any {
+export function SecurityGroupDataTypeToJSONTyped(value?: SecurityGroupDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

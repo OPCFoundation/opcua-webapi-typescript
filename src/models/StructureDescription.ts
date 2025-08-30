@@ -70,11 +70,11 @@ export function StructureDescriptionFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function StructureDescriptionToJSON(json: any): StructureDescription {
-      return StructureDescriptionToJSONTyped(json, false);
-  }
+export function StructureDescriptionToJSON(json: any): StructureDescription {
+    return StructureDescriptionToJSONTyped(json, false);
+}
 
-  export function StructureDescriptionToJSONTyped(value?: StructureDescription | null, ignoreDiscriminator: boolean = false): any {
+export function StructureDescriptionToJSONTyped(value?: StructureDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

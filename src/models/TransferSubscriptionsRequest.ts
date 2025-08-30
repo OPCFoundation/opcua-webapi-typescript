@@ -70,11 +70,11 @@ export function TransferSubscriptionsRequestFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function TransferSubscriptionsRequestToJSON(json: any): TransferSubscriptionsRequest {
-      return TransferSubscriptionsRequestToJSONTyped(json, false);
-  }
+export function TransferSubscriptionsRequestToJSON(json: any): TransferSubscriptionsRequest {
+    return TransferSubscriptionsRequestToJSONTyped(json, false);
+}
 
-  export function TransferSubscriptionsRequestToJSONTyped(value?: TransferSubscriptionsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function TransferSubscriptionsRequestToJSONTyped(value?: TransferSubscriptionsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

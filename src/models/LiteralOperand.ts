@@ -56,11 +56,11 @@ export function LiteralOperandFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function LiteralOperandToJSON(json: any): LiteralOperand {
-      return LiteralOperandToJSONTyped(json, false);
-  }
+export function LiteralOperandToJSON(json: any): LiteralOperand {
+    return LiteralOperandToJSONTyped(json, false);
+}
 
-  export function LiteralOperandToJSONTyped(value?: LiteralOperand | null, ignoreDiscriminator: boolean = false): any {
+export function LiteralOperandToJSONTyped(value?: LiteralOperand | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

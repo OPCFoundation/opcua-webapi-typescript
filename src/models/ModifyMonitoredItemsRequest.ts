@@ -47,7 +47,7 @@ export interface ModifyMonitoredItemsRequest {
      */
     SubscriptionId?: number;
     /**
-     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.40).
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.39).
      * @type {number}
      * @memberof ModifyMonitoredItemsRequest
      */
@@ -84,11 +84,11 @@ export function ModifyMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function ModifyMonitoredItemsRequestToJSON(json: any): ModifyMonitoredItemsRequest {
-      return ModifyMonitoredItemsRequestToJSONTyped(json, false);
-  }
+export function ModifyMonitoredItemsRequestToJSON(json: any): ModifyMonitoredItemsRequest {
+    return ModifyMonitoredItemsRequestToJSONTyped(json, false);
+}
 
-  export function ModifyMonitoredItemsRequestToJSONTyped(value?: ModifyMonitoredItemsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function ModifyMonitoredItemsRequestToJSONTyped(value?: ModifyMonitoredItemsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

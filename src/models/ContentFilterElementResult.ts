@@ -77,11 +77,11 @@ export function ContentFilterElementResultFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function ContentFilterElementResultToJSON(json: any): ContentFilterElementResult {
-      return ContentFilterElementResultToJSONTyped(json, false);
-  }
+export function ContentFilterElementResultToJSON(json: any): ContentFilterElementResult {
+    return ContentFilterElementResultToJSONTyped(json, false);
+}
 
-  export function ContentFilterElementResultToJSONTyped(value?: ContentFilterElementResult | null, ignoreDiscriminator: boolean = false): any {
+export function ContentFilterElementResultToJSONTyped(value?: ContentFilterElementResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

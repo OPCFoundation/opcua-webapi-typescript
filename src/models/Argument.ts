@@ -84,11 +84,11 @@ export function ArgumentFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-  export function ArgumentToJSON(json: any): Argument {
-      return ArgumentToJSONTyped(json, false);
-  }
+export function ArgumentToJSON(json: any): Argument {
+    return ArgumentToJSONTyped(json, false);
+}
 
-  export function ArgumentToJSONTyped(value?: Argument | null, ignoreDiscriminator: boolean = false): any {
+export function ArgumentToJSONTyped(value?: Argument | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part11/6.5.4/#6.5.4.1).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.22.4).
  * @export
  * @interface AggregateConfiguration
  */
@@ -76,11 +76,11 @@ export function AggregateConfigurationFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function AggregateConfigurationToJSON(json: any): AggregateConfiguration {
-      return AggregateConfigurationToJSONTyped(json, false);
-  }
+export function AggregateConfigurationToJSON(json: any): AggregateConfiguration {
+    return AggregateConfigurationToJSONTyped(json, false);
+}
 
-  export function AggregateConfigurationToJSONTyped(value?: AggregateConfiguration | null, ignoreDiscriminator: boolean = false): any {
+export function AggregateConfigurationToJSONTyped(value?: AggregateConfiguration | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

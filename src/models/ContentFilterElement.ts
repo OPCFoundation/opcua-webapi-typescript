@@ -63,11 +63,11 @@ export function ContentFilterElementFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function ContentFilterElementToJSON(json: any): ContentFilterElement {
-      return ContentFilterElementToJSONTyped(json, false);
-  }
+export function ContentFilterElementToJSON(json: any): ContentFilterElement {
+    return ContentFilterElementToJSONTyped(json, false);
+}
 
-  export function ContentFilterElementToJSONTyped(value?: ContentFilterElement | null, ignoreDiscriminator: boolean = false): any {
+export function ContentFilterElementToJSONTyped(value?: ContentFilterElement | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

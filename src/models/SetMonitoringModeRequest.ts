@@ -77,11 +77,11 @@ export function SetMonitoringModeRequestFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function SetMonitoringModeRequestToJSON(json: any): SetMonitoringModeRequest {
-      return SetMonitoringModeRequestToJSONTyped(json, false);
-  }
+export function SetMonitoringModeRequestToJSON(json: any): SetMonitoringModeRequest {
+    return SetMonitoringModeRequestToJSONTyped(json, false);
+}
 
-  export function SetMonitoringModeRequestToJSONTyped(value?: SetMonitoringModeRequest | null, ignoreDiscriminator: boolean = false): any {
+export function SetMonitoringModeRequestToJSONTyped(value?: SetMonitoringModeRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

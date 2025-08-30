@@ -63,11 +63,11 @@ export function EventFieldListFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function EventFieldListToJSON(json: any): EventFieldList {
-      return EventFieldListToJSONTyped(json, false);
-  }
+export function EventFieldListToJSON(json: any): EventFieldList {
+    return EventFieldListToJSONTyped(json, false);
+}
 
-  export function EventFieldListToJSONTyped(value?: EventFieldList | null, ignoreDiscriminator: boolean = false): any {
+export function EventFieldListToJSONTyped(value?: EventFieldList | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

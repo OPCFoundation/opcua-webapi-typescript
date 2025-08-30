@@ -84,11 +84,11 @@ export function TransferSubscriptionsResponseFromJSONTyped(json: any, ignoreDisc
     };
 }
 
-  export function TransferSubscriptionsResponseToJSON(json: any): TransferSubscriptionsResponse {
-      return TransferSubscriptionsResponseToJSONTyped(json, false);
-  }
+export function TransferSubscriptionsResponseToJSON(json: any): TransferSubscriptionsResponse {
+    return TransferSubscriptionsResponseToJSONTyped(json, false);
+}
 
-  export function TransferSubscriptionsResponseToJSONTyped(value?: TransferSubscriptionsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function TransferSubscriptionsResponseToJSONTyped(value?: TransferSubscriptionsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

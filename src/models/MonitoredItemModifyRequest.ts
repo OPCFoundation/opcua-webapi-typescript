@@ -63,11 +63,11 @@ export function MonitoredItemModifyRequestFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function MonitoredItemModifyRequestToJSON(json: any): MonitoredItemModifyRequest {
-      return MonitoredItemModifyRequestToJSONTyped(json, false);
-  }
+export function MonitoredItemModifyRequestToJSON(json: any): MonitoredItemModifyRequest {
+    return MonitoredItemModifyRequestToJSONTyped(json, false);
+}
 
-  export function MonitoredItemModifyRequestToJSONTyped(value?: MonitoredItemModifyRequest | null, ignoreDiscriminator: boolean = false): any {
+export function MonitoredItemModifyRequestToJSONTyped(value?: MonitoredItemModifyRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

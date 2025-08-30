@@ -84,11 +84,11 @@ export function DeleteSubscriptionsResponseFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function DeleteSubscriptionsResponseToJSON(json: any): DeleteSubscriptionsResponse {
-      return DeleteSubscriptionsResponseToJSONTyped(json, false);
-  }
+export function DeleteSubscriptionsResponseToJSON(json: any): DeleteSubscriptionsResponse {
+    return DeleteSubscriptionsResponseToJSONTyped(json, false);
+}
 
-  export function DeleteSubscriptionsResponseToJSONTyped(value?: DeleteSubscriptionsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteSubscriptionsResponseToJSONTyped(value?: DeleteSubscriptionsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

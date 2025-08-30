@@ -77,11 +77,11 @@ export function StandaloneSubscribedDataSetDataTypeFromJSONTyped(json: any, igno
     };
 }
 
-  export function StandaloneSubscribedDataSetDataTypeToJSON(json: any): StandaloneSubscribedDataSetDataType {
-      return StandaloneSubscribedDataSetDataTypeToJSONTyped(json, false);
-  }
+export function StandaloneSubscribedDataSetDataTypeToJSON(json: any): StandaloneSubscribedDataSetDataType {
+    return StandaloneSubscribedDataSetDataTypeToJSONTyped(json, false);
+}
 
-  export function StandaloneSubscribedDataSetDataTypeToJSONTyped(value?: StandaloneSubscribedDataSetDataType | null, ignoreDiscriminator: boolean = false): any {
+export function StandaloneSubscribedDataSetDataTypeToJSONTyped(value?: StandaloneSubscribedDataSetDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

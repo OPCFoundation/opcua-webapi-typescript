@@ -84,11 +84,11 @@ export function SetTriggeringRequestFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function SetTriggeringRequestToJSON(json: any): SetTriggeringRequest {
-      return SetTriggeringRequestToJSONTyped(json, false);
-  }
+export function SetTriggeringRequestToJSON(json: any): SetTriggeringRequest {
+    return SetTriggeringRequestToJSONTyped(json, false);
+}
 
-  export function SetTriggeringRequestToJSONTyped(value?: SetTriggeringRequest | null, ignoreDiscriminator: boolean = false): any {
+export function SetTriggeringRequestToJSONTyped(value?: SetTriggeringRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

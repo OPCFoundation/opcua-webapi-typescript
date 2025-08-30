@@ -62,11 +62,11 @@ export function IssuedIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function IssuedIdentityTokenToJSON(json: any): IssuedIdentityToken {
-      return IssuedIdentityTokenToJSONTyped(json, false);
-  }
+export function IssuedIdentityTokenToJSON(json: any): IssuedIdentityToken {
+    return IssuedIdentityTokenToJSONTyped(json, false);
+}
 
-  export function IssuedIdentityTokenToJSONTyped(value?: IssuedIdentityToken | null, ignoreDiscriminator: boolean = false): any {
+export function IssuedIdentityTokenToJSONTyped(value?: IssuedIdentityToken | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

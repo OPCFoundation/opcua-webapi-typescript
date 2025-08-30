@@ -48,11 +48,11 @@ export function UserIdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function UserIdentityTokenToJSON(json: any): UserIdentityToken {
-      return UserIdentityTokenToJSONTyped(json, false);
-  }
+export function UserIdentityTokenToJSON(json: any): UserIdentityToken {
+    return UserIdentityTokenToJSONTyped(json, false);
+}
 
-  export function UserIdentityTokenToJSONTyped(value?: UserIdentityToken | null, ignoreDiscriminator: boolean = false): any {
+export function UserIdentityTokenToJSONTyped(value?: UserIdentityToken | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

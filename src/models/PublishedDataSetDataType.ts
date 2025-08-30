@@ -91,11 +91,11 @@ export function PublishedDataSetDataTypeFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function PublishedDataSetDataTypeToJSON(json: any): PublishedDataSetDataType {
-      return PublishedDataSetDataTypeToJSONTyped(json, false);
-  }
+export function PublishedDataSetDataTypeToJSON(json: any): PublishedDataSetDataType {
+    return PublishedDataSetDataTypeToJSONTyped(json, false);
+}
 
-  export function PublishedDataSetDataTypeToJSONTyped(value?: PublishedDataSetDataType | null, ignoreDiscriminator: boolean = false): any {
+export function PublishedDataSetDataTypeToJSONTyped(value?: PublishedDataSetDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.29).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.28).
  * @export
  * @interface ReadValueId
  */
@@ -69,11 +69,11 @@ export function ReadValueIdFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function ReadValueIdToJSON(json: any): ReadValueId {
-      return ReadValueIdToJSONTyped(json, false);
-  }
+export function ReadValueIdToJSON(json: any): ReadValueId {
+    return ReadValueIdToJSONTyped(json, false);
+}
 
-  export function ReadValueIdToJSONTyped(value?: ReadValueId | null, ignoreDiscriminator: boolean = false): any {
+export function ReadValueIdToJSONTyped(value?: ReadValueId | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

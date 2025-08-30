@@ -77,11 +77,11 @@ export function PubSubConfigurationDataTypeFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function PubSubConfigurationDataTypeToJSON(json: any): PubSubConfigurationDataType {
-      return PubSubConfigurationDataTypeToJSONTyped(json, false);
-  }
+export function PubSubConfigurationDataTypeToJSON(json: any): PubSubConfigurationDataType {
+    return PubSubConfigurationDataTypeToJSONTyped(json, false);
+}
 
-  export function PubSubConfigurationDataTypeToJSONTyped(value?: PubSubConfigurationDataType | null, ignoreDiscriminator: boolean = false): any {
+export function PubSubConfigurationDataTypeToJSONTyped(value?: PubSubConfigurationDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function UpdateStructureDataDetailsFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function UpdateStructureDataDetailsToJSON(json: any): UpdateStructureDataDetails {
-      return UpdateStructureDataDetailsToJSONTyped(json, false);
-  }
+export function UpdateStructureDataDetailsToJSON(json: any): UpdateStructureDataDetails {
+    return UpdateStructureDataDetailsToJSONTyped(json, false);
+}
 
-  export function UpdateStructureDataDetailsToJSONTyped(value?: UpdateStructureDataDetails | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateStructureDataDetailsToJSONTyped(value?: UpdateStructureDataDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

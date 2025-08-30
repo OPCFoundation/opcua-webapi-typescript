@@ -56,11 +56,11 @@ export function EnumDefinitionFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function EnumDefinitionToJSON(json: any): EnumDefinition {
-      return EnumDefinitionToJSONTyped(json, false);
-  }
+export function EnumDefinitionToJSON(json: any): EnumDefinition {
+    return EnumDefinitionToJSONTyped(json, false);
+}
 
-  export function EnumDefinitionToJSONTyped(value?: EnumDefinition | null, ignoreDiscriminator: boolean = false): any {
+export function EnumDefinitionToJSONTyped(value?: EnumDefinition | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

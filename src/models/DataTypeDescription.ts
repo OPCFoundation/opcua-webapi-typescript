@@ -55,11 +55,11 @@ export function DataTypeDescriptionFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function DataTypeDescriptionToJSON(json: any): DataTypeDescription {
-      return DataTypeDescriptionToJSONTyped(json, false);
-  }
+export function DataTypeDescriptionToJSON(json: any): DataTypeDescription {
+    return DataTypeDescriptionToJSONTyped(json, false);
+}
 
-  export function DataTypeDescriptionToJSONTyped(value?: DataTypeDescription | null, ignoreDiscriminator: boolean = false): any {
+export function DataTypeDescriptionToJSONTyped(value?: DataTypeDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

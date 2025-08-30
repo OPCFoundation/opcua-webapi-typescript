@@ -63,11 +63,11 @@ export function RegisterNodesRequestFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function RegisterNodesRequestToJSON(json: any): RegisterNodesRequest {
-      return RegisterNodesRequestToJSONTyped(json, false);
-  }
+export function RegisterNodesRequestToJSON(json: any): RegisterNodesRequest {
+    return RegisterNodesRequestToJSONTyped(json, false);
+}
 
-  export function RegisterNodesRequestToJSONTyped(value?: RegisterNodesRequest | null, ignoreDiscriminator: boolean = false): any {
+export function RegisterNodesRequestToJSONTyped(value?: RegisterNodesRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

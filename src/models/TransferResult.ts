@@ -63,11 +63,11 @@ export function TransferResultFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function TransferResultToJSON(json: any): TransferResult {
-      return TransferResultToJSONTyped(json, false);
-  }
+export function TransferResultToJSON(json: any): TransferResult {
+    return TransferResultToJSONTyped(json, false);
+}
 
-  export function TransferResultToJSONTyped(value?: TransferResult | null, ignoreDiscriminator: boolean = false): any {
+export function TransferResultToJSONTyped(value?: TransferResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -55,11 +55,11 @@ export function StatusCodeFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function StatusCodeToJSON(json: any): StatusCode {
-      return StatusCodeToJSONTyped(json, false);
-  }
+export function StatusCodeToJSON(json: any): StatusCode {
+    return StatusCodeToJSONTyped(json, false);
+}
 
-  export function StatusCodeToJSONTyped(value?: StatusCode | null, ignoreDiscriminator: boolean = false): any {
+export function StatusCodeToJSONTyped(value?: StatusCode | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

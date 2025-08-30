@@ -105,11 +105,11 @@ export function JsonDataSetMetaDataMessageFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function JsonDataSetMetaDataMessageToJSON(json: any): JsonDataSetMetaDataMessage {
-      return JsonDataSetMetaDataMessageToJSONTyped(json, false);
-  }
+export function JsonDataSetMetaDataMessageToJSON(json: any): JsonDataSetMetaDataMessage {
+    return JsonDataSetMetaDataMessageToJSONTyped(json, false);
+}
 
-  export function JsonDataSetMetaDataMessageToJSONTyped(value?: JsonDataSetMetaDataMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonDataSetMetaDataMessageToJSONTyped(value?: JsonDataSetMetaDataMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

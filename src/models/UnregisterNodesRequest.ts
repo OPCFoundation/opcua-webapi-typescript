@@ -63,11 +63,11 @@ export function UnregisterNodesRequestFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function UnregisterNodesRequestToJSON(json: any): UnregisterNodesRequest {
-      return UnregisterNodesRequestToJSONTyped(json, false);
-  }
+export function UnregisterNodesRequestToJSON(json: any): UnregisterNodesRequest {
+    return UnregisterNodesRequestToJSONTyped(json, false);
+}
 
-  export function UnregisterNodesRequestToJSONTyped(value?: UnregisterNodesRequest | null, ignoreDiscriminator: boolean = false): any {
+export function UnregisterNodesRequestToJSONTyped(value?: UnregisterNodesRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

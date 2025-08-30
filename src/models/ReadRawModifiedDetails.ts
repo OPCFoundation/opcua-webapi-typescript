@@ -76,11 +76,11 @@ export function ReadRawModifiedDetailsFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function ReadRawModifiedDetailsToJSON(json: any): ReadRawModifiedDetails {
-      return ReadRawModifiedDetailsToJSONTyped(json, false);
-  }
+export function ReadRawModifiedDetailsToJSON(json: any): ReadRawModifiedDetails {
+    return ReadRawModifiedDetailsToJSONTyped(json, false);
+}
 
-  export function ReadRawModifiedDetailsToJSONTyped(value?: ReadRawModifiedDetails | null, ignoreDiscriminator: boolean = false): any {
+export function ReadRawModifiedDetailsToJSONTyped(value?: ReadRawModifiedDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

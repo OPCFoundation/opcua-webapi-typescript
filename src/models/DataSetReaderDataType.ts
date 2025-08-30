@@ -189,11 +189,11 @@ export function DataSetReaderDataTypeFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function DataSetReaderDataTypeToJSON(json: any): DataSetReaderDataType {
-      return DataSetReaderDataTypeToJSONTyped(json, false);
-  }
+export function DataSetReaderDataTypeToJSON(json: any): DataSetReaderDataType {
+    return DataSetReaderDataTypeToJSONTyped(json, false);
+}
 
-  export function DataSetReaderDataTypeToJSONTyped(value?: DataSetReaderDataType | null, ignoreDiscriminator: boolean = false): any {
+export function DataSetReaderDataTypeToJSONTyped(value?: DataSetReaderDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

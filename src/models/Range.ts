@@ -55,11 +55,11 @@ export function RangeFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ran
     };
 }
 
-  export function RangeToJSON(json: any): Range {
-      return RangeToJSONTyped(json, false);
-  }
+export function RangeToJSON(json: any): Range {
+    return RangeToJSONTyped(json, false);
+}
 
-  export function RangeToJSONTyped(value?: Range | null, ignoreDiscriminator: boolean = false): any {
+export function RangeToJSONTyped(value?: Range | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

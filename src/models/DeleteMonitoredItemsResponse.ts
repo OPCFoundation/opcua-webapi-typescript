@@ -84,11 +84,11 @@ export function DeleteMonitoredItemsResponseFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function DeleteMonitoredItemsResponseToJSON(json: any): DeleteMonitoredItemsResponse {
-      return DeleteMonitoredItemsResponseToJSONTyped(json, false);
-  }
+export function DeleteMonitoredItemsResponseToJSON(json: any): DeleteMonitoredItemsResponse {
+    return DeleteMonitoredItemsResponseToJSONTyped(json, false);
+}
 
-  export function DeleteMonitoredItemsResponseToJSONTyped(value?: DeleteMonitoredItemsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteMonitoredItemsResponseToJSONTyped(value?: DeleteMonitoredItemsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

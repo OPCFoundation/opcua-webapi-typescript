@@ -55,11 +55,11 @@ export function MatrixFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ma
     };
 }
 
-  export function MatrixToJSON(json: any): Matrix {
-      return MatrixToJSONTyped(json, false);
-  }
+export function MatrixToJSON(json: any): Matrix {
+    return MatrixToJSONTyped(json, false);
+}
 
-  export function MatrixToJSONTyped(value?: Matrix | null, ignoreDiscriminator: boolean = false): any {
+export function MatrixToJSONTyped(value?: Matrix | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

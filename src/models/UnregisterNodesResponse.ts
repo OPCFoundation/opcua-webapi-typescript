@@ -56,11 +56,11 @@ export function UnregisterNodesResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function UnregisterNodesResponseToJSON(json: any): UnregisterNodesResponse {
-      return UnregisterNodesResponseToJSONTyped(json, false);
-  }
+export function UnregisterNodesResponseToJSON(json: any): UnregisterNodesResponse {
+    return UnregisterNodesResponseToJSONTyped(json, false);
+}
 
-  export function UnregisterNodesResponseToJSONTyped(value?: UnregisterNodesResponse | null, ignoreDiscriminator: boolean = false): any {
+export function UnregisterNodesResponseToJSONTyped(value?: UnregisterNodesResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

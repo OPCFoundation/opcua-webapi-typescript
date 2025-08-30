@@ -133,11 +133,11 @@ export function ReaderGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function ReaderGroupDataTypeToJSON(json: any): ReaderGroupDataType {
-      return ReaderGroupDataTypeToJSONTyped(json, false);
-  }
+export function ReaderGroupDataTypeToJSON(json: any): ReaderGroupDataType {
+    return ReaderGroupDataTypeToJSONTyped(json, false);
+}
 
-  export function ReaderGroupDataTypeToJSONTyped(value?: ReaderGroupDataType | null, ignoreDiscriminator: boolean = false): any {
+export function ReaderGroupDataTypeToJSONTyped(value?: ReaderGroupDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

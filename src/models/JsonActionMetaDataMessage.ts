@@ -133,11 +133,11 @@ export function JsonActionMetaDataMessageFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function JsonActionMetaDataMessageToJSON(json: any): JsonActionMetaDataMessage {
-      return JsonActionMetaDataMessageToJSONTyped(json, false);
-  }
+export function JsonActionMetaDataMessageToJSON(json: any): JsonActionMetaDataMessage {
+    return JsonActionMetaDataMessageToJSONTyped(json, false);
+}
 
-  export function JsonActionMetaDataMessageToJSONTyped(value?: JsonActionMetaDataMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonActionMetaDataMessageToJSONTyped(value?: JsonActionMetaDataMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

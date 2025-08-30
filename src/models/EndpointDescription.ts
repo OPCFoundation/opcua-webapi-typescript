@@ -112,11 +112,11 @@ export function EndpointDescriptionFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function EndpointDescriptionToJSON(json: any): EndpointDescription {
-      return EndpointDescriptionToJSONTyped(json, false);
-  }
+export function EndpointDescriptionToJSON(json: any): EndpointDescription {
+    return EndpointDescriptionToJSONTyped(json, false);
+}
 
-  export function EndpointDescriptionToJSONTyped(value?: EndpointDescription | null, ignoreDiscriminator: boolean = false): any {
+export function EndpointDescriptionToJSONTyped(value?: EndpointDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

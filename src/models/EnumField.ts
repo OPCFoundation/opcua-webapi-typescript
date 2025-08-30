@@ -77,11 +77,11 @@ export function EnumFieldFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function EnumFieldToJSON(json: any): EnumField {
-      return EnumFieldToJSONTyped(json, false);
-  }
+export function EnumFieldToJSON(json: any): EnumField {
+    return EnumFieldToJSONTyped(json, false);
+}
 
-  export function EnumFieldToJSONTyped(value?: EnumField | null, ignoreDiscriminator: boolean = false): any {
+export function EnumFieldToJSONTyped(value?: EnumField | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

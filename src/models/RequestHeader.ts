@@ -22,7 +22,7 @@ import {
 } from './ExtensionObject';
 
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.33).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.32).
  * @export
  * @interface RequestHeader
  */
@@ -98,11 +98,11 @@ export function RequestHeaderFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function RequestHeaderToJSON(json: any): RequestHeader {
-      return RequestHeaderToJSONTyped(json, false);
-  }
+export function RequestHeaderToJSON(json: any): RequestHeader {
+    return RequestHeaderToJSONTyped(json, false);
+}
 
-  export function RequestHeaderToJSONTyped(value?: RequestHeader | null, ignoreDiscriminator: boolean = false): any {
+export function RequestHeaderToJSONTyped(value?: RequestHeader | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

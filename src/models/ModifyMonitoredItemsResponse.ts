@@ -84,11 +84,11 @@ export function ModifyMonitoredItemsResponseFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function ModifyMonitoredItemsResponseToJSON(json: any): ModifyMonitoredItemsResponse {
-      return ModifyMonitoredItemsResponseToJSONTyped(json, false);
-  }
+export function ModifyMonitoredItemsResponseToJSON(json: any): ModifyMonitoredItemsResponse {
+    return ModifyMonitoredItemsResponseToJSONTyped(json, false);
+}
 
-  export function ModifyMonitoredItemsResponseToJSONTyped(value?: ModifyMonitoredItemsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ModifyMonitoredItemsResponseToJSONTyped(value?: ModifyMonitoredItemsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

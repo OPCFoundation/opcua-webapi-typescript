@@ -48,11 +48,11 @@ export function JsonDataSetWriterMessageDataTypeFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function JsonDataSetWriterMessageDataTypeToJSON(json: any): JsonDataSetWriterMessageDataType {
-      return JsonDataSetWriterMessageDataTypeToJSONTyped(json, false);
-  }
+export function JsonDataSetWriterMessageDataTypeToJSON(json: any): JsonDataSetWriterMessageDataType {
+    return JsonDataSetWriterMessageDataTypeToJSONTyped(json, false);
+}
 
-  export function JsonDataSetWriterMessageDataTypeToJSONTyped(value?: JsonDataSetWriterMessageDataType | null, ignoreDiscriminator: boolean = false): any {
+export function JsonDataSetWriterMessageDataTypeToJSONTyped(value?: JsonDataSetWriterMessageDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

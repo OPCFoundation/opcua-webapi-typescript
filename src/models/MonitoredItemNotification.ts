@@ -63,11 +63,11 @@ export function MonitoredItemNotificationFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function MonitoredItemNotificationToJSON(json: any): MonitoredItemNotification {
-      return MonitoredItemNotificationToJSONTyped(json, false);
-  }
+export function MonitoredItemNotificationToJSON(json: any): MonitoredItemNotification {
+    return MonitoredItemNotificationToJSONTyped(json, false);
+}
 
-  export function MonitoredItemNotificationToJSONTyped(value?: MonitoredItemNotification | null, ignoreDiscriminator: boolean = false): any {
+export function MonitoredItemNotificationToJSONTyped(value?: MonitoredItemNotification | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

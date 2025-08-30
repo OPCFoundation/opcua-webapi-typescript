@@ -70,11 +70,11 @@ export function HistoryUpdateRequestFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function HistoryUpdateRequestToJSON(json: any): HistoryUpdateRequest {
-      return HistoryUpdateRequestToJSONTyped(json, false);
-  }
+export function HistoryUpdateRequestToJSON(json: any): HistoryUpdateRequest {
+    return HistoryUpdateRequestToJSONTyped(json, false);
+}
 
-  export function HistoryUpdateRequestToJSONTyped(value?: HistoryUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryUpdateRequestToJSONTyped(value?: HistoryUpdateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

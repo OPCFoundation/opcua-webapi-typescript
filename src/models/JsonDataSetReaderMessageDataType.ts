@@ -55,11 +55,11 @@ export function JsonDataSetReaderMessageDataTypeFromJSONTyped(json: any, ignoreD
     };
 }
 
-  export function JsonDataSetReaderMessageDataTypeToJSON(json: any): JsonDataSetReaderMessageDataType {
-      return JsonDataSetReaderMessageDataTypeToJSONTyped(json, false);
-  }
+export function JsonDataSetReaderMessageDataTypeToJSON(json: any): JsonDataSetReaderMessageDataType {
+    return JsonDataSetReaderMessageDataTypeToJSONTyped(json, false);
+}
 
-  export function JsonDataSetReaderMessageDataTypeToJSONTyped(value?: JsonDataSetReaderMessageDataType | null, ignoreDiscriminator: boolean = false): any {
+export function JsonDataSetReaderMessageDataTypeToJSONTyped(value?: JsonDataSetReaderMessageDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

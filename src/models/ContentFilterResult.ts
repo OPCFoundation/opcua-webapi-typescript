@@ -70,11 +70,11 @@ export function ContentFilterResultFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function ContentFilterResultToJSON(json: any): ContentFilterResult {
-      return ContentFilterResultToJSONTyped(json, false);
-  }
+export function ContentFilterResultToJSON(json: any): ContentFilterResult {
+    return ContentFilterResultToJSONTyped(json, false);
+}
 
-  export function ContentFilterResultToJSONTyped(value?: ContentFilterResult | null, ignoreDiscriminator: boolean = false): any {
+export function ContentFilterResultToJSONTyped(value?: ContentFilterResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

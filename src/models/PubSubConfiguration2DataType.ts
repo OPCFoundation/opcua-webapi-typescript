@@ -168,11 +168,11 @@ export function PubSubConfiguration2DataTypeFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function PubSubConfiguration2DataTypeToJSON(json: any): PubSubConfiguration2DataType {
-      return PubSubConfiguration2DataTypeToJSONTyped(json, false);
-  }
+export function PubSubConfiguration2DataTypeToJSON(json: any): PubSubConfiguration2DataType {
+    return PubSubConfiguration2DataTypeToJSONTyped(json, false);
+}
 
-  export function PubSubConfiguration2DataTypeToJSONTyped(value?: PubSubConfiguration2DataType | null, ignoreDiscriminator: boolean = false): any {
+export function PubSubConfiguration2DataTypeToJSONTyped(value?: PubSubConfiguration2DataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function HistoryModifiedDataFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function HistoryModifiedDataToJSON(json: any): HistoryModifiedData {
-      return HistoryModifiedDataToJSONTyped(json, false);
-  }
+export function HistoryModifiedDataToJSON(json: any): HistoryModifiedData {
+    return HistoryModifiedDataToJSONTyped(json, false);
+}
 
-  export function HistoryModifiedDataToJSONTyped(value?: HistoryModifiedData | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryModifiedDataToJSONTyped(value?: HistoryModifiedData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function BrowsePathResultFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function BrowsePathResultToJSON(json: any): BrowsePathResult {
-      return BrowsePathResultToJSONTyped(json, false);
-  }
+export function BrowsePathResultToJSON(json: any): BrowsePathResult {
+    return BrowsePathResultToJSONTyped(json, false);
+}
 
-  export function BrowsePathResultToJSONTyped(value?: BrowsePathResult | null, ignoreDiscriminator: boolean = false): any {
+export function BrowsePathResultToJSONTyped(value?: BrowsePathResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

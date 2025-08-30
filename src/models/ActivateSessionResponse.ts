@@ -91,11 +91,11 @@ export function ActivateSessionResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function ActivateSessionResponseToJSON(json: any): ActivateSessionResponse {
-      return ActivateSessionResponseToJSONTyped(json, false);
-  }
+export function ActivateSessionResponseToJSON(json: any): ActivateSessionResponse {
+    return ActivateSessionResponseToJSONTyped(json, false);
+}
 
-  export function ActivateSessionResponseToJSONTyped(value?: ActivateSessionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ActivateSessionResponseToJSONTyped(value?: ActivateSessionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

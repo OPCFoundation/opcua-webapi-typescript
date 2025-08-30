@@ -112,11 +112,11 @@ export function ActivateSessionRequestFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function ActivateSessionRequestToJSON(json: any): ActivateSessionRequest {
-      return ActivateSessionRequestToJSONTyped(json, false);
-  }
+export function ActivateSessionRequestToJSON(json: any): ActivateSessionRequest {
+    return ActivateSessionRequestToJSONTyped(json, false);
+}
 
-  export function ActivateSessionRequestToJSONTyped(value?: ActivateSessionRequest | null, ignoreDiscriminator: boolean = false): any {
+export function ActivateSessionRequestToJSONTyped(value?: ActivateSessionRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

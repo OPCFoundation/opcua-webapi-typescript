@@ -62,11 +62,11 @@ export function DataChangeFilterFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function DataChangeFilterToJSON(json: any): DataChangeFilter {
-      return DataChangeFilterToJSONTyped(json, false);
-  }
+export function DataChangeFilterToJSON(json: any): DataChangeFilter {
+    return DataChangeFilterToJSONTyped(json, false);
+}
 
-  export function DataChangeFilterToJSONTyped(value?: DataChangeFilter | null, ignoreDiscriminator: boolean = false): any {
+export function DataChangeFilterToJSONTyped(value?: DataChangeFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

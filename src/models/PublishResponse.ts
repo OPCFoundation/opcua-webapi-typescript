@@ -119,11 +119,11 @@ export function PublishResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function PublishResponseToJSON(json: any): PublishResponse {
-      return PublishResponseToJSONTyped(json, false);
-  }
+export function PublishResponseToJSON(json: any): PublishResponse {
+    return PublishResponseToJSONTyped(json, false);
+}
 
-  export function PublishResponseToJSONTyped(value?: PublishResponse | null, ignoreDiscriminator: boolean = false): any {
+export function PublishResponseToJSONTyped(value?: PublishResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

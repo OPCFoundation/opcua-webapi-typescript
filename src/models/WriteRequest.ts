@@ -70,11 +70,11 @@ export function WriteRequestFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function WriteRequestToJSON(json: any): WriteRequest {
-      return WriteRequestToJSONTyped(json, false);
-  }
+export function WriteRequestToJSON(json: any): WriteRequest {
+    return WriteRequestToJSONTyped(json, false);
+}
 
-  export function WriteRequestToJSONTyped(value?: WriteRequest | null, ignoreDiscriminator: boolean = false): any {
+export function WriteRequestToJSONTyped(value?: WriteRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

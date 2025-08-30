@@ -84,11 +84,11 @@ export function MonitoringParametersFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function MonitoringParametersToJSON(json: any): MonitoringParameters {
-      return MonitoringParametersToJSONTyped(json, false);
-  }
+export function MonitoringParametersToJSON(json: any): MonitoringParameters {
+    return MonitoringParametersToJSONTyped(json, false);
+}
 
-  export function MonitoringParametersToJSONTyped(value?: MonitoringParameters | null, ignoreDiscriminator: boolean = false): any {
+export function MonitoringParametersToJSONTyped(value?: MonitoringParameters | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -56,11 +56,11 @@ export function CloseSessionResponseFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function CloseSessionResponseToJSON(json: any): CloseSessionResponse {
-      return CloseSessionResponseToJSONTyped(json, false);
-  }
+export function CloseSessionResponseToJSON(json: any): CloseSessionResponse {
+    return CloseSessionResponseToJSONTyped(json, false);
+}
 
-  export function CloseSessionResponseToJSONTyped(value?: CloseSessionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CloseSessionResponseToJSONTyped(value?: CloseSessionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

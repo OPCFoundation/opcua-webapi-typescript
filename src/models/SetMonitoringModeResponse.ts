@@ -84,11 +84,11 @@ export function SetMonitoringModeResponseFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function SetMonitoringModeResponseToJSON(json: any): SetMonitoringModeResponse {
-      return SetMonitoringModeResponseToJSONTyped(json, false);
-  }
+export function SetMonitoringModeResponseToJSON(json: any): SetMonitoringModeResponse {
+    return SetMonitoringModeResponseToJSONTyped(json, false);
+}
 
-  export function SetMonitoringModeResponseToJSONTyped(value?: SetMonitoringModeResponse | null, ignoreDiscriminator: boolean = false): any {
+export function SetMonitoringModeResponseToJSONTyped(value?: SetMonitoringModeResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -22,7 +22,7 @@ import {
 } from './LocalizedText';
 
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.29).
  * @export
  * @interface ReferenceDescription
  */
@@ -98,11 +98,11 @@ export function ReferenceDescriptionFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function ReferenceDescriptionToJSON(json: any): ReferenceDescription {
-      return ReferenceDescriptionToJSONTyped(json, false);
-  }
+export function ReferenceDescriptionToJSON(json: any): ReferenceDescription {
+    return ReferenceDescriptionToJSONTyped(json, false);
+}
 
-  export function ReferenceDescriptionToJSONTyped(value?: ReferenceDescription | null, ignoreDiscriminator: boolean = false): any {
+export function ReferenceDescriptionToJSONTyped(value?: ReferenceDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

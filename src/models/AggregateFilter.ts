@@ -77,11 +77,11 @@ export function AggregateFilterFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function AggregateFilterToJSON(json: any): AggregateFilter {
-      return AggregateFilterToJSONTyped(json, false);
-  }
+export function AggregateFilterToJSON(json: any): AggregateFilter {
+    return AggregateFilterToJSONTyped(json, false);
+}
 
-  export function AggregateFilterToJSONTyped(value?: AggregateFilter | null, ignoreDiscriminator: boolean = false): any {
+export function AggregateFilterToJSONTyped(value?: AggregateFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

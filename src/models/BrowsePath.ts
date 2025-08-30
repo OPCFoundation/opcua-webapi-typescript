@@ -22,7 +22,7 @@ import {
 } from './RelativePath';
 
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/5.9.4/#5.9.4.2).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part3/6.2.5).
  * @export
  * @interface BrowsePath
  */
@@ -63,11 +63,11 @@ export function BrowsePathFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function BrowsePathToJSON(json: any): BrowsePath {
-      return BrowsePathToJSONTyped(json, false);
-  }
+export function BrowsePathToJSON(json: any): BrowsePath {
+    return BrowsePathToJSONTyped(json, false);
+}
 
-  export function BrowsePathToJSONTyped(value?: BrowsePath | null, ignoreDiscriminator: boolean = false): any {
+export function BrowsePathToJSONTyped(value?: BrowsePath | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function RepublishResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function RepublishResponseToJSON(json: any): RepublishResponse {
-      return RepublishResponseToJSONTyped(json, false);
-  }
+export function RepublishResponseToJSON(json: any): RepublishResponse {
+    return RepublishResponseToJSONTyped(json, false);
+}
 
-  export function RepublishResponseToJSONTyped(value?: RepublishResponse | null, ignoreDiscriminator: boolean = false): any {
+export function RepublishResponseToJSONTyped(value?: RepublishResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

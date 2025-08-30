@@ -63,11 +63,11 @@ export function DeleteSubscriptionsRequestFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function DeleteSubscriptionsRequestToJSON(json: any): DeleteSubscriptionsRequest {
-      return DeleteSubscriptionsRequestToJSONTyped(json, false);
-  }
+export function DeleteSubscriptionsRequestToJSON(json: any): DeleteSubscriptionsRequest {
+    return DeleteSubscriptionsRequestToJSONTyped(json, false);
+}
 
-  export function DeleteSubscriptionsRequestToJSONTyped(value?: DeleteSubscriptionsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteSubscriptionsRequestToJSONTyped(value?: DeleteSubscriptionsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

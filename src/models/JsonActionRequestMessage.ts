@@ -126,11 +126,11 @@ export function JsonActionRequestMessageFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function JsonActionRequestMessageToJSON(json: any): JsonActionRequestMessage {
-      return JsonActionRequestMessageToJSONTyped(json, false);
-  }
+export function JsonActionRequestMessageToJSON(json: any): JsonActionRequestMessage {
+    return JsonActionRequestMessageToJSONTyped(json, false);
+}
 
-  export function JsonActionRequestMessageToJSONTyped(value?: JsonActionRequestMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonActionRequestMessageToJSONTyped(value?: JsonActionRequestMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

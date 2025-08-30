@@ -84,11 +84,11 @@ export function CreateSubscriptionResponseFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function CreateSubscriptionResponseToJSON(json: any): CreateSubscriptionResponse {
-      return CreateSubscriptionResponseToJSONTyped(json, false);
-  }
+export function CreateSubscriptionResponseToJSON(json: any): CreateSubscriptionResponse {
+    return CreateSubscriptionResponseToJSONTyped(json, false);
+}
 
-  export function CreateSubscriptionResponseToJSONTyped(value?: CreateSubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CreateSubscriptionResponseToJSONTyped(value?: CreateSubscriptionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

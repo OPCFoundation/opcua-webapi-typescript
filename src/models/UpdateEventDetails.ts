@@ -84,11 +84,11 @@ export function UpdateEventDetailsFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function UpdateEventDetailsToJSON(json: any): UpdateEventDetails {
-      return UpdateEventDetailsToJSONTyped(json, false);
-  }
+export function UpdateEventDetailsToJSON(json: any): UpdateEventDetails {
+    return UpdateEventDetailsToJSONTyped(json, false);
+}
 
-  export function UpdateEventDetailsToJSONTyped(value?: UpdateEventDetails | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateEventDetailsToJSONTyped(value?: UpdateEventDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

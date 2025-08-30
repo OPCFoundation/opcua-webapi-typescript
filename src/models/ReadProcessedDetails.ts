@@ -84,11 +84,11 @@ export function ReadProcessedDetailsFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function ReadProcessedDetailsToJSON(json: any): ReadProcessedDetails {
-      return ReadProcessedDetailsToJSONTyped(json, false);
-  }
+export function ReadProcessedDetailsToJSON(json: any): ReadProcessedDetails {
+    return ReadProcessedDetailsToJSONTyped(json, false);
+}
 
-  export function ReadProcessedDetailsToJSONTyped(value?: ReadProcessedDetails | null, ignoreDiscriminator: boolean = false): any {
+export function ReadProcessedDetailsToJSONTyped(value?: ReadProcessedDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

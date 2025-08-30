@@ -76,11 +76,11 @@ export function BrokerDataSetReaderTransportDataTypeFromJSONTyped(json: any, ign
     };
 }
 
-  export function BrokerDataSetReaderTransportDataTypeToJSON(json: any): BrokerDataSetReaderTransportDataType {
-      return BrokerDataSetReaderTransportDataTypeToJSONTyped(json, false);
-  }
+export function BrokerDataSetReaderTransportDataTypeToJSON(json: any): BrokerDataSetReaderTransportDataType {
+    return BrokerDataSetReaderTransportDataTypeToJSONTyped(json, false);
+}
 
-  export function BrokerDataSetReaderTransportDataTypeToJSONTyped(value?: BrokerDataSetReaderTransportDataType | null, ignoreDiscriminator: boolean = false): any {
+export function BrokerDataSetReaderTransportDataTypeToJSONTyped(value?: BrokerDataSetReaderTransportDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

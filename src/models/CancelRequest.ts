@@ -63,11 +63,11 @@ export function CancelRequestFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function CancelRequestToJSON(json: any): CancelRequest {
-      return CancelRequestToJSONTyped(json, false);
-  }
+export function CancelRequestToJSON(json: any): CancelRequest {
+    return CancelRequestToJSONTyped(json, false);
+}
 
-  export function CancelRequestToJSONTyped(value?: CancelRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CancelRequestToJSONTyped(value?: CancelRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

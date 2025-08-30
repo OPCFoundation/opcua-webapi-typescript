@@ -70,11 +70,11 @@ export function ActionTargetDataTypeFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function ActionTargetDataTypeToJSON(json: any): ActionTargetDataType {
-      return ActionTargetDataTypeToJSONTyped(json, false);
-  }
+export function ActionTargetDataTypeToJSON(json: any): ActionTargetDataType {
+    return ActionTargetDataTypeToJSONTyped(json, false);
+}
 
-  export function ActionTargetDataTypeToJSONTyped(value?: ActionTargetDataType | null, ignoreDiscriminator: boolean = false): any {
+export function ActionTargetDataTypeToJSONTyped(value?: ActionTargetDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

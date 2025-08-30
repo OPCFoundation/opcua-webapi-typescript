@@ -70,11 +70,11 @@ export function BrowseNextRequestFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function BrowseNextRequestToJSON(json: any): BrowseNextRequest {
-      return BrowseNextRequestToJSONTyped(json, false);
-  }
+export function BrowseNextRequestToJSON(json: any): BrowseNextRequest {
+    return BrowseNextRequestToJSONTyped(json, false);
+}
 
-  export function BrowseNextRequestToJSONTyped(value?: BrowseNextRequest | null, ignoreDiscriminator: boolean = false): any {
+export function BrowseNextRequestToJSONTyped(value?: BrowseNextRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

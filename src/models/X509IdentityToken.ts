@@ -55,11 +55,11 @@ export function X509IdentityTokenFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function X509IdentityTokenToJSON(json: any): X509IdentityToken {
-      return X509IdentityTokenToJSONTyped(json, false);
-  }
+export function X509IdentityTokenToJSON(json: any): X509IdentityToken {
+    return X509IdentityTokenToJSONTyped(json, false);
+}
 
-  export function X509IdentityTokenToJSONTyped(value?: X509IdentityToken | null, ignoreDiscriminator: boolean = false): any {
+export function X509IdentityTokenToJSONTyped(value?: X509IdentityToken | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

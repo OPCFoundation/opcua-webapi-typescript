@@ -63,11 +63,11 @@ export function KeyValuePairFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function KeyValuePairToJSON(json: any): KeyValuePair {
-      return KeyValuePairToJSONTyped(json, false);
-  }
+export function KeyValuePairToJSON(json: any): KeyValuePair {
+    return KeyValuePairToJSONTyped(json, false);
+}
 
-  export function KeyValuePairToJSONTyped(value?: KeyValuePair | null, ignoreDiscriminator: boolean = false): any {
+export function KeyValuePairToJSONTyped(value?: KeyValuePair | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -84,11 +84,11 @@ export function HistoryUpdateResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function HistoryUpdateResponseToJSON(json: any): HistoryUpdateResponse {
-      return HistoryUpdateResponseToJSONTyped(json, false);
-  }
+export function HistoryUpdateResponseToJSON(json: any): HistoryUpdateResponse {
+    return HistoryUpdateResponseToJSONTyped(json, false);
+}
 
-  export function HistoryUpdateResponseToJSONTyped(value?: HistoryUpdateResponse | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryUpdateResponseToJSONTyped(value?: HistoryUpdateResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

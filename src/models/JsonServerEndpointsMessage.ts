@@ -98,11 +98,11 @@ export function JsonServerEndpointsMessageFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function JsonServerEndpointsMessageToJSON(json: any): JsonServerEndpointsMessage {
-      return JsonServerEndpointsMessageToJSONTyped(json, false);
-  }
+export function JsonServerEndpointsMessageToJSON(json: any): JsonServerEndpointsMessage {
+    return JsonServerEndpointsMessageToJSONTyped(json, false);
+}
 
-  export function JsonServerEndpointsMessageToJSONTyped(value?: JsonServerEndpointsMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonServerEndpointsMessageToJSONTyped(value?: JsonServerEndpointsMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function AggregateFilterResultFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function AggregateFilterResultToJSON(json: any): AggregateFilterResult {
-      return AggregateFilterResultToJSONTyped(json, false);
-  }
+export function AggregateFilterResultToJSON(json: any): AggregateFilterResult {
+    return AggregateFilterResultToJSONTyped(json, false);
+}
 
-  export function AggregateFilterResultToJSONTyped(value?: AggregateFilterResult | null, ignoreDiscriminator: boolean = false): any {
+export function AggregateFilterResultToJSONTyped(value?: AggregateFilterResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

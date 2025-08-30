@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.37).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.36).
  * @export
  * @interface SignatureData
  */
@@ -55,11 +55,11 @@ export function SignatureDataFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function SignatureDataToJSON(json: any): SignatureData {
-      return SignatureDataToJSONTyped(json, false);
-  }
+export function SignatureDataToJSON(json: any): SignatureData {
+    return SignatureDataToJSONTyped(json, false);
+}
 
-  export function SignatureDataToJSONTyped(value?: SignatureData | null, ignoreDiscriminator: boolean = false): any {
+export function SignatureDataToJSONTyped(value?: SignatureData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

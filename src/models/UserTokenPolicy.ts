@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.42).
+ * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.41).
  * @export
  * @interface UserTokenPolicy
  */
@@ -26,7 +26,7 @@ export interface UserTokenPolicy {
      */
     PolicyId?: string;
     /**
-     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.43).
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.42).
      * @type {number}
      * @memberof UserTokenPolicy
      */
@@ -76,11 +76,11 @@ export function UserTokenPolicyFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function UserTokenPolicyToJSON(json: any): UserTokenPolicy {
-      return UserTokenPolicyToJSONTyped(json, false);
-  }
+export function UserTokenPolicyToJSON(json: any): UserTokenPolicy {
+    return UserTokenPolicyToJSONTyped(json, false);
+}
 
-  export function UserTokenPolicyToJSONTyped(value?: UserTokenPolicy | null, ignoreDiscriminator: boolean = false): any {
+export function UserTokenPolicyToJSONTyped(value?: UserTokenPolicy | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

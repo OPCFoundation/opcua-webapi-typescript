@@ -119,11 +119,11 @@ export function PubSubKeyPushTargetDataTypeFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function PubSubKeyPushTargetDataTypeToJSON(json: any): PubSubKeyPushTargetDataType {
-      return PubSubKeyPushTargetDataTypeToJSONTyped(json, false);
-  }
+export function PubSubKeyPushTargetDataTypeToJSON(json: any): PubSubKeyPushTargetDataType {
+    return PubSubKeyPushTargetDataTypeToJSONTyped(json, false);
+}
 
-  export function PubSubKeyPushTargetDataTypeToJSONTyped(value?: PubSubKeyPushTargetDataType | null, ignoreDiscriminator: boolean = false): any {
+export function PubSubKeyPushTargetDataTypeToJSONTyped(value?: PubSubKeyPushTargetDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

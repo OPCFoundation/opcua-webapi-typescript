@@ -77,11 +77,11 @@ export function StructureDefinitionFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function StructureDefinitionToJSON(json: any): StructureDefinition {
-      return StructureDefinitionToJSONTyped(json, false);
-  }
+export function StructureDefinitionToJSON(json: any): StructureDefinition {
+    return StructureDefinitionToJSONTyped(json, false);
+}
 
-  export function StructureDefinitionToJSONTyped(value?: StructureDefinition | null, ignoreDiscriminator: boolean = false): any {
+export function StructureDefinitionToJSONTyped(value?: StructureDefinition | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

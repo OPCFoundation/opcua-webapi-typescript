@@ -126,11 +126,11 @@ export function FieldMetaDataFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function FieldMetaDataToJSON(json: any): FieldMetaData {
-      return FieldMetaDataToJSONTyped(json, false);
-  }
+export function FieldMetaDataToJSON(json: any): FieldMetaData {
+    return FieldMetaDataToJSONTyped(json, false);
+}
 
-  export function FieldMetaDataToJSONTyped(value?: FieldMetaData | null, ignoreDiscriminator: boolean = false): any {
+export function FieldMetaDataToJSONTyped(value?: FieldMetaData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

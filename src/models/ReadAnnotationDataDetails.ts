@@ -48,11 +48,11 @@ export function ReadAnnotationDataDetailsFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function ReadAnnotationDataDetailsToJSON(json: any): ReadAnnotationDataDetails {
-      return ReadAnnotationDataDetailsToJSONTyped(json, false);
-  }
+export function ReadAnnotationDataDetailsToJSON(json: any): ReadAnnotationDataDetails {
+    return ReadAnnotationDataDetailsToJSONTyped(json, false);
+}
 
-  export function ReadAnnotationDataDetailsToJSONTyped(value?: ReadAnnotationDataDetails | null, ignoreDiscriminator: boolean = false): any {
+export function ReadAnnotationDataDetailsToJSONTyped(value?: ReadAnnotationDataDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -91,11 +91,11 @@ export function CallMethodResultFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function CallMethodResultToJSON(json: any): CallMethodResult {
-      return CallMethodResultToJSONTyped(json, false);
-  }
+export function CallMethodResultToJSON(json: any): CallMethodResult {
+    return CallMethodResultToJSONTyped(json, false);
+}
 
-  export function CallMethodResultToJSONTyped(value?: CallMethodResult | null, ignoreDiscriminator: boolean = false): any {
+export function CallMethodResultToJSONTyped(value?: CallMethodResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

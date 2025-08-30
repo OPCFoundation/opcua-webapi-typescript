@@ -48,11 +48,11 @@ export function ElementOperandFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function ElementOperandToJSON(json: any): ElementOperand {
-      return ElementOperandToJSONTyped(json, false);
-  }
+export function ElementOperandToJSON(json: any): ElementOperand {
+    return ElementOperandToJSONTyped(json, false);
+}
 
-  export function ElementOperandToJSONTyped(value?: ElementOperand | null, ignoreDiscriminator: boolean = false): any {
+export function ElementOperandToJSONTyped(value?: ElementOperand | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

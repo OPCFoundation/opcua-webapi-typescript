@@ -77,11 +77,11 @@ export function GetEndpointsRequestFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function GetEndpointsRequestToJSON(json: any): GetEndpointsRequest {
-      return GetEndpointsRequestToJSONTyped(json, false);
-  }
+export function GetEndpointsRequestToJSON(json: any): GetEndpointsRequest {
+    return GetEndpointsRequestToJSONTyped(json, false);
+}
 
-  export function GetEndpointsRequestToJSONTyped(value?: GetEndpointsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function GetEndpointsRequestToJSONTyped(value?: GetEndpointsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

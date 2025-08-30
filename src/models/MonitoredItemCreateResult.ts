@@ -91,11 +91,11 @@ export function MonitoredItemCreateResultFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function MonitoredItemCreateResultToJSON(json: any): MonitoredItemCreateResult {
-      return MonitoredItemCreateResultToJSONTyped(json, false);
-  }
+export function MonitoredItemCreateResultToJSON(json: any): MonitoredItemCreateResult {
+    return MonitoredItemCreateResultToJSONTyped(json, false);
+}
 
-  export function MonitoredItemCreateResultToJSONTyped(value?: MonitoredItemCreateResult | null, ignoreDiscriminator: boolean = false): any {
+export function MonitoredItemCreateResultToJSONTyped(value?: MonitoredItemCreateResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -105,11 +105,11 @@ export function PubSubGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function PubSubGroupDataTypeToJSON(json: any): PubSubGroupDataType {
-      return PubSubGroupDataTypeToJSONTyped(json, false);
-  }
+export function PubSubGroupDataTypeToJSON(json: any): PubSubGroupDataType {
+    return PubSubGroupDataTypeToJSONTyped(json, false);
+}
 
-  export function PubSubGroupDataTypeToJSONTyped(value?: PubSubGroupDataType | null, ignoreDiscriminator: boolean = false): any {
+export function PubSubGroupDataTypeToJSONTyped(value?: PubSubGroupDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

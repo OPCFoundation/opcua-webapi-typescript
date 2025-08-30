@@ -105,11 +105,11 @@ export function DataValueFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function DataValueToJSON(json: any): DataValue {
-      return DataValueToJSONTyped(json, false);
-  }
+export function DataValueToJSON(json: any): DataValue {
+    return DataValueToJSONTyped(json, false);
+}
 
-  export function DataValueToJSONTyped(value?: DataValue | null, ignoreDiscriminator: boolean = false): any {
+export function DataValueToJSONTyped(value?: DataValue | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

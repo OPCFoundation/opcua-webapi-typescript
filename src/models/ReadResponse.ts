@@ -84,11 +84,11 @@ export function ReadResponseFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function ReadResponseToJSON(json: any): ReadResponse {
-      return ReadResponseToJSONTyped(json, false);
-  }
+export function ReadResponseToJSON(json: any): ReadResponse {
+    return ReadResponseToJSONTyped(json, false);
+}
 
-  export function ReadResponseToJSONTyped(value?: ReadResponse | null, ignoreDiscriminator: boolean = false): any {
+export function ReadResponseToJSONTyped(value?: ReadResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

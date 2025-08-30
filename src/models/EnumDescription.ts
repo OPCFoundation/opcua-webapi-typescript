@@ -77,11 +77,11 @@ export function EnumDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function EnumDescriptionToJSON(json: any): EnumDescription {
-      return EnumDescriptionToJSONTyped(json, false);
-  }
+export function EnumDescriptionToJSON(json: any): EnumDescription {
+    return EnumDescriptionToJSONTyped(json, false);
+}
 
-  export function EnumDescriptionToJSONTyped(value?: EnumDescription | null, ignoreDiscriminator: boolean = false): any {
+export function EnumDescriptionToJSONTyped(value?: EnumDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

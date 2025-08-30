@@ -133,11 +133,11 @@ export function PubSubConnectionDataTypeFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function PubSubConnectionDataTypeToJSON(json: any): PubSubConnectionDataType {
-      return PubSubConnectionDataTypeToJSONTyped(json, false);
-  }
+export function PubSubConnectionDataTypeToJSON(json: any): PubSubConnectionDataType {
+    return PubSubConnectionDataTypeToJSONTyped(json, false);
+}
 
-  export function PubSubConnectionDataTypeToJSONTyped(value?: PubSubConnectionDataType | null, ignoreDiscriminator: boolean = false): any {
+export function PubSubConnectionDataTypeToJSONTyped(value?: PubSubConnectionDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

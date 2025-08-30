@@ -48,11 +48,11 @@ export function JsonWriterGroupMessageDataTypeFromJSONTyped(json: any, ignoreDis
     };
 }
 
-  export function JsonWriterGroupMessageDataTypeToJSON(json: any): JsonWriterGroupMessageDataType {
-      return JsonWriterGroupMessageDataTypeToJSONTyped(json, false);
-  }
+export function JsonWriterGroupMessageDataTypeToJSON(json: any): JsonWriterGroupMessageDataType {
+    return JsonWriterGroupMessageDataTypeToJSONTyped(json, false);
+}
 
-  export function JsonWriterGroupMessageDataTypeToJSONTyped(value?: JsonWriterGroupMessageDataType | null, ignoreDiscriminator: boolean = false): any {
+export function JsonWriterGroupMessageDataTypeToJSONTyped(value?: JsonWriterGroupMessageDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

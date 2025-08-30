@@ -70,11 +70,11 @@ export function DeleteMonitoredItemsRequestFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function DeleteMonitoredItemsRequestToJSON(json: any): DeleteMonitoredItemsRequest {
-      return DeleteMonitoredItemsRequestToJSONTyped(json, false);
-  }
+export function DeleteMonitoredItemsRequestToJSON(json: any): DeleteMonitoredItemsRequest {
+    return DeleteMonitoredItemsRequestToJSONTyped(json, false);
+}
 
-  export function DeleteMonitoredItemsRequestToJSONTyped(value?: DeleteMonitoredItemsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function DeleteMonitoredItemsRequestToJSONTyped(value?: DeleteMonitoredItemsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function DataChangeNotificationFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function DataChangeNotificationToJSON(json: any): DataChangeNotification {
-      return DataChangeNotificationToJSONTyped(json, false);
-  }
+export function DataChangeNotificationToJSON(json: any): DataChangeNotification {
+    return DataChangeNotificationToJSONTyped(json, false);
+}
 
-  export function DataChangeNotificationToJSONTyped(value?: DataChangeNotification | null, ignoreDiscriminator: boolean = false): any {
+export function DataChangeNotificationToJSONTyped(value?: DataChangeNotification | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

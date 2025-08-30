@@ -70,11 +70,11 @@ export function EventFilterFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function EventFilterToJSON(json: any): EventFilter {
-      return EventFilterToJSONTyped(json, false);
-  }
+export function EventFilterToJSON(json: any): EventFilter {
+    return EventFilterToJSONTyped(json, false);
+}
 
-  export function EventFilterToJSONTyped(value?: EventFilter | null, ignoreDiscriminator: boolean = false): any {
+export function EventFilterToJSONTyped(value?: EventFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

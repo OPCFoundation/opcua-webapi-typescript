@@ -70,11 +70,11 @@ export function GetEndpointsResponseFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function GetEndpointsResponseToJSON(json: any): GetEndpointsResponse {
-      return GetEndpointsResponseToJSONTyped(json, false);
-  }
+export function GetEndpointsResponseToJSON(json: any): GetEndpointsResponse {
+    return GetEndpointsResponseToJSONTyped(json, false);
+}
 
-  export function GetEndpointsResponseToJSONTyped(value?: GetEndpointsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function GetEndpointsResponseToJSONTyped(value?: GetEndpointsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

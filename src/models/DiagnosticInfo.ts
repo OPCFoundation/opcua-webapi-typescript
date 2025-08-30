@@ -98,11 +98,11 @@ export function DiagnosticInfoFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function DiagnosticInfoToJSON(json: any): DiagnosticInfo {
-      return DiagnosticInfoToJSONTyped(json, false);
-  }
+export function DiagnosticInfoToJSON(json: any): DiagnosticInfo {
+    return DiagnosticInfoToJSONTyped(json, false);
+}
 
-  export function DiagnosticInfoToJSONTyped(value?: DiagnosticInfo | null, ignoreDiscriminator: boolean = false): any {
+export function DiagnosticInfoToJSONTyped(value?: DiagnosticInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

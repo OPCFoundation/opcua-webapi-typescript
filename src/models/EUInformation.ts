@@ -77,11 +77,11 @@ export function EUInformationFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function EUInformationToJSON(json: any): EUInformation {
-      return EUInformationToJSONTyped(json, false);
-  }
+export function EUInformationToJSON(json: any): EUInformation {
+    return EUInformationToJSONTyped(json, false);
+}
 
-  export function EUInformationToJSONTyped(value?: EUInformation | null, ignoreDiscriminator: boolean = false): any {
+export function EUInformationToJSONTyped(value?: EUInformation | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

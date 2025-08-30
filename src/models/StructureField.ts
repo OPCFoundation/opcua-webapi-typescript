@@ -98,11 +98,11 @@ export function StructureFieldFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function StructureFieldToJSON(json: any): StructureField {
-      return StructureFieldToJSONTyped(json, false);
-  }
+export function StructureFieldToJSON(json: any): StructureField {
+    return StructureFieldToJSONTyped(json, false);
+}
 
-  export function StructureFieldToJSONTyped(value?: StructureField | null, ignoreDiscriminator: boolean = false): any {
+export function StructureFieldToJSONTyped(value?: StructureField | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -62,11 +62,11 @@ export function ExtensionObjectFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-  export function ExtensionObjectToJSON(json: any): ExtensionObject {
-      return ExtensionObjectToJSONTyped(json, false);
-  }
+export function ExtensionObjectToJSON(json: any): ExtensionObject {
+    return ExtensionObjectToJSONTyped(json, false);
+}
 
-  export function ExtensionObjectToJSONTyped(value?: ExtensionObject | null, ignoreDiscriminator: boolean = false): any {
+export function ExtensionObjectToJSONTyped(value?: ExtensionObject | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

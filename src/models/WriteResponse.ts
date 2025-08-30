@@ -84,11 +84,11 @@ export function WriteResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function WriteResponseToJSON(json: any): WriteResponse {
-      return WriteResponseToJSONTyped(json, false);
-  }
+export function WriteResponseToJSON(json: any): WriteResponse {
+    return WriteResponseToJSONTyped(json, false);
+}
 
-  export function WriteResponseToJSONTyped(value?: WriteResponse | null, ignoreDiscriminator: boolean = false): any {
+export function WriteResponseToJSONTyped(value?: WriteResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

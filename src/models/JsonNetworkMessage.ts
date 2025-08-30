@@ -83,11 +83,11 @@ export function JsonNetworkMessageFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function JsonNetworkMessageToJSON(json: any): JsonNetworkMessage {
-      return JsonNetworkMessageToJSONTyped(json, false);
-  }
+export function JsonNetworkMessageToJSON(json: any): JsonNetworkMessage {
+    return JsonNetworkMessageToJSONTyped(json, false);
+}
 
-  export function JsonNetworkMessageToJSONTyped(value?: JsonNetworkMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonNetworkMessageToJSONTyped(value?: JsonNetworkMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

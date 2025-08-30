@@ -84,11 +84,11 @@ export function BrowseNextResponseFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function BrowseNextResponseToJSON(json: any): BrowseNextResponse {
-      return BrowseNextResponseToJSONTyped(json, false);
-  }
+export function BrowseNextResponseToJSON(json: any): BrowseNextResponse {
+    return BrowseNextResponseToJSONTyped(json, false);
+}
 
-  export function BrowseNextResponseToJSONTyped(value?: BrowseNextResponse | null, ignoreDiscriminator: boolean = false): any {
+export function BrowseNextResponseToJSONTyped(value?: BrowseNextResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

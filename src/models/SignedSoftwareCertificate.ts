@@ -55,11 +55,11 @@ export function SignedSoftwareCertificateFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function SignedSoftwareCertificateToJSON(json: any): SignedSoftwareCertificate {
-      return SignedSoftwareCertificateToJSONTyped(json, false);
-  }
+export function SignedSoftwareCertificateToJSON(json: any): SignedSoftwareCertificate {
+    return SignedSoftwareCertificateToJSONTyped(json, false);
+}
 
-  export function SignedSoftwareCertificateToJSONTyped(value?: SignedSoftwareCertificate | null, ignoreDiscriminator: boolean = false): any {
+export function SignedSoftwareCertificateToJSONTyped(value?: SignedSoftwareCertificate | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

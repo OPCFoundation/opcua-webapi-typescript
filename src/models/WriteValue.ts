@@ -77,11 +77,11 @@ export function WriteValueFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-  export function WriteValueToJSON(json: any): WriteValue {
-      return WriteValueToJSONTyped(json, false);
-  }
+export function WriteValueToJSON(json: any): WriteValue {
+    return WriteValueToJSONTyped(json, false);
+}
 
-  export function WriteValueToJSONTyped(value?: WriteValue | null, ignoreDiscriminator: boolean = false): any {
+export function WriteValueToJSONTyped(value?: WriteValue | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

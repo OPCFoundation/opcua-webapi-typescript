@@ -55,11 +55,11 @@ export function RolePermissionTypeFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function RolePermissionTypeToJSON(json: any): RolePermissionType {
-      return RolePermissionTypeToJSONTyped(json, false);
-  }
+export function RolePermissionTypeToJSON(json: any): RolePermissionType {
+    return RolePermissionTypeToJSONTyped(json, false);
+}
 
-  export function RolePermissionTypeToJSONTyped(value?: RolePermissionType | null, ignoreDiscriminator: boolean = false): any {
+export function RolePermissionTypeToJSONTyped(value?: RolePermissionType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

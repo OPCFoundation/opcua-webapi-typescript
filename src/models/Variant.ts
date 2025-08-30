@@ -62,11 +62,11 @@ export function VariantFromJSONTyped(json: any, ignoreDiscriminator: boolean): V
     };
 }
 
-  export function VariantToJSON(json: any): Variant {
-      return VariantToJSONTyped(json, false);
-  }
+export function VariantToJSON(json: any): Variant {
+    return VariantToJSONTyped(json, false);
+}
 
-  export function VariantToJSONTyped(value?: Variant | null, ignoreDiscriminator: boolean = false): any {
+export function VariantToJSONTyped(value?: Variant | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

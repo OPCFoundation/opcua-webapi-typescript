@@ -70,11 +70,11 @@ export function TranslateBrowsePathsToNodeIdsRequestFromJSONTyped(json: any, ign
     };
 }
 
-  export function TranslateBrowsePathsToNodeIdsRequestToJSON(json: any): TranslateBrowsePathsToNodeIdsRequest {
-      return TranslateBrowsePathsToNodeIdsRequestToJSONTyped(json, false);
-  }
+export function TranslateBrowsePathsToNodeIdsRequestToJSON(json: any): TranslateBrowsePathsToNodeIdsRequest {
+    return TranslateBrowsePathsToNodeIdsRequestToJSONTyped(json, false);
+}
 
-  export function TranslateBrowsePathsToNodeIdsRequestToJSONTyped(value?: TranslateBrowsePathsToNodeIdsRequest | null, ignoreDiscriminator: boolean = false): any {
+export function TranslateBrowsePathsToNodeIdsRequestToJSONTyped(value?: TranslateBrowsePathsToNodeIdsRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

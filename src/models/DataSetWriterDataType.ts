@@ -112,11 +112,11 @@ export function DataSetWriterDataTypeFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function DataSetWriterDataTypeToJSON(json: any): DataSetWriterDataType {
-      return DataSetWriterDataTypeToJSONTyped(json, false);
-  }
+export function DataSetWriterDataTypeToJSON(json: any): DataSetWriterDataType {
+    return DataSetWriterDataTypeToJSONTyped(json, false);
+}
 
-  export function DataSetWriterDataTypeToJSONTyped(value?: DataSetWriterDataType | null, ignoreDiscriminator: boolean = false): any {
+export function DataSetWriterDataTypeToJSONTyped(value?: DataSetWriterDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

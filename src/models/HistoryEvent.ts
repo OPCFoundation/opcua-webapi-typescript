@@ -56,11 +56,11 @@ export function HistoryEventFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function HistoryEventToJSON(json: any): HistoryEvent {
-      return HistoryEventToJSONTyped(json, false);
-  }
+export function HistoryEventToJSON(json: any): HistoryEvent {
+    return HistoryEventToJSONTyped(json, false);
+}
 
-  export function HistoryEventToJSONTyped(value?: HistoryEvent | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryEventToJSONTyped(value?: HistoryEvent | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -69,11 +69,11 @@ export function BrokerWriterGroupTransportDataTypeFromJSONTyped(json: any, ignor
     };
 }
 
-  export function BrokerWriterGroupTransportDataTypeToJSON(json: any): BrokerWriterGroupTransportDataType {
-      return BrokerWriterGroupTransportDataTypeToJSONTyped(json, false);
-  }
+export function BrokerWriterGroupTransportDataTypeToJSON(json: any): BrokerWriterGroupTransportDataType {
+    return BrokerWriterGroupTransportDataTypeToJSONTyped(json, false);
+}
 
-  export function BrokerWriterGroupTransportDataTypeToJSONTyped(value?: BrokerWriterGroupTransportDataType | null, ignoreDiscriminator: boolean = false): any {
+export function BrokerWriterGroupTransportDataTypeToJSONTyped(value?: BrokerWriterGroupTransportDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

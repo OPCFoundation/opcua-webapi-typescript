@@ -70,11 +70,11 @@ export function FindServersResponseFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function FindServersResponseToJSON(json: any): FindServersResponse {
-      return FindServersResponseToJSONTyped(json, false);
-  }
+export function FindServersResponseToJSON(json: any): FindServersResponse {
+    return FindServersResponseToJSONTyped(json, false);
+}
 
-  export function FindServersResponseToJSONTyped(value?: FindServersResponse | null, ignoreDiscriminator: boolean = false): any {
+export function FindServersResponseToJSONTyped(value?: FindServersResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

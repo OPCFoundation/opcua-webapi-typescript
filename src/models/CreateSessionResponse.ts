@@ -140,11 +140,11 @@ export function CreateSessionResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function CreateSessionResponseToJSON(json: any): CreateSessionResponse {
-      return CreateSessionResponseToJSONTyped(json, false);
-  }
+export function CreateSessionResponseToJSON(json: any): CreateSessionResponse {
+    return CreateSessionResponseToJSONTyped(json, false);
+}
 
-  export function CreateSessionResponseToJSONTyped(value?: CreateSessionResponse | null, ignoreDiscriminator: boolean = false): any {
+export function CreateSessionResponseToJSONTyped(value?: CreateSessionResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

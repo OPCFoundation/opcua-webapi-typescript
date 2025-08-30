@@ -84,11 +84,11 @@ export function AttributeOperandFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function AttributeOperandToJSON(json: any): AttributeOperand {
-      return AttributeOperandToJSONTyped(json, false);
-  }
+export function AttributeOperandToJSON(json: any): AttributeOperand {
+    return AttributeOperandToJSONTyped(json, false);
+}
 
-  export function AttributeOperandToJSONTyped(value?: AttributeOperand | null, ignoreDiscriminator: boolean = false): any {
+export function AttributeOperandToJSONTyped(value?: AttributeOperand | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

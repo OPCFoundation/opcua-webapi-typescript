@@ -55,11 +55,11 @@ export function LocalizedTextFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function LocalizedTextToJSON(json: any): LocalizedText {
-      return LocalizedTextToJSONTyped(json, false);
-  }
+export function LocalizedTextToJSON(json: any): LocalizedText {
+    return LocalizedTextToJSONTyped(json, false);
+}
 
-  export function LocalizedTextToJSONTyped(value?: LocalizedText | null, ignoreDiscriminator: boolean = false): any {
+export function LocalizedTextToJSONTyped(value?: LocalizedText | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

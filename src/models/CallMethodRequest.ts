@@ -70,11 +70,11 @@ export function CallMethodRequestFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function CallMethodRequestToJSON(json: any): CallMethodRequest {
-      return CallMethodRequestToJSONTyped(json, false);
-  }
+export function CallMethodRequestToJSON(json: any): CallMethodRequest {
+    return CallMethodRequestToJSONTyped(json, false);
+}
 
-  export function CallMethodRequestToJSONTyped(value?: CallMethodRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CallMethodRequestToJSONTyped(value?: CallMethodRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

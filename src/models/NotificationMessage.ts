@@ -70,11 +70,11 @@ export function NotificationMessageFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function NotificationMessageToJSON(json: any): NotificationMessage {
-      return NotificationMessageToJSONTyped(json, false);
-  }
+export function NotificationMessageToJSON(json: any): NotificationMessage {
+    return NotificationMessageToJSONTyped(json, false);
+}
 
-  export function NotificationMessageToJSONTyped(value?: NotificationMessage | null, ignoreDiscriminator: boolean = false): any {
+export function NotificationMessageToJSONTyped(value?: NotificationMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

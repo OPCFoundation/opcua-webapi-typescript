@@ -55,11 +55,11 @@ export function BrokerConnectionTransportDataTypeFromJSONTyped(json: any, ignore
     };
 }
 
-  export function BrokerConnectionTransportDataTypeToJSON(json: any): BrokerConnectionTransportDataType {
-      return BrokerConnectionTransportDataTypeToJSONTyped(json, false);
-  }
+export function BrokerConnectionTransportDataTypeToJSON(json: any): BrokerConnectionTransportDataType {
+    return BrokerConnectionTransportDataTypeToJSONTyped(json, false);
+}
 
-  export function BrokerConnectionTransportDataTypeToJSONTyped(value?: BrokerConnectionTransportDataType | null, ignoreDiscriminator: boolean = false): any {
+export function BrokerConnectionTransportDataTypeToJSONTyped(value?: BrokerConnectionTransportDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

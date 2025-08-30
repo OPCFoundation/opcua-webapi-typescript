@@ -104,11 +104,11 @@ export function JsonActionNetworkMessageFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function JsonActionNetworkMessageToJSON(json: any): JsonActionNetworkMessage {
-      return JsonActionNetworkMessageToJSONTyped(json, false);
-  }
+export function JsonActionNetworkMessageToJSON(json: any): JsonActionNetworkMessage {
+    return JsonActionNetworkMessageToJSONTyped(json, false);
+}
 
-  export function JsonActionNetworkMessageToJSONTyped(value?: JsonActionNetworkMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonActionNetworkMessageToJSONTyped(value?: JsonActionNetworkMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

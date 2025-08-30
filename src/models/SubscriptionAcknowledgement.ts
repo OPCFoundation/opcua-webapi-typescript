@@ -55,11 +55,11 @@ export function SubscriptionAcknowledgementFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function SubscriptionAcknowledgementToJSON(json: any): SubscriptionAcknowledgement {
-      return SubscriptionAcknowledgementToJSONTyped(json, false);
-  }
+export function SubscriptionAcknowledgementToJSON(json: any): SubscriptionAcknowledgement {
+    return SubscriptionAcknowledgementToJSONTyped(json, false);
+}
 
-  export function SubscriptionAcknowledgementToJSONTyped(value?: SubscriptionAcknowledgement | null, ignoreDiscriminator: boolean = false): any {
+export function SubscriptionAcknowledgementToJSONTyped(value?: SubscriptionAcknowledgement | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

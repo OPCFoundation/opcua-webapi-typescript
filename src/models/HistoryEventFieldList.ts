@@ -56,11 +56,11 @@ export function HistoryEventFieldListFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-  export function HistoryEventFieldListToJSON(json: any): HistoryEventFieldList {
-      return HistoryEventFieldListToJSONTyped(json, false);
-  }
+export function HistoryEventFieldListToJSON(json: any): HistoryEventFieldList {
+    return HistoryEventFieldListToJSONTyped(json, false);
+}
 
-  export function HistoryEventFieldListToJSONTyped(value?: HistoryEventFieldList | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryEventFieldListToJSONTyped(value?: HistoryEventFieldList | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

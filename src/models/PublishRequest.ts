@@ -70,11 +70,11 @@ export function PublishRequestFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-  export function PublishRequestToJSON(json: any): PublishRequest {
-      return PublishRequestToJSONTyped(json, false);
-  }
+export function PublishRequestToJSON(json: any): PublishRequest {
+    return PublishRequestToJSONTyped(json, false);
+}
 
-  export function PublishRequestToJSONTyped(value?: PublishRequest | null, ignoreDiscriminator: boolean = false): any {
+export function PublishRequestToJSONTyped(value?: PublishRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -84,11 +84,11 @@ export function TranslateBrowsePathsToNodeIdsResponseFromJSONTyped(json: any, ig
     };
 }
 
-  export function TranslateBrowsePathsToNodeIdsResponseToJSON(json: any): TranslateBrowsePathsToNodeIdsResponse {
-      return TranslateBrowsePathsToNodeIdsResponseToJSONTyped(json, false);
-  }
+export function TranslateBrowsePathsToNodeIdsResponseToJSON(json: any): TranslateBrowsePathsToNodeIdsResponse {
+    return TranslateBrowsePathsToNodeIdsResponseToJSONTyped(json, false);
+}
 
-  export function TranslateBrowsePathsToNodeIdsResponseToJSONTyped(value?: TranslateBrowsePathsToNodeIdsResponse | null, ignoreDiscriminator: boolean = false): any {
+export function TranslateBrowsePathsToNodeIdsResponseToJSONTyped(value?: TranslateBrowsePathsToNodeIdsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

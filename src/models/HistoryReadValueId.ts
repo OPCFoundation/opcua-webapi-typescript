@@ -69,11 +69,11 @@ export function HistoryReadValueIdFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function HistoryReadValueIdToJSON(json: any): HistoryReadValueId {
-      return HistoryReadValueIdToJSONTyped(json, false);
-  }
+export function HistoryReadValueIdToJSON(json: any): HistoryReadValueId {
+    return HistoryReadValueIdToJSONTyped(json, false);
+}
 
-  export function HistoryReadValueIdToJSONTyped(value?: HistoryReadValueId | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryReadValueIdToJSONTyped(value?: HistoryReadValueId | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

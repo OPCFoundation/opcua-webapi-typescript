@@ -47,7 +47,7 @@ export interface ReadRequest {
      */
     MaxAge?: number;
     /**
-     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.40).
+     * [Link to specification](https://reference.opcfoundation.org/v105/Core/docs/Part4/7.39).
      * @type {number}
      * @memberof ReadRequest
      */
@@ -84,11 +84,11 @@ export function ReadRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function ReadRequestToJSON(json: any): ReadRequest {
-      return ReadRequestToJSONTyped(json, false);
-  }
+export function ReadRequestToJSON(json: any): ReadRequest {
+    return ReadRequestToJSONTyped(json, false);
+}
 
-  export function ReadRequestToJSONTyped(value?: ReadRequest | null, ignoreDiscriminator: boolean = false): any {
+export function ReadRequestToJSONTyped(value?: ReadRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

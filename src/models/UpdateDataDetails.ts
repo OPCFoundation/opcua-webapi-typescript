@@ -70,11 +70,11 @@ export function UpdateDataDetailsFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function UpdateDataDetailsToJSON(json: any): UpdateDataDetails {
-      return UpdateDataDetailsToJSONTyped(json, false);
-  }
+export function UpdateDataDetailsToJSON(json: any): UpdateDataDetails {
+    return UpdateDataDetailsToJSONTyped(json, false);
+}
 
-  export function UpdateDataDetailsToJSONTyped(value?: UpdateDataDetails | null, ignoreDiscriminator: boolean = false): any {
+export function UpdateDataDetailsToJSONTyped(value?: UpdateDataDetails | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

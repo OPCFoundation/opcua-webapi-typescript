@@ -90,11 +90,11 @@ export function JsonStatusMessageFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function JsonStatusMessageToJSON(json: any): JsonStatusMessage {
-      return JsonStatusMessageToJSONTyped(json, false);
-  }
+export function JsonStatusMessageToJSON(json: any): JsonStatusMessage {
+    return JsonStatusMessageToJSONTyped(json, false);
+}
 
-  export function JsonStatusMessageToJSONTyped(value?: JsonStatusMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonStatusMessageToJSONTyped(value?: JsonStatusMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

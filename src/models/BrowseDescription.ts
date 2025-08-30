@@ -83,11 +83,11 @@ export function BrowseDescriptionFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function BrowseDescriptionToJSON(json: any): BrowseDescription {
-      return BrowseDescriptionToJSONTyped(json, false);
-  }
+export function BrowseDescriptionToJSON(json: any): BrowseDescription {
+    return BrowseDescriptionToJSONTyped(json, false);
+}
 
-  export function BrowseDescriptionToJSONTyped(value?: BrowseDescription | null, ignoreDiscriminator: boolean = false): any {
+export function BrowseDescriptionToJSONTyped(value?: BrowseDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

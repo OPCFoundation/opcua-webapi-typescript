@@ -91,11 +91,11 @@ export function BrowseRequestFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function BrowseRequestToJSON(json: any): BrowseRequest {
-      return BrowseRequestToJSONTyped(json, false);
-  }
+export function BrowseRequestToJSON(json: any): BrowseRequest {
+    return BrowseRequestToJSONTyped(json, false);
+}
 
-  export function BrowseRequestToJSONTyped(value?: BrowseRequest | null, ignoreDiscriminator: boolean = false): any {
+export function BrowseRequestToJSONTyped(value?: BrowseRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

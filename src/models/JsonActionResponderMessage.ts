@@ -84,11 +84,11 @@ export function JsonActionResponderMessageFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function JsonActionResponderMessageToJSON(json: any): JsonActionResponderMessage {
-      return JsonActionResponderMessageToJSONTyped(json, false);
-  }
+export function JsonActionResponderMessageToJSON(json: any): JsonActionResponderMessage {
+    return JsonActionResponderMessageToJSONTyped(json, false);
+}
 
-  export function JsonActionResponderMessageToJSONTyped(value?: JsonActionResponderMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonActionResponderMessageToJSONTyped(value?: JsonActionResponderMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

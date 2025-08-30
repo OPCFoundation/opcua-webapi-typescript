@@ -55,11 +55,11 @@ export function ActionMethodDataTypeFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function ActionMethodDataTypeToJSON(json: any): ActionMethodDataType {
-      return ActionMethodDataTypeToJSONTyped(json, false);
-  }
+export function ActionMethodDataTypeToJSON(json: any): ActionMethodDataType {
+    return ActionMethodDataTypeToJSONTyped(json, false);
+}
 
-  export function ActionMethodDataTypeToJSONTyped(value?: ActionMethodDataType | null, ignoreDiscriminator: boolean = false): any {
+export function ActionMethodDataTypeToJSONTyped(value?: ActionMethodDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -98,11 +98,11 @@ export function CreateSubscriptionRequestFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function CreateSubscriptionRequestToJSON(json: any): CreateSubscriptionRequest {
-      return CreateSubscriptionRequestToJSONTyped(json, false);
-  }
+export function CreateSubscriptionRequestToJSON(json: any): CreateSubscriptionRequest {
+    return CreateSubscriptionRequestToJSONTyped(json, false);
+}
 
-  export function CreateSubscriptionRequestToJSONTyped(value?: CreateSubscriptionRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CreateSubscriptionRequestToJSONTyped(value?: CreateSubscriptionRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

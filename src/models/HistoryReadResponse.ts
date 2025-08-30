@@ -84,11 +84,11 @@ export function HistoryReadResponseFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function HistoryReadResponseToJSON(json: any): HistoryReadResponse {
-      return HistoryReadResponseToJSONTyped(json, false);
-  }
+export function HistoryReadResponseToJSON(json: any): HistoryReadResponse {
+    return HistoryReadResponseToJSONTyped(json, false);
+}
 
-  export function HistoryReadResponseToJSONTyped(value?: HistoryReadResponse | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryReadResponseToJSONTyped(value?: HistoryReadResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

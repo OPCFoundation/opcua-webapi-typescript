@@ -77,11 +77,11 @@ export function FindServersRequestFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function FindServersRequestToJSON(json: any): FindServersRequest {
-      return FindServersRequestToJSONTyped(json, false);
-  }
+export function FindServersRequestToJSON(json: any): FindServersRequest {
+    return FindServersRequestToJSONTyped(json, false);
+}
 
-  export function FindServersRequestToJSONTyped(value?: FindServersRequest | null, ignoreDiscriminator: boolean = false): any {
+export function FindServersRequestToJSONTyped(value?: FindServersRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

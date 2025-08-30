@@ -84,11 +84,11 @@ export function ReadEventDetails2FromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function ReadEventDetails2ToJSON(json: any): ReadEventDetails2 {
-      return ReadEventDetails2ToJSONTyped(json, false);
-  }
+export function ReadEventDetails2ToJSON(json: any): ReadEventDetails2 {
+    return ReadEventDetails2ToJSONTyped(json, false);
+}
 
-  export function ReadEventDetails2ToJSONTyped(value?: ReadEventDetails2 | null, ignoreDiscriminator: boolean = false): any {
+export function ReadEventDetails2ToJSONTyped(value?: ReadEventDetails2 | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

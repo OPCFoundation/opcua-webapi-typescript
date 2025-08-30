@@ -77,11 +77,11 @@ export function MonitoredItemCreateRequestFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-  export function MonitoredItemCreateRequestToJSON(json: any): MonitoredItemCreateRequest {
-      return MonitoredItemCreateRequestToJSONTyped(json, false);
-  }
+export function MonitoredItemCreateRequestToJSON(json: any): MonitoredItemCreateRequest {
+    return MonitoredItemCreateRequestToJSONTyped(json, false);
+}
 
-  export function MonitoredItemCreateRequestToJSONTyped(value?: MonitoredItemCreateRequest | null, ignoreDiscriminator: boolean = false): any {
+export function MonitoredItemCreateRequestToJSONTyped(value?: MonitoredItemCreateRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function SetPublishingModeRequestFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function SetPublishingModeRequestToJSON(json: any): SetPublishingModeRequest {
-      return SetPublishingModeRequestToJSONTyped(json, false);
-  }
+export function SetPublishingModeRequestToJSON(json: any): SetPublishingModeRequest {
+    return SetPublishingModeRequestToJSONTyped(json, false);
+}
 
-  export function SetPublishingModeRequestToJSONTyped(value?: SetPublishingModeRequest | null, ignoreDiscriminator: boolean = false): any {
+export function SetPublishingModeRequestToJSONTyped(value?: SetPublishingModeRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

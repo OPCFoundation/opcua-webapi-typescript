@@ -55,11 +55,11 @@ export function DecimalFromJSONTyped(json: any, ignoreDiscriminator: boolean): D
     };
 }
 
-  export function DecimalToJSON(json: any): Decimal {
-      return DecimalToJSONTyped(json, false);
-  }
+export function DecimalToJSON(json: any): Decimal {
+    return DecimalToJSONTyped(json, false);
+}
 
-  export function DecimalToJSONTyped(value?: Decimal | null, ignoreDiscriminator: boolean = false): any {
+export function DecimalToJSONTyped(value?: Decimal | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

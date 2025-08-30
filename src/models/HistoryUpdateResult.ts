@@ -77,11 +77,11 @@ export function HistoryUpdateResultFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function HistoryUpdateResultToJSON(json: any): HistoryUpdateResult {
-      return HistoryUpdateResultToJSONTyped(json, false);
-  }
+export function HistoryUpdateResultToJSON(json: any): HistoryUpdateResult {
+    return HistoryUpdateResultToJSONTyped(json, false);
+}
 
-  export function HistoryUpdateResultToJSONTyped(value?: HistoryUpdateResult | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryUpdateResultToJSONTyped(value?: HistoryUpdateResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

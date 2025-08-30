@@ -77,11 +77,11 @@ export function BrowseResultFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-  export function BrowseResultToJSON(json: any): BrowseResult {
-      return BrowseResultToJSONTyped(json, false);
-  }
+export function BrowseResultToJSON(json: any): BrowseResult {
+    return BrowseResultToJSONTyped(json, false);
+}
 
-  export function BrowseResultToJSONTyped(value?: BrowseResult | null, ignoreDiscriminator: boolean = false): any {
+export function BrowseResultToJSONTyped(value?: BrowseResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

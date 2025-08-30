@@ -48,11 +48,11 @@ export function NetworkAddressDataTypeFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function NetworkAddressDataTypeToJSON(json: any): NetworkAddressDataType {
-      return NetworkAddressDataTypeToJSONTyped(json, false);
-  }
+export function NetworkAddressDataTypeToJSON(json: any): NetworkAddressDataType {
+    return NetworkAddressDataTypeToJSONTyped(json, false);
+}
 
-  export function NetworkAddressDataTypeToJSONTyped(value?: NetworkAddressDataType | null, ignoreDiscriminator: boolean = false): any {
+export function NetworkAddressDataTypeToJSONTyped(value?: NetworkAddressDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -69,11 +69,11 @@ export function SimpleAttributeOperandFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-  export function SimpleAttributeOperandToJSON(json: any): SimpleAttributeOperand {
-      return SimpleAttributeOperandToJSONTyped(json, false);
-  }
+export function SimpleAttributeOperandToJSON(json: any): SimpleAttributeOperand {
+    return SimpleAttributeOperandToJSONTyped(json, false);
+}
 
-  export function SimpleAttributeOperandToJSONTyped(value?: SimpleAttributeOperand | null, ignoreDiscriminator: boolean = false): any {
+export function SimpleAttributeOperandToJSONTyped(value?: SimpleAttributeOperand | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

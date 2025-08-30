@@ -56,11 +56,11 @@ export function ContentFilterFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function ContentFilterToJSON(json: any): ContentFilter {
-      return ContentFilterToJSONTyped(json, false);
-  }
+export function ContentFilterToJSON(json: any): ContentFilter {
+    return ContentFilterToJSONTyped(json, false);
+}
 
-  export function ContentFilterToJSONTyped(value?: ContentFilter | null, ignoreDiscriminator: boolean = false): any {
+export function ContentFilterToJSONTyped(value?: ContentFilter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -147,11 +147,11 @@ export function DataSetMetaDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function DataSetMetaDataTypeToJSON(json: any): DataSetMetaDataType {
-      return DataSetMetaDataTypeToJSONTyped(json, false);
-  }
+export function DataSetMetaDataTypeToJSON(json: any): DataSetMetaDataType {
+    return DataSetMetaDataTypeToJSONTyped(json, false);
+}
 
-  export function DataSetMetaDataTypeToJSONTyped(value?: DataSetMetaDataType | null, ignoreDiscriminator: boolean = false): any {
+export function DataSetMetaDataTypeToJSONTyped(value?: DataSetMetaDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

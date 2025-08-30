@@ -77,11 +77,11 @@ export function HistoryReadResultFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-  export function HistoryReadResultToJSON(json: any): HistoryReadResult {
-      return HistoryReadResultToJSONTyped(json, false);
-  }
+export function HistoryReadResultToJSON(json: any): HistoryReadResult {
+    return HistoryReadResultToJSONTyped(json, false);
+}
 
-  export function HistoryReadResultToJSONTyped(value?: HistoryReadResult | null, ignoreDiscriminator: boolean = false): any {
+export function HistoryReadResultToJSONTyped(value?: HistoryReadResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -62,11 +62,11 @@ export function ModificationInfoFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-  export function ModificationInfoToJSON(json: any): ModificationInfo {
-      return ModificationInfoToJSONTyped(json, false);
-  }
+export function ModificationInfoToJSON(json: any): ModificationInfo {
+    return ModificationInfoToJSONTyped(json, false);
+}
 
-  export function ModificationInfoToJSONTyped(value?: ModificationInfo | null, ignoreDiscriminator: boolean = false): any {
+export function ModificationInfoToJSONTyped(value?: ModificationInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

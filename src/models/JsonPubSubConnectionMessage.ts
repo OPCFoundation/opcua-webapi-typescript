@@ -84,11 +84,11 @@ export function JsonPubSubConnectionMessageFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-  export function JsonPubSubConnectionMessageToJSON(json: any): JsonPubSubConnectionMessage {
-      return JsonPubSubConnectionMessageToJSONTyped(json, false);
-  }
+export function JsonPubSubConnectionMessageToJSON(json: any): JsonPubSubConnectionMessage {
+    return JsonPubSubConnectionMessageToJSONTyped(json, false);
+}
 
-  export function JsonPubSubConnectionMessageToJSONTyped(value?: JsonPubSubConnectionMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonPubSubConnectionMessageToJSONTyped(value?: JsonPubSubConnectionMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

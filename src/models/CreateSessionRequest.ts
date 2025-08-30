@@ -119,11 +119,11 @@ export function CreateSessionRequestFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function CreateSessionRequestToJSON(json: any): CreateSessionRequest {
-      return CreateSessionRequestToJSONTyped(json, false);
-  }
+export function CreateSessionRequestToJSON(json: any): CreateSessionRequest {
+    return CreateSessionRequestToJSONTyped(json, false);
+}
 
-  export function CreateSessionRequestToJSONTyped(value?: CreateSessionRequest | null, ignoreDiscriminator: boolean = false): any {
+export function CreateSessionRequestToJSONTyped(value?: CreateSessionRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

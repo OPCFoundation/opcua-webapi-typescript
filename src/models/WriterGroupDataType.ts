@@ -175,11 +175,11 @@ export function WriterGroupDataTypeFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-  export function WriterGroupDataTypeToJSON(json: any): WriterGroupDataType {
-      return WriterGroupDataTypeToJSONTyped(json, false);
-  }
+export function WriterGroupDataTypeToJSON(json: any): WriterGroupDataType {
+    return WriterGroupDataTypeToJSONTyped(json, false);
+}
 
-  export function WriterGroupDataTypeToJSONTyped(value?: WriterGroupDataType | null, ignoreDiscriminator: boolean = false): any {
+export function WriterGroupDataTypeToJSONTyped(value?: WriterGroupDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

@@ -70,11 +70,11 @@ export function StatusChangeNotificationFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-  export function StatusChangeNotificationToJSON(json: any): StatusChangeNotification {
-      return StatusChangeNotificationToJSONTyped(json, false);
-  }
+export function StatusChangeNotificationToJSON(json: any): StatusChangeNotification {
+    return StatusChangeNotificationToJSONTyped(json, false);
+}
 
-  export function StatusChangeNotificationToJSONTyped(value?: StatusChangeNotification | null, ignoreDiscriminator: boolean = false): any {
+export function StatusChangeNotificationToJSONTyped(value?: StatusChangeNotification | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

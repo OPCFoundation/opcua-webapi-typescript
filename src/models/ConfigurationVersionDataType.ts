@@ -55,11 +55,11 @@ export function ConfigurationVersionDataTypeFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-  export function ConfigurationVersionDataTypeToJSON(json: any): ConfigurationVersionDataType {
-      return ConfigurationVersionDataTypeToJSONTyped(json, false);
-  }
+export function ConfigurationVersionDataTypeToJSON(json: any): ConfigurationVersionDataType {
+    return ConfigurationVersionDataTypeToJSONTyped(json, false);
+}
 
-  export function ConfigurationVersionDataTypeToJSONTyped(value?: ConfigurationVersionDataType | null, ignoreDiscriminator: boolean = false): any {
+export function ConfigurationVersionDataTypeToJSONTyped(value?: ConfigurationVersionDataType | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

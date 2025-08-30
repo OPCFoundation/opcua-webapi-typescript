@@ -133,11 +133,11 @@ export function JsonDataSetMessageFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-  export function JsonDataSetMessageToJSON(json: any): JsonDataSetMessage {
-      return JsonDataSetMessageToJSONTyped(json, false);
-  }
+export function JsonDataSetMessageToJSON(json: any): JsonDataSetMessage {
+    return JsonDataSetMessageToJSONTyped(json, false);
+}
 
-  export function JsonDataSetMessageToJSONTyped(value?: JsonDataSetMessage | null, ignoreDiscriminator: boolean = false): any {
+export function JsonDataSetMessageToJSONTyped(value?: JsonDataSetMessage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
