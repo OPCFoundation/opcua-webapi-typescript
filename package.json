@@ -1,6 +1,6 @@
 {
   "name": "opcua-webapi",
-  "version": "1.504.1",
+  "version": "15.5.0",
   "description": "Provides HTTPS based access to an OPC UA server.",
   "author": "OPC Foundation",
   "repository": {
